@@ -1,0 +1,10 @@
+
+version: '3.7'
+
+services:
+  postaltrackingfrontend:
+    image: postaltracking.azurecr.io/postalbag-frontend:20220914
+    restart: always
+    ports: 
+      - 80:80
+      - 443:443

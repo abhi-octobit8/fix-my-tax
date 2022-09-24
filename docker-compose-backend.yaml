@@ -1,0 +1,19 @@
+
+version: '3.7'
+
+services:
+  postaltrackingbackend:
+    image: postaltracking.azurecr.io/postalbag-backend:20220905
+    environment:
+      ASPDOTNETCORE_Environment: "Production"
+      ASPNETCORE_URLS: "https://+;http://+"
+      Kestrel__Certificates__Default__Password: "p@ssw0rd"
+      Kestrel__Certificates__Default__Path: "/app/zupiers.pfx"
+    restart: always
+#    volumes:
+#      - type: bind
+#        source: C:\Users\Puneet Mathur\zupiers\PostalBagTracking\zupiers.pfx
+#        target: /app/zupiers.pfx
+    ports:
+      - 80:80
+      - 443:443
