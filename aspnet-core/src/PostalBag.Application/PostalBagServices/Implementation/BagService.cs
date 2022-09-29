@@ -81,8 +81,8 @@ namespace PostalBag.PostalBagServices.Implementation
                                     for (int i = 1; i < bagData.Rows.Count; i++)
                                     {
                                         BagDto bag = new BagDto();
-                                        bag.BagNumber = Convert.ToString(bagData.Rows[i][0]);
-                                        bag.EpcNumber = "0C" + Convert.ToString(bagData.Rows[i][1]);
+                                        bag.BagNumber = Convert.ToString(bagData.Rows[i][0]).Trim();
+                                        bag.EpcNumber = "0C" + Convert.ToString(bagData.Rows[i][1]).Trim();
                                         bag.CreationTime = DateTime.UtcNow;
                                         bags.Add(bag);
                                     }
