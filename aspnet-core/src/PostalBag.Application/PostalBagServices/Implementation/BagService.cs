@@ -25,10 +25,23 @@ namespace PostalBag.PostalBagServices.Implementation
         }
         public async Task<BagDto> GetTag(CreateBagInput input)
         {
-            var bag = await bagRepository.SingleAsync(x => x.BagNumber == input.BagNumber);
-            var bagDto =  ObjectMapper.Map<BagDto>(bag);
-            bagDto.EpcNumber = bagDto.EpcNumber.Substring(2, bag.EpcNumber.Length - 2);
-            return bagDto;
+            
+                Bag bag = new Bag();
+                if (!string.IsNullOrEmpty(input.BagNumber))
+                {
+                    bag = await bagRepository.SingleAsync(x => x.BagNumber == input.BagNumber);
+                }
+                else
+                {
+                    var dataEpcNumberFormat = string.Concat("0C", input.EpcNumber);
+                    bag = await bagRepository.SingleAsync(x => x.EpcNumber == dataEpcNumberFormat);
+                }
+                var bagDto = ObjectMapper.Map<BagDto>(bag);
+                if (bagDto.EpcNumber.Length > 2)
+                {
+                    bagDto.EpcNumber = bagDto.EpcNumber.Substring(2, bag.EpcNumber.Length - 2);
+                }
+                return bagDto;
         }
 
         public Task Create(CreateBagInput input)    

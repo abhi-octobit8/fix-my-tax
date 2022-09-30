@@ -1,3 +1,4 @@
 export class TagParamDto {
-  bagNumber: string | undefined;
+  bagNumber?: string | undefined;
+  epcNumber?: string | undefined;
 }
