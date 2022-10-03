@@ -3,11 +3,11 @@ version: '3.7'
 
 services:
   postaltrackingbackend:
-    image: postaltracking.azurecr.io/postalbag-backend:20220905
+    image: postaltracking.azurecr.io/postalbag-backend:20221003-1
     environment:
       ASPDOTNETCORE_Environment: "Production"
       ASPNETCORE_URLS: "https://+;http://+"
-      Kestrel__Certificates__Default__Password: "p@ssw0rd"
+      Kestrel__Certificates__Default__Password: "#yperGr!d!@#"
       Kestrel__Certificates__Default__Path: "/app/zupiers.pfx"
     restart: always
 #    volumes:
