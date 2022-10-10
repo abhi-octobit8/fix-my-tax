@@ -11,7 +11,8 @@ namespace PostalBag.PostalBagServices.Dtos
     [AutoMapTo(typeof(PostalBag.IPModels.Bag))]
     public class CreateBagInput
     {
-        [Required]
         public string BagNumber { get; set; }
+
+        public string EpcNumber { get; set; }
     }
 }
