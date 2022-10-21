@@ -35,7 +35,7 @@ namespace PostalBag.Jobs
                 foreach (var site in sites)
                 {
                     var siteHealth = _siteHealthRepository.Query(x => x.OrderByDescending(t => t.CreationTime)).FirstOrDefault(x => x.SiteId == site.Id);
-                    if (siteHealth != null && siteHealth.CreationTime < DateTime.Today.AddDays(-3))
+                    if (siteHealth != null && siteHealth.CreationTime < DateTime.Today.AddDays(-6))
                     {
                         Logger.Info(string.Format("site {0} havent had any communication with central server in last 30 minutes, making it down", site.SiteCode));
                         site.State = SiteState.Down;

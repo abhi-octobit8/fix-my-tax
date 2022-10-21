@@ -45,7 +45,7 @@ namespace PostalBag.PostalBagServices.Implementation
                 if(site == null)
                 {
                     output.Success = false;
-                    output.ErrorMsg = string.Format("Sitecode {0} not found in system", input.SiteCode);
+                    output.ErrorMsg = string.Format("Sitecode not found in system {0}", input.SiteCode);
                     output.Epc = epc;
                     return output;
                 }
@@ -53,7 +53,7 @@ namespace PostalBag.PostalBagServices.Implementation
                 if(bag == null)
                 {
                     output.Success = false;
-                    output.ErrorMsg = string.Format("Epc {0} not found in system", epc);
+                    output.ErrorMsg = string.Format("Epc not found in system {0}", epc);
                     output.Epc = epc;
                     return output;
                 }
@@ -61,7 +61,7 @@ namespace PostalBag.PostalBagServices.Implementation
                 bool insertRecord = true;
                 if(lastScan != null)
                 {
-                    var timeSpan = DateTime.Now - lastScan.CreationTime;
+                    var timeSpan = DateTime.UtcNow - lastScan.CreationTime;
                     if( timeSpan.Duration().TotalMinutes < skipDurationInMinutes)
                     {
                         insertRecord = false;
@@ -92,7 +92,7 @@ namespace PostalBag.PostalBagServices.Implementation
                 logger.LogError(ex, "Error: bag or site code not found");
                 logger.LogInformation("Site or bag not found for site code :" + input.SiteCode + " bag epc :" + epc );
                 output.Success = false;
-                output.ErrorMsg = ex.Message;
+                output.ErrorMsg = string.Format("Error {0}", ex.Message);
                 output.Epc = epc;
             }
             return output;

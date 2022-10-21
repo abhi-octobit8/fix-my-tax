@@ -88,18 +88,35 @@ namespace PostalBag.PostalBagServices.Implementation
                 siteEntity.InternetState = input.InternetState;
                 siteEntity.ReaderState = input.ReaderState;
                 siteEntity.State = input.State;
+
                 await _siteRepository.UpdateAsync(siteEntity);
 
-                var siteHealth = new SiteHealth()
+                var siteEntityHealth = _siteHealthRepository.FirstOrDefault(x => x.SiteId == siteEntity.Id);
+                if (siteEntityHealth != null)
                 {
-                    SiteId = siteEntity.Id,
-                    ReaderState = input.ReaderState,
-                    InternetState = input.InternetState,
-                    State = input.State,
-                    CreationTime = DateTime.Now
-                };
+                    siteEntityHealth.ReaderState = input.ReaderState;
+                    siteEntityHealth.InternetState = input.InternetState;
+                    siteEntityHealth.State = input.State;
+                    siteEntityHealth.CreationTime = DateTime.UtcNow;
 
-                await _siteHealthRepository.InsertAsync(siteHealth);
+                    await _siteHealthRepository.UpdateAsync(siteEntityHealth);
+                }
+                else
+                {
+                    var siteHealth = new SiteHealth()
+                    {
+                        SiteId = siteEntity.Id,
+                        ReaderState = input.ReaderState,
+                        InternetState = input.InternetState,
+                        State = input.State,
+                        CreationTime = DateTime.UtcNow
+                    };
+
+                    await _siteHealthRepository.InsertAsync(siteHealth);
+
+
+                }
+
 
             }
             catch (Exception ex)
