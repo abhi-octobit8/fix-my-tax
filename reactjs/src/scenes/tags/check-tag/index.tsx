@@ -46,7 +46,7 @@ const CheckTag = inject(Stores.CheckTagStore)(
             {({ getFieldValue }) => {
               let label = 'Bag Number';
               if (getFieldValue('isSearchByEPC')) {
-                label = 'Epc Number';
+                label = 'EPC Number';
               }
 
               return (
