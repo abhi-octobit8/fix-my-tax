@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { Button, Card, Col, Row, Table, DatePicker, Space, Select } from 'antd';
 import { inject, observer } from 'mobx-react';
-
+import * as _ from 'lodash';
+import moment from 'moment';
 import AppComponentBase from '../../components/AppComponentBase';
 import { L } from '../../lib/abpUtility';
 import Stores from '../../stores/storeIdentifier';
 import { FormInstance } from 'antd/lib/form';
 import ListHeader from '../../components/common/ListHeader/ListHeader';
-import moment from 'moment';
 import { RangeValue } from 'rc-picker/lib/interface';
 import { DATE_FORMATS, getLocalTime } from '../../utils/timeUtils';
 import SearchBySiteStore from '../../stores/searchBySiteStore';
@@ -187,7 +187,7 @@ class SeachByTag extends AppComponentBase<ISearchBySiteProps, ISearchBySiteState
                     .includes(input.toLowerCase())
                 }
               >
-                {siteNameList?.items?.map((data, index) => {
+                {_.sortBy(siteNameList?.items, 'siteName').map((data, index) => {
                   return (
                     <Option key={index} value={data.siteCode}>
                       {data.siteName}
