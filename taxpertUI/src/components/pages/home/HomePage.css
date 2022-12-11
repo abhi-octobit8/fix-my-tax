@@ -39,9 +39,11 @@
 }
 
 /* service section */
-.service-section {
+.service-section,
+.our-value-section {
   padding: 20px;
   align-items: center;
+  /* border: 1px solid black; */
 }
 .service-section .service-block {
   margin: 28px;
@@ -56,4 +58,57 @@
 .section-header {
   text-align: center;
   padding-bottom: 30px;
+}
+.about-section {
+  padding: 20px;
+  align-items: center;
+  background-color: #ede3e3;
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.about-section .outer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.about-section .outer .left {
+  width: 37%;
+}
+.heading span {
+  font-size: 22px;
+  font-weight: 600;
+}
+.about-section .outer .right {
+  width: 55%;
+}
+.about-section ul {
+  margin-top: 15px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.about-section ul li {
+  width: 46%;
+  border: solid 1px black;
+  padding: 3rem;
+  margin-bottom: 1.1rem;
+  display: inline-block;
+  list-style-type: none;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 8px;
+}
+.about-section ul li .icon {
+  margin-right: 10px;
+  display: block;
+  width: 35px;
+  margin-bottom: 1rem;
+}
+.taxpert-line {
+  width: 45px;
 }

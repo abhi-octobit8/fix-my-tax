@@ -12,6 +12,11 @@ export const MENU_ITEMS = [
   {
     label: "services",
     key: 3,
+    to: "/services",
+  },
+  {
+    label: "account",
+    key: 3,
     to: "/request/newrequest",
   },
 ];
