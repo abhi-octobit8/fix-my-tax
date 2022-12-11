@@ -1,0 +1,22 @@
+.application-header {
+  --logo-inline-size: var(--navigation-inline-size);
+
+  block-size: var(--header-block-size);
+  background-color: var(--black-title);
+  /* display: flex; */
+  align-items: center;
+}
+
+.application-header-logo-wrap {
+  block-size: var(--header-block-size);
+  background-color: #2754ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: max-content;
+}
+
+.application-header .application-header-logo {
+  block-size: calc(var(--header-block-size) - 12px);
+  position: relative;
+}

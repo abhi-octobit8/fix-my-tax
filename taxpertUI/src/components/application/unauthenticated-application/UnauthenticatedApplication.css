@@ -1,0 +1,29 @@
+.unauthenticated-application {
+  overflow-x: hidden;
+  position: relative;
+  display: grid;
+  grid-gap: 0;
+  grid-template: "content" 1fr "footer" 27px / 1fr;
+  height: 100vh;
+  background-color: var(--white);
+}
+
+.unauthenticated-application-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+  background-color: #0247ba;
+}
+
+.unauthenticated-application-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: content;
+}
+
+.unauthenticated-application-footer {
+  grid-area: footer;
+}
