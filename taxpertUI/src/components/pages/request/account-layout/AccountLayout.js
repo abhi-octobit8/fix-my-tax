@@ -1,11 +1,6 @@
 import Sider from "antd/lib/layout/Sider";
 import React from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
-import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { Link, Outlet } from "react-router-dom";
 
 import "./AccountLayout.css";
 import { Layout, Menu } from "antd";
@@ -18,20 +13,11 @@ function AccountLayout(props) {
   const { children } = props;
 
   return (
-    // <article className="account-layout">
     <Layout className="account-layout">
-      {/* <div className="explorer-layout-menu">
-        <div className="explorer-layout-menu-content"> */}
-      <Sider
-        width={200}
-        // style={{
-        //   background: blue,
-        // }}
-      >
+      <Sider width={200}>
         <Menu
           mode="inline"
           defaultSelectedKeys={["test"]}
-          //   defaultOpenKeys={["sub1"]}
           style={{
             height: "100%",
             borderRight: 1,
@@ -46,17 +32,10 @@ function AccountLayout(props) {
           })}
         </Menu>
       </Sider>
-      {/* </div>
-      </div> */}
 
-      {/* <section className="explorer-layout-content">{children}</section> */}
-      {/* <section className="explorer-layout-content">
-        <Outlet />
-      </section> */}
       <Content className="explorer-layout-content">
         <Outlet />
       </Content>
-      {/* </article> */}
     </Layout>
   );
 }

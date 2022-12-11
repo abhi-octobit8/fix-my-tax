@@ -1,7 +1,4 @@
 import React from "react";
-import { node } from "prop-types";
-// import ApplicationHeader from "~/component/application/application-header";
-// import ApplicationFooter from "~/component/application/application-footer";
 
 import "./ApplicationLayout.css";
 import ApplicationHeader from "../application/application-header/ApplicationHeader";

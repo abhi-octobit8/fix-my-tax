@@ -1,10 +1,4 @@
-// import { erLocalStorage } from "../../../shared/storage/erLocalStorage";
-// import {
-//   SESSTION_STORAGE_KEYS,
-//   STORAGE_KEYS,
-// } from "../../../shared/storage/storageKeys";
 import { AUTH_ACTIONS } from "./AuthActionTypes";
-// import API from "../../../shared/API";
 import { erCache } from "../../shared/storage/erCache";
 import API from "../../shared/API";
 import { erLocalStorage } from "../../shared/storage/erLocalStorage";
@@ -13,8 +7,6 @@ import {
   STORAGE_KEYS,
 } from "../../shared/storage/storageKeys";
 import { getStore } from "../../store";
-
-// import { erCache } from "../../../src/shared";
 
 const { getJSONItem, removeItem, setJSONItem, setItem, getItem } =
   erLocalStorage;
@@ -39,19 +31,8 @@ export const getUserData = () => {
   return getJSONItem(USER_KEY);
 };
 
-export const getStoreData = async () => {
-  if (!getItem(STORE_DATA)) {
-    const storeData = await API({ method: "get", url: "/store/2" });
-    setItem(STORE_DATA, JSON.stringify(storeData));
-  }
-  return getJSONItem(STORE_DATA);
-};
 export const getLoginUserId = () => {
   return getJSONItem(USER_KEY) && getJSONItem(USER_KEY).id;
-};
-
-export const getAccessToken = () => {
-  return getItem(ACCESS_TOKEN);
 };
 
 const removeKeys = () => {
@@ -121,51 +102,11 @@ export const doLogout = () => {
   removeUserData();
 };
 
-// export const checkLogin = () => async (dispatch) => {
-//   try {
-//     const userInfo = await API({
-//       method: "get",
-//       url: "/employee",
-//       hideErrorMessage: true,
-//     });
-//     setUserData({ userInfo, userRole: userInfo.roleId, dispatch });
-//     setUserStoreData({ userInfo, userRole: userInfo.roleId, dispatch });
-//     setJSONItem(STORE_IDS, userInfo.storeDtoList);
-//     // if (!getItem(STORE_DATA)) {
-//     //   const storeData = await API({method: 'get', url: '/store/2'});
-//     //   setItem(STORE_DATA, JSON.stringify(storeData));
-//     // }
-//   } catch (e) {
-//     console.error("Error in checking the user auth", e);
-//     removeUserData(dispatch);
-//     throw e;
-//   }
-// };
-
-// export const logout = () => async (dispatch) => {
-//   removeUserData(dispatch);
-// };
-
 export const doLogin = (apiResponse) => {
-  debugger;
   const { accessToken } = apiResponse;
-  console.log("apiResponse: ", apiResponse);
-  // localStorage.setItem("user", JSON.stringify(response.data.result));
   setItem("accessToken", accessToken);
   dispatch({
     type: AUTH_ACTIONS.LOGIN_SUCCESS,
     payload: accessToken,
   });
-  // setUserData({ accessToken: access, refreshToken: refresh, dispatch });
 };
-
-// const getUserRole = () => {
-//   const userRoleId = getItem(USER_ROLE);
-//   return find(USER_ROLES, { id: parseInt(userRoleId) }) || USER_ROLES[0];
-// };
-
-// export const isUserAuthorized = ({ token = [] }) => {
-//   const userRole = getUserRole();
-//   const userTokens = userRole.accessTokens;
-//   return userRole.name === "Admin" || !difference(token, userTokens).length;
-// };

@@ -11,7 +11,6 @@ import Application from "./components/application/Application";
 
 ReactDOM.render(
   <Provider store={getStore()}>
-    {/* <App /> */}
     <Router>
       <Application />
     </Router>

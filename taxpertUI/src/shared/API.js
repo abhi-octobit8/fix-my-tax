@@ -4,7 +4,6 @@ import { showMessage, showNotification } from "./utils";
 import { STORAGE_KEYS } from "./storage/storageKeys";
 import { erLocalStorage } from "./storage/erLocalStorage";
 import { erCache } from "./storage/erCache";
-// import { getStore } from "../../redux/store";
 import { isEmpty, get } from "lodash";
 import { getStore } from "../store";
 

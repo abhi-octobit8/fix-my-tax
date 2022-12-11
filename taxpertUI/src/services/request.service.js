@@ -5,7 +5,6 @@ export const getNewRequest = async (id) => {
   const res = await API({
     url: `/services/app/BagScanService/GetSearchByTag`,
   });
-  debugger;
   setNewRequestData(res.items);
   return res.items;
 };

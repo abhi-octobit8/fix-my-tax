@@ -1,6 +1,3 @@
-// import * as Types from "../actions/actionTypes";
-// import initialState from "./initialState";
-
 import { AUTH_ACTIONS } from "./AuthActionTypes";
 
 const initialState = {
@@ -12,7 +9,6 @@ export default function authenticationReducer(
 ) {
   switch (action.type) {
     case AUTH_ACTIONS.LOGIN_SUCCESS:
-      debugger;
       return {
         ...state,
         userSession: action.payload,
