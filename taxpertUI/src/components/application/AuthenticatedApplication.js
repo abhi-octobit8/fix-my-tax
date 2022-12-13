@@ -8,6 +8,7 @@ import AccountLayout from "../pages/request/account-layout/AccountLayout";
 import NewRequest from "../pages/request/new-request/NewRequest";
 import PendingRequest from "../pages/request/pending-request/PendingRequest";
 import Login from "../pages/login/Login";
+import ServicePage from "../pages/services/ServicePage";
 
 function AuthenticatedApplication() {
   return (
@@ -15,6 +16,7 @@ function AuthenticatedApplication() {
       <Routes>
         <Route element={<Login />} path="/login" />
         <Route path="about" element={<AboutPage />} />
+        <Route path="services" element={<ServicePage />} />
         <Route path="home" element={<HomePage />} />
         <Route element={<AccountLayout />} path="request">
           <Route element={<NewRequest />} path="newrequest" />

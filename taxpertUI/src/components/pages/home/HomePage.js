@@ -114,7 +114,7 @@ const HomePage = () => (
       <div className="section-header">
         <h1>Our Value Association</h1>
       </div>
-      <Row>
+      {/* <Row>
         <Col span="12">
           <Card title="ITR Notice" className="service-block">
             <div className="service-content">
@@ -139,14 +139,14 @@ const HomePage = () => (
             <Button type="success">Know More >></Button>
           </Card>
         </Col>
-      </Row>
+      </Row> */}
     </section>
     <section className="our-value-section">
       <div className="section-header">
         <h1 className="taxpert-line">Testimonial</h1>
         <hr />
       </div>
-      <Row>
+      {/* <Row>
         <Col span="12">
           <Card title="ITR Notice" className="service-block">
             <div className="service-content">
@@ -171,7 +171,7 @@ const HomePage = () => (
             <Button type="success">Know More >></Button>
           </Card>
         </Col>
-      </Row>
+      </Row> */}
     </section>
   </React.Fragment>
 );
