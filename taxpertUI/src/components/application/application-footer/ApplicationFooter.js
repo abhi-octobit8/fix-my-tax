@@ -63,21 +63,12 @@ function ApplicationFooter() {
               <h4>Our Services</h4>
               <ul>
                 <li>
-                  <i className="bi bi-dash"></i> <a href="#">Web Design</a>
+                  <i className="bi bi-dash"></i> <a href="#">ITR Notice</a>
                 </li>
                 <li>
-                  <i className="bi bi-dash"></i> <a href="#">Web Development</a>
+                  <i className="bi bi-dash"></i> <a href="#">GST Notice</a>
                 </li>
-                <li>
-                  <i className="bi bi-dash"></i>{" "}
-                  <a href="#">Product Management</a>
-                </li>
-                <li>
-                  <i className="bi bi-dash"></i> <a href="#">Marketing</a>
-                </li>
-                <li>
-                  <i className="bi bi-dash"></i> <a href="#">Graphic Design</a>
-                </li>
+                
               </ul>
             </div>
 

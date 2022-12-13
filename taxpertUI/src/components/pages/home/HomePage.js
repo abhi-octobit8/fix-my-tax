@@ -1,7 +1,7 @@
 import { Button, Card, Col, Row } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
-// import { SecurityScanOutlined } from "@ant-design/icons";
+import { StarOutlined, StarFilled } from "@ant-design/icons";
 
 import "./HomePage.css";
 import {
@@ -43,6 +43,7 @@ const HomePage = () => (
     <section className="service-section">
       <div className="section-header">
         <h1>Got A Notice?</h1>
+        <hr className="taxpert-line" />
       </div>
       <Row>
         <Col span="12">
@@ -113,6 +114,7 @@ const HomePage = () => (
     <section className="our-value-section">
       <div className="section-header">
         <h1>Our Value Association</h1>
+        <hr className="taxpert-line" />
       </div>
       {/* <Row>
         <Col span="12">
@@ -143,35 +145,64 @@ const HomePage = () => (
     </section>
     <section className="our-value-section">
       <div className="section-header">
-        <h1 className="taxpert-line">Testimonial</h1>
-        <hr />
+        <h1 >Testimonial</h1>
+        <hr className="taxpert-line" />
+        <h4>Read What our Customer Say</h4>
       </div>
-      {/* <Row>
-        <Col span="12">
-          <Card title="ITR Notice" className="service-block">
-            <div className="service-content">
-              <span>
-                Cras fermentum odio eu feugiat lide par naso tierra. Justo eget
-                nada terra videa magna derita valies darta donna mare fermentum
-                iaculis eu non diam phasellus.
-              </span>
+      <div className="testimonial-containter">
+        <div class="box">
+          <i class="fas fa-quote-left quote"></i>
+          <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+          <div class="content">
+            <div class="info">
+              <div class="name">Smith</div>
+              <div class="job">Advocate</div>
+              <div class="stars">
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarOutlined />
+              </div>
             </div>
-            <Button type="success">Know More >></Button>
-          </Card>
-        </Col>
-        <Col span="12">
-          <Card title="GST Notice" className="service-block">
-            <div className="service-content">
-              <span>
-                Cras fermentum odio eu feugiat lide par naso tierra. Justo eget
-                nada terra videa magna derita valies darta donna mare fermentum
-                iaculis eu non diam phasellus.
-              </span>
+          </div>
+        </div>
+        <div class="box">
+          <i class="fas fa-quote-left quote"></i>
+          <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+          <div class="content">
+            <div class="info">
+              <div class="name">Smith</div>
+              <div class="job">Advocate</div>
+              <div class="stars">
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarOutlined />
+              </div>
             </div>
-            <Button type="success">Know More >></Button>
-          </Card>
-        </Col>
-      </Row> */}
+          </div>
+        </div>
+        <div class="box">
+          <i class="fas fa-quote-left quote"></i>
+          <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+          <div class="content">
+            <div class="info">
+              <div class="name">Alex Smith</div>
+              <div class="job">Advocate</div>
+              <div class="stars">
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarOutlined />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
   </React.Fragment>
 );
