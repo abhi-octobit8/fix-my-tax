@@ -77,7 +77,7 @@ const HomePage = () => (
         <div className="outer">
           <div className="left">
             <div className="heading">
-              <span>Taxpert</span>
+              <span>FixMyTax</span>
             </div>
             <h3>Best Tax expert website in India</h3>
             <p>
@@ -150,14 +150,14 @@ const HomePage = () => (
         <h4>Read What our Customer Say</h4>
       </div>
       <div className="testimonial-containter">
-        <div class="box">
-          <i class="fas fa-quote-left quote"></i>
+        <div className="box">
+          <i className="fas fa-quote-left quote"></i>
           <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
-          <div class="content">
-            <div class="info">
-              <div class="name">Smith</div>
-              <div class="job">Advocate</div>
-              <div class="stars">
+          <div className="content">
+            <div className="info">
+              <div className="name">Smith</div>
+              <div className="job">Advocate</div>
+              <div className="stars">
                 <StarFilled style={{ color: '#17a2b8' }} />
                 <StarFilled style={{ color: '#17a2b8' }} />
                 <StarFilled style={{ color: '#17a2b8' }} />
@@ -167,14 +167,14 @@ const HomePage = () => (
             </div>
           </div>
         </div>
-        <div class="box">
-          <i class="fas fa-quote-left quote"></i>
+        <div className="box">
+          <i className="fas fa-quote-left quote"></i>
           <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
-          <div class="content">
-            <div class="info">
-              <div class="name">Smith</div>
-              <div class="job">Advocate</div>
-              <div class="stars">
+          <div className="content">
+            <div className="info">
+              <div className="name">Smith</div>
+              <div className="job">Advocate</div>
+              <div className="stars">
                 <StarFilled style={{ color: '#17a2b8' }} />
                 <StarFilled style={{ color: '#17a2b8' }} />
                 <StarFilled style={{ color: '#17a2b8' }} />
@@ -184,14 +184,14 @@ const HomePage = () => (
             </div>
           </div>
         </div>
-        <div class="box">
-          <i class="fas fa-quote-left quote"></i>
+        <div className="box">
+          <i className="fas fa-quote-left quote"></i>
           <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
-          <div class="content">
-            <div class="info">
-              <div class="name">Alex Smith</div>
-              <div class="job">Advocate</div>
-              <div class="stars">
+          <div className="content">
+            <div className="info">
+              <div className="name">Alex Smith</div>
+              <div className="job">Advocate</div>
+              <div className="stars">
                 <StarFilled style={{ color: '#17a2b8' }} />
                 <StarFilled style={{ color: '#17a2b8' }} />
                 <StarFilled style={{ color: '#17a2b8' }} />

@@ -1,0 +1,44 @@
+.application-menu.application-menu {
+  flex: 1;
+  padding-inline-start: 28px;
+  padding-inline-end: 28px;
+  background-color: transparent;
+  block-size: 64px;
+}
+
+.application-menu .application-menu-item {
+  padding: 0 4px;
+  transition: color 0.3s ease;
+}
+
+.application-menu .application-menu-item,
+.application-menu .application-menu-item .application-menu-item-link {
+  display: block;
+  block-size: 64px;
+  /* color: rgba(246, 246, 246, 0.65); */
+  color: rgba(2, 19, 35, 0.85);
+  font-size: 14px;
+  line-height: 64px;
+}
+
+.application-menu {
+  border-block-end: none !important;
+}
+
+.application-menu .application-menu-item-wrap::before,
+.application-menu .application-menu-item-wrap::after {
+  content: none !important;
+}
+
+.application-menu
+  .application-menu-item-wrap.ant-menu-submenu-selected
+  .application-menu-item,
+.application-menu .application-menu-item .application-menu-item-link:hover,
+.application-menu
+  .application-menu-item
+  .application-menu-item-link.application-menu-item-link-active,
+.application-menu .application-menu-item-wrap .application-menu-item:hover {
+  /* color: rgba(255, 255, 255, 1);; */
+  /* color: rgba(2, 19, 35, 0.85); */
+  color: #48949b
+}

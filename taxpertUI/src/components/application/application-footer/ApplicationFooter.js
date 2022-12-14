@@ -14,7 +14,7 @@ function ApplicationFooter() {
           <div className="row gy-4">
             <div className="col-lg-5 col-md-12 footer-info">
               <a href="index.html" className="logo d-flex align-items-center">
-                <span>Taxpert</span>
+                <span>FixMyTax</span>
               </a>
               <p>
                 Cras fermentum odio eu feugiat lide par naso tierra. Justo eget
@@ -75,14 +75,14 @@ function ApplicationFooter() {
             <div className="col-lg-3 col-md-12 footer-contact text-center text-md-start">
               <h4>Contact Us</h4>
               <p>
-                A108 Adam Street <br />
-                New York, NY 535022
+              Mukut Tower, 402 <br />
+                Vikas Nagar, Sector - 2
                 <br />
-                United States <br />
+                Lucknow, UP - 226022<br />
                 <br />
-                <strong>Phone:</strong> +1 5589 55488 55
+                <strong>Phone:</strong> +91 9839441144
                 <br />
-                <strong>Email:</strong> help@taxpert.com
+                <strong>Email:</strong> contact@fixmytax.in
                 <br />
               </p>
             </div>

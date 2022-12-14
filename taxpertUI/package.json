@@ -10,6 +10,7 @@
     "antd": "^4.22.8",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "classnames": "^2.3.2",
     "craco-less": "^1.17.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -45,5 +46,8 @@
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.8"
+  },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
   }
 }

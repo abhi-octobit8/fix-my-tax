@@ -7,9 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function Application() {
   return (
-    <IntlProvider>
+    // <IntlProvider>
       <AuthenticatedApplication />
-    </IntlProvider>
+    // </IntlProvider>
   );
 }
 

@@ -26,16 +26,14 @@
   font-size: 30px;
   font-weight: 700;
   letter-spacing: 1px;
-  color: var(--color-secondary);
-  font-family: var(--font-secondary);
+
   margin-top: 3px;
 }
 
 .footer .footer-content .footer-info p {
   font-size: 15px;
   margin-bottom: 0;
-  font-family: var(--font-primary);
-  color: var(--color-secondary);
+
 }
 
 .footer .footer-content .social-links a {
@@ -50,7 +48,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-primary);
+
   color: #fff;
   border-radius: 50px;
 }
@@ -79,7 +77,6 @@
 
 .footer .footer-content .footer-links ul i {
   margin-right: 2px;
-  color: var(--color-primary);
   font-size: 16px;
   line-height: 0;
 }
@@ -101,13 +98,9 @@
   line-height: 1;
 }
 
-.footer .footer-content .footer-links ul a:hover {
-  color: var(--color-primary);
-}
 
 .footer .footer-content .footer-contact p {
   line-height: 26px;
-  color: var(--color-secondary);
 }
 
 .footer .footer-legal {
@@ -117,12 +110,10 @@
 
 .footer .footer-legal .copyright {
   text-align: center;
-  color: var(--color-secondary);
 }
 
 .footer .footer-legal .credits {
   padding-top: 4px;
   text-align: center;
   font-size: 13px;
-  color: var(--color-secondary);
 }
