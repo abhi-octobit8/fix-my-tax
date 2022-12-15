@@ -40,10 +40,12 @@
 
 /* service section */
 .service-section,
-.our-value-section {
+.our-value-section ,.testimonial-value-section{
   padding: 20px;
   align-items: center;
-  /* border: 1px solid black; */
+}
+.testimonial-value-section {
+ background-color: #ede3e3;
 }
 .service-section .service-block {
   margin: 28px;
@@ -113,6 +115,39 @@
   width: 45px;
   border:2px solid #48949b;
 }
+
+.our-value-section .container{
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.our-value-section ul {
+  margin-top: 15px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.our-value-section ul li {
+  border: solid 1px #f0f0f0;
+    border-radius: 6px;
+    display: inline-block;
+    width: 15.9%;
+    text-align: center;
+    height: 90px;
+    margin: 4px;
+    line-height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media only screen and (max-width: 767px){
+  .our-value-section ul li {
+      width: 46%;
+  }
+  }
+
 .testimonial-containter{
 display: flex;
 justify-content: space-between;

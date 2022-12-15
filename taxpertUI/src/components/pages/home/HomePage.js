@@ -10,6 +10,11 @@ import {
   SafeSecureIcon,
   TrustedUserIcon,
 } from "../../../common/icons/icons";
+import xocovoPartner from "../../../assets/img/xocovo.png";
+import smartPartner from "../../../assets/img/smartpartner.png";
+import medimaaPartner from "../../../assets/img/medimaa.png";
+import xocovoPartner1 from "../../../assets/img/xocovo.png";
+
 const HomePage = () => (
   <React.Fragment>
     {/* <div className="jumbotron">
@@ -113,55 +118,49 @@ const HomePage = () => (
 
     <section className="our-value-section">
       <div className="section-header">
-        <h1>Our Value Association</h1>
+        <h1>Our Value Partner</h1>
         <hr className="taxpert-line" />
       </div>
-      {/* <Row>
-        <Col span="12">
-          <Card title="ITR Notice" className="service-block">
-            <div className="service-content">
-              <span>
-                Cras fermentum odio eu feugiat lide par naso tierra. Justo eget
-                nada terra videa magna derita valies darta donna mare fermentum
-                iaculis eu non diam phasellus.
-              </span>
-            </div>
-            <Button type="success">Know More >></Button>
-          </Card>
-        </Col>
-        <Col span="12">
-          <Card title="GST Notice" className="service-block">
-            <div className="service-content">
-              <span>
-                Cras fermentum odio eu feugiat lide par naso tierra. Justo eget
-                nada terra videa magna derita valies darta donna mare fermentum
-                iaculis eu non diam phasellus.
-              </span>
-            </div>
-            <Button type="success">Know More >></Button>
-          </Card>
-        </Col>
-      </Row> */}
+      <div className="container">
+        <ul>
+          <li>
+            <img src={xocovoPartner} width={135} height={45} />
+          </li>
+          <li>
+            <img src={smartPartner} width={135} height={45} />
+          </li>
+          <li>
+            <img src={medimaaPartner} width={135} height={45} />
+          </li>
+          <li>
+            <img src={xocovoPartner1} width={135} height={45} />
+          </li>
+        </ul>
+      </div>
     </section>
-    <section className="our-value-section">
+    <section className="testimonial-value-section">
       <div className="section-header">
-        <h1 >Testimonial</h1>
+        <h1>Testimonial</h1>
         <hr className="taxpert-line" />
         <h4>Read What our Customer Say</h4>
       </div>
       <div className="testimonial-containter">
         <div className="box">
           <i className="fas fa-quote-left quote"></i>
-          <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+          <p>
+            Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing
+            elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos
+            repellendus repudiandae deleniti ideas fuga molestiae, alias.
+          </p>
           <div className="content">
             <div className="info">
               <div className="name">Smith</div>
               <div className="job">Advocate</div>
               <div className="stars">
-                <StarFilled style={{ color: '#17a2b8' }} />
-                <StarFilled style={{ color: '#17a2b8' }} />
-                <StarFilled style={{ color: '#17a2b8' }} />
-                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
                 <StarOutlined />
               </div>
             </div>
@@ -169,16 +168,20 @@ const HomePage = () => (
         </div>
         <div className="box">
           <i className="fas fa-quote-left quote"></i>
-          <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+          <p>
+            Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing
+            elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos
+            repellendus repudiandae deleniti ideas fuga molestiae, alias.
+          </p>
           <div className="content">
             <div className="info">
               <div className="name">Smith</div>
               <div className="job">Advocate</div>
               <div className="stars">
-                <StarFilled style={{ color: '#17a2b8' }} />
-                <StarFilled style={{ color: '#17a2b8' }} />
-                <StarFilled style={{ color: '#17a2b8' }} />
-                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
                 <StarOutlined />
               </div>
             </div>
@@ -186,23 +189,26 @@ const HomePage = () => (
         </div>
         <div className="box">
           <i className="fas fa-quote-left quote"></i>
-          <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+          <p>
+            Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing
+            elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos
+            repellendus repudiandae deleniti ideas fuga molestiae, alias.
+          </p>
           <div className="content">
             <div className="info">
               <div className="name">Alex Smith</div>
               <div className="job">Advocate</div>
               <div className="stars">
-                <StarFilled style={{ color: '#17a2b8' }} />
-                <StarFilled style={{ color: '#17a2b8' }} />
-                <StarFilled style={{ color: '#17a2b8' }} />
-                <StarFilled style={{ color: '#17a2b8' }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
+                <StarFilled style={{ color: "#17a2b8" }} />
                 <StarOutlined />
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </section>
   </React.Fragment>
 );
