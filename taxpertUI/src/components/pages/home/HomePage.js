@@ -139,7 +139,6 @@ const HomePage = () => (
       </div>
       <div className="testimonial-containter">
         <div className="box">
-          <i className="fas fa-quote-left quote"></i>
           <p>
             Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing
             elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos
@@ -160,7 +159,6 @@ const HomePage = () => (
           </div>
         </div>
         <div className="box">
-          <i className="fas fa-quote-left quote"></i>
           <p>
             Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing
             elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos
@@ -181,7 +179,6 @@ const HomePage = () => (
           </div>
         </div>
         <div className="box">
-          <i className="fas fa-quote-left quote"></i>
           <p>
             Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing
             elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos

@@ -16,3 +16,30 @@
     text-align: center;
 
 }
+
+.site-card-wrapper{
+    padding: 30px;
+    background-color: #ececec;
+}
+.notice-card{
+    height: 100%;
+    border-radius: 35px;
+    box-shadow: 0 5px 17px 0 rgb(0 0 0 / 17%);
+}
+.section-container{
+    padding: 20px;
+    align-items: center;
+}
+.section-faq-items{
+    width: 100%;
+}
+.section-faq-items .ant-space-item {
+    background-color: #fff;
+    box-shadow: 0 3px 8px rgb(63 20 20 / 10%);
+
+}
+
+.section-faq-items .ant-space-item .ant-collapse-header{
+    font-size: 16px;
+    font-weight: 500;
+}

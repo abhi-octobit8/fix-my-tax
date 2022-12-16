@@ -1,19 +1,19 @@
-import { Button } from "antd";
+import { Button, Card, Col, Row } from "antd";
 import React from "react";
 import "./ItrNotice.css";
+import { Collapse, Space } from "antd";
+const { Panel } = Collapse;
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
 
 const ItrNoticeService = () => (
   <React.Fragment>
     <section id="service-banner" className="service-banner">
       <div className="container" data-aos="fade-up">
         <div className="row justify-content-center">
-          {/* <div className="col-lg-6 text-center">
-            <h3> Income Tax Notices in India</h3>
-
-            <Button type="primary" size="large" className="cta-btn">
-              Start Here
-            </Button>
-          </div> */}
           <div className="service-banner-info">
             <div className="service-banner-title">
               Income Tax Notices in India
@@ -27,6 +27,115 @@ const ItrNoticeService = () => (
             the matter resolved with the tax authorities.
           </div>
         </div>
+      </div>
+    </section>
+    <div className="site-card-wrapper">
+      <div className="section-header">
+        <h1>Different Types of ITR Notice</h1>
+        <hr className="taxpert-line" />
+        <h6>
+          The income tax department sends different types of notices to
+          taxpayers depending on the cause of the notice
+        </h6>
+      </div>
+      <Row gutter={16}>
+        <Col span={8}>
+          <Card
+            className="notice-card"
+            title="Notice send Under section 139"
+            bordered={false}
+          >
+            If the AO believes that a defective income tax return is filed, he
+            would serve you notice under this section. The error can be missing
+            information, use of the wrong ITR form, incomplete return, etc. The
+            officer would also highlight the defect in the income tax return and
+            recommend the solution thereof. You get a period of 15 days to
+            respond to the notice. If you do not respond, your ITR would be
+            rejected.
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card
+            className="notice-card"
+            title=" Notice under Section 142(1) "
+            bordered={false}
+          >
+            A notice is served by the assessing officer u/s 142 (1) in two
+            cases. Firstly, if the officer requires additional information and
+            documents pertaining to your income tax returns. Secondly, if the
+            return has not been filed but the officer wants the return to be
+            filed. If you do not respond to the notice served under Section
+            142(1), you would face a penalty of INR 10,000, prosecution for up
+            to 1 year or both.
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card
+            className="notice-card"
+            title="Notice under Section 148"
+            bordered={false}
+          >
+            This notice is sent in cases where the assessing officer(AO) has a
+            reason to believe that a taxpayer has filed his ITR on a lower
+            income or not filed when he was mandated by the law. The time limit
+            to send the notice under this section depends on the amount and
+            nature of income escaped.
+          </Card>
+        </Col>
+      </Row>
+    </div>
+    <section className="section-container">
+      <div className="section-header">
+        <h4>FAQ’s on Income Tax Notice</h4>
+        <hr className="taxpert-line" />
+      </div>
+      <div>
+        <Card>
+          <Space direction="vertical" className="section-faq-items">
+            <Collapse expandIconPosition={"end"} className="section-faq-item">
+              <Panel header="What to do if I get a tax notice?" key="1">
+                <p>
+                  If you get an income tax notice, you should understand why the
+                  notice has been sent. Notices may be sent due to various
+                  reasons. For example, Notices may be sent for the details and
+                  papers required by the Income Tax Department. In such a case,
+                  you need to provide the details as required. If there is any
+                  error in the ITR, then notices may be sent to rectify the
+                  error. In such a case, you should then rectify any error in
+                  your return and respond to the notice with the time specified
+                  by the income tax department to avoid possible penalties.
+                </p>
+              </Panel>
+            </Collapse>
+            <Collapse expandIconPosition={"end"}>
+              <Panel
+                header="What happens if you dont respond to tax notice?"
+                key="1"
+              >
+                <p>
+                  If you dont respond to the income tax notice, there can be
+                  different types of consequences depending upon the type of
+                  Notice which you would have to face. Such consequences include
+                  fines of up to INR 10,000 and also imprisonment for up to a
+                  year.
+                </p>
+              </Panel>
+            </Collapse>
+            <Collapse expandIconPosition={"end"}>
+              <Panel
+                header="What happens if I dont respond to the notice within 30 days?"
+                key="1"
+              >
+                <p>
+                  In case you dont respond to notice within 30 days the income
+                  tax department will make the adjustment if there is some
+                  outstanding demand without giving any further opportunity to
+                  respond.
+                </p>
+              </Panel>
+            </Collapse>
+          </Space>
+        </Card>
       </div>
     </section>
   </React.Fragment>
