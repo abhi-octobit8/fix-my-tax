@@ -1,0 +1,18 @@
+.service-banner {
+    background: linear-gradient(rgba(27, 47, 69, 0.8), rgba(27, 47, 69, 0.8));
+    background-color: #2a4671;
+    background-size: cover;
+    padding: 100px 0;
+  }
+.service-banner .service-banner-title {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+.service-banner .service-banner-info {
+    margin: auto;
+    color: white;
+    text-align: center;
+
+}

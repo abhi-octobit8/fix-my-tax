@@ -17,13 +17,6 @@ import xocovoPartner1 from "../../../assets/img/xocovo.png";
 
 const HomePage = () => (
   <React.Fragment>
-    {/* <div className="jumbotron">
-      <h1>Sample Administration</h1>
-      <p>React, Redux and React Router webapp</p>
-      <Link to="about" className="btn btn-primary">
-        Home
-      </Link>
-    </div> */}
     <section id="banner-to-action" className="banner-to-action">
       <div className="container" data-aos="fade-up">
         <div className="row justify-content-center">
