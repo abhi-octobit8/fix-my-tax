@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Form, Input, Row } from "antd";
 import "./Login.less";
 import API from "../../../shared/API";
-import { doLogin } from "../../../store/authentication/AuthActions";
+import { checkLogin, doLogin } from "../../../store/authentication/AuthActions";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -14,6 +14,7 @@ const Login = (props) => {
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (values) => {
+    debugger;
     console.log("Success:", values);
     const loginData = {
       userNameOrEmailAddress: values.username,
@@ -25,6 +26,8 @@ const Login = (props) => {
       body: loginData,
     });
     doLogin({ ...loginResponse });
+    await checkLogin();
+
     setLoading(false);
     navigate("/request/newrequest");
   };

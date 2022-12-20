@@ -35,17 +35,17 @@ const MENU_ITEMS = [
   {
     label: "Services",
 
-    to: "/services",
+    to: "/service/itr-notice",
     children: [
       {
         label: "ITR Notice",
 
-        to: "/services",
+        to: "/service/itr-notice",
       },
       {
         label: "GST Notice",
 
-        to: "/services1",
+        to: "/service/gst-notice",
       },
     ],
   },
@@ -53,6 +53,23 @@ const MENU_ITEMS = [
     label: "About",
 
     to: "/about",
+  },
+  {
+    label: "Account",
+
+    to: "/request/newrequest",
+    children: [
+      {
+        label: "Request",
+
+        to: "/request/newrequest",
+      },
+      {
+        label: "Pending Request",
+
+        to: "/request/pendingrequest",
+      },
+    ],
   },
 ];
 

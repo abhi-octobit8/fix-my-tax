@@ -1,0 +1,32 @@
+.application-user-menu-trigger {
+  --separator-block-size: 48px;
+
+  block-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  color: rgba(61, 59, 59, 0.65);
+  font-weight: 700;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* .application-user-menu-trigger:hover {
+  color: rgba(255, 255, 255, 1);
+} */
+
+.application-user-menu-trigger::before {
+  content: '';
+  position: absolute;
+  inset: calc((64 - 48) / 2) auto
+    auto 0;
+  block-size: 48px;
+  inline-size: 1px;
+  background-color: rgba(255, 255, 255, 0.15);;
+}
+
+.application-user-menu .application-user-menu-item {
+  font-size: var(--caption);
+}
