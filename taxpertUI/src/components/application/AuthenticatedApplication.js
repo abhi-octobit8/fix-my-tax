@@ -9,6 +9,9 @@ import NewRequest from "../pages/request/new-request/NewRequest";
 import PendingRequest from "../pages/request/pending-request/PendingRequest";
 import Login from "../pages/login/Login";
 import ServicePage from "../pages/services/ServicePage";
+import ContactUs from "../pages/contact-us/ContactUs";
+import TnC from "../pages/tnc/TnC"
+
 
 function AuthenticatedApplication() {
   return (
@@ -18,6 +21,9 @@ function AuthenticatedApplication() {
         <Route path="about" element={<AboutPage />} />
         <Route path="services" element={<ServicePage />} />
         <Route path="home" element={<HomePage />} />
+        <Route path="contact" element={<ContactUs/>}/>
+        <Route path="tnc" element={<TnC />}/>
+
         <Route element={<AccountLayout />} path="request">
           <Route element={<NewRequest />} path="newrequest" />
           <Route element={<PendingRequest />} exact path="pendingrequest" />

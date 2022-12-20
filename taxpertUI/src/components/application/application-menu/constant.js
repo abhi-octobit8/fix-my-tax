@@ -54,6 +54,11 @@ const MENU_ITEMS = [
 
     to: "/about",
   },
+  {
+    label: "Contact Us",
+
+    to: "/contact",
+  },
 ];
 
 export { MENU_BUILTIN_PLACEMENTS, MENU_ITEMS };
