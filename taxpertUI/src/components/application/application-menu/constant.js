@@ -54,6 +54,23 @@ const MENU_ITEMS = [
 
     to: "/about",
   },
+  {
+    label: "Account",
+
+    to: "/request/newrequest",
+    children: [
+      {
+        label: "Request",
+
+        to: "/request/newrequest",
+      },
+      {
+        label: "Pending Request",
+
+        to: "/request/pendingrequest",
+      },
+    ],
+  },
 ];
 
 export { MENU_BUILTIN_PLACEMENTS, MENU_ITEMS };

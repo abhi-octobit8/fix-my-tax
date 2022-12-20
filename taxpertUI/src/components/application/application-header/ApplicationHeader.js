@@ -1,29 +1,30 @@
 import { Button, Menu } from "antd";
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { doLogout } from "../../../store/authentication/AuthActions";
+// import { doLogout } from "../../../store/authentication/AuthActions";
 import ApplicationMenu from "../application-menu/ApplicationMenu";
-import logo1  from "../../../assets/img/logo2.png";
+import logo1 from "../../../assets/img/logo2.png";
 
 import "./ApplicationHeader.css";
+import ApplicationUserMenu from "../application-user-menu/ApplicationUserMenu";
 
 const displayName = "ApplicationHeader";
 
 function ApplicationHeader() {
   const navigate = useNavigate();
   const handleLogout = () => {
-    doLogout();
+    // doLogout();
   };
-    
+
   return (
     <header className="application-header">
       <div className="application-header-logo-wrap ">
-        <img src={logo1} alt="text" height={64} width={100}/>
+        <img src={logo1} alt="text" height={64} width={100} />
       </div>
-      
+
       <ApplicationMenu />
 
-      {/* <ApplicationUserMenu /> */}
+      <ApplicationUserMenu />
     </header>
   );
 }
