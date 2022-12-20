@@ -55,6 +55,11 @@ const MENU_ITEMS = [
     to: "/about",
   },
   {
+    label: "Contact Us",
+
+    to: "/contact",
+  },
+  {
     label: "Account",
 
     to: "/request/newrequest",

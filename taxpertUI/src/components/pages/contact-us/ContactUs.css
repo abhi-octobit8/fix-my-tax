@@ -1,0 +1,53 @@
+.contact-page{
+    background-image: url(https://thumbs.dreamstime.com/z/map-location-icon-connection-blurred-city-background-map-location-icon-map-location-icon-connection-blurred-city-171958064.jpg);
+}
+.top-head{
+    margin-left: 80px;
+    margin-top: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #29486A;
+    /* text-decoration: underline; */
+
+}
+.sm-btn{
+    color:white ;
+     background-color:#29486A; 
+     border: 1px solid white;
+     border-radius: 7px;
+     font-size: large;
+     font-weight: 500;
+     height:50px;
+     width:100px;
+     margin-top: 20px;
+}
+.part-1{
+    display: inline-flex;
+    width:50%;
+    
+    text-align: left;
+}
+.part-2{
+    display: inline-flex;
+    width:50%;
+    height: 100%;
+padding-top: 20px;
+}
+
+.input-field input{
+box-sizing: border-box;
+width:200%;
+margin: 8px 0;
+
+margin-left: 2px;
+padding: 8px 12px;
+}
+
+.input-field{
+    margin-top: 10px;
+    padding-left: 0;
+    margin-left: 80px;
+    align-items: left;
+    font-size: 16px;
+    font-weight: 400;
+}
