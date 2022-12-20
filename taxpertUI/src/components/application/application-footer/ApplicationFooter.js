@@ -68,17 +68,17 @@ function ApplicationFooter() {
                 <li>
                   <i className="bi bi-dash"></i> <a href="#">GST Notice</a>
                 </li>
-                
               </ul>
             </div>
 
             <div className="col-lg-3 col-md-12 footer-contact text-center text-md-start">
               <h4>Contact Us</h4>
               <p>
-              Mukut Tower, 402 <br />
+                Mukut Tower, 402 <br />
                 Vikas Nagar, Sector - 2
                 <br />
-                Lucknow, UP - 226022<br />
+                Lucknow, UP - 226022
+                <br />
                 <br />
                 <strong>Phone:</strong> +91 9839441144
                 <br />

@@ -45,7 +45,7 @@
   align-items: center;
 }
 .testimonial-value-section {
- background-color: #ede3e3;
+ background-color: #ececec;
 }
 .service-section .service-block {
   margin: 28px;
@@ -64,7 +64,7 @@
 .about-section {
   padding: 20px;
   align-items: center;
-  background-color: #ede3e3;
+  background-color: #ececec;
 }
 @media (min-width: 1200px) {
   .container {

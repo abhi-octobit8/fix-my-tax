@@ -2,6 +2,7 @@ import { AUTH_ACTIONS } from "./AuthActionTypes";
 
 const initialState = {
   userSession: null,
+  user: null,
 };
 export default function authenticationReducer(
   state = initialState.userSession,
@@ -12,6 +13,11 @@ export default function authenticationReducer(
       return {
         ...state,
         userSession: action.payload,
+      };
+    case AUTH_ACTIONS.SET_USER:
+      return {
+        ...state,
+        user: action.payload,
       };
     case AUTH_ACTIONS.LOG_OUT:
       return { ...initialState };

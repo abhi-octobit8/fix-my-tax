@@ -11,15 +11,16 @@ import Login from "../pages/login/Login";
 import ServicePage from "../pages/services/ServicePage";
 import ContactUs from "../pages/contact-us/ContactUs";
 import TnC from "../pages/tnc/TnC"
-
-
+import ItrNoticeService from "../pages/services/itr-notice/ItrNoticeService";
+import GstNoticeService from "../pages/services/gst-notice/GstNoticeService";
 function AuthenticatedApplication() {
   return (
     <ApplicationLayout>
       <Routes>
         <Route element={<Login />} path="/login" />
         <Route path="about" element={<AboutPage />} />
-        <Route path="services" element={<ServicePage />} />
+        <Route path="service/itr-notice" element={<ItrNoticeService />} />
+        <Route path="service/gst-notice" element={<GstNoticeService />} />
         <Route path="home" element={<HomePage />} />
         <Route path="contact" element={<ContactUs/>}/>
         <Route path="tnc" element={<TnC />}/>
