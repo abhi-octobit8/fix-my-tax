@@ -1,7 +1,7 @@
 import { Button, Menu } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import { MENU_ITEMS_FOOTER, MENU_ITEMS_SERVICE_FOOTER } from "./constant";
 import "./ApplicationFooter.css";
 
 const displayName = "ApplicationFooter";
@@ -40,34 +40,26 @@ function ApplicationFooter() {
             <div className="col-lg-2 col-6 footer-links">
               <h4>Useful Links</h4>
               <ul>
-                <li>
-                  <i className="bi bi-dash"></i> <a href="#">Home</a>
-                </li>
-                <li>
-                  <i className="bi bi-dash"></i> <a href="#">About us</a>
-                </li>
-                <li>
-                  <i className="bi bi-dash"></i> <a href="#">Services</a>
-                </li>
-                <li>
-                  <i className="bi bi-dash"></i>{" "}
-                  <a href="#">Terms of service</a>
-                </li>
-                <li>
-                  <i className="bi bi-dash"></i> <a href="#">Privacy policy</a>
-                </li>
+                {MENU_ITEMS_FOOTER.map((item) => {
+                  return (
+                    <li>
+                      <NavLink to={item.to}>{item.label}</NavLink>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
             <div className="col-lg-2 col-6 footer-links">
               <h4>Our Services</h4>
               <ul>
-                <li>
-                  <i className="bi bi-dash"></i> <a href="#">ITR Notice</a>
-                </li>
-                <li>
-                  <i className="bi bi-dash"></i> <a href="#">GST Notice</a>
-                </li>
+                {MENU_ITEMS_SERVICE_FOOTER.map((item) => {
+                  return (
+                    <li>
+                      <NavLink to={item.to}>{item.label}</NavLink>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
