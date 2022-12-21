@@ -1,0 +1,43 @@
+.gst-banner{
+    background-color: #2a4671;
+}
+.gst-banner-title{
+padding-top: 60px;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+}
+.gst-banner-data{
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    
+}
+.gst-site-card-wrapper{
+    padding: 30px;
+    background-color: #ececec;
+}
+.gst-notice-card{
+    height: 100%;
+    border-radius: 35px;
+    box-shadow: 0 5px 17px 0 rgb(0 0 0 / 17%);
+}
+.gst-reason{
+    margin-top: 80px;
+margin-bottom: 80px;
+}
+.reason-head{
+    font-size:  30px;
+}
+.reason-list{
+margin-left: 10%;
+margin-right: 10%;
+}
+.gst-section-header{
+    text-align: center;
+}
