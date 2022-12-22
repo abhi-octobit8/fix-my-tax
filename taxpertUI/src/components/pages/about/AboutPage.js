@@ -1,5 +1,13 @@
 import React from "react";
 import "./AboutPage.css";
+import benefits from "../../../assets/img/benefits.png"
+import transparency from "../../../assets/img/transparency.png"
+import experts from "../../../assets/img/experts.png"
+import tax from "../../../assets/img/tax.jpg"
+import user from "../../../assets/img/user.jpg"
+
+
+
 
 const AboutPage = () => (
   <>
@@ -16,7 +24,7 @@ const AboutPage = () => (
         <div className="cards-in-place">
           <img
             className="img-place"
-            src="https://cdn-icons-png.flaticon.com/512/1578/1578656.png"
+            src={benefits}
             alt=""
             width="80px"
             height="80px"
@@ -29,7 +37,7 @@ const AboutPage = () => (
         <div className="cards-in-place">
           <img
             className="img-place"
-            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/audit-2010222-1696751.png"
+            src={transparency}
             alt=""
             width="80px"
             height="80px"
@@ -44,7 +52,7 @@ const AboutPage = () => (
         <div className="cards-in-place">
           <img
             className="img-place"
-            src="https://cdn.iconscout.com/icon/premium/png-128-thumb/expert-team-2625507-2178318.png"
+            src={experts}
             alt=""
             width="80px"
             height="80px"
@@ -71,7 +79,7 @@ const AboutPage = () => (
       </div>
       <img
         className="section-2-image"
-        src="https://img.freepik.com/free-vector/businessman-accountant-filling-financial-document-form-clipboard-payment-date-tax-form-income-tax-return-company-tax-payment-concept-illustration_335657-2320.jpg?w=2000"
+        src={tax}
         alt="extra image"
         width="800px"
         height="500px"
@@ -80,60 +88,60 @@ const AboutPage = () => (
     <br />
     <div className="sec-3">
     <h6 className="sec-3-head">Meet Our Core Team</h6>
-    <hr className="underline"/>
+    <hr className="taxpert-line"/>
     <br />
     <div className="">
       <div className="cards-inline">
-        <div class="card">
+        <div className="card">
           <img
-            src="https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg"
-            class="card-img-top"
+            src={user}
+            className="card-img-top"
             alt="user image"
           />
-          <div class="card-body">
-            <p class="card-text">
+          <div className="card-body">
+            <div className="card-text">
             <h5>Name</h5>
               <h6>Designation</h6>
-           </p>
+           </div>
           </div>
         </div>
-        <div class="card">
+        <div className="card">
           <img
-            src="https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg"
-            class="card-img-top"
+            src={user}
+            className="card-img-top"
             alt="user image"
           />
-          <div class="card-body">
-            <p class="card-text">
+          <div className="card-body">
+            <div className="card-text">
               <h5>Name</h5>
               <h6>Designation</h6>
-            </p>
+            </div>
           </div>
         </div>
-        <div class="card">
+        <div className="card">
           <img
-            src="https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg"
-            class="card-img-top"
+            src={user}
+            className="card-img-top"
             alt="user image"
           />
-          <div class="card-body">
-            <p class="card-text">
+          <div className="card-body">
+            <div className="card-text">
             <h5>Name</h5>
               <h6>Designation</h6>
-           </p>
+           </div>
           </div>
         </div>
-        <div class="card">
+        <div className="card">
           <img
-            src="https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg"
-            class="card-img-top"
+            src={user}
+            className="card-img-top"
             alt="user image"
           />
-          <div class="card-body">
-            <p class="card-text">
+          <div className="card-body">
+            <div className="card-text">
             <h5>Name</h5>
               <h6>Designation</h6>
-           </p>
+           </div>
           </div>
           </div>
         </div>
