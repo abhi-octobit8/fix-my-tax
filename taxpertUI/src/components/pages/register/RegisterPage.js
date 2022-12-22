@@ -13,6 +13,7 @@ import {
   Select,
   Card,
 } from "antd";
+import API from "../../../shared/API";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -47,8 +48,25 @@ const tailFormItemLayout = {
 };
 const RegisterPage = (props) => {
   const [form] = Form.useForm();
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+  const onFinish = async (values) => {
+    console.log("registration values:", values);
+
+    const registerData = {
+      values,
+      isActive: true,
+      roleNames: ["string"],
+    };
+
+    const register = await API({
+      method: "post",
+      url: "/services/app/user/create",
+      body: registerData,
+    });
+    // doLogin({ ...loginResponse });
+    // await checkLogin(loginResponse.userId);
+
+    // setLoading(false);
+    // navigate("/request/newrequest");
   };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
@@ -123,7 +141,7 @@ const RegisterPage = (props) => {
         </Form.Item>
 
         <Form.Item
-          name="email"
+          name="emailAddress"
           label="E-mail"
           rules={[
             {

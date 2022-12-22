@@ -16,6 +16,8 @@ import GstNoticeService from "../pages/services/gst-notice/GstNoticeService";
 import RegisterPage from "../pages/register/RegisterPage";
 import { checkLogin } from "../../store/authentication/AuthActions";
 import { useSelector } from "react-redux";
+import CreateRequestPage from "../pages/request/new-request/create-request/CreateRequestPage";
+import { PATH } from "../../shared/Route";
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
     (state) => state.authentication.userSession
@@ -41,6 +43,7 @@ function AuthenticatedApplication() {
 
         <Route element={<AccountLayout />} path="request">
           <Route element={<NewRequest />} path="newrequest" />
+          <Route element={<CreateRequestPage />} path="newrequest/create" />
           <Route element={<PendingRequest />} exact path="pendingrequest" />
         </Route>
         <Route path="*" element={<HomePage />} />
