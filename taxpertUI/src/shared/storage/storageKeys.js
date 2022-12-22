@@ -3,7 +3,6 @@ export const STORAGE_KEYS = {
   ACCESS_TOKEN: "accessToken",
   REFRESH_TOKEN: "refreshToken",
   LOGIN_REMEMBER_ME: "loginData",
-  TABLE_STATE: "TABLE_STATE",
   USER_ROLE: "USER_ROLE",
   STORE: "STORE",
   STORE_IDS: "STORE_IDS",
