@@ -72,12 +72,8 @@ const NewRequest = () => {
           <Table
             bordered={true}
             columns={columns}
-            dataSource={newRequestData}
-            pagination={{
-              pageSize: 10,
-              total: 100,
-              defaultCurrent: 1,
-            }}
+            // dataSource={newRequestData:?[]}
+            dataSource={[]}
           />
         </Col>
       </Row>

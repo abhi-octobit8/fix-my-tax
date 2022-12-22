@@ -96,7 +96,6 @@ const API = async (apiData) => {
     }
     // return response.data.result? response.data.result:response.data;
   } catch (exception) {
-    debugger;
     const exceptionResponse = exception.response;
     // if (exceptionResponse.data.hasError) {
     //   if (url != "/employee") {
