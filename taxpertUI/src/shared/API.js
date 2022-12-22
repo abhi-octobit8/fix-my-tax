@@ -10,7 +10,7 @@ import { getStore } from "../store";
 const dispatch = getStore().dispatch;
 const { getItem, getJSONItem, setItem } = erLocalStorage;
 const { ACCESS_TOKEN, REFRESH_TOKEN } = STORAGE_KEYS;
-const byPassAuthAPIs = ["/authenticate"];
+const byPassAuthAPIs = ["/TokenAuth/Authenticate"];
 
 const API_CACHE_PREFIX = "API_CACHE";
 const getKeyFromPath = ({ path, queryParams }) => {

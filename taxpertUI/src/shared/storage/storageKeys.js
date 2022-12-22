@@ -1,5 +1,5 @@
 export const STORAGE_KEYS = {
-  USER_KEY: "user",
+  USER_KEY: "userId",
   ACCESS_TOKEN: "accessToken",
   REFRESH_TOKEN: "refreshToken",
   LOGIN_REMEMBER_ME: "loginData",

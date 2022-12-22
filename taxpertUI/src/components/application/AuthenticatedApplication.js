@@ -22,7 +22,8 @@ function AuthenticatedApplication() {
   );
   React.useEffect(() => {
     (async () => {
-      if (userSessionInfo.accessToken) await checkLogin(userSessionInfo.userId);
+      if (userSessionInfo?.accessToken)
+        await checkLogin(userSessionInfo.userId);
     })();
   }, [userSessionInfo]);
 
