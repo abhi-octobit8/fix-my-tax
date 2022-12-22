@@ -14,7 +14,6 @@ const Login = (props) => {
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (values) => {
-    debugger;
     console.log("Success:", values);
     const loginData = {
       userNameOrEmailAddress: values.username,
@@ -26,7 +25,7 @@ const Login = (props) => {
       body: loginData,
     });
     doLogin({ ...loginResponse });
-    await checkLogin();
+    await checkLogin(loginResponse.userId);
 
     setLoading(false);
     navigate("/request/newrequest");

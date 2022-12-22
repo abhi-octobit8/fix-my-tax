@@ -1,23 +1,31 @@
-import React from 'react';
-import cx from 'classnames';
-import { NavLink } from 'react-router-dom';
-import Menu from 'antd/es/menu';
-import { MENU_BUILTIN_PLACEMENTS, MENU_ITEMS } from './constant';
+import React, { useEffect, useState } from "react";
+import cx from "classnames";
+import { NavLink } from "react-router-dom";
+import Menu from "antd/es/menu";
+import { getMenuItems, MENU_BUILTIN_PLACEMENTS, MENU_ITEMS } from "./constant";
 
-import './ApplicationMenu.css';
+import "./ApplicationMenu.css";
+import { useSelector } from "react-redux";
 
 function getClassName(params) {
   const { isActive } = params;
 
-  return cx('application-menu-item-link', {
-    'application-menu-item-link-active': isActive,
+  return cx("application-menu-item-link", {
+    "application-menu-item-link-active": isActive,
   });
 }
 
-const displayName = 'ApplicationMenu';
+const displayName = "ApplicationMenu";
 
 function ApplicationMenu() {
-  const menuItems = MENU_ITEMS.map((item) => {
+  const userData = useSelector((state) => state.authentication.user);
+  const data = getMenuItems(MENU_ITEMS, userData);
+  // const items = React.useRef(data);
+  const [items, setItems] = useState(data);
+  useEffect(() => {
+    setItems(data);
+  }, [userData]);
+  const menuItems = items.map((item) => {
     if (Array.isArray(item.children)) {
       return {
         children: item.children.map((child) => {
@@ -32,7 +40,7 @@ function ApplicationMenu() {
             ),
           };
         }),
-        className: 'application-menu-item-wrap',
+        className: "application-menu-item-wrap",
         key: `${item.to}:root`,
         label: (
           <NavLink className={getClassName} to={item.to}>
@@ -43,7 +51,7 @@ function ApplicationMenu() {
     }
 
     return {
-      className: 'application-menu-item-wrap',
+      className: "application-menu-item-wrap",
       key: item.to,
       label: (
         <span className="application-menu-item">
@@ -54,8 +62,6 @@ function ApplicationMenu() {
       ),
     };
   });
-
-
 
   return (
     <Menu

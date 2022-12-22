@@ -35,16 +35,6 @@ export const getLoginUserId = () => {
   return getJSONItem(USER_KEY) && getJSONItem(USER_KEY).id;
 };
 
-// const removeKeys = () => {
-//   removeItem(USER_KEY);
-//   removeItem(ACCESS_TOKEN);
-//   removeItem(REFRESH_TOKEN);
-//   removeItem(TABLE_STATE);
-//   removeItem(MODULE_DATA);
-//   removeItem(USER_ROLE);
-//   removeItem(STORE_IDS);
-// };
-
 export const removeSessionStorageKeys = () => {
   erCache.removeItem(getKeyFromPath({ path: TAG_KEY, queryParams: {} }));
 };
@@ -92,39 +82,41 @@ export const removeSessionStorageKeys = () => {
 //   });
 // };
 
-// const removeUserData = () => {
-//   removeKeys();
-//   dispatch({
-//     type: AUTH_ACTIONS.LOG_OUT,
-//   });
-// };
-// export const doLogout = () => {
-//   removeUserData();
-// };
-
 /// start from here
-export const checkLogin = async () => {
-  debugger;
+export const checkLogin = async (userId) => {
   try {
     const userInfo = await API({
       method: "get",
-      url: "services/app/User/Get?Id=2",
+      url: `services/app/User/Get?Id=${userId}`,
     });
     dispatch({
       type: AUTH_ACTIONS.SET_USER,
       payload: userInfo,
     });
-    debugger;
   } catch (e) {
     console.error("error id checking the user data", e);
     throw e;
   }
 };
 export const doLogin = (apiResponse) => {
-  const { accessToken } = apiResponse;
+  const { accessToken, userId } = apiResponse;
   setItem("accessToken", accessToken);
+  setItem("userId", userId);
   dispatch({
     type: AUTH_ACTIONS.LOGIN_SUCCESS,
-    payload: accessToken,
+    payload: apiResponse,
   });
+};
+export const doLogout = () => {
+  removeUserData();
+};
+const removeUserData = () => {
+  removeKeys();
+  dispatch({
+    type: AUTH_ACTIONS.LOG_OUT,
+  });
+};
+const removeKeys = () => {
+  removeItem(USER_KEY);
+  removeItem(ACCESS_TOKEN);
 };

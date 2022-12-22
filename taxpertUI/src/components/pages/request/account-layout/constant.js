@@ -1,6 +1,6 @@
 export const MENU_ITEMS = [
   {
-    label: "Request1",
+    label: "Request",
     key: "test",
     to: "/request/newrequest",
   },

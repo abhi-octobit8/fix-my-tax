@@ -10,7 +10,7 @@ import { getStore } from "../store";
 const dispatch = getStore().dispatch;
 const { getItem, getJSONItem, setItem } = erLocalStorage;
 const { ACCESS_TOKEN, REFRESH_TOKEN } = STORAGE_KEYS;
-const byPassAuthAPIs = ["/authenticate"];
+const byPassAuthAPIs = ["/TokenAuth/Authenticate"];
 
 const API_CACHE_PREFIX = "API_CACHE";
 const getKeyFromPath = ({ path, queryParams }) => {
@@ -96,7 +96,6 @@ const API = async (apiData) => {
     }
     // return response.data.result? response.data.result:response.data;
   } catch (exception) {
-    debugger;
     const exceptionResponse = exception.response;
     // if (exceptionResponse.data.hasError) {
     //   if (url != "/employee") {

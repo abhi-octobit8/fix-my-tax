@@ -67,15 +67,7 @@ const PendingRequest = () => {
           xl={{ span: 24, offset: 0 }}
           xxl={{ span: 24, offset: 0 }}
         >
-          <Table
-            bordered={true}
-            columns={columns}
-            pagination={{
-              pageSize: 10,
-              total: 100,
-              defaultCurrent: 1,
-            }}
-          />
+          <Table bordered={true} columns={columns} />
         </Col>
       </Row>
     </Card>

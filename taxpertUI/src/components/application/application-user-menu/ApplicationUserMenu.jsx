@@ -1,62 +1,61 @@
-import React from 'react';
-import Dropdown from 'antd/es/dropdown';
-import { MENU_ITEMS, MENU_KEY } from './constant';
+import React from "react";
+import Dropdown from "antd/es/dropdown";
+import { MENU_ITEMS, MENU_KEY } from "./constant";
 
-import './ApplicationUserMenu.css';
-import { Menu } from 'antd';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import "./ApplicationUserMenu.css";
+import { Menu } from "antd";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { doLogout } from "../../../store/authentication/AuthActions";
 
-const displayName = 'ApplicationUserMenu';
+const displayName = "ApplicationUserMenu";
 
 function ApplicationUserMenu() {
+  const navigate = useNavigate();
+  const userData = useSelector((state) => state.authentication.user);
+  const handleMenuClick = React.useCallback((menuItem) => {
+    const { key } = menuItem;
+    const menuActionMap = {
+      [MENU_KEY.LOGOUT]: () => {
+        doLogout();
+        navigate("/");
+      },
+    };
 
-const userData = useSelector((state) => state.authentication.user);
-console.log(userData);
-  // const handleMenuClick = React.useCallback(
-  //   (menuItem) => {
-  //     const { key } = menuItem;
-  //     const menuActionMap = {
-  //       [MENU_KEY.LOGOUT]: () => {
-  //         const fsa = http.apscout.logout.request()();
-
-  //         dispatch(fsa);
-  //       },
-  //     };
-
-  //     if (Reflect.has(menuActionMap, key)) {
-  //       menuActionMap[key]();
-  //     } else {
-  //       console.warn(
-  //         `No mapping found for the ${key} action in the ApplicationUserMenu`,
-  //       );
-  //     }
-  //   },
-  //   [dispatch],
-  // );
+    if (Reflect.has(menuActionMap, key)) {
+      menuActionMap[key]();
+    } else {
+      console.warn(
+        `No mapping found for the ${key} action in the ApplicationUserMenu`
+      );
+    }
+  }, []);
 
   return (
     <>
-    {/* <Menu>
-        <Menu.Item>
-        <NavLink  to="/login">
-            <span className="application-menu-item">Login</span>
-          </NavLink>
-        </Menu.Item>
-    </Menu> */}
-    {userData &&
-    <Dropdown
-      align={{ offset: [0, 0] }}
-      menu={{
-        items: MENU_ITEMS,
-        // onClick: handleMenuClick,
-      }}
-      placement="bottomRight"
-      trigger="click"
-    >
-      <div className="application-user-menu-trigger">{userData.userName}</div>
-    </Dropdown>
-}
+      {userData ? (
+        <Dropdown
+          align={{ offset: [0, 0] }}
+          menu={{
+            items: MENU_ITEMS,
+            onClick: handleMenuClick,
+          }}
+          placement="bottomRight"
+          trigger="click"
+        >
+          <div className="application-user-menu-trigger">
+            {userData.userName}
+          </div>
+        </Dropdown>
+      ) : (
+        <Menu size="large">
+          <Menu.Item>
+            <NavLink to="/login">
+              <span>Login</span>
+            </NavLink>
+          </Menu.Item>
+        </Menu>
+      )}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Route, Routes } from "react-router-dom";
 import AboutPage from "../pages/about/AboutPage";
@@ -13,7 +13,22 @@ import ContactUs from "../pages/contact-us/ContactUs";
 import TnC from "../pages/tnc/TnC";
 import ItrNoticeService from "../pages/services/itr-notice/ItrNoticeService";
 import GstNoticeService from "../pages/services/gst-notice/GstNoticeService";
+import RegisterPage from "../pages/register/RegisterPage";
+import { checkLogin } from "../../store/authentication/AuthActions";
+import { useSelector } from "react-redux";
+import CreateRequestPage from "../pages/request/new-request/create-request/CreateRequestPage";
+import { PATH } from "../../shared/Route";
 function AuthenticatedApplication() {
+  const userSessionInfo = useSelector(
+    (state) => state.authentication.userSession
+  );
+  React.useEffect(() => {
+    (async () => {
+      if (userSessionInfo?.accessToken)
+        await checkLogin(userSessionInfo.userId);
+    })();
+  }, [userSessionInfo]);
+
   return (
     <ApplicationLayout>
       <Routes>
@@ -24,9 +39,11 @@ function AuthenticatedApplication() {
         <Route path="home" element={<HomePage />} />
         <Route path="contact" element={<ContactUs />} />
         <Route path="tnc" element={<TnC />} />
+        <Route path="register" element={<RegisterPage />} />
 
         <Route element={<AccountLayout />} path="request">
           <Route element={<NewRequest />} path="newrequest" />
+          <Route element={<CreateRequestPage />} path="newrequest/create" />
           <Route element={<PendingRequest />} exact path="pendingrequest" />
         </Route>
         <Route path="*" element={<HomePage />} />

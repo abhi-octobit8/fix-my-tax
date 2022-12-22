@@ -5,16 +5,21 @@ import { useSelector } from "react-redux";
 import { PlusOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { getNewRequest } from "../../../../services/request.service";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "../../../../shared/Route";
 
 const NewRequest = () => {
-  const newRequestData = useSelector((state) => state.request.newRequestList);
+  // const newRequestData = useSelector((state) => state.request.newRequestList);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     (async () => {
       const data = await getNewRequest();
     })();
   }, []);
-
+  const createRequest = () => {
+    navigate("/request/newrequest/create");
+  };
   const columns = [
     {
       title: "S. No.",
@@ -54,7 +59,12 @@ const NewRequest = () => {
       <ListHeader
         leftContent={<h2>New Request</h2>}
         rightContent={
-          <Button type="primary" shape="circle" icon={<PlusOutlined />} />
+          <Button
+            type="primary"
+            shape="circle"
+            onClick={createRequest}
+            icon={<PlusOutlined />}
+          />
         }
       ></ListHeader>
       <Row>
@@ -72,12 +82,8 @@ const NewRequest = () => {
           <Table
             bordered={true}
             columns={columns}
-            dataSource={newRequestData}
-            pagination={{
-              pageSize: 10,
-              total: 100,
-              defaultCurrent: 1,
-            }}
+            // dataSource={newRequestData:?[]}
+            dataSource={[]}
           />
         </Col>
       </Row>
