@@ -82,6 +82,7 @@ const NewRequest = () => {
           <Table
             bordered={true}
             columns={columns}
+            scroll={{ x: "fit-content" }}
             // dataSource={newRequestData:?[]}
             dataSource={[]}
           />

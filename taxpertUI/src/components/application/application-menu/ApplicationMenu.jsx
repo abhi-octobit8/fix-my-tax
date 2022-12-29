@@ -3,6 +3,7 @@ import cx from "classnames";
 import { NavLink } from "react-router-dom";
 import Menu from "antd/es/menu";
 import { getMenuItems, MENU_BUILTIN_PLACEMENTS, MENU_ITEMS } from "./constant";
+import { MenuOutlined } from "@ant-design/icons";
 
 import "./ApplicationMenu.css";
 import { useSelector } from "react-redux";
@@ -72,6 +73,7 @@ function ApplicationMenu() {
       // selectedKeys={selectedKeys}
       size="large"
       triggerSubMenuAction="hover"
+      overflowedIndicator={<MenuOutlined />}
     />
   );
 }
