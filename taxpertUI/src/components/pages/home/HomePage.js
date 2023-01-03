@@ -44,7 +44,7 @@ const HomePage = () => (
         <hr className="taxpert-line" />
       </div>
       <Row>
-        <Col span="12">
+        <Col xs={24} md={12} lg={12} sm={24}>
           <Card title="ITR Notice" className="service-block">
             <div className="service-content">
               <span>
@@ -56,7 +56,7 @@ const HomePage = () => (
             <Button type="success">Know More >></Button>
           </Card>
         </Col>
-        <Col span="12">
+        <Col xs={24} md={12} lg={12} sm={24}>
           <Card title="GST Notice" className="service-block">
             <div className="service-content">
               <span>

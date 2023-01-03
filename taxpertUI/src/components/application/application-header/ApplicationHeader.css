@@ -19,3 +19,9 @@
   block-size: calc(64px - 12px);
   position: relative;
 }
+
+
+.application-header  .ant-layout-header {
+  background-color: white;
+  padding: 0px 0px 0px 50px;
+}

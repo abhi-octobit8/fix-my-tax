@@ -40,9 +40,9 @@ function ApplicationFooter() {
             <div className="col-lg-2 col-6 footer-links">
               <h4>Useful Links</h4>
               <ul>
-                {MENU_ITEMS_FOOTER.map((item) => {
+                {MENU_ITEMS_FOOTER.map((item, index) => {
                   return (
-                    <li>
+                    <li key={index}>
                       <NavLink to={item.to}>{item.label}</NavLink>
                     </li>
                   );
@@ -53,9 +53,9 @@ function ApplicationFooter() {
             <div className="col-lg-2 col-6 footer-links">
               <h4>Our Services</h4>
               <ul>
-                {MENU_ITEMS_SERVICE_FOOTER.map((item) => {
+                {MENU_ITEMS_SERVICE_FOOTER.map((item, index) => {
                   return (
-                    <li>
+                    <li key={index}>
                       <NavLink to={item.to}>{item.label}</NavLink>
                     </li>
                   );
