@@ -65,35 +65,36 @@ const GstNoticeService = () => (
           purpose or gravity of default or action require from these taxpayers.
         </h6>
       </div>
+      
       <Row gutter={16}>
         <Col span={8}>
-          <Card className="gst-notice-card" title="GSTR-3A" bordered={false}>
-            GSTR-3A notification for non-GST Returns files. This is the most
+          <Card id="cards" className="gst-notice-card" title="GSTR-3A" bordered={false}>
+            <p>GSTR-3A notification for non-GST Returns files. This is the most
             common notification of all notifications. Applies to GSTR-1,
             GSTR-3B, GSTR-4, GSTR-8 (only for eCommerce Operators) Prepare &
             EFile for GST refunds payable and late payments, interest on GST
             obligation, if there is. for each notice or within 15 days from the
             date of the notice. (Note that this can be up to 7 days and in some
-            cases.)
+            cases.)</p>
           </Card>
         </Col>
         <Col span={8}>
-          <Card className="gst-notice-card" title="REG-03" bordered={false}>
-            REG-03 specification displayed to display or upload additional
+          <Card id="cards" className="gst-notice-card" title="REG-03" bordered={false}>
+            <p>REG-03 specification displayed to display or upload additional
             documents to complete new GST registrations, or amendments to GST
             registrations (key field updates, etc.) Provide clarification of the
             REG-04 notification by specifying or inserting additional
-            details/documents requested 7 days of the notification date.
+            details/documents requested 7 days of the notification date.</p>
           </Card>
         </Col>
         <Col span={8}>
-          <Card className="gst-notice-card" title="CMP-05" bordered={false}>
-            It is an SCN which questions the taxpayer’s ability to be a
+          <Card id="cards" className="gst-notice-card" title="CMP-05" bordered={false}>
+            <p>It is an SCN which questions the taxpayer’s ability to be a
             composition dealer under the GST norms. Indicate the reason for the
             notice to question the taxpayer’s suitability as a designated
             seller. Verify and the reasons why the taxpayer is still eligible
             for the design structure in their field and the amount they hold on
-            each notice or within 15 days
+            each notice or within 15 days</p>
           </Card>
         </Col>
       </Row>
