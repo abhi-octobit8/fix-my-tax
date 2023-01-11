@@ -251,6 +251,6 @@ paket-files/
 .idea/
 *.sln.iml
 
-src/PostalBag.Web.Mvc/secrets.json
-src/PostalBag.Web.Host/secrets.json
-src/PostalBag.Migrator/secrets.json
+src/FixMyTax.Web.Mvc/secrets.json
+src/FixMyTax.Web.Host/secrets.json
+src/FixMyTax.Migrator/secrets.json
