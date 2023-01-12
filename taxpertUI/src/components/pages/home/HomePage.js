@@ -2,6 +2,10 @@ import { Button, Card, Col, Row } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
+import card1 from "../../../assets/img/card1.svg";
+import card2 from "../../../assets/img/card2.svg";
+import card3 from "../../../assets/img/card3.svg";
+import about from "../../../assets/img/about.png";
 
 import "./HomePage.css";
 import {
@@ -43,6 +47,56 @@ const HomePage = () => (
         <h1>Got A Notice?</h1>
         <hr className="taxpert-line" />
       </div>
+      <div className="about-section">
+        <h1>About our Company</h1>
+        <div className="about-wrap">
+          <p>
+            A team comprised of CMA's, CA's, Taxation Lawyers and subject
+            experts available 24*7 to resolve taxation related queries.
+          </p>
+          <span>
+            <img src={about} alt="about-image" width="950px" height="300px" />
+          </span>
+        </div>
+      </div>
+      <h1 className="service-head">Our Services</h1>
+
+      <div className="service-cards">
+        {/* <div className="our-services-sec"> */}
+        <div className="card-wrap">
+          <div className="card" style={{ width: "18 rem" }}>
+            <img src={card1} className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">For Individuals</h5>
+              <p className="card-text">
+                Taxation filing Services, Tax Notices reply and resolution
+                Services, Enterprise and Business consultancy.
+              </p>
+            </div>
+          </div>
+          <div className="card" style={{ width: "18 rem" }}>
+            <img src={card2} className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">For Professionals</h5>
+              <p className="card-text">
+                Expert Advisory services for your clients related to taxation
+                and enterprise set-up.
+              </p>
+            </div>
+          </div>
+          <div className="card" style={{ width: "18 rem" }}>
+            <img src={card3} className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">For Businesses</h5>
+              <p className="card-text">
+                Get rid of your business' taxation and accounting headaches with
+                us.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* </div> */}
       <Row>
         <Col xs={24} md={12} lg={12} sm={24}>
           <Card title="ITR Notice" className="service-block">
@@ -53,7 +107,7 @@ const HomePage = () => (
                 iaculis eu non diam phasellus.
               </span>
             </div>
-            <Button type="success">Know More >></Button>
+            <Button type="success">Know More </Button>
           </Card>
         </Col>
         <Col xs={24} md={12} lg={12} sm={24}>
@@ -65,7 +119,7 @@ const HomePage = () => (
                 iaculis eu non diam phasellus.
               </span>
             </div>
-            <Button type="success">Know More >></Button>
+            <Button type="success">Know More </Button>
           </Card>
         </Col>
       </Row>
@@ -108,34 +162,31 @@ const HomePage = () => (
         </div>
       </div>
     </section>
-
-    <section className="our-value-section">
-      <div className="section-header">
-        <h1>Our Value Partner</h1>
-        <hr className="taxpert-line" />
-      </div>
-      <div className="container">
-        <ul>
-          <li>
-            <img src={xocovoPartner} width={135} height={45} />
-          </li>
-          <li>
-            <img src={smartPartner} width={135} height={45} />
-          </li>
-          <li>
-            <img src={medimaaPartner} width={135} height={45} />
-          </li>
-          <li>
-            <img src={xocovoPartner1} width={135} height={45} />
-          </li>
-        </ul>
-      </div>
-    </section>
     <section className="testimonial-value-section">
       <div className="section-header">
         <h1>Testimonial</h1>
         <hr className="taxpert-line" />
         <h4>Read What our Customer Say</h4>
+      </div>
+      <div className="testimonial-videos">
+        <iframe
+          width="596"
+          height="335"
+          src="https://www.youtube.com/embed/84R6m0Zj-Dc"
+          title="How to Avoid Tax on Profit Gained at Selling a House or Property ??"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+        <iframe id="video2"
+          width="596"
+          height="335"
+          src="https://www.youtube.com/embed/UZRIObmTSjg"
+          title="Company, It's Types and Registration"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
       </div>
       <div className="testimonial-containter">
         <div className="box">
@@ -198,6 +249,28 @@ const HomePage = () => (
             </div>
           </div>
         </div>
+      </div>
+    </section>
+    <section className="our-value-section">
+      <div className="section-header">
+        <h1>Our Value Partner</h1>
+        <hr className="taxpert-line" />
+      </div>
+      <div className="container">
+        <ul>
+          <li>
+            <img src={xocovoPartner} width={135} height={45} />
+          </li>
+          <li>
+            <img src={smartPartner} width={135} height={45} />
+          </li>
+          <li>
+            <img src={medimaaPartner} width={135} height={45} />
+          </li>
+          <li>
+            <img src={xocovoPartner1} width={135} height={45} />
+          </li>
+        </ul>
       </div>
     </section>
   </React.Fragment>

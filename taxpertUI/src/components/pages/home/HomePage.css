@@ -52,7 +52,9 @@
   box-shadow: 0 5px 17px 0 rgb(0 0 0 / 17%);
   border-radius: 8px;
 }
-
+.service-head{
+  text-align: center;
+}
 .service-content {
   margin-bottom: 10px;
 }
@@ -127,6 +129,26 @@
   width: 35px;
   margin-bottom: 1rem;
 }
+.about-wrap{
+  display: flex;
+  }
+  .about-wrap p{
+    width: 50%;
+  }
+  .about-wrap img{
+    width:50%;
+    justify-items: flex-end;
+  }
+.card-wrap{
+  display: flex;
+  justify-content: space-between;
+}
+.card-title{
+  text-align: center;
+}
+.card-text{
+  text-align: center;
+}
 .taxpert-line {
   width: 45px;
   border:2px solid #48949b;
@@ -163,7 +185,11 @@
       width: 46%;
   }
   }
-
+.testimonial-videos iframe{
+margin-left: 60px;}
+#video2{
+  margin-left: 60px;
+}
 .testimonial-containter{
 display: bllock;
 justify-content: space-between;
