@@ -17,9 +17,8 @@ function ApplicationFooter() {
                 <span>FixMyTax</span>
               </a>
               <p>
-                Cras fermentum odio eu feugiat lide par naso tierra. Justo eget
-                nada terra videa magna derita valies darta donna mare fermentum
-                iaculis eu non diam phasellus.
+                Leave your taxation worries to us, so you can focus on growing
+                your business.
               </p>
               <div className="social-links d-flex  mt-3">
                 <a href="#" className="twitter">
