@@ -1,121 +1,141 @@
-
-.mission-head{
-    margin-left: 0px;
-margin-right: 0px;
-font-weight: bold;
-font-size:40px;
-text-align: center;
-color: #29486A;
-background-color:#29486A;
-background-size: auto;
-opacity: 0.9;
-color:whitesmoke;
-margin-top: 50px;
-
-}
-.mission{
-    line-height:30px;
-    font-size:22px;
-    text-align: center;
-}
-.section-1{
-    margin-top: 80px;
-    background-color: #aacdf2;
-padding-top: 40px;
-padding-bottom: 0px;
-margin-bottom: 40px;
-
-}
-.sec-1-head{
-font-size:30px;
-text-align: center;
-margin-left: 450px;
-margin-right: 300px;
-width:fit-content ;
+.mission-head {
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  width: 100%;
+  background-color: #29486a;
+  opacity: 0.9;
+  color: whitesmoke;
+  margin-top: 50px;
+  margin-right: 0;
+  background-position: 100%;
 }
 
-.card{
-    margin-left: 50px;
-    width:18rem
+.mission {
+  line-height: 30px;
+  font-size: 22px;
+  text-align: center;
 }
-.cards-inline{
-    display:flex;
-    margin-right: 50px;
-    margin-left: 50px;
-    margin-inline: 200px;
-
+.section-1 {
+  margin-top: 80px;
+  background-color: #aacdf2;
+  padding-top: 40px;
+  padding-bottom: 0px;
+  margin-bottom: 40px;
 }
-.text-area{
-    display: block;
-    text-align: left;
-}
-.img-place{
-margin-left: 30px;
-margin-right: auto;
+.sec-1-head {
+  font-size: 30px;
+  align-items: center;
+  text-align: center;
 }
 
-.cards-place{
-    display:flex; 
-
-    
-}
-.headings{
-    font-weight:bold;
-    font-size: 18px;
-    color: #29486A;
-    width: fit-content;
-}
-.cards-in-place{
-    margin-right:100px;
-    margin-left: 100px;
-    margin-top: 50px;
-margin-bottom: 40px;
-
-}
-.section-2{
-    display:flex; 
-    margin-inline:20px ;
-    margin-left: 200px;
-    line-height:25px;
-    font-size:20px;
-}
-.sec-2-heading{
-    font-size:30px;
-text-align: center;
-margin-left: 360px;
-margin-right: 250px;
-margin-top: 100px;
-width:fit-content ;
-}
-.section-2-image{
-    background-repeat: no-repeat;
-    background-position: right 0% top 80px;
-    padding: 0px 80px 110px;
-    background-size: 621px 443px;
-}
-.sec-3{
-    margin-top: 20px;
-    background-color: #aacdf2;
-margin-bottom: 150px;
-padding-top: 40px;
-padding-bottom: 40px;
+.img-place {
+  margin-left: 30px;
+  margin-right: auto;
 }
 
-.sec-3-head{
-margin-left: 350px;
-margin-right: 350px;
-margin-bottom: 6px;
-font-size:30px;
-text-align: center;
-color: #29486A;
+.cards-place {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.headings {
+  font-weight: bold;
+  font-size: 18px;
+  color: #29486a;
+  width: fit-content;
+  text-align: left;
+  align-items: center;
 }
 
-.about-text{
-    margin-top: 100px;
+.text-area {
+  display: flex;
+  text-align: left;
+  align-items: center;
 }
-.underline{
-    margin-top: 0;
-    width:60px;
-    border: 2px solid #29486A;
+.cards-in-place {
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+.section-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 210px;
+  padding-right: 210px;
+}
+.sec-2-heading {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 100px;
+}
+.about-text {
+  font-size: 16px;
+  text-align: justify;
+  display: flex;
+  flex-wrap: wrap;
+}
+.section-2-image {
+  width: 350px;
+  height: 200px;
+}
 
+@media screen and (max-width: 1240px) {
+  .section-2 {
+    flex-direction: column;
+  }
+  .section-2-image {
+    width: 500px;
+    height: 370px;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 698px) {
+  .section-2 {
+    padding: 50px;
+  }
+  .section-2-image {
+    width: 250px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .cards-place,
+  .cards-inline {
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-position: 100%;
+  }
+}
+.sec-3 {
+  margin-top: 20px;
+  background-color: #aacdf2;
+  margin-bottom: 150px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.sec-3-head {
+  margin-bottom: 6px;
+  font-size: 30px;
+  text-align: center;
+  color: #29486a;
+}
+
+.card {
+  margin-inline: 8px;
+  width: 18rem;
+}
+.cards-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.underline {
+  margin-top: 0;
+  width: 60px;
+  border: 2px solid #29486a;
 }
