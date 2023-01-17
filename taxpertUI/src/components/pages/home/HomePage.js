@@ -14,6 +14,7 @@ import {
   SafeSecureIcon,
   TrustedUserIcon,
 } from "../../../common/icons/icons";
+import logo1 from "../../../assets/img/banner2.png";
 import xocovoPartner from "../../../assets/img/xocovo.png";
 import smartPartner from "../../../assets/img/smartpartner.png";
 import medimaaPartner from "../../../assets/img/medimaa.png";
@@ -23,8 +24,8 @@ const HomePage = () => (
   <React.Fragment>
     <section id="banner-to-action" className="banner-to-action">
       <div className="container" data-aos="fade-up">
-        <div className="row justify-content-center">
-          <div className="col-lg-6 text-center">
+        <div className="row ">
+          <div className="col-lg-6 banner-section-content ">
             <h2>
               {" "}
               Get Peace of mind Knowing that your taxes are handled by Experts.
@@ -35,9 +36,18 @@ const HomePage = () => (
             {/* <a className="cta-btn" href="#">
             start here
           </a> */}
-            <Button type="primary" size="large" className="cta-btn">
+            <Button type="primary" className="button-style-middle">
               Start Here
             </Button>
+          </div>
+          <div className="col-lg-6 banner-image">
+            <img src={logo1} alt="text" height={400} width={400} />
+            {/* <p>
+            Get Peace of mind Knowing that your taxes are handled by Experts.
+          </p> */}
+            {/* <a className="cta-btn" href="#">
+            start here
+          </a> */}
           </div>
         </div>
       </div>
@@ -48,14 +58,19 @@ const HomePage = () => (
         <hr className="taxpert-line" />
       </div>
       <Row className="button-container">
-        <Col xs={24} md={12} lg={12} sm={24}>
+        <Col xs={24} md={8} lg={8} sm={24}>
           <Button className="button-style" type="primary">
             ITR Notice
           </Button>
         </Col>
-        <Col xs={24} md={12} lg={12} sm={24}>
+        <Col xs={24} md={8} lg={8} sm={24}>
           <Button className="button-style" type="primary">
             GST Notice
+          </Button>
+        </Col>
+        <Col xs={24} md={8} lg={8} sm={24}>
+          <Button className="button-style" type="primary">
+            Consultation
           </Button>
         </Col>
       </Row>

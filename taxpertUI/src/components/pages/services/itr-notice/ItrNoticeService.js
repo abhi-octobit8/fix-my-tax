@@ -2,6 +2,7 @@ import { Button, Card, Col, Row } from "antd";
 import React from "react";
 import "./ItrNotice.css";
 import { Collapse, Space } from "antd";
+import NoticeFormPage from "../notice-form/NoticeFormPage";
 const { Panel } = Collapse;
 const text = `
   A dog is a type of domesticated animal.
@@ -29,7 +30,7 @@ const ItrNoticeService = () => (
         </div>
       </div>
     </section>
-    <div className="site-card-wrapper">
+    {/* <div className="site-card-wrapper">
       <div className="section-header">
         <h1>Different Types of ITR Notice</h1>
         <hr className="taxpert-line" />
@@ -83,7 +84,8 @@ const ItrNoticeService = () => (
           </Card>
         </Col>
       </Row>
-    </div>
+    </div> */}
+    <NoticeFormPage titleHeader="ITR Notice" />
     <section className="section-container">
       <div className="section-header">
         <h4>FAQ’s on Income Tax Notice</h4>
