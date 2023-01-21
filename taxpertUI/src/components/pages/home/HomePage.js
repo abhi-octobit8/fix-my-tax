@@ -41,7 +41,13 @@ const HomePage = () => (
             </Button>
           </div>
           <div className="col-lg-6 banner-image">
-            <img src={logo1} alt="text" height={400} width={400} />
+            <img
+              className="cover"
+              src={logo1}
+              alt="text"
+              height={400}
+              width={400}
+            />
             {/* <p>
             Get Peace of mind Knowing that your taxes are handled by Experts.
           </p> */}
@@ -79,16 +85,22 @@ const HomePage = () => (
     {/* about section */}
 
     <Row className="about-company-section">
-      <Col xs={24} md={12} lg={12} sm={24} className="about-company-content">
+      <Col xs={24} md={12} lg={12} sm={24} className="about-company-container">
         <h1>About our Company</h1>
-        <p>
+        <p className="about-company-content">
           A team comprised of CMA's, CA's, Taxation Lawyers and subject experts
           available 24*7 to resolve taxation related queries.
         </p>
       </Col>
       <Col xs={24} md={12} lg={12} sm={24}>
         <span>
-          <img src={about} alt="about-image" width="100%" height="500px" />
+          <img
+            className="cover"
+            src={about}
+            alt="about-image"
+            width="100%"
+            height="500px"
+          />
         </span>
       </Col>
     </Row>

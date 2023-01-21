@@ -51,6 +51,11 @@ const MENU_ITEMS = [
         role: USER_ROLE.PUBLIC,
         to: "/service/gst-notice",
       },
+      {
+        label: "Consultation",
+        role: USER_ROLE.PUBLIC,
+        to: "/service/consultation",
+      },
     ],
   },
   {

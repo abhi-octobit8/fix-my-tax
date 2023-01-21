@@ -18,6 +18,7 @@ import { checkLogin } from "../../store/authentication/AuthActions";
 import { useSelector } from "react-redux";
 import CreateRequestPage from "../pages/request/new-request/create-request/CreateRequestPage";
 import { PATH } from "../../shared/Route";
+import ConsultationNotice from "../pages/services/consultation-notice/ConsultationNotice";
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
     (state) => state.authentication.userSession
@@ -36,6 +37,8 @@ function AuthenticatedApplication() {
         <Route path="about" element={<AboutPage />} />
         <Route path="service/itr-notice" element={<ItrNoticeService />} />
         <Route path="service/gst-notice" element={<GstNoticeService />} />
+        <Route path="service/consultation" element={<ConsultationNotice />} />
+
         <Route path="home" element={<HomePage />} />
         <Route path="contact" element={<ContactUs />} />
         <Route path="tnc" element={<TnC />} />
