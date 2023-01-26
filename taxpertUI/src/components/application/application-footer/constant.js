@@ -1,3 +1,5 @@
+import { PATH } from "../../../shared/Route";
+
 export const MENU_ITEMS_FOOTER_USEFUL_LINKS = [
   {
     label: "Income Tax",
@@ -15,7 +17,7 @@ export const MENU_ITEMS_FOOTER_USEFUL_LINKS = [
     to: "https://finmin.nic.in/",
   },
   {
-    label: "Department of Financial",
+    label: "Department of Financial Services",
     key: 4,
     to: "https://financialservices.gov.in/ ",
   },
@@ -24,12 +26,12 @@ export const MENU_ITEMS_SERVICE_FOOTER = [
   {
     label: "About Us",
     key: 1,
-    to: "/about",
+    to: PATH.ABOUT,
   },
   {
     label: "Service",
     key: 2,
-    to: "/service/itr-notice",
+    to: PATH.ITR_NOTICE_PATH,
   },
   {
     label: "Terms of service",

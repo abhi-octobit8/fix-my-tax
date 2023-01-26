@@ -55,7 +55,7 @@ function ApplicationFooter() {
             </div>
 
             <div className="col-lg-2 col-6 footer-links">
-              <h4>Our Services</h4>
+              <h4>Information</h4>
               <ul>
                 {MENU_ITEMS_SERVICE_FOOTER.map((item, index) => {
                   return (

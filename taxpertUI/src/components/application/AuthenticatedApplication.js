@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import CreateRequestPage from "../pages/request/new-request/create-request/CreateRequestPage";
 import { PATH } from "../../shared/Route";
 import ConsultationNotice from "../pages/services/consultation-notice/ConsultationNotice";
+import LatestNewsPage from "../pages/latest-news/LatestNewsPage";
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
     (state) => state.authentication.userSession
@@ -35,9 +36,13 @@ function AuthenticatedApplication() {
       <Routes>
         <Route element={<Login />} path="/login" />
         <Route path="about" element={<AboutPage />} />
-        <Route path="service/itr-notice" element={<ItrNoticeService />} />
-        <Route path="service/gst-notice" element={<GstNoticeService />} />
-        <Route path="service/consultation" element={<ConsultationNotice />} />
+        <Route path={PATH.ITR_NOTICE_PATH} element={<ItrNoticeService />} />
+        <Route path={PATH.GST_NOTICE} element={<GstNoticeService />} />
+        <Route
+          path={PATH.SERVICE_COSULTATION}
+          element={<ConsultationNotice />}
+        />
+        <Route path="latest-news" element={<LatestNewsPage />} />
 
         <Route path="home" element={<HomePage />} />
         <Route path="contact" element={<ContactUs />} />
