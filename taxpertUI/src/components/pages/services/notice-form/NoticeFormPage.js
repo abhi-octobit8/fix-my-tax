@@ -16,6 +16,7 @@ import {
 } from "antd";
 import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
 import API from "../../../../shared/API";
+import { NOTICE_TYPE } from "../constant";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -56,7 +57,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const NoticeFormPage = (props) => {
-  const { titleHeader = "Notice" } = props;
+  const { titleHeader = "Notice", noticeType = NOTICE_TYPE.GENERAL } = props;
   const [form] = Form.useForm();
   const onFinish = async (values) => {
     console.log("registration values:", values);
@@ -145,102 +146,79 @@ const NoticeFormPage = (props) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
-          name="service"
-          label="Service Type"
-          rules={[
-            {
-              required: true,
-              message: "Please select Service Type!",
-            },
-          ]}
-        >
-          <Select placeholder="Select your Service Type">
-            <Option value="video">Video Consultation</Option>
-            <Option value="reply">Return Reply</Option>
-          </Select>
-        </Form.Item>
-        <Form.Item
-          name="uploadNotice"
-          label="Upload Notice"
-          valuePropName="fileList"
-          getValueFromEvent={normFile}
-        >
-          <Upload
-            beforeUpload={(file) => {
-              // console.log(file);
-              return false;
-            }}
-            multiple={false}
-          >
-            <Button icon={<UploadOutlined />}>Click to upload</Button>
-          </Upload>
-        </Form.Item>
-        <Form.Item
-          name="uploadITR"
-          label="Upload ITR"
-          valuePropName="fileList"
-          getValueFromEvent={normFile}
-        >
-          <Upload
-            beforeUpload={(file) => {
-              // console.log(file);
-              return false;
-            }}
-            multiple={false}
-          >
-            <Button icon={<UploadOutlined />}>Click to upload</Button>
-          </Upload>
-        </Form.Item>
-        {/* <Form.Item
-          label="File Upload"
-          name="fileUpload"
-          rules={[
-            {
-              required: true,
-              message: "Please upload file",
-            },
-          ]}
-        >
-          <input className="FileInput" type="file" accept=".xls, .xlsx" />
-        </Form.Item> */}
-        {/* <Form.Item
-          name="password"
-          label="Password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
-        >
-          <Input.Password />
-        </Form.Item> */}
+        {noticeType == NOTICE_TYPE.GENERAL && (
+          <React.Fragment>
+            <Form.Item
+              name="service"
+              label="Service Type"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select Service Type!",
+                },
+              ]}
+            >
+              <Select placeholder="Select your Service Type">
+                <Option value="video">Video Consultation</Option>
+                <Option value="reply">Return Reply</Option>
+              </Select>
+            </Form.Item>
 
-        {/* <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={["password"]}
-          rules={[
-            {
-              required: true,
-              message: "Please confirm your password!",
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue("password") === value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(
-                  new Error("The two passwords that you entered do not match!")
-                );
-              },
-            }),
-          ]}
-        >
-          <Input.Password />
-        </Form.Item> */}
+            <Form.Item
+              name="uploadNotice"
+              label="Upload Notice"
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+            >
+              <Upload
+                beforeUpload={(file) => {
+                  // console.log(file);
+                  return false;
+                }}
+                multiple={false}
+              >
+                <Button icon={<UploadOutlined />}>Click to upload</Button>
+              </Upload>
+            </Form.Item>
+            <Form.Item
+              name="uploadITR"
+              label="Upload ITR"
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+            >
+              <Upload
+                beforeUpload={(file) => {
+                  // console.log(file);
+                  return false;
+                }}
+                multiple={false}
+              >
+                <Button icon={<UploadOutlined />}>Click to upload</Button>
+              </Upload>
+            </Form.Item>
+          </React.Fragment>
+        )}
 
+        {noticeType == NOTICE_TYPE.CONSULTATION && (
+          <React.Fragment>
+            <Form.Item
+              name="uploadConsultationNotice"
+              label="Upload Document"
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+            >
+              <Upload
+                beforeUpload={(file) => {
+                  // console.log(file);
+                  return false;
+                }}
+                multiple={false}
+              >
+                <Button icon={<UploadOutlined />}>Click to upload</Button>
+              </Upload>
+            </Form.Item>
+          </React.Fragment>
+        )}
         <Form.Item
           name="phone"
           label="Phone Number"

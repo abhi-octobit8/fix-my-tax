@@ -1,3 +1,5 @@
+import { PATH } from "../../../shared/Route";
+
 const overflow = {
   adjustX: 1,
   adjustY: 1,
@@ -34,34 +36,44 @@ const MENU_ITEMS = [
   {
     label: "Home",
     role: USER_ROLE.PUBLIC,
-    to: "/home",
+    to: PATH.HOME,
   },
   {
     label: "Services",
     role: USER_ROLE.PUBLIC,
-    to: "/service/itr-notice",
+    to: PATH.ITR_NOTICE_PATH,
     children: [
       {
         label: "ITR Notice",
         role: USER_ROLE.PUBLIC,
-        to: "/service/itr-notice",
+        to: PATH.ITR_NOTICE_PATH,
       },
       {
         label: "GST Notice",
         role: USER_ROLE.PUBLIC,
-        to: "/service/gst-notice",
+        to: PATH.GST_NOTICE,
+      },
+      {
+        label: "Consultation",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_COSULTATION,
       },
     ],
   },
   {
     label: "About",
     role: USER_ROLE.PUBLIC,
-    to: "/about",
+    to: PATH.ABOUT,
+  },
+  {
+    label: "Latest News",
+    role: USER_ROLE.PUBLIC,
+    to: PATH.LATEST_NEWS,
   },
   {
     label: "Contact Us",
     role: USER_ROLE.PUBLIC,
-    to: "/contact",
+    to: PATH.CONTACT_US,
   },
   {
     label: "Account",
@@ -83,7 +95,7 @@ const MENU_ITEMS = [
   {
     label: "Register",
     role: USER_ROLE.NON_AUTHORIZED,
-    to: "/register",
+    to: PATH.REGISTER,
   },
 ];
 function getMenuItems(collection, userData) {
