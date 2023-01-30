@@ -1,6 +1,5 @@
 import { Button, Card, Col, Row, Space } from "antd";
-import React, { useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
@@ -23,18 +22,8 @@ import { PATH } from "../../../shared/Route";
 import useRedirectPath from "../../hooks/useRedirectPath";
 
 function HomePage() {
-  const navigate = useNavigate();
   const navigator = useRedirectPath();
-  const handleClick = (path) => {
-    navigator.goTo(PATH.ITR_NOTICE_PATH);
-  };
-  // const handleClick = useRedirectPath(PATH.ITR_NOTICE_PATH);
-  const goToPath = useCallback(
-    (path) => {
-      navigate(path);
-    },
-    [navigate]
-  );
+
   return (
     <React.Fragment>
       <section id="banner-to-action" className="banner-to-action">
@@ -46,12 +35,7 @@ function HomePage() {
                 Get Peace of mind Knowing that your taxes are handled by
                 Experts.
               </h2>
-              {/* <p>
-            Get Peace of mind Knowing that your taxes are handled by Experts.
-          </p> */}
-              {/* <a className="cta-btn" href="#">
-            start here
-          </a> */}
+
               <Button type="primary" className="button-style-middle">
                 Start Here
               </Button>
@@ -64,12 +48,6 @@ function HomePage() {
                 height={400}
                 width={400}
               />
-              {/* <p>
-            Get Peace of mind Knowing that your taxes are handled by Experts.
-          </p> */}
-              {/* <a className="cta-btn" href="#">
-            start here
-          </a> */}
             </div>
           </div>
         </div>
@@ -80,7 +58,7 @@ function HomePage() {
           <hr className="taxpert-line" />
         </div>
         <Row className="button-container">
-          <Col xs={24} md={8} lg={8} sm={24}>
+          <Col xs={24} md={6} lg={6} sm={24}>
             <Button
               className="button-style"
               type="primary"
@@ -89,7 +67,7 @@ function HomePage() {
               ITR Notice
             </Button>
           </Col>
-          <Col xs={24} md={8} lg={8} sm={24}>
+          <Col xs={24} md={6} lg={6} sm={24}>
             <Button
               className="button-style"
               type="primary"
@@ -98,7 +76,7 @@ function HomePage() {
               GST Notice
             </Button>
           </Col>
-          <Col xs={24} md={8} lg={8} sm={24}>
+          <Col xs={24} md={6} lg={6} sm={24}>
             <Button
               className="button-style"
               type="primary"
@@ -107,6 +85,15 @@ function HomePage() {
               Consultation
             </Button>
           </Col>
+          {/* <Col xs={24} md={6} lg={6} sm={24}>
+            <Button
+              className="button-style"
+              type="primary"
+              onClick={() => navigator.goTo(PATH.SERVICE_COSULTATION)}
+            >
+              FILING ITR/TCS
+            </Button>
+          </Col> */}
         </Row>
       </div>
 

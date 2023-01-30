@@ -199,7 +199,8 @@ const NoticeFormPage = (props) => {
           </React.Fragment>
         )}
 
-        {noticeType == NOTICE_TYPE.CONSULTATION && (
+        {(noticeType == NOTICE_TYPE.FILING ||
+          noticeType == NOTICE_TYPE.CONSULTATION) && (
           <React.Fragment>
             <Form.Item
               name="uploadConsultationNotice"
