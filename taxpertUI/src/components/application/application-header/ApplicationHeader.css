@@ -1,19 +1,12 @@
 .application-header {
 
-  block-size: 64px;
+  block-size: 80px;
   /* background-color: rgba(2, 19, 35, 0.85);; */
   display: flex;
   align-items: center;
 }
 
-.application-header-logo-wrap {
-  block-size: 64px;
-  /* background-color: #2754ff; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: max-content;
-}
+
 
 .application-header .application-header-logo {
   block-size: calc(64px - 12px);

@@ -2,6 +2,7 @@
 .banner-to-action {
   /* background: linear-gradient(rgba(27, 47, 69, 0.8), rgba(27, 47, 69, 0.8)),
     url("../../../assets/img/cta-bg.jpg") center center; */
+  background-color: #4472C4;
   background-size: cover;
   padding: 50px 0;
 }
@@ -187,10 +188,10 @@
 
 .button-style{
     width: 50%;
-    height: 100px;
+    height: 80px;
     border-radius: 47px;
-    font-size: 30px;
-    margin: 10px;
+    font-size: 20px;
+    margin: 7px;
 }
 .button-style-middle{
     width: 50%;

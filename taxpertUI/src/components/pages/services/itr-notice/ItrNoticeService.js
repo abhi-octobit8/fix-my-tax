@@ -97,15 +97,13 @@ const ItrNoticeService = () => (
             <Collapse expandIconPosition={"end"} className="section-faq-item">
               <Panel header="What to do if I get a tax notice?" key="1">
                 <p>
-                  If you get an income tax notice, you should understand why the
-                  notice has been sent. Notices may be sent due to various
-                  reasons. For example, Notices may be sent for the details and
-                  papers required by the Income Tax Department. In such a case,
-                  you need to provide the details as required. If there is any
-                  error in the ITR, then notices may be sent to rectify the
-                  error. In such a case, you should then rectify any error in
-                  your return and respond to the notice with the time specified
-                  by the income tax department to avoid possible penalties.
+                  Notices may be served enquiring any missing informaiton or
+                  supporting document required to substantiate your return or
+                  for any other reason realting to income
+                  escaping/non-disclosure of income. As suc you are required to
+                  furnish necessary details and documents ot substantiate your
+                  return or justify your income; so that you may avoid peral and
+                  prosecution proceedings.
                 </p>
               </Panel>
             </Collapse>
@@ -116,23 +114,23 @@ const ItrNoticeService = () => (
               >
                 <p>
                   If you dont respond to the income tax notice, there can be
-                  different types of consequences depending upon the type of
-                  Notice which you would have to face. Such consequences include
-                  fines of up to INR 10,000 and also imprisonment for up to a
-                  year.
+                  different types of consequential proceeding depending upon the
+                  type of Notice which has been served.Such consequences include
+                  fines of up to INR 10,000 and also imprisonment.
                 </p>
               </Panel>
             </Collapse>
             <Collapse expandIconPosition={"end"}>
               <Panel
-                header="What happens if I dont respond to the notice within 30 days?"
+                header="What happens if I dont respond to the notice within the time prescribed?"
                 key="1"
               >
                 <p>
-                  In case you dont respond to notice within 30 days the income
-                  tax department will make the adjustment if there is some
-                  outstanding demand without giving any further opportunity to
-                  respond.
+                  In case you dont respond to notice within the time prescribed;
+                  the Income Tax Department will make the adjustment of refund
+                  to some outstanding demand without giving any further
+                  opportunity to respond or initiate/impose penalty as per
+                  provisons of the Income Tax Act.
                 </p>
               </Panel>
             </Collapse>

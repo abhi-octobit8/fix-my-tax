@@ -160,7 +160,7 @@ const NoticeFormPage = (props) => {
             >
               <Select placeholder="Select your Service Type">
                 <Option value="video">Video Consultation</Option>
-                <Option value="reply">Return Reply</Option>
+                <Option value="reply">Notice Reply</Option>
               </Select>
             </Form.Item>
 
@@ -199,7 +199,8 @@ const NoticeFormPage = (props) => {
           </React.Fragment>
         )}
 
-        {noticeType == NOTICE_TYPE.CONSULTATION && (
+        {(noticeType == NOTICE_TYPE.FILING ||
+          noticeType == NOTICE_TYPE.CONSULTATION) && (
           <React.Fragment>
             <Form.Item
               name="uploadConsultationNotice"

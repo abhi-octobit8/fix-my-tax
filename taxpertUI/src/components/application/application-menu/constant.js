@@ -58,6 +58,11 @@ const MENU_ITEMS = [
         role: USER_ROLE.PUBLIC,
         to: PATH.SERVICE_COSULTATION,
       },
+      {
+        label: "Filing ITR/TCS/TDS",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_FILING,
+      },
     ],
   },
   {
@@ -92,11 +97,11 @@ const MENU_ITEMS = [
       },
     ],
   },
-  {
-    label: "Register",
-    role: USER_ROLE.NON_AUTHORIZED,
-    to: PATH.REGISTER,
-  },
+  // {
+  //   label: "Register",
+  //   role: USER_ROLE.NON_AUTHORIZED,
+  //   to: PATH.REGISTER,
+  // },
 ];
 function getMenuItems(collection, userData) {
   let isAuthorized = false;
