@@ -30,11 +30,7 @@ function HomePage() {
         <div className="container" data-aos="fade-up">
           <div className="row ">
             <div className="col-lg-6 banner-section-content ">
-              <h2>
-                {" "}
-                Get Peace of mind Knowing that your taxes are handled by
-                Experts.
-              </h2>
+              <h2> We will manage your Taxes, you enojoy Life.</h2>
 
               <Button type="primary" className="button-style-middle">
                 Start Here
@@ -85,7 +81,7 @@ function HomePage() {
               Consultation
             </Button>
           </Col>
-          {/* <Col xs={24} md={6} lg={6} sm={24}>
+          <Col xs={24} md={6} lg={6} sm={24}>
             <Button
               className="button-style"
               type="primary"
@@ -93,7 +89,7 @@ function HomePage() {
             >
               FILING ITR/TCS
             </Button>
-          </Col> */}
+          </Col>
         </Row>
       </div>
 
@@ -109,7 +105,7 @@ function HomePage() {
         >
           <h1>About our Company</h1>
           <p className="about-company-content">
-            A team comprised of CMA's, CA's, Taxation Lawyers and subject
+            Our team comprises of CMA's, CA's, Taxation Lawyers and subject
             experts available 24*7 to resolve taxation related queries.
           </p>
         </Col>
@@ -187,7 +183,7 @@ function HomePage() {
                 <div>
                   <h3 className="service-sub-header-title">For Businesses</h3>
                   <p className="card-text">
-                    Get rid of your business' taxation and accounting headaches
+                    Get rid of your financial taxation and accounting nuisance
                     with us.
                   </p>
                 </div>
@@ -264,14 +260,15 @@ function HomePage() {
         <div className="testimonial-containter">
           <div className="box">
             <p>
-              Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing
-              elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos
-              repellendus repudiandae deleniti ideas fuga molestiae, alias.
+              Promoters of fixmytax proved to be a saviour during my crisis;
+              their experts were quick, compassionate, and professional. Cannot
+              ask for more. Their timely guidance helped to get all my statutory
+              compliances in time.
             </p>
             <div className="content">
               <div className="info">
-                <div className="name">Smith</div>
-                <div className="job">Advocate</div>
+                <div className="name">Naveen Kesarwani</div>
+                <div className="job">Industrialist</div>
                 <div className="stars">
                   <StarFilled style={{ color: "#17a2b8" }} />
                   <StarFilled style={{ color: "#17a2b8" }} />
@@ -284,14 +281,14 @@ function HomePage() {
           </div>
           <div className="box">
             <p>
-              Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing
-              elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos
-              repellendus repudiandae deleniti ideas fuga molestiae, alias.
+              Your consultants are very prompt and intensive in their response
+              which helped me to file my ITRs conveniently and smoothly.
             </p>
+            <br />
             <div className="content">
               <div className="info">
-                <div className="name">Smith</div>
-                <div className="job">Advocate</div>
+                <div className="name">Subhas Chandra Dubey</div>
+                <div className="job">IPS</div>
                 <div className="stars">
                   <StarFilled style={{ color: "#17a2b8" }} />
                   <StarFilled style={{ color: "#17a2b8" }} />
@@ -304,14 +301,15 @@ function HomePage() {
           </div>
           <div className="box">
             <p>
-              Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing
-              elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos
-              repellendus repudiandae deleniti ideas fuga molestiae, alias.
+              Outstanding customer service from promoters of fixmytax. Right
+              from the time of filing of return and completion of assessment
+              proceedings. Everything was well taken care off. All the best for
+              all their good work.
             </p>
             <div className="content">
               <div className="info">
-                <div className="name">Alex Smith</div>
-                <div className="job">Advocate</div>
+                <div className="name">Dr. Ram Kumar Mishra</div>
+                <div className="job">CMA, CS</div>
                 <div className="stars">
                   <StarFilled style={{ color: "#17a2b8" }} />
                   <StarFilled style={{ color: "#17a2b8" }} />

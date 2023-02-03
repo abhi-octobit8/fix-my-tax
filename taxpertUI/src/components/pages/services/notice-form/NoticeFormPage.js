@@ -160,7 +160,7 @@ const NoticeFormPage = (props) => {
             >
               <Select placeholder="Select your Service Type">
                 <Option value="video">Video Consultation</Option>
-                <Option value="reply">Return Reply</Option>
+                <Option value="reply">Notice Reply</Option>
               </Select>
             </Form.Item>
 

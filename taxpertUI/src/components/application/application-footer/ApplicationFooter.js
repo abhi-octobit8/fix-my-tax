@@ -20,8 +20,8 @@ function ApplicationFooter() {
                 <span>FixMyTax</span>
               </a>
               <p>
-                Leave your taxation worries to us, so you can focus on growing
-                your business.
+                We are here to solve all your tax related queries so that you
+                may enjoy peace of mind.
               </p>
               <div className="social-links d-flex  mt-3">
                 <a href="#" className="twitter">

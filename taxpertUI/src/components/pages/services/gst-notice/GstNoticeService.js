@@ -133,30 +133,30 @@ const GstNoticeService = () => (
               key="1"
             >
               <p>
-                Yes, a Chartered Accountant or any other representative he or
-                she can be recognise by the taxpayer for the purposes of reply
-                to GST notices on his behalf.
+                Yes, a Chartered Accountant or any other representative can be
+                authorized by the taxpayer for compliance of n GST notices on
+                his/her behalf.
               </p>
             </Panel>
           </Collapse>
           <Collapse expandIconPosition={"end"}>
             <Panel header="How can I reply to GST Notices?" key="1">
               <p>
-                The reply to GST Notices can be done through submitting response
+                The reply to GST Notices can be made by submitting response
                 online on GST Portal. In addition, while doing so, taxpayers may
-                use their own respective digital signature certificate or
-                e-signature that is respective recognise personnel.
+                use their own respective digital signature to substantiate their
+                title/ownership.
               </p>
             </Panel>
           </Collapse>
           <Collapse expandIconPosition={"end"}>
             <Panel header="Do I need to upload any documents?" key="1">
               <p>
-                The user will be intimate from the Taxpert expert to upload the
-                documents in his documents once he place an order regarding GST
-                notices. Furthermore, if the user wants to upload any document
-                before discussing with the expert at Taxpert he still can do so
-                uploading the documents in his designate account.
+                Yes; the assessee has to upload doucment and information as
+                desired by the GST authorities to prove his/her bonafide. you
+                can avail the services of our experts to Fixmytax before
+                uploading any document to make his/her reply more precise and
+                intense.
               </p>
             </Panel>
           </Collapse>

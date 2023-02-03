@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 // import { doLogout } from "../../../store/authentication/AuthActions";
 import ApplicationMenu from "../application-menu/ApplicationMenu";
-import logo1 from "../../../assets/img/new_logo.JPG";
+import logo1 from "../../../assets/img/new_updated_logo.PNG";
 import { MenuOutlined } from "@ant-design/icons";
 import "./ApplicationHeader.css";
 import ApplicationUserMenu from "../application-user-menu/ApplicationUserMenu";
