@@ -34,7 +34,7 @@ const GstNoticeService = () => (
 
     <div className="gst-reason">
       <Divider orientation="center">
-        <h3 >Common reasons of GST Notice</h3>
+        <h3>Common reasons of GST Notice</h3>
       </Divider>
       <List
         className="reason-list"
@@ -65,36 +65,57 @@ const GstNoticeService = () => (
           purpose or gravity of default or action require from these taxpayers.
         </h6>
       </div>
-      
+
       <Row gutter={16}>
         <Col span={8}>
-          <Card id="cards" className="gst-notice-card" title="GSTR-3A" bordered={false}>
-            <p>GSTR-3A notification for non-GST Returns files. This is the most
-            common notification of all notifications. Applies to GSTR-1,
-            GSTR-3B, GSTR-4, GSTR-8 (only for eCommerce Operators) Prepare &
-            EFile for GST refunds payable and late payments, interest on GST
-            obligation, if there is. for each notice or within 15 days from the
-            date of the notice. (Note that this can be up to 7 days and in some
-            cases.)</p>
+          <Card
+            id="cards"
+            className="gst-notice-card"
+            title="GSTR-3A"
+            bordered={false}
+          >
+            <p>
+              GSTR-3A notification for non-GST Returns files. This is the most
+              common notification of all notifications. Applies to GSTR-1,
+              GSTR-3B, GSTR-4, GSTR-8 (only for eCommerce Operators) Prepare &
+              EFile for GST refunds payable and late payments, interest on GST
+              obligation, if there is. for each notice or within 15 days from
+              the date of the notice. (Note that this can be up to 7 days and in
+              some cases.)
+            </p>
           </Card>
         </Col>
         <Col span={8}>
-          <Card id="cards" className="gst-notice-card" title="REG-03" bordered={false}>
-            <p>REG-03 specification displayed to display or upload additional
-            documents to complete new GST registrations, or amendments to GST
-            registrations (key field updates, etc.) Provide clarification of the
-            REG-04 notification by specifying or inserting additional
-            details/documents requested 7 days of the notification date.</p>
+          <Card
+            id="cards"
+            className="gst-notice-card"
+            title="REG-03"
+            bordered={false}
+          >
+            <p>
+              REG-03 specification displayed to display or upload additional
+              documents to complete new GST registrations, or amendments to GST
+              registrations (key field updates, etc.) Provide clarification of
+              the REG-04 notification by specifying or inserting additional
+              details/documents requested 7 days of the notification date.
+            </p>
           </Card>
         </Col>
         <Col span={8}>
-          <Card id="cards" className="gst-notice-card" title="CMP-05" bordered={false}>
-            <p>It is an SCN which questions the taxpayer’s ability to be a
-            composition dealer under the GST norms. Indicate the reason for the
-            notice to question the taxpayer’s suitability as a designated
-            seller. Verify and the reasons why the taxpayer is still eligible
-            for the design structure in their field and the amount they hold on
-            each notice or within 15 days</p>
+          <Card
+            id="cards"
+            className="gst-notice-card"
+            title="CMP-05"
+            bordered={false}
+          >
+            <p>
+              It is an SCN which questions the taxpayer’s ability to be a
+              composition dealer under the GST norms. Indicate the reason for
+              the notice to question the taxpayer’s suitability as a designated
+              seller. Verify and the reasons why the taxpayer is still eligible
+              for the design structure in their field and the amount they hold
+              on each notice or within 15 days
+            </p>
           </Card>
         </Col>
       </Row>
@@ -112,31 +133,30 @@ const GstNoticeService = () => (
               key="1"
             >
               <p>
-                Yes, a Chartered Accountant or any other representative he or
-                she can be recognise by the taxpayer for the purposes of reply
-                to GST notices on his behalf.
+                Yes, a Chartered Accountant or any other representative can be
+                authorized by the taxpayer for compliance of n GST notices on
+                his/her behalf.
               </p>
             </Panel>
           </Collapse>
           <Collapse expandIconPosition={"end"}>
             <Panel header="How can I reply to GST Notices?" key="1">
               <p>
-                The reply to GST Notices can be done through submitting response
+                The reply to GST Notices can be made by submitting response
                 online on GST Portal. In addition, while doing so, taxpayers may
-                use their own respective digital signature certificate or
-                e-signature that is respective recognise personnel.
+                use their own respective digital signature to substantiate their
+                title/ownership.
               </p>
             </Panel>
           </Collapse>
           <Collapse expandIconPosition={"end"}>
             <Panel header="Do I need to upload any documents?" key="1">
               <p>
-                The user will be intimate from the Taxpert expert to upload
-                the documents in his documents once he place an order regarding
-                GST notices. Furthermore, if the user wants to upload any
-                document before discussing with the expert at Taxpert he
-                still can do so uploading the documents in his designate
-                account.
+                Yes; the assessee has to upload doucment and information as
+                desired by the GST authorities to prove his/her bonafide. you
+                can avail the services of our experts to Fixmytax before
+                uploading any document to make his/her reply more precise and
+                intense.
               </p>
             </Panel>
           </Collapse>

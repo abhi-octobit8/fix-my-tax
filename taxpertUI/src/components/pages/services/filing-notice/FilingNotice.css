@@ -1,0 +1,45 @@
+.service-banner {
+    background: linear-gradient(rgba(27, 47, 69, 0.8), rgba(27, 47, 69, 0.8));
+    background-color: #2a4671;
+    background-size: cover;
+    padding: 100px 0;
+  }
+.service-banner .service-banner-title {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+.service-banner .service-banner-info {
+    margin: auto;
+    color: white;
+    text-align: center;
+
+}
+
+.site-card-wrapper{
+    padding: 30px;
+    background-color: #ececec;
+}
+.notice-card{
+    height: 100%;
+    border-radius: 35px;
+    box-shadow: 0 5px 17px 0 rgb(0 0 0 / 17%);
+}
+.section-container{
+    padding: 20px;
+    align-items: center;
+}
+.section-faq-items{
+    width: 100%;
+}
+.section-faq-items .ant-space-item {
+    background-color: #fff;
+    box-shadow: 0 3px 8px rgb(63 20 20 / 10%);
+
+}
+
+.section-faq-items .ant-space-item .ant-collapse-header{
+    font-size: 16px;
+    font-weight: 500;
+}

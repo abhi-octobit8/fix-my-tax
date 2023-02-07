@@ -1,7 +1,7 @@
 ## React Redux Login, Logout, Registration example using Hooks
 
 > npm version 6.14.4
->node version 16.14.2
+> node version v18.12.1
 
 ### Set port
 

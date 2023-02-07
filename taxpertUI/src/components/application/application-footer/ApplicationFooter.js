@@ -1,7 +1,10 @@
 import { Button, Menu } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { MENU_ITEMS_FOOTER, MENU_ITEMS_SERVICE_FOOTER } from "./constant";
+import {
+  MENU_ITEMS_FOOTER_USEFUL_LINKS,
+  MENU_ITEMS_SERVICE_FOOTER,
+} from "./constant";
 import "./ApplicationFooter.css";
 
 const displayName = "ApplicationFooter";
@@ -17,8 +20,8 @@ function ApplicationFooter() {
                 <span>FixMyTax</span>
               </a>
               <p>
-                Leave your taxation worries to us, so you can focus on growing
-                your business.
+                We are here to solve all your tax related queries so that you
+                may enjoy peace of mind.
               </p>
               <div className="social-links d-flex  mt-3">
                 <a href="#" className="twitter">
@@ -39,10 +42,12 @@ function ApplicationFooter() {
             <div className="col-lg-2 col-6 footer-links">
               <h4>Useful Links</h4>
               <ul>
-                {MENU_ITEMS_FOOTER.map((item, index) => {
+                {MENU_ITEMS_FOOTER_USEFUL_LINKS.map((item, index) => {
                   return (
                     <li key={index}>
-                      <NavLink to={item.to}>{item.label}</NavLink>
+                      <a href={item.to} target="_blank">
+                        {item.label}
+                      </a>
                     </li>
                   );
                 })}
@@ -50,7 +55,7 @@ function ApplicationFooter() {
             </div>
 
             <div className="col-lg-2 col-6 footer-links">
-              <h4>Our Services</h4>
+              <h4>Information</h4>
               <ul>
                 {MENU_ITEMS_SERVICE_FOOTER.map((item, index) => {
                   return (
