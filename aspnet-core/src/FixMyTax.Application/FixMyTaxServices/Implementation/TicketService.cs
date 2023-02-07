@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 
 namespace FixMyTax.FixMyTaxServices.Implementation
 {
-    [AbpAuthorize]
     public class TicketService : FixMyTaxAppServiceBase, ITicketService
     {
         private readonly IRepository<RequestTicket> _ticketRepository;
@@ -53,7 +52,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         public async Task<ListResultDto<TicketListDto>> GetAll()
         {
             var tickets = await _ticketRepository
-                .GetAll()
+                .GetAll().Include(x => x.Attachments)
                 .Where(t => t.CreatorUserId == AbpSession.UserId)
                 .OrderBy(t => t.CreationTime)
                 .ToListAsync();

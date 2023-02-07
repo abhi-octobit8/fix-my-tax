@@ -21,5 +21,7 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
         public string Description { get; set; }
         public TicketStatus Status { get; set; }
 
+        public ICollection<AttachmentDto> Attachments { get; set; }
+
     }
 }

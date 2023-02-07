@@ -16,6 +16,8 @@ namespace FixMyTax.FixMyTaxModels
         public string Subject { get; set; }
         public string Question { get;set; }
         public string Description { get; set; }
+
+        public NoticeType NoticeType { get; set; }
         public TicketStatus Status { get; set; }
         public ICollection<Attachment> Attachments { get; set; }    
 

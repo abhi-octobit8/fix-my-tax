@@ -14,6 +14,7 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
     [AutoMapFrom(typeof(Attachment))]
     public class AttachmentDto : EntityDto, IHasCreationTime
     {
+        public string Filename { get; set; }
         public DateTime CreationTime { get; set; }
     }
 }

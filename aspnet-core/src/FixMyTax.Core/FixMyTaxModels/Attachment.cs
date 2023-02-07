@@ -14,6 +14,6 @@ namespace FixMyTax.FixMyTaxModels
     {
         public string Filename { get;set; }
         public byte[] FileData { get; set; }
-        public DateTime CreationTime { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime CreationTime { get; set; }
     }
 }

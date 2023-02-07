@@ -12,6 +12,9 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\FixMyTax.Core\FixMyTax.Core.csproj" />
   </ItemGroup>
 </Project>
