@@ -198,7 +198,7 @@ function HomePage() {
           <div className="outer">
             <div className="left">
               <div className="heading">
-                <span>FixMyTax</span>
+                <span>fixmytax</span>
               </div>
               <h3>Best Tax expert website in India</h3>
               <p>

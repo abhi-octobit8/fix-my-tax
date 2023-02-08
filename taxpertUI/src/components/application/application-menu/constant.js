@@ -44,7 +44,7 @@ const MENU_ITEMS = [
     to: PATH.ITR_NOTICE_PATH,
     children: [
       {
-        label: "ITR Notice",
+        label: "ITR/TDS/TCS Notices",
         role: USER_ROLE.PUBLIC,
         to: PATH.ITR_NOTICE_PATH,
       },

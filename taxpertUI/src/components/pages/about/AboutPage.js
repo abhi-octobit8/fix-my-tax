@@ -10,8 +10,8 @@ const AboutPage = () => (
   <>
     <div className="mission-head">Our Mission</div>
     <p className="mission">
-      Our mission is to simplify finances, save money and time for millions of
-      Indian businesses and people.
+      We are here to solve all your tax related queries so that you may enjoy
+      peace of mind
     </p>
     <br />
     <div className="section-1">
@@ -30,8 +30,9 @@ const AboutPage = () => (
           <br />
           <h6 className="headings">Maximum Benefits</h6>
           <p className="text-area">
-            We ensure that your tax filing is hassle-free with maximum possible
-            tax refund by providing our expert advice at reasonable cost.
+            Our experts ensure that your tax filing is hassale free for availing
+            maximum tax benefits on your income and also you enjoy spotless
+            assessments
           </p>
         </div>
         <div className="cards-in-place">

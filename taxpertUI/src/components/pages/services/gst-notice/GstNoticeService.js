@@ -154,7 +154,7 @@ const GstNoticeService = () => (
               <p>
                 Yes; the assessee has to upload doucment and information as
                 desired by the GST authorities to prove his/her bonafide. you
-                can avail the services of our experts to Fixmytax before
+                can avail the services of our experts to fixmytax before
                 uploading any document to make his/her reply more precise and
                 intense.
               </p>
