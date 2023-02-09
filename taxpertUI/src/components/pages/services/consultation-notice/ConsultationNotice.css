@@ -43,3 +43,14 @@
     font-size: 16px;
     font-weight: 500;
 }
+.section-consultation-card .card-container {
+    padding: 20px 20px;
+    margin: 50px;
+}
+.section-consultation-card .card-container  .Card-header-title{
+      text-align: center;
+    padding-bottom: 30px;
+    }
+    .section-consultation-card .card-container   .ant-form-item-label > label{
+      font-size: 18px;
+    }

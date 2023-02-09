@@ -44,7 +44,7 @@ const MENU_ITEMS = [
     to: PATH.ITR_NOTICE_PATH,
     children: [
       {
-        label: "ITR Notice",
+        label: "ITR/TDS/TCS Notices",
         role: USER_ROLE.PUBLIC,
         to: PATH.ITR_NOTICE_PATH,
       },
@@ -70,11 +70,11 @@ const MENU_ITEMS = [
     role: USER_ROLE.PUBLIC,
     to: PATH.ABOUT,
   },
-  {
-    label: "Latest News",
-    role: USER_ROLE.PUBLIC,
-    to: PATH.LATEST_NEWS,
-  },
+  // {
+  //   label: "Latest News",
+  //   role: USER_ROLE.PUBLIC,
+  //   to: PATH.LATEST_NEWS,
+  // },
   {
     label: "Contact Us",
     role: USER_ROLE.PUBLIC,

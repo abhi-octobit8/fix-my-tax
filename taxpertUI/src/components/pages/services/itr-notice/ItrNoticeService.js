@@ -1,144 +1,273 @@
-import { Button, Card, Col, Row } from "antd";
 import React from "react";
+import {
+  Button,
+  Form,
+  Input,
+  Select,
+  Card,
+  Upload,
+  Collapse,
+  Space,
+} from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 import "./ItrNotice.css";
-import { Collapse, Space } from "antd";
-import NoticeFormPage from "../notice-form/NoticeFormPage";
+const { Option } = Select;
 const { Panel } = Collapse;
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
 
-const ItrNoticeService = () => (
-  <React.Fragment>
-    <section id="service-banner" className="service-banner">
-      <div className="container" data-aos="fade-up">
-        <div className="row justify-content-center">
-          <div className="service-banner-info">
-            <div className="service-banner-title">
-              Income Tax Notices in India
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 12,
+    },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
+const normFile = (e) => {
+  console.log("Upload event:", e);
+  if (Array.isArray(e)) {
+    return e;
+  }
+  return e?.fileList;
+};
+const ItrNoticeService = (props) => {
+  const titleHeader = "Notice";
+  const [form] = Form.useForm();
+  const onFinish = async (values) => {
+    console.log("registration values:", values);
+    debugger;
+    // const registerData = {
+    //   values,
+    //   isActive: true,
+    //   roleNames: ["string"],
+    // };
+  };
+  const prefixSelector = (
+    <Form.Item name="prefix" noStyle>
+      <Select
+        style={{
+          width: 70,
+        }}
+      >
+        <Option value="91">+91</Option>
+      </Select>
+    </Form.Item>
+  );
+
+  return (
+    <React.Fragment>
+      <section id="service-banner" className="service-banner">
+        <div className="container" data-aos="fade-up">
+          <div className="row justify-content-center">
+            <div className="service-banner-info">
+              <div className="service-banner-title">
+                Income Tax Notices in India
+              </div>
+              An income tax notice is a written communication sent by the Income
+              Tax Department to a taxpayer alerting an issue with his tax
+              account. The notice can be sent for different reasons like filing/
+              non-filing his/ her income tax return, for the purpose of making
+              the assessment or to ask the certain details etc. When a notice is
+              sent by the Income Tax Department, the taxpayer has to act on the
+              notice and get the matter resolved with the tax authorities.
             </div>
-            An income tax notice is a written communication sent by the Income
-            Tax Department to a taxpayer alerting an issue with his tax account.
-            The notice can be sent for different reasons like filing/ non-filing
-            his/ her income tax return, for the purpose of making the assessment
-            or to ask the certain details etc. When a notice is sent by the
-            Income Tax Department, the taxpayer has to act on the notice and get
-            the matter resolved with the tax authorities.
           </div>
         </div>
-      </div>
-    </section>
-    {/* <div className="site-card-wrapper">
-      <div className="section-header">
-        <h1>Different Types of ITR Notice</h1>
-        <hr className="taxpert-line" />
-        <h6>
-          The income tax department sends different types of notices to
-          taxpayers depending on the cause of the notice
-        </h6>
-      </div>
-      <Row gutter={16}>
-        <Col span={8}>
-          <Card
-            className="notice-card"
-            title="Notice send Under section 139"
-            bordered={false}
+      </section>
+      <section className="section-itr-card">
+        <Card className="card-container" bordered={true}>
+          <div className="Card-header-title">
+            <h1>{titleHeader}</h1>
+          </div>
+          <Form
+            {...formItemLayout}
+            form={form}
+            name="register"
+            onFinish={onFinish}
+            initialValues={{
+              residence: ["zhejiang", "hangzhou", "xihu"],
+              prefix: "91",
+            }}
+            scrollToFirstError
           >
-            If the AO believes that a defective income tax return is filed, he
-            would serve you notice under this section. The error can be missing
-            information, use of the wrong ITR form, incomplete return, etc. The
-            officer would also highlight the defect in the income tax return and
-            recommend the solution thereof. You get a period of 15 days to
-            respond to the notice. If you do not respond, your ITR would be
-            rejected.
-          </Card>
-        </Col>
-        <Col span={8}>
-          <Card
-            className="notice-card"
-            title=" Notice under Section 142(1) "
-            bordered={false}
-          >
-            A notice is served by the assessing officer u/s 142 (1) in two
-            cases. Firstly, if the officer requires additional information and
-            documents pertaining to your income tax returns. Secondly, if the
-            return has not been filed but the officer wants the return to be
-            filed. If you do not respond to the notice served under Section
-            142(1), you would face a penalty of INR 10,000, prosecution for up
-            to 1 year or both.
-          </Card>
-        </Col>
-        <Col span={8}>
-          <Card
-            className="notice-card"
-            title="Notice under Section 148"
-            bordered={false}
-          >
-            This notice is sent in cases where the assessing officer(AO) has a
-            reason to believe that a taxpayer has filed his ITR on a lower
-            income or not filed when he was mandated by the law. The time limit
-            to send the notice under this section depends on the amount and
-            nature of income escaped.
-          </Card>
-        </Col>
-      </Row>
-    </div> */}
-    <NoticeFormPage titleHeader="ITR Notice" />
-    <section className="section-container">
-      <div className="section-header">
-        <h4>FAQ’s on Income Tax Notice</h4>
-        <hr className="taxpert-line" />
-      </div>
-      <div>
-        <Card>
-          <Space direction="vertical" className="section-faq-items">
-            <Collapse expandIconPosition={"end"} className="section-faq-item">
-              <Panel header="What to do if I get a tax notice?" key="1">
-                <p>
-                  Notices may be served enquiring any missing informaiton or
-                  supporting document required to substantiate your return or
-                  for any other reason realting to income
-                  escaping/non-disclosure of income. As suc you are required to
-                  furnish necessary details and documents ot substantiate your
-                  return or justify your income; so that you may avoid peral and
-                  prosecution proceedings.
-                </p>
-              </Panel>
-            </Collapse>
-            <Collapse expandIconPosition={"end"}>
-              <Panel
-                header="What happens if you dont respond to tax notice?"
-                key="1"
+            <Form.Item
+              label="Name"
+              name="name"
+              rules={[{ required: true, message: "This field is required" }]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              name="emailAddress"
+              label="E-mail"
+              rules={[
+                {
+                  type: "email",
+                  message: "The input is not valid E-mail!",
+                },
+                {
+                  required: true,
+                  message: "Please input your E-mail!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <React.Fragment>
+              <Form.Item
+                name="service"
+                label="Service Type"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select Service Type!",
+                  },
+                ]}
               >
-                <p>
-                  If you dont respond to the income tax notice, there can be
-                  different types of consequential proceeding depending upon the
-                  type of Notice which has been served.Such consequences include
-                  fines of up to INR 10,000 and also imprisonment.
-                </p>
-              </Panel>
-            </Collapse>
-            <Collapse expandIconPosition={"end"}>
-              <Panel
-                header="What happens if I dont respond to the notice within the time prescribed?"
-                key="1"
+                <Select placeholder="Select your Service Type">
+                  <Option value="video">Video Consultation</Option>
+                  <Option value="reply">Notice Reply</Option>
+                </Select>
+              </Form.Item>
+
+              <Form.Item
+                name="uploadNotice"
+                label="Upload Notice"
+                valuePropName="fileList"
+                getValueFromEvent={normFile}
               >
-                <p>
-                  In case you dont respond to notice within the time prescribed;
-                  the Income Tax Department will make the adjustment of refund
-                  to some outstanding demand without giving any further
-                  opportunity to respond or initiate/impose penalty as per
-                  provisons of the Income Tax Act.
-                </p>
-              </Panel>
-            </Collapse>
-          </Space>
+                <Upload
+                  beforeUpload={(file) => {
+                    // console.log(file);
+                    return false;
+                  }}
+                  multiple={false}
+                >
+                  <Button icon={<UploadOutlined />}>Click to upload</Button>
+                </Upload>
+              </Form.Item>
+              <Form.Item
+                name="uploadITR"
+                label="Upload Computation of Income & 26AS"
+                valuePropName="fileList"
+                getValueFromEvent={normFile}
+              >
+                <Upload
+                  beforeUpload={(file) => {
+                    // console.log(file);
+                    return false;
+                  }}
+                  multiple={false}
+                >
+                  <Button icon={<UploadOutlined />}>Click to upload</Button>
+                </Upload>
+              </Form.Item>
+            </React.Fragment>
+
+            <Form.Item
+              name="phone"
+              label="Phone Number"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your phone number!",
+                },
+              ]}
+            >
+              <Input
+                addonBefore={prefixSelector}
+                style={{
+                  width: "100%",
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item {...tailFormItemLayout}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
         </Card>
-      </div>
-    </section>
-  </React.Fragment>
-);
+      </section>
+
+      <section className="section-container">
+        <div className="section-header">
+          <h4>FAQ’s on Income Tax Notice</h4>
+          <hr className="taxpert-line" />
+        </div>
+        <div>
+          <Card>
+            <Space direction="vertical" className="section-faq-items">
+              <Collapse expandIconPosition={"end"} className="section-faq-item">
+                <Panel header="What to do if I get a tax notice?" key="1">
+                  <p>
+                    Notices may be served enquiring any missing informaiton or
+                    supporting document required to substantiate your return or
+                    for any other reason realting to income
+                    escaping/non-disclosure of income. As suc you are required
+                    to furnish necessary details and documents ot substantiate
+                    your return or justify your income; so that you may avoid
+                    peral and prosecution proceedings.
+                  </p>
+                </Panel>
+              </Collapse>
+              <Collapse expandIconPosition={"end"}>
+                <Panel
+                  header="What happens if you dont respond to tax notice?"
+                  key="1"
+                >
+                  <p>
+                    If you dont respond to the income tax notice, there can be
+                    different types of consequential proceeding depending upon
+                    the type of Notice which has been served.Such consequences
+                    include fines of up to INR 10,000 and also imprisonment.
+                  </p>
+                </Panel>
+              </Collapse>
+              <Collapse expandIconPosition={"end"}>
+                <Panel
+                  header="What happens if I dont respond to the notice within the time prescribed?"
+                  key="1"
+                >
+                  <p>
+                    In case you dont respond to notice within the time
+                    prescribed; the Income Tax Department will make the
+                    adjustment of refund to some outstanding demand without
+                    giving any further opportunity to respond or initiate/impose
+                    penalty as per provisons of the Income Tax Act.
+                  </p>
+                </Panel>
+              </Collapse>
+            </Space>
+          </Card>
+        </div>
+      </section>
+    </React.Fragment>
+  );
+};
 
 export default ItrNoticeService;
