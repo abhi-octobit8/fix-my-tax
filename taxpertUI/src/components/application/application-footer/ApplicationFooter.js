@@ -66,28 +66,30 @@ function ApplicationFooter() {
                 })}
               </ul>
             </div>
-            <div className="col-lg-2 col-6 footer-contact text-center text-md-start">
+            <div className="col-lg-2 col-6 footer-contact  text-md-start">
               <h4>Registered Office</h4>
 
               <p>
-                Karsathi Consultants Private Limited, Mukut Tower, 402, <br />
+                Karsathi Consultants Private Limited,
+                <br /> Mukut Tower, 402, <br />
                 Vikas Nagar, Sector - 2
                 <br />
                 Lucknow, UP - 226022
                 <br />
               </p>
             </div>
-            <div className="col-lg-2 col-6 footer-contact text-center text-md-start">
-              <h4>Corporate Office:</h4>
+            <div className="col-lg-2 col-6 footer-contact  text-md-start">
+              <h4>Corporate Office</h4>
               <p>
-                Sangam Place, U 20 & 26 <br />
-                Civil Lines
+                Sangam Place, U 20 & 26, <br />
+                Civil Lines, Prayagraj,
                 <br />
-                Prayagraj, U.P. - 211001
+                U.P. - 211001
                 <br />
-                <strong>Phone:</strong> +91 9839441144
                 <br />
-                <strong>Email:</strong> contact@fixmytax.in
+                <strong>Phone</strong> +91 9839441144
+                <br />
+                <strong>Email:</strong>contact@fixmytax.in
                 <br />
               </p>
             </div>

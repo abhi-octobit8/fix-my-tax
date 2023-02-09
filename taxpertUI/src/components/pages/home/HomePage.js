@@ -17,7 +17,7 @@ import logo1 from "../../../assets/img/banner2.png";
 import xocovoPartner from "../../../assets/img/xocovo.png";
 import smartPartner from "../../../assets/img/smartpartner.png";
 import medimaaPartner from "../../../assets/img/medimaa.png";
-import xocovoPartner1 from "../../../assets/img/xocovo.png";
+import xocovoPartner1 from "../../../assets/img/zupier.jpeg";
 import { PATH } from "../../../shared/Route";
 import useRedirectPath from "../../hooks/useRedirectPath";
 
@@ -30,9 +30,13 @@ function HomePage() {
         <div className="container" data-aos="fade-up">
           <div className="row ">
             <div className="col-lg-6 banner-section-content ">
-              <h2> We will manage your Taxes, you enojoy Life.</h2>
+              <h2> We will manage your taxes, you enojoy life.</h2>
 
-              <Button type="primary" className="button-style-middle">
+              <Button
+                type="primary"
+                className="button-style-middle"
+                onClick={() => navigator.goTo(PATH.ITR_NOTICE_PATH)}
+              >
                 Start Here
               </Button>
             </div>
@@ -85,9 +89,11 @@ function HomePage() {
             <Button
               className="button-style"
               type="primary"
-              onClick={() => navigator.goTo(PATH.SERVICE_COSULTATION)}
+              onClick={() => navigator.goTo(PATH.SERVICE_FILING)}
             >
-              FILING ITR/TCS
+              Filing
+              <br />
+              ITR/TCS/TDS
             </Button>
           </Col>
         </Row>
@@ -194,13 +200,20 @@ function HomePage() {
               <div className="heading">
                 <span>fixmytax</span>
               </div>
-              <h3>Best Tax expert website in India</h3>
+              {/* <h3>Best Tax expert website in India</h3> */}
               <p>
-                Cras fermentum odio eu feugiat lide par naso tierra. Justo eget
-                nada terra videa magna derita valies darta donna mare fermentum
-                iaculis eu non diam phasellus.
+                We are a strong team of experts with vide experience in the
+                field of taxation and consulting. Armed with latest technology
+                we have established “fixmytax.in” a portal where our expert
+                services are available round the clock for our clients. We aim
+                to provide expert advice not only to individuals but also to
+                professionals from taxation and accountancy field like CA’s, CS,
+                Accountants, Government Consultants etc. Armed with technology,
+                we as a team are updated, experienced and available to our
+                clients 24*7 to address all matters related to notices for both
+                direct as well as indirect tax related matters.
               </p>
-              <Button type="primary">Read More</Button>
+              {/* <Button type="primary">Read More</Button> */}
             </div>
             <div className="right">
               <ul>
@@ -218,7 +231,7 @@ function HomePage() {
                 </li>
                 <li>
                   <AuthorizedIcon className={"icon"} />
-                  Authorized by Income Tax Department
+                  Registered with DPIIT & Start in UP
                 </li>
               </ul>
             </div>
@@ -229,7 +242,7 @@ function HomePage() {
         <div className="section-header">
           <h1>Testimonial</h1>
           <hr className="taxpert-line" />
-          <h4>Read What our Customer Say</h4>
+          <h4>Read What Our Customers Say</h4>
         </div>
         <div class="video-section">
           <div class="videos first-video">

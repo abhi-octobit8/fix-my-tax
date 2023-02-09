@@ -84,7 +84,8 @@ const ConsultationNotice = () => {
               <div className="service-banner-title">Consultation</div>
               All matters related to direct/indirect tax filing, TDS/TCS filing
               and claim, enetrprise setup, consultancy on tax management for
-              individuals and businesses. Other taxation related queries doubts.
+              individuals and businesses.
+              <br /> Other taxation related queries & doubts.
             </div>
           </div>
         </div>
