@@ -4,7 +4,7 @@ import { StarOutlined, StarFilled } from "@ant-design/icons";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
 import card3 from "../../../assets/img/card3.svg";
-import about from "../../../assets/img/about.png";
+import about from "../../../assets/img/about.jpeg";
 
 import "./HomePage.css";
 import {
@@ -96,27 +96,21 @@ function HomePage() {
       {/* about section */}
 
       <Row className="about-company-section">
-        <Col
-          xs={24}
-          md={12}
-          lg={12}
-          sm={24}
-          className="about-company-container"
-        >
+        <Col xs={24} md={8} lg={8} sm={24} className="about-company-container">
           <h1>About our Company</h1>
           <p className="about-company-content">
             Our team comprises of CMA's, CA's, Taxation Lawyers and subject
             experts available 24*7 to resolve taxation related queries.
           </p>
         </Col>
-        <Col xs={24} md={12} lg={12} sm={24}>
+        <Col xs={24} md={16} lg={16} sm={24}>
           <span>
             <img
               className="cover"
               src={about}
               alt="about-image"
               width="100%"
-              height="500px"
+              height="400px"
             />
           </span>
         </Col>

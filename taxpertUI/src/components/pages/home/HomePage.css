@@ -50,7 +50,7 @@
 /* about company section */
 .about-company-section{
   text-align: end;
-  background-color: #ececec;
+
 }
  .about-company-container{
   display: flex; 
@@ -58,6 +58,7 @@
    align-items: center;
    justify-content: center;
    text-align: center;
+   background-color: #ececec;
 
 }
 .about-company-container .about-company-content{
