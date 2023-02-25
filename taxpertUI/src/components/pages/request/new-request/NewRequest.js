@@ -1,12 +1,9 @@
 import React from "react";
 import { Button, Card, Col, Row, Table } from "antd";
 import { useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import { PlusOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
-// import { getNewRequest } from "../../../../services/request.service";
-import { useNavigate } from "react-router-dom";
-import { PATH } from "../../../../shared/Route";
 import { getAllTickets } from "../../../../services/ticket.service";
 import { DATE_FORMATS, getLocalTime } from "../../../../shared/timeUtils";
 

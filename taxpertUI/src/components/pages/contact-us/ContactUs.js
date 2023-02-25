@@ -1,16 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Form,
-  Input,
-  Select,
-  Card,
-  Upload,
-  Collapse,
-  Space,
-  Row,
-  Col,
-} from "antd";
+import { Button, Form, Input, Select, Upload, Row, Col } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./ContactUs.css";
 import TextArea from "antd/lib/input/TextArea";

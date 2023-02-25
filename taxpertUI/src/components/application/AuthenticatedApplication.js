@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AboutPage from "../pages/about/AboutPage";
 import HomePage from "../pages/home/HomePage";
@@ -8,7 +7,6 @@ import AccountLayout from "../pages/request/account-layout/AccountLayout";
 import NewRequest from "../pages/request/new-request/NewRequest";
 import PendingRequest from "../pages/request/pending-request/PendingRequest";
 import Login from "../pages/login/Login";
-// import ServicePage from "../pages/services/ServicePage";
 import ContactUs from "../pages/contact-us/ContactUs";
 import TnC from "../pages/tnc/TnC";
 import ItrNoticeService from "../pages/services/itr-notice/ItrNoticeService";
@@ -24,6 +22,7 @@ import LatestNewsPage from "../pages/latest-news/LatestNewsPage";
 import AdminLayout from "../pages/admin/admin-layout/AdminLayout";
 import UserComponent from "../pages/admin/user/User";
 import DashBoard from "../pages/admin/dahboard/DashBoard";
+
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
     (state) => state.authentication.userSession

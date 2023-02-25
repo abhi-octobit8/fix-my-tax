@@ -25,7 +25,7 @@ function ApplicationMenu() {
   const [items, setItems] = useState(data);
   useEffect(() => {
     setItems(data);
-  }, [userData]);
+  }, [userData, data]);
   const menuItems = items.map((item) => {
     if (Array.isArray(item.children)) {
       return {

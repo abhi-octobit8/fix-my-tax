@@ -13,7 +13,6 @@ import {
 import { UploadOutlined } from "@ant-design/icons";
 import "./ItrNotice.css";
 import { registerNotice } from "../../../../services/register.service";
-import { NOTICE_TYPE } from "../constant";
 const { Option } = Select;
 const { Panel } = Collapse;
 
@@ -58,25 +57,6 @@ const ItrNoticeService = (props) => {
   const titleHeader = "Notice";
   const [form] = Form.useForm();
   const onFinish = async (values) => {
-    console.log("registration values:", values);
-    debugger;
-    // const registerData = {
-    //   values,
-    //   isActive: true,
-    //   roleNames: ["string"],
-    // };
-    const formData = {
-      noticeType: NOTICE_TYPE.ITR_NOTICE,
-      name: values.name,
-      email: values.email,
-      phoneNumber: values.phoneNumber,
-      noticeQuestion: values.service,
-    };
-    // "name": "string",
-    // "email": "user@example.com",
-    // "phoneNumber": "stringstri",
-    // "noticeQuestion": "string",
-    // "noticeType": 1
     const data = await registerNotice(values);
     console.log(data);
     debugger;
@@ -174,7 +154,7 @@ const ItrNoticeService = (props) => {
               <Form.Item noStyle shouldUpdate>
                 {({ getFieldValue }) => {
                   const value = getFieldValue("service");
-                  if (value == "video") {
+                  if (value === "video") {
                     return (
                       <Form.Item
                         name="date-time-picker"

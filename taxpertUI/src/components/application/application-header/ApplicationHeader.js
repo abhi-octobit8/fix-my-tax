@@ -1,25 +1,15 @@
-import { Button, Col, Menu, Row } from "antd";
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-// import { doLogout } from "../../../store/authentication/AuthActions";
+import { Col, Row } from "antd";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import ApplicationMenu from "../application-menu/ApplicationMenu";
 import logo1 from "../../../assets/img/new_updated_logo.PNG";
-import { MenuOutlined } from "@ant-design/icons";
 import "./ApplicationHeader.css";
 import ApplicationUserMenu from "../application-user-menu/ApplicationUserMenu";
-import { Content, Header } from "antd/lib/layout/layout";
-import Title from "antd/lib/typography/Title";
+import { Header } from "antd/lib/layout/layout";
 
 const displayName = "ApplicationHeader";
 
 function ApplicationHeader() {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    // doLogout();
-  };
-  const gotoPage = (page) => {
-    //GO TO MENU ITEM PAGE
-  };
   return (
     <>
       <Row justify="center" className="application-header">
