@@ -79,7 +79,7 @@ export const checkLogin = async (userId) => {
   try {
     const userInfo = await API({
       method: "get",
-      url: `services/app/User/Get?Id=${userId}`,
+      url: `services/app/User/Get?Id=1`,
     });
     dispatch({
       type: AUTH_ACTIONS.SET_USER,
@@ -90,6 +90,7 @@ export const checkLogin = async (userId) => {
     throw e;
   }
 };
+
 export const doLogin = (apiResponse) => {
   const { accessToken, userId } = apiResponse;
   setItem("accessToken", accessToken);

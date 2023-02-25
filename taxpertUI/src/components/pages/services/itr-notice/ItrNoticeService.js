@@ -8,9 +8,12 @@ import {
   Upload,
   Collapse,
   Space,
+  DatePicker,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./ItrNotice.css";
+import { registerNotice } from "../../../../services/register.service";
+import { NOTICE_TYPE } from "../constant";
 const { Option } = Select;
 const { Panel } = Collapse;
 
@@ -62,6 +65,21 @@ const ItrNoticeService = (props) => {
     //   isActive: true,
     //   roleNames: ["string"],
     // };
+    const formData = {
+      noticeType: NOTICE_TYPE.ITR_NOTICE,
+      name: values.name,
+      email: values.email,
+      phoneNumber: values.phoneNumber,
+      noticeQuestion: values.service,
+    };
+    // "name": "string",
+    // "email": "user@example.com",
+    // "phoneNumber": "stringstri",
+    // "noticeQuestion": "string",
+    // "noticeType": 1
+    const data = await registerNotice(values);
+    console.log(data);
+    debugger;
   };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
@@ -120,7 +138,7 @@ const ItrNoticeService = (props) => {
             </Form.Item>
 
             <Form.Item
-              name="emailAddress"
+              name="email"
               label="E-mail"
               rules={[
                 {
@@ -151,6 +169,29 @@ const ItrNoticeService = (props) => {
                   <Option value="video">Video Consultation</Option>
                   <Option value="reply">Notice Reply</Option>
                 </Select>
+              </Form.Item>
+
+              <Form.Item noStyle shouldUpdate>
+                {({ getFieldValue }) => {
+                  const value = getFieldValue("service");
+                  if (value == "video") {
+                    return (
+                      <Form.Item
+                        name="date-time-picker"
+                        label="select Time"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please select Date!",
+                          },
+                        ]}
+                      >
+                        <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />
+                      </Form.Item>
+                    );
+                  }
+                  return null;
+                }}
               </Form.Item>
 
               <Form.Item
@@ -188,7 +229,7 @@ const ItrNoticeService = (props) => {
             </React.Fragment>
 
             <Form.Item
-              name="phone"
+              name="phoneNumber"
               label="Phone Number"
               rules={[
                 {

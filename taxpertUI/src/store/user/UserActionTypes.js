@@ -1,0 +1,3 @@
+export const USER_ACTIONS = {
+  GET_ALL_USER_SUCCESS: "GET_ALL_USER_SUCCESS",
+};

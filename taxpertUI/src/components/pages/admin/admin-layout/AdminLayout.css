@@ -1,0 +1,9 @@
+.account-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.explorer-layout-content {
+  margin: 16px;
+  min-height: 70vh;
+}

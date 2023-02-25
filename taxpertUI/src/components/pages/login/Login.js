@@ -5,6 +5,7 @@ import { Button, Card, Col, Form, Input, Row } from "antd";
 import "./Login.less";
 import API from "../../../shared/API";
 import { checkLogin, doLogin } from "../../../store/authentication/AuthActions";
+import { isTenantAvailable } from "../../../services/auth.service";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -19,9 +20,14 @@ const Login = (props) => {
       userNameOrEmailAddress: values.username,
       password: values.password,
     };
+    // const checkTenantAvaialable = await isTenantAvailable();
+    debugger;
     const loginResponse = await API({
       method: "post",
       url: "/TokenAuth/Authenticate",
+      // headers: {
+      //   "abp.tenantid": checkTenantAvaialable.tenantId,
+      // },
       body: loginData,
     });
     doLogin({ ...loginResponse });

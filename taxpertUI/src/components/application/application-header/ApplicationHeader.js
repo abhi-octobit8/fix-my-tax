@@ -29,12 +29,12 @@ function ApplicationHeader() {
               <Col xl={3} lg={3} md={3} sm={20} xs={20}>
                 <img src={logo1} alt="text" height={80} width={100} />
               </Col>
-              <Col xl={21} lg={21} md={21} sm={4} xs={4}>
+              <Col xl={19} lg={19} md={19} sm={4} xs={4}>
                 <ApplicationMenu />
               </Col>
-              {/* <Col xl={2} lg={2} md={2} sm={2} xs={2}>
+              <Col xl={2} lg={2} md={2} sm={2} xs={2}>
                 <ApplicationUserMenu />
-              </Col> */}
+              </Col>
             </Row>
           </Header>
         </Col>

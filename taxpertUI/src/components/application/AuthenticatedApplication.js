@@ -21,6 +21,9 @@ import { PATH } from "../../shared/Route";
 import ConsultationNotice from "../pages/services/consultation-notice/ConsultationNotice";
 import FilingNotice from "../pages/services/filing-notice/FilingNotice";
 import LatestNewsPage from "../pages/latest-news/LatestNewsPage";
+import AdminLayout from "../pages/admin/admin-layout/AdminLayout";
+import UserComponent from "../pages/admin/user/User";
+import DashBoard from "../pages/admin/dahboard/DashBoard";
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
     (state) => state.authentication.userSession
@@ -55,6 +58,10 @@ function AuthenticatedApplication() {
           <Route element={<NewRequest />} path="newrequest" />
           <Route element={<CreateRequestPage />} path="newrequest/create" />
           <Route element={<PendingRequest />} exact path="pendingrequest" />
+        </Route>
+        <Route element={<AdminLayout />} path="admin">
+          <Route element={<DashBoard />} path="dashboard" />
+          <Route element={<UserComponent />} path="user" />
         </Route>
         <Route path="*" element={<HomePage />} />
       </Routes>
