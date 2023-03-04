@@ -248,6 +248,7 @@ function HomePage() {
         <div class="video-section">
           <div class="videos first-video">
             <iframe
+              title="video"
               width="100%"
               height="100%"
               frameborder="0"
@@ -257,6 +258,7 @@ function HomePage() {
 
           <div class="videos second-video">
             <iframe
+              title="video"
               width="100%"
               height="100%"
               frameborder="0"

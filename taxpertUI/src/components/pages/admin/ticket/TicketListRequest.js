@@ -4,15 +4,26 @@ import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
-import { getAllUsers } from "../../../../services/user.service";
+import { getAllEmployer } from "../../../../services/employer.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
+import { useState } from "react";
+import AssignTicket from "./AssignTicket";
 
-const UserComponent = () => {
-  const requestList = useSelector((state) => state.user?.userListData);
+const TicketListRequest = () => {
+  const [isModelOpen, setIsModelOpen] = useState(false);
+  const requestList = useSelector((state) => state.employer?.employerListData);
   React.useEffect(() => {
     (async () => {
-      await getAllUsers();
+      await getAllEmployer();
     })();
+  }, []);
+
+  const onHandleAssignTicket = React.useCallback((formValues) => {
+    setIsModelOpen(true);
+  }, []);
+
+  const OnHandleCancel = React.useCallback((formValues) => {
+    setIsModelOpen(false);
   }, []);
   const columns = [
     {
@@ -53,10 +64,13 @@ const UserComponent = () => {
       dataIndex: "productId",
       fixed: "right",
       align: "center",
-      width: 60,
+      width: 160,
       render: (productId) => {
         return (
           <Space>
+            <Button type="default" onClick={onHandleAssignTicket}>
+              Assign
+            </Button>
             <DeleteOutlined title="Delete" style={{ color: "red" }} />
           </Space>
         );
@@ -64,30 +78,28 @@ const UserComponent = () => {
     },
   ];
   return (
-    <Card>
-      <ListHeader
-        leftContent={<h2>User</h2>}
-        rightContent={
-          <Button type="primary" shape="circle" icon={<PlusOutlined />} />
-        }
-      ></ListHeader>
-      <Row>
-        <Col sm={{ span: 10, offset: 0 }}></Col>
-      </Row>
-      <Row style={{ marginTop: 20 }}>
-        <Col
-          xs={{ span: 24, offset: 0 }}
-          sm={{ span: 24, offset: 0 }}
-          md={{ span: 24, offset: 0 }}
-          lg={{ span: 24, offset: 0 }}
-          xl={{ span: 24, offset: 0 }}
-          xxl={{ span: 24, offset: 0 }}
-        >
-          <FixMyTaxTable columns={columns} dataSource={requestList} />
-        </Col>
-      </Row>
-    </Card>
+    <React.Fragment>
+      <Card>
+        <ListHeader leftContent={<h2>All Request</h2>}></ListHeader>
+        <Row>
+          <Col sm={{ span: 10, offset: 0 }}></Col>
+        </Row>
+        <Row style={{ marginTop: 20 }}>
+          <Col
+            xs={{ span: 24, offset: 0 }}
+            sm={{ span: 24, offset: 0 }}
+            md={{ span: 24, offset: 0 }}
+            lg={{ span: 24, offset: 0 }}
+            xl={{ span: 24, offset: 0 }}
+            xxl={{ span: 24, offset: 0 }}
+          >
+            <FixMyTaxTable columns={columns} dataSource={requestList} />
+          </Col>
+        </Row>
+      </Card>
+      <AssignTicket open={isModelOpen} onClose={OnHandleCancel} />
+    </React.Fragment>
   );
 };
 
-export default UserComponent;
+export default TicketListRequest;

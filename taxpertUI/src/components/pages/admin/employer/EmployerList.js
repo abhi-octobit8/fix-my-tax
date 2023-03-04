@@ -4,14 +4,14 @@ import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
-import { getAllUsers } from "../../../../services/user.service";
+import { getAllEmployer } from "../../../../services/employer.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 
-const UserComponent = () => {
-  const requestList = useSelector((state) => state.user?.userListData);
+const EmployerList = () => {
+  const requestList = useSelector((state) => state.employer?.employerListData);
   React.useEffect(() => {
     (async () => {
-      await getAllUsers();
+      await getAllEmployer();
     })();
   }, []);
   const columns = [
@@ -66,7 +66,7 @@ const UserComponent = () => {
   return (
     <Card>
       <ListHeader
-        leftContent={<h2>User</h2>}
+        leftContent={<h2>Employer</h2>}
         rightContent={
           <Button type="primary" shape="circle" icon={<PlusOutlined />} />
         }
@@ -90,4 +90,4 @@ const UserComponent = () => {
   );
 };
 
-export default UserComponent;
+export default EmployerList;

@@ -122,7 +122,6 @@ const MENU_ITEMS = [
   // },
 ];
 function getMenuItems(collection, userData) {
-  debugger;
   let isAuthorized = false;
   // if (userData != null) {
   //   isAuthorized = true;

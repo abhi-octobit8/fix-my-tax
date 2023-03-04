@@ -22,6 +22,8 @@ import LatestNewsPage from "../pages/latest-news/LatestNewsPage";
 import AdminLayout from "../pages/admin/admin-layout/AdminLayout";
 import UserComponent from "../pages/admin/user/User";
 import DashBoard from "../pages/admin/dahboard/DashBoard";
+import EmployerList from "../pages/admin/employer/EmployerList";
+import TicketListRequest from "../pages/admin/ticket/TicketListRequest";
 
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
@@ -61,6 +63,8 @@ function AuthenticatedApplication() {
         <Route element={<AdminLayout />} path="admin">
           <Route element={<DashBoard />} path="dashboard" />
           <Route element={<UserComponent />} path="user" />
+          <Route element={<EmployerList />} path="employer" />
+          <Route element={<TicketListRequest />} path="requests" />
         </Route>
         <Route path="*" element={<HomePage />} />
       </Routes>

@@ -43,7 +43,7 @@ const NewRequest = () => {
   };
   React.useEffect(() => {
     (async () => {
-      const data = await getAllTickets();
+      await getAllTickets();
     })();
   }, []);
   const createRequest = () => {
