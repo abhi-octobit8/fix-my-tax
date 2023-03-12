@@ -154,23 +154,184 @@ export const fixMytaxServicesInfo = {
       subSections: null,
       description:
         "Notice issued for further information / clarification in response to application for new registration or amendment of GST registration certificate.",
-      price: "",
-      documents: ["ITR", "Form16", "FORM26AS"],
+      dcouments: [],
+      price: 1100,
+    },
+    "GST REG-17": {
+      subSections: null,
+      description:
+        "Show Cause Notice as to why GST registration be not be cancelled.",
+      dcouments: [],
+      price: 2100,
+    },
+    "GST REG-23": {
+      subSections: null,
+      description:
+        "Show Cause Notice as to why registration of GST cancellation be revoked.",
+      dcouments: [],
+      price: 2100,
+    },
+    "GST REG-27": {
+      subSections: null,
+      description:
+        "Notice where application for provisional registration has not been made for migration into GST from VAT regime or incomplete details have been provided.",
+      dcouments: [],
+      price: 1100,
+    },
+    "GST GSTR-3A": {
+      subSections: null,
+      description:
+        "Notice to assessee who are default for not filing GST Returns in GSTR-1 or GSTR-3B or GSTR-4 or GSTR-8.",
+      dcouments: [],
+      price: 2100,
+    },
+    "GST CMP-05": {
+      subSections: null,
+      description:
+        "Show Cause Notice for eligibility to be a composition dealer.",
+      dcouments: [],
+      price: 2100,
+    },
+    "GST PCT-03": {
+      subSections: null,
+      description: "Show Cause Notice for misconduct by GST practitioner.",
+      dcouments: [],
+      price: 2100,
+    },
+    "GST RFD-08": {
+      subSections: null,
+      description: "Show Cause Notice on rejection of GST refund made.",
+      dcouments: [],
+      price: 5100,
+    },
+    "GST ASMT-02": {
+      subSections: null,
+      description:
+        "Clarification / Additional documents required for provisional assessment.",
+      dcouments: [],
+      price: 5100,
+    },
+    "GST ASMT-06": {
+      subSections: null,
+      description:
+        "Clarification / Additional documents required for final assessment.",
+      dcouments: [],
+      price: 11000,
+    },
+    "GST ASMT-10": {
+      subSections: null,
+      description:
+        "For intimation of discrepancies in the GST Return after scrutiny.",
+      dcouments: [],
+      price: 21000,
+    },
+    "GST ASMT-14": {
+      subSections: null,
+      description:
+        "Show Cause Notice under Section 63 for Best Judgment Assessment.",
+      dcouments: [],
+      price: 7100,
+    },
+    "GST ADT-01": {
+      subSections: null,
+      description:
+        "Notice from the Authorities for conducting Audit under Section 65.",
+      dcouments: [],
+      price: 7100,
+    },
+    "GST RVN-01": {
+      subSections: null,
+      description:
+        "Notice under Section 108 issued by the Revisional Authority in case of Revision.",
+      dcouments: [],
+      price: 5100,
+    },
+    "GST DRC-01": {
+      subSections: null,
+      description: "Show Cause Notice for tax demanded in GST DRC-02.",
+      dcouments: [],
+      price: 2100,
+    },
+    "GST DRC-10": {
+      subSections: null,
+      description: "	Notice for auction of Goods under Section 79(1)(b).",
+      dcouments: [],
+      price: 21000,
+    },
+    "GST DRC-11": {
+      subSections: null,
+      description: "Notice to the successful bidder.",
+      dcouments: [],
+      price: 5100,
+    },
+    "GST DRC-13": {
+      subSections: null,
+      description:
+        "Notice under Section 79(1)(c) to the third person directing to deposit the amount specified.",
+      dcouments: [],
+      price: 5100,
+    },
+    "GST DRC-16": {
+      subSections: null,
+      description:
+        "Notice under Section 79 for attachment and sale of movable / immovable goods & shares.",
+      dcouments: [],
+      price: 21000,
     },
   },
   consultation: {},
   filing: {
     "ITR-1": {
+      subSections: null,
       description:
         "Salaried Employee / Pensioner with Income from Other Sources",
       dcouments: [],
-      price: "",
+      price: 1100,
     },
     "ITR-2": {
+      subSections: null,
       description:
         "Salaried Employee / Pensioner with Income from Other Sources and House Property Income",
       dcouments: [],
-      price: "",
+      price: 1500,
+    },
+
+    "ITR-3": {
+      subSections: null,
+      description:
+        "Salaried Employee / Pensioner with Income from Other Sources, House Property Income & Capital Gain other than Shares",
+      dcouments: [],
+      price: 2100,
+    },
+
+    "ITR-4": {
+      subSections: null,
+      description:
+        "Assessee with Professional Income and Income from Other Sources",
+      dcouments: [],
+      price: 1500,
+    },
+    "ITR-5": {
+      subSections: null,
+      description:
+        "Assessee with Professional Income as well as House Property and Income from Other Sources",
+      dcouments: [],
+      price: 2100,
+    },
+
+    "ITR-6": {
+      subSections: null,
+      description:
+        "Assessee with Business Income as well as House Property and Income from Other Sources",
+      dcouments: [],
+      price: 5100,
+    },
+    "ITR-7": {
+      subSections: null,
+      description:
+        "NGOs / SOCIETIES / TRUST / CHARITABLE COMPANIES WITH INCOME TAX EXEMPTION APPROVAL",
+      dcouments: [],
+      price: 7100,
     },
   },
 };

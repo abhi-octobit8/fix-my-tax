@@ -11,8 +11,9 @@ import {
   Space,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { FIELD_NAME, fillingNoticeData } from "./constant";
+import { FIELD_NAME } from "./constant";
 import { useState } from "react";
+import { fixMytaxServicesInfo } from "../constant";
 const { Panel } = Collapse;
 const { Option } = Select;
 
@@ -55,7 +56,7 @@ const normFile = (e) => {
 };
 
 const FilingNotice = () => {
-  const { data } = fillingNoticeData;
+  const { filing } = fixMytaxServicesInfo;
   const titleHeader = "Filing ITR/TCS/TDS";
   const [form] = Form.useForm();
   const [optionData, setOptionData] = useState({
@@ -66,7 +67,7 @@ const FilingNotice = () => {
   React.useEffect(() => {
     setOptionData((prevState) => ({
       ...prevState,
-      sectionList: Object.keys(data),
+      sectionList: Object.keys(filing),
     }));
   }, []);
 
@@ -83,7 +84,7 @@ const FilingNotice = () => {
     console.log(value);
     if (value) {
       // const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
-      const priceValue = data[value].price;
+      const priceValue = filing[value].price;
       // setOptionData((prevState) => ({
       //   ...prevState,
       // }));
