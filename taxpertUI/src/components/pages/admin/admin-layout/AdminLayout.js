@@ -10,8 +10,6 @@ import { Content } from "antd/lib/layout/layout";
 const displayName = "AdminLayout";
 
 function AdminLayout(props) {
-  const { children } = props;
-
   return (
     <Layout className="account-layout">
       <Sider width={200}>

@@ -57,7 +57,7 @@ const ConsultationNotice = () => {
   const [form] = Form.useForm();
   const onFinish = async (values) => {
     console.log("registration values:", values);
-    debugger;
+    // debugger;
     // const registerData = {
     //   values,
     //   isActive: true,
@@ -91,7 +91,7 @@ const ConsultationNotice = () => {
         </div>
       </section>
       <section className="section-consultation-card">
-        <Card className="card-container" bordered={true}>
+        <Card bordered={true}>
           <div className="Card-header-title">
             <h1>{titleHeader}</h1>
           </div>

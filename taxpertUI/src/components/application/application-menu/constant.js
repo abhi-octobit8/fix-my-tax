@@ -99,20 +99,20 @@ const MENU_ITEMS = [
     ],
   },
   {
-    label: "Admin Account",
+    label: "Account",
     role: USER_ROLE.ADMIN,
-    to: "/request/newrequest",
+    to: "/admin/dashboard",
     children: [
       {
         label: "DashBoard",
         role: USER_ROLE.ADMIN,
         to: "/admin/dashboard",
       },
-      {
-        label: "Pending Request",
-        role: USER_ROLE.ADMIN,
-        to: "/admin/user",
-      },
+      // {
+      //   label: "Pending Request",
+      //   role: USER_ROLE.ADMIN,
+      //   to: "/admin/user",
+      // },
     ],
   },
   // {

@@ -142,16 +142,16 @@ const handle401Error = async ({ apiData, exception }) => {
       accessToken: getJSONItem(ACCESS_TOKEN),
       refreshToken: getItem(REFRESH_TOKEN),
     };
-    const { access: accessToken, refresh: refreshToken } = await API({
-      url: "/refreshToken",
-      hideErrorMessage: true,
-      headers: {
-        refreshToken: oldRefreshToken,
-        Authorization: `Bearer ${oldAccessToken}`,
-      },
-    });
-    setItem(ACCESS_TOKEN, accessToken);
-    setItem(REFRESH_TOKEN, refreshToken);
+    // const { access: accessToken, refresh: refreshToken } = await API({
+    //   url: "/refreshToken",
+    //   hideErrorMessage: true,
+    //   headers: {
+    //     refreshToken: oldRefreshToken,
+    //     Authorization: `Bearer ${oldAccessToken}`,
+    //   },
+    // });
+    // setItem(ACCESS_TOKEN, accessToken);
+    // setItem(REFRESH_TOKEN, refreshToken);
     if (apiData.throwErrorOnTokenTimeout) {
       exception.reason = "resetRefreshToken";
       throw exception;
@@ -180,7 +180,7 @@ const handleError = async ({ exception, url, apiData, hideErrorMessage }) => {
     url !== "/refreshToken"
   ) {
     try {
-      return await handle401Error({ apiData, exception });
+      // return await handle401Error({ apiData, exception });
     } catch (e) {
       showMessage({
         message: exception.message || "Something went wrong.",

@@ -5,7 +5,7 @@ export const getAllUsers = async (id) => {
   const res = await API({
     url: `/services/app/User/GetAll`,
   });
-  debugger;
+  // debugger;
   setUserListData(res.items);
   return res.items;
 };

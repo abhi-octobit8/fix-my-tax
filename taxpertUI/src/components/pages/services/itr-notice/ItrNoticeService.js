@@ -77,7 +77,7 @@ const ItrNoticeService = (props) => {
   const onFinish = async (values) => {
     const data = await registerNotice(values);
     console.log(data);
-    debugger;
+    // debugger;
   };
 
   const onHandleSection = (value) => {

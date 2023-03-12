@@ -21,7 +21,7 @@ const Login = (props) => {
       password: values.password,
     };
     // const checkTenantAvaialable = await isTenantAvailable();
-    debugger;
+    // debugger;
     const loginResponse = await API({
       method: "post",
       url: "/TokenAuth/Authenticate",

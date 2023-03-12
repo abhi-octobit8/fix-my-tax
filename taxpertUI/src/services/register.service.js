@@ -19,7 +19,7 @@ export const registerNotice = async (values) => {
     noticeQuestion: values.service,
   };
   console.log(values);
-  debugger;
+  // debugger;
   const registerResponse = await API({
     method: "post",
     url: "services/app/RegisterService/Create",

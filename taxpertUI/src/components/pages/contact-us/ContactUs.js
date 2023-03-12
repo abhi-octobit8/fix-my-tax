@@ -45,12 +45,6 @@ const ContactUs = () => {
   const [form] = Form.useForm();
   const onFinish = async (values) => {
     console.log("registration values:", values);
-    debugger;
-    // const registerData = {
-    //   values,
-    //   isActive: true,
-    //   roleNames: ["string"],
-    // };
   };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>

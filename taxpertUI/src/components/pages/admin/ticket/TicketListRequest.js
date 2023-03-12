@@ -4,12 +4,15 @@ import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
+import useRedirectPath from "../../../hooks/useRedirectPath";
 import { getAllEmployer } from "../../../../services/employer.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import { useState } from "react";
 import AssignTicket from "./AssignTicket";
+import { PATH } from "../../../../shared/Route";
 
 const TicketListRequest = () => {
+  const navigator = useRedirectPath();
   const [isModelOpen, setIsModelOpen] = useState(false);
   const requestList = useSelector((state) => state.employer?.employerListData);
   React.useEffect(() => {
@@ -67,7 +70,7 @@ const TicketListRequest = () => {
       width: 160,
       render: (productId) => {
         return (
-          <Space>
+          <Space onClick={(event) => event.stopPropagation()}>
             <Button type="default" onClick={onHandleAssignTicket}>
               Assign
             </Button>
@@ -77,6 +80,15 @@ const TicketListRequest = () => {
       },
     },
   ];
+
+  const onRowClick = (record) => {
+    return {
+      onClick: (e) => {
+        navigator.goTo(`/admin/requests/details/${record.id}`);
+      },
+    };
+  };
+
   return (
     <React.Fragment>
       <Card>
@@ -93,7 +105,11 @@ const TicketListRequest = () => {
             xl={{ span: 24, offset: 0 }}
             xxl={{ span: 24, offset: 0 }}
           >
-            <FixMyTaxTable columns={columns} dataSource={requestList} />
+            <FixMyTaxTable
+              columns={columns}
+              dataSource={requestList}
+              onRow={(record) => onRowClick(record)}
+            />
           </Col>
         </Row>
       </Card>

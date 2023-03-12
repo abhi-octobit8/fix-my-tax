@@ -14,7 +14,7 @@ import GstNoticeService from "../pages/services/gst-notice/GstNoticeService";
 import RegisterPage from "../pages/register/RegisterPage";
 import { checkLogin } from "../../store/authentication/AuthActions";
 import { useSelector } from "react-redux";
-import CreateRequestPage from "../pages/request/new-request/create-request/CreateRequestPage";
+// import CreateRequestPage from "../pages/request/new-request/create-request/CreateRequestPage";
 import { PATH } from "../../shared/Route";
 import ConsultationNotice from "../pages/services/consultation-notice/ConsultationNotice";
 import FilingNotice from "../pages/services/filing-notice/FilingNotice";
@@ -24,7 +24,13 @@ import UserComponent from "../pages/admin/user/User";
 import DashBoard from "../pages/admin/dahboard/DashBoard";
 import EmployerList from "../pages/admin/employer/EmployerList";
 import TicketListRequest from "../pages/admin/ticket/TicketListRequest";
-
+import UserRouter from "../pages/admin/user/UserRouter";
+import EmployerRoutes from "../pages/admin/employer/EmployerRoutes";
+import TicketRoutes from "../pages/admin/ticket/TicketRoutes";
+// React.lazy(() =>
+//       import(
+//         /* webpackChunkName: "product-module" */ "./modules/product/ProductRoutes.js"
+//       )
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
     (state) => state.authentication.userSession
@@ -55,16 +61,19 @@ function AuthenticatedApplication() {
         <Route path="tnc" element={<TnC />} />
         <Route path="register" element={<RegisterPage />} />
 
-        <Route element={<AccountLayout />} path="request">
+        {/* <Route element={<AccountLayout />} path="request">
           <Route element={<NewRequest />} path="newrequest" />
           <Route element={<CreateRequestPage />} path="newrequest/create" />
           <Route element={<PendingRequest />} exact path="pendingrequest" />
-        </Route>
+        </Route> */}
         <Route element={<AdminLayout />} path="admin">
           <Route element={<DashBoard />} path="dashboard" />
-          <Route element={<UserComponent />} path="user" />
-          <Route element={<EmployerList />} path="employer" />
-          <Route element={<TicketListRequest />} path="requests" />
+
+          <Route element={<UserRouter />} path="user/*" />
+
+          <Route element={<EmployerRoutes />} path="employer/*" />
+          {/* <Route element={<EmployerList />} path="employer" /> */}
+          <Route element={<TicketRoutes />} path="requests/*" />
         </Route>
         <Route path="*" element={<HomePage />} />
       </Routes>

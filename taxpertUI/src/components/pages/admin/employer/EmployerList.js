@@ -6,8 +6,11 @@ import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
 import { getAllEmployer } from "../../../../services/employer.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
+import { PATH } from "../../../../shared/Route";
+import useRedirectPath from "../../../hooks/useRedirectPath";
 
 const EmployerList = () => {
+  const navigator = useRedirectPath();
   const requestList = useSelector((state) => state.employer?.employerListData);
   React.useEffect(() => {
     (async () => {
@@ -68,7 +71,12 @@ const EmployerList = () => {
       <ListHeader
         leftContent={<h2>Employer</h2>}
         rightContent={
-          <Button type="primary" shape="circle" icon={<PlusOutlined />} />
+          <Button
+            type="primary"
+            shape="circle"
+            onClick={() => navigator.goTo(PATH.CREATE_EMPLOYER)}
+            icon={<PlusOutlined />}
+          />
         }
       ></ListHeader>
       <Row>

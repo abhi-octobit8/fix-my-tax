@@ -9,6 +9,9 @@ const PATH = {
   LATEST_NEWS: "/latest-news",
   CONTACT_US: "/contact",
   REGISTER: "/register",
+  CREATE_USER: "/admin/user/create",
+  CREATE_EMPLOYER: "/admin/employer/create",
+  TICKET_DETAILS: "admin/requests/details/:id",
 };
 
 export { PATH };

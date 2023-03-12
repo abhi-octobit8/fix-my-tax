@@ -5,7 +5,7 @@ export const getAllEmployer = async (id) => {
   const res = await API({
     url: `/services/app/User/GetAll`,
   });
-  debugger;
+  // debugger;
   setEmployerListData(res.items);
   return res.items;
 };

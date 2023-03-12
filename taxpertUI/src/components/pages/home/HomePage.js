@@ -245,23 +245,23 @@ function HomePage() {
           <hr className="taxpert-line" />
           <h4>Read What Our Customers Say</h4>
         </div>
-        <div class="video-section">
-          <div class="videos first-video">
+        <div className="video-section">
+          <div className="videos first-video">
             <iframe
               title="video"
               width="100%"
               height="100%"
-              frameborder="0"
+              frameBorder="0"
               src="https://www.youtube.com/embed/84R6m0Zj-Dc"
             ></iframe>
           </div>
 
-          <div class="videos second-video">
+          <div className="videos second-video">
             <iframe
               title="video"
               width="100%"
               height="100%"
-              frameborder="0"
+              frameBorder="0"
               src="https://www.youtube.com/embed/UZRIObmTSjg"
             ></iframe>
           </div>

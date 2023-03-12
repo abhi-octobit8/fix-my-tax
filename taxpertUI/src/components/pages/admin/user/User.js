@@ -6,8 +6,11 @@ import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
 import { getAllUsers } from "../../../../services/user.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
+import useRedirectPath from "../../../hooks/useRedirectPath";
+import { PATH } from "../../../../shared/Route";
 
 const UserComponent = () => {
+  const navigator = useRedirectPath();
   const requestList = useSelector((state) => state.user?.userListData);
   React.useEffect(() => {
     (async () => {
@@ -68,7 +71,12 @@ const UserComponent = () => {
       <ListHeader
         leftContent={<h2>User</h2>}
         rightContent={
-          <Button type="primary" shape="circle" icon={<PlusOutlined />} />
+          <Button
+            type="primary"
+            shape="circle"
+            onClick={() => navigator.goTo(PATH.CREATE_USER)}
+            icon={<PlusOutlined />}
+          />
         }
       ></ListHeader>
       <Row>
