@@ -15,7 +15,8 @@ import { UploadOutlined } from "@ant-design/icons";
 import "./ItrNotice.css";
 import { registerNotice } from "../../../../services/register.service";
 import { useState } from "react";
-import { FIELD_NAME, sectionData } from "./constant";
+import { FIELD_NAME } from "./constant";
+import { fixMytaxServicesInfo } from "../constant";
 const { Option } = Select;
 const { Panel } = Collapse;
 
@@ -57,7 +58,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const ItrNoticeService = (props) => {
-  const { data } = sectionData;
+  const { notice } = fixMytaxServicesInfo;
 
   const [optionData, setOptionData] = useState({
     sectionList: [],
@@ -70,7 +71,7 @@ const ItrNoticeService = (props) => {
   React.useEffect(() => {
     setOptionData((prevState) => ({
       ...prevState,
-      sectionList: Object.keys(data),
+      sectionList: Object.keys(notice),
     }));
   }, []);
 
@@ -82,7 +83,7 @@ const ItrNoticeService = (props) => {
 
   const onHandleSection = (value) => {
     if (value) {
-      const item = Object.keys(data[value].subSections);
+      const item = Object.keys(notice[value].subSections);
       setOptionData((prevState) => ({
         ...prevState,
         subSectionsList: item,
@@ -101,7 +102,7 @@ const ItrNoticeService = (props) => {
     console.log(value);
     if (value) {
       const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
-      const priceValue = data[sectionValue].subSections[value].price;
+      const priceValue = notice[sectionValue].subSections[value].price;
       // setOptionData((prevState) => ({
       //   ...prevState,
       // }));
@@ -198,7 +199,7 @@ const ItrNoticeService = (props) => {
               ]}
             >
               <Select placeholder="Select your Service Type">
-                <Option value="video">Video Consultation</Option>
+                {/* <Option value="video">Video Consultation</Option> */}
                 <Option value="reply">Notice Reply</Option>
               </Select>
             </Form.Item>
