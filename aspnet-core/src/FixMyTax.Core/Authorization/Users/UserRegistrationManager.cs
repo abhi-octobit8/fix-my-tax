@@ -71,36 +71,6 @@ namespace FixMyTax.Authorization.Users
         }
 
 
-        public async Task<User> RegisterUserAsync(string name, string surname, string emailAddress, string userName, string plainPassword, bool isEmailConfirmed, int tenantId)
-        {
-            var user = new User
-            {
-                TenantId = tenantId,
-                Name = name,
-                Surname = surname,
-                EmailAddress = emailAddress,
-                IsActive = true,
-                UserName = userName,
-                IsEmailConfirmed = isEmailConfirmed,
-                Roles = new List<UserRole>()
-            };
-
-            user.SetNormalizedNames();
-
-            foreach (var defaultRole in await _roleManager.Roles.Where(r => r.IsDefault).ToListAsync())
-            {
-                user.Roles.Add(new UserRole(tenantId, user.Id, defaultRole.Id));
-            }
-
-            await _userManager.InitializeOptionsAsync(tenantId);
-
-            CheckErrors(await _userManager.CreateAsync(user, plainPassword));
-            await CurrentUnitOfWork.SaveChangesAsync();
-
-            return user;
-        }
-
-
         private void CheckForTenant()
         {
             if (!AbpSession.TenantId.HasValue)

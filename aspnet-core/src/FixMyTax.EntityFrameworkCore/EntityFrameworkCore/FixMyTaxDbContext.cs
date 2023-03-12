@@ -13,7 +13,7 @@ namespace FixMyTax.EntityFrameworkCore
         /* Define a DbSet for each entity of the application */
         public DbSet<RequestTicket> Tickets { get; set; }
         public DbSet<TicketResponse> Responses { get; set; }
-
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<Attachment> Files { get; set; }
         public DbSet<Event> Events { get; set; }
 

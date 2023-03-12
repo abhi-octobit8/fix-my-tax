@@ -13,7 +13,6 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
     {
         public int RequestTicketId { get; set; }
         public string Response { get; set; }
-
         public ICollection<AttachmentDto> Attachments { get; set; }
     }
 }

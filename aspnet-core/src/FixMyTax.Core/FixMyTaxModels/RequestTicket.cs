@@ -13,14 +13,21 @@ namespace FixMyTax.FixMyTaxModels
     [Table("Tickets")]
     public class RequestTicket : FullAuditedEntity, IExtendableObject
     {
+        public FixMyTaxServiceType FixMyTaxServiceType { get; set; }
+        public ServiceType ServiceType { get; set; }
+        public string Section { get; set; }
+        public string SubSection { get; set; }
         public string Subject { get; set; }
         public string Question { get;set; }
         public string Description { get; set; }
-
-        public NoticeType NoticeType { get; set; }
         public TicketStatus Status { get; set; }
-        public ICollection<Attachment> Attachments { get; set; }    
-
+        public string Price { get; set; }
+        public PaymentStatus PaymentStaus { get; set; }
+        public string TransactionNumber { get; set; }
+        public string PaymentInfo { get; set; }
+        public ICollection<Attachment> Attachments { get; set; }
+        public int AssignedUserId { get; set; } 
+        public DateTime AssignmentDatetime { get; set; }
         public string ExtensionData { get; set; }
     }
 }

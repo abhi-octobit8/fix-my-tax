@@ -18,6 +18,6 @@ namespace FixMyTax.FixMyTaxServices
 
         System.Threading.Tasks.Task CreateResponse(CreateResponseInput input);
 
-
+        Task<bool> UpdateAssignment(UpdateAssignment updateAssignment);
     }
 }

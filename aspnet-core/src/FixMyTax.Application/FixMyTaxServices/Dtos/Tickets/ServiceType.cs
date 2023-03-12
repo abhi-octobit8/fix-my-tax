@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FixMyTax.FixMyTaxModels
+namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
 {
-    public enum NoticeType
+    public enum ServiceType
     {
-        GstNotice = 1, 
-        ITRNotice = 2
+        VideoConsultation = 1,
+        NoticeReply = 2,
     }
 }

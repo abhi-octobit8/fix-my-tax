@@ -1,4 +1,6 @@
 ﻿using Abp.Domain.Repositories;
+using Abp.Runtime.Session;
+using Abp.UI;
 using FixMyTax.Authorization.Users;
 using FixMyTax.FixMyTaxModels;
 using FixMyTax.FixMyTaxServices.Dtos.Registration;
@@ -38,31 +40,41 @@ namespace FixMyTax.FixMyTaxServices.Implementation
 
             try
             {
-                var user = await _userRegistrationManager.RegisterUserAsync(
+                var result = await _userManager.CheckDuplicateUsernameOrEmailAddressAsync(1, input.Email, input.Email);             
+                var user = await _userRegistrationManager.RegisterAsync(
                 input.Name,
                 string.Empty,
                 input.Email,
                 input.Email,
                 password,
-                true,
-                1);
+                true);
                 await _userManager.SetPhoneNumberAsync(user, input.PhoneNumber);
-
                 output.UserId = user.Id;
                 output.UserName = input.Email;
                 output.Password = password;
 
                 //create ticket
-                RequestTicket ticket = new RequestTicket();
-                ticket.NoticeType = (FixMyTaxModels.NoticeType)input.NoticeType;
-                ticket.Question = input.NoticeQuestion;
-
+                if(input.TicketDetails != null)
+                {
+                    RequestTicket ticket = new RequestTicket();
+                    ticket.ServiceType = (FixMyTaxModels.ServiceType)input.TicketDetails.ServiceType;
+                    ticket.FixMyTaxServiceType = (FixMyTaxModels.FixMyTaxServiceType)input.TicketDetails.FixMyTaxServiceType;
+                    ticket.Section = input.TicketDetails.Section;
+                    ticket.SubSection = input.TicketDetails.SubSection;
+                    ticket.Question = input.TicketDetails.Question;
+                    ticket.Description = input.TicketDetails.Description;
+                    ticket.Price = input.TicketDetails?.Price;
+                    ticket.TransactionNumber = input.TicketDetails.TransactionNumber;
+                    ticket.PaymentInfo = input.TicketDetails.PaymentInfo;
+                    ticket.PaymentStaus = (FixMyTaxModels.PaymentStatus)input.TicketDetails.PaymentStaus;
+                    ticket.ExtensionData = input.TicketDetails.ExtensionData;
+                    ticket.Status = TicketStatus.New;
+                    ticket.CreatorUserId = user.Id;
+                    ticket.CreationTime = DateTime.Now;
+                    var id = _ticketRepository.InsertAndGetId(ticket);
+                    output.TicketId = id;
+                }
                 
-                ticket.Status = TicketStatus.New;
-                ticket.CreatorUserId = user.Id;
-                ticket.CreationTime = DateTime.Now;
-                var id = _ticketRepository.InsertAndGetId(ticket);
-                output.TicketId = id;
                 output.Error = false;
             }
             catch(Exception ex)

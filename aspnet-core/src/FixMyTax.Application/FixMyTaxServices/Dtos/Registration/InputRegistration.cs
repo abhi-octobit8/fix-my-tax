@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FixMyTax.FixMyTaxServices.Dtos.Tickets;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,7 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Registration
         [StringLength(10, MinimumLength = 10)]
         public string? PhoneNumber { get; set; }
 
-        public string NoticeQuestion { get; set; }
-        public NoticeType NoticeType { get; set; }
-        //public IFormFile Notice { get; set; }
+        public CreateTicketInput TicketDetails { get; set; }
 
     }
 }
