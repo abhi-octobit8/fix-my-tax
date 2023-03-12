@@ -10,7 +10,10 @@ import { getStore } from "../store";
 const dispatch = getStore().dispatch;
 const { getItem, getJSONItem, setItem } = erLocalStorage;
 const { ACCESS_TOKEN, REFRESH_TOKEN } = STORAGE_KEYS;
-const byPassAuthAPIs = ["/TokenAuth/Authenticate"];
+const byPassAuthAPIs = [
+  "/TokenAuth/Authenticate",
+  "services/app/RegisterService/Create",
+];
 
 const API_CACHE_PREFIX = "API_CACHE";
 const getKeyFromPath = ({ path, queryParams }) => {
@@ -139,16 +142,16 @@ const handle401Error = async ({ apiData, exception }) => {
       accessToken: getJSONItem(ACCESS_TOKEN),
       refreshToken: getItem(REFRESH_TOKEN),
     };
-    const { access: accessToken, refresh: refreshToken } = await API({
-      url: "/refreshToken",
-      hideErrorMessage: true,
-      headers: {
-        refreshToken: oldRefreshToken,
-        Authorization: `Bearer ${oldAccessToken}`,
-      },
-    });
-    setItem(ACCESS_TOKEN, accessToken);
-    setItem(REFRESH_TOKEN, refreshToken);
+    // const { access: accessToken, refresh: refreshToken } = await API({
+    //   url: "/refreshToken",
+    //   hideErrorMessage: true,
+    //   headers: {
+    //     refreshToken: oldRefreshToken,
+    //     Authorization: `Bearer ${oldAccessToken}`,
+    //   },
+    // });
+    // setItem(ACCESS_TOKEN, accessToken);
+    // setItem(REFRESH_TOKEN, refreshToken);
     if (apiData.throwErrorOnTokenTimeout) {
       exception.reason = "resetRefreshToken";
       throw exception;
@@ -177,7 +180,7 @@ const handleError = async ({ exception, url, apiData, hideErrorMessage }) => {
     url !== "/refreshToken"
   ) {
     try {
-      return await handle401Error({ apiData, exception });
+      // return await handle401Error({ apiData, exception });
     } catch (e) {
       showMessage({
         message: exception.message || "Something went wrong.",

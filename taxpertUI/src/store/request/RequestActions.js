@@ -9,3 +9,9 @@ export const setNewRequestData = (payloadData) => {
     payload: payloadData,
   });
 };
+export const setTicketListData = (payloadData) => {
+  dispatch({
+    type: REQUEST_ACTIONS.GET_ALL_TICKET_SUCCESS,
+    payload: payloadData,
+  });
+};

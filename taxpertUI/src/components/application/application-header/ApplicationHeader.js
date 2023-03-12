@@ -1,25 +1,15 @@
-import { Button, Col, Menu, Row } from "antd";
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-// import { doLogout } from "../../../store/authentication/AuthActions";
+import { Col, Row } from "antd";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import ApplicationMenu from "../application-menu/ApplicationMenu";
 import logo1 from "../../../assets/img/new_updated_logo.PNG";
-import { MenuOutlined } from "@ant-design/icons";
 import "./ApplicationHeader.css";
 import ApplicationUserMenu from "../application-user-menu/ApplicationUserMenu";
-import { Content, Header } from "antd/lib/layout/layout";
-import Title from "antd/lib/typography/Title";
+import { Header } from "antd/lib/layout/layout";
 
 const displayName = "ApplicationHeader";
 
 function ApplicationHeader() {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    // doLogout();
-  };
-  const gotoPage = (page) => {
-    //GO TO MENU ITEM PAGE
-  };
   return (
     <>
       <Row justify="center" className="application-header">
@@ -29,12 +19,12 @@ function ApplicationHeader() {
               <Col xl={3} lg={3} md={3} sm={20} xs={20}>
                 <img src={logo1} alt="text" height={80} width={100} />
               </Col>
-              <Col xl={21} lg={21} md={21} sm={4} xs={4}>
+              <Col xl={19} lg={19} md={19} sm={4} xs={4}>
                 <ApplicationMenu />
               </Col>
-              {/* <Col xl={2} lg={2} md={2} sm={2} xs={2}>
+              <Col xl={2} lg={2} md={2} sm={2} xs={2}>
                 <ApplicationUserMenu />
-              </Col> */}
+              </Col>
             </Row>
           </Header>
         </Col>

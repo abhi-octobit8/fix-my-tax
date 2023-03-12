@@ -8,9 +8,15 @@ import {
   Upload,
   Collapse,
   Space,
+  DatePicker,
+  InputNumber,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./ItrNotice.css";
+import { registerNotice } from "../../../../services/register.service";
+import { useState } from "react";
+import { FIELD_NAME } from "./constant";
+import { fixMytaxServicesInfo } from "../constant";
 const { Option } = Select;
 const { Panel } = Collapse;
 
@@ -52,16 +58,62 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const ItrNoticeService = (props) => {
+  const { notice } = fixMytaxServicesInfo;
+
+  const [optionData, setOptionData] = useState({
+    sectionList: [],
+    subSectionsList: [],
+  });
+
   const titleHeader = "Notice";
   const [form] = Form.useForm();
+
+  React.useEffect(() => {
+    setOptionData((prevState) => ({
+      ...prevState,
+      sectionList: Object.keys(notice),
+    }));
+  }, []);
+
   const onFinish = async (values) => {
-    console.log("registration values:", values);
-    debugger;
-    // const registerData = {
-    //   values,
-    //   isActive: true,
-    //   roleNames: ["string"],
-    // };
+    const data = await registerNotice(values);
+    console.log(data);
+    // debugger;
+  };
+
+  const onHandleSection = (value) => {
+    if (value) {
+      const item = Object.keys(notice[value].subSections);
+      setOptionData((prevState) => ({
+        ...prevState,
+        subSectionsList: item,
+      }));
+    } else {
+      setOptionData((prevState) => ({
+        ...prevState,
+        subSectionsList: [],
+      }));
+    }
+    form.setFieldValue(FIELD_NAME.SUBSECTION, "");
+    form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, "");
+  };
+
+  const onHandleSubSection = (value) => {
+    console.log(value);
+    if (value) {
+      const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
+      const priceValue = notice[sectionValue].subSections[value].price;
+      // setOptionData((prevState) => ({
+      //   ...prevState,
+      // }));
+      form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, priceValue);
+    } else {
+      setOptionData((prevState) => ({
+        sectionList: [],
+        subSectionsList: [],
+      }));
+      form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, "");
+    }
   };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
@@ -113,14 +165,14 @@ const ItrNoticeService = (props) => {
           >
             <Form.Item
               label="Name"
-              name="name"
+              name={FIELD_NAME.NAME}
               rules={[{ required: true, message: "This field is required" }]}
             >
               <Input />
             </Form.Item>
 
             <Form.Item
-              name="emailAddress"
+              name={FIELD_NAME.EMAIL}
               label="E-mail"
               rules={[
                 {
@@ -136,59 +188,131 @@ const ItrNoticeService = (props) => {
               <Input />
             </Form.Item>
 
-            <React.Fragment>
-              <Form.Item
-                name="service"
-                label="Service Type"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please select Service Type!",
-                  },
-                ]}
-              >
-                <Select placeholder="Select your Service Type">
-                  <Option value="video">Video Consultation</Option>
-                  <Option value="reply">Notice Reply</Option>
-                </Select>
-              </Form.Item>
-
-              <Form.Item
-                name="uploadNotice"
-                label="Upload Notice"
-                valuePropName="fileList"
-                getValueFromEvent={normFile}
-              >
-                <Upload
-                  beforeUpload={(file) => {
-                    // console.log(file);
-                    return false;
-                  }}
-                  multiple={false}
-                >
-                  <Button icon={<UploadOutlined />}>Click to upload</Button>
-                </Upload>
-              </Form.Item>
-              <Form.Item
-                name="uploadITR"
-                label="Upload Computation of Income & 26AS"
-                valuePropName="fileList"
-                getValueFromEvent={normFile}
-              >
-                <Upload
-                  beforeUpload={(file) => {
-                    // console.log(file);
-                    return false;
-                  }}
-                  multiple={false}
-                >
-                  <Button icon={<UploadOutlined />}>Click to upload</Button>
-                </Upload>
-              </Form.Item>
-            </React.Fragment>
+            <Form.Item
+              name={FIELD_NAME.SERVICE}
+              label="Service Type"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select Service Type!",
+                },
+              ]}
+            >
+              <Select placeholder="Select your Service Type">
+                {/* <Option value="video">Video Consultation</Option> */}
+                <Option value="reply">Notice Reply</Option>
+              </Select>
+            </Form.Item>
 
             <Form.Item
-              name="phone"
+              name={FIELD_NAME.SECTION}
+              label="Section Type"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select Section Type!",
+                },
+              ]}
+            >
+              <Select
+                placeholder="Select your Section Type"
+                onChange={onHandleSection}
+                allowClear
+              >
+                {optionData.sectionList.map((x, i) => {
+                  return (
+                    <Option value={x} key={i}>
+                      {x}
+                    </Option>
+                  );
+                })}
+              </Select>
+            </Form.Item>
+            <Form.Item
+              name={FIELD_NAME.SUBSECTION}
+              label="SubSection Type"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select SubSection Type!",
+                },
+              ]}
+            >
+              <Select
+                placeholder="Select your SubSection Type"
+                onChange={onHandleSubSection}
+              >
+                {optionData.subSectionsList.map((x, i) => {
+                  return (
+                    <Option value={x} key={i}>
+                      {x}
+                    </Option>
+                  );
+                })}
+              </Select>
+            </Form.Item>
+            <Form.Item name={FIELD_NAME.NOTICE_SELECTION} label="Price">
+              <Input disabled={true} addonAfter="INR"></Input>
+            </Form.Item>
+
+            <Form.Item noStyle shouldUpdate>
+              {({ getFieldValue }) => {
+                const value = getFieldValue("service");
+                if (value === "video") {
+                  return (
+                    <Form.Item
+                      name={FIELD_NAME.SELECT_TIME}
+                      label="select Time"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please select Date!",
+                        },
+                      ]}
+                    >
+                      <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />
+                    </Form.Item>
+                  );
+                }
+                return null;
+              }}
+            </Form.Item>
+
+            <Form.Item
+              name={FIELD_NAME.UPLOAD_NOTICE}
+              label="Upload Notice"
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+            >
+              <Upload
+                beforeUpload={(file) => {
+                  // console.log(file);
+                  return false;
+                }}
+                multiple={false}
+              >
+                <Button icon={<UploadOutlined />}>Click to upload</Button>
+              </Upload>
+            </Form.Item>
+            <Form.Item
+              name={FIELD_NAME.UPLOAD_ITR}
+              label="Upload Computation of Income & 26AS"
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+            >
+              <Upload
+                beforeUpload={(file) => {
+                  // console.log(file);
+                  return false;
+                }}
+                multiple={false}
+              >
+                <Button icon={<UploadOutlined />}>Click to upload</Button>
+              </Upload>
+            </Form.Item>
+
+            <Form.Item
+              name={FIELD_NAME.PHONE_NUMBER}
               label="Phone Number"
               rules={[
                 {
@@ -197,7 +321,9 @@ const ItrNoticeService = (props) => {
                 },
               ]}
             >
-              <Input
+              <InputNumber
+                minLength={10}
+                maxLength={10}
                 addonBefore={prefixSelector}
                 style={{
                   width: "100%",

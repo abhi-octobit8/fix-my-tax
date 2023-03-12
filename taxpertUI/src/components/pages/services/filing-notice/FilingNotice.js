@@ -4,7 +4,6 @@ import {
   Button,
   Form,
   Input,
-  Row,
   Select,
   Card,
   Upload,
@@ -12,6 +11,8 @@ import {
   Space,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { FIELD_NAME, fillingNoticeData } from "./constant";
+import { useState } from "react";
 const { Panel } = Collapse;
 const { Option } = Select;
 
@@ -54,17 +55,64 @@ const normFile = (e) => {
 };
 
 const FilingNotice = () => {
+  const { data } = fillingNoticeData;
   const titleHeader = "Filing ITR/TCS/TDS";
   const [form] = Form.useForm();
+  const [optionData, setOptionData] = useState({
+    sectionList: [],
+    subSectionsList: [],
+  });
+
+  React.useEffect(() => {
+    setOptionData((prevState) => ({
+      ...prevState,
+      sectionList: Object.keys(data),
+    }));
+  }, []);
+
   const onFinish = async (values) => {
     console.log("registration values:", values);
-    debugger;
+    // debugger;
     // const registerData = {
     //   values,
     //   isActive: true,
     //   roleNames: ["string"],
     // };
   };
+  const onHandleSection = (value) => {
+    console.log(value);
+    if (value) {
+      // const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
+      const priceValue = data[value].price;
+      // setOptionData((prevState) => ({
+      //   ...prevState,
+      // }));
+      form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, priceValue);
+    } else {
+      setOptionData((prevState) => ({
+        sectionList: [],
+      }));
+      form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, "");
+    }
+  };
+
+  // const onHandleSection = (value) => {
+  //   if (value) {
+  //     const item = Object.keys(data[value].price);
+  //     // setOptionData((prevState) => ({
+  //     //   ...prevState,
+  //     //   subSectionsList: item,
+  //     // }));
+  //   } else {
+  //     // setOptionData((prevState) => ({
+  //     //   ...prevState,
+  //     //   subSectionsList: [],
+  //     // }));
+  //   }
+  //   // form.setFieldValue(FIELD_NAME.SUBSECTION, "");
+  //   // form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, "");
+  // };
+
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -116,7 +164,7 @@ const FilingNotice = () => {
 
             <Form.Item
               name="emailAddress"
-              label="E-mail"
+              label="E-mail1"
               rules={[
                 {
                   type: "email",
@@ -129,6 +177,34 @@ const FilingNotice = () => {
               ]}
             >
               <Input />
+            </Form.Item>
+            <Form.Item
+              name={FIELD_NAME.SECTION}
+              label="Section Type"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select Section Type!",
+                },
+              ]}
+            >
+              <Select
+                placeholder="Select your Section Type"
+                onChange={onHandleSection}
+                allowClear
+              >
+                {optionData.sectionList.map((x, i) => {
+                  return (
+                    <Option value={x} key={i}>
+                      {x}
+                    </Option>
+                  );
+                })}
+              </Select>
+            </Form.Item>
+
+            <Form.Item name={FIELD_NAME.NOTICE_SELECTION} label="Price">
+              <Input disabled={true} addonAfter="INR"></Input>
             </Form.Item>
             <React.Fragment>
               <Form.Item

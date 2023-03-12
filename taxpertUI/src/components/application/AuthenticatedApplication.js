@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AboutPage from "../pages/about/AboutPage";
 import HomePage from "../pages/home/HomePage";
@@ -8,7 +7,6 @@ import AccountLayout from "../pages/request/account-layout/AccountLayout";
 import NewRequest from "../pages/request/new-request/NewRequest";
 import PendingRequest from "../pages/request/pending-request/PendingRequest";
 import Login from "../pages/login/Login";
-// import ServicePage from "../pages/services/ServicePage";
 import ContactUs from "../pages/contact-us/ContactUs";
 import TnC from "../pages/tnc/TnC";
 import ItrNoticeService from "../pages/services/itr-notice/ItrNoticeService";
@@ -16,11 +14,23 @@ import GstNoticeService from "../pages/services/gst-notice/GstNoticeService";
 import RegisterPage from "../pages/register/RegisterPage";
 import { checkLogin } from "../../store/authentication/AuthActions";
 import { useSelector } from "react-redux";
-import CreateRequestPage from "../pages/request/new-request/create-request/CreateRequestPage";
+// import CreateRequestPage from "../pages/request/new-request/create-request/CreateRequestPage";
 import { PATH } from "../../shared/Route";
 import ConsultationNotice from "../pages/services/consultation-notice/ConsultationNotice";
 import FilingNotice from "../pages/services/filing-notice/FilingNotice";
 import LatestNewsPage from "../pages/latest-news/LatestNewsPage";
+import AdminLayout from "../pages/admin/admin-layout/AdminLayout";
+import UserComponent from "../pages/admin/user/User";
+import DashBoard from "../pages/admin/dahboard/DashBoard";
+import EmployerList from "../pages/admin/employer/EmployerList";
+import TicketListRequest from "../pages/admin/ticket/TicketListRequest";
+import UserRouter from "../pages/admin/user/UserRouter";
+import EmployerRoutes from "../pages/admin/employer/EmployerRoutes";
+import TicketRoutes from "../pages/admin/ticket/TicketRoutes";
+// React.lazy(() =>
+//       import(
+//         /* webpackChunkName: "product-module" */ "./modules/product/ProductRoutes.js"
+//       )
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
     (state) => state.authentication.userSession
@@ -51,10 +61,19 @@ function AuthenticatedApplication() {
         <Route path="tnc" element={<TnC />} />
         <Route path="register" element={<RegisterPage />} />
 
-        <Route element={<AccountLayout />} path="request">
+        {/* <Route element={<AccountLayout />} path="request">
           <Route element={<NewRequest />} path="newrequest" />
           <Route element={<CreateRequestPage />} path="newrequest/create" />
           <Route element={<PendingRequest />} exact path="pendingrequest" />
+        </Route> */}
+        <Route element={<AdminLayout />} path="admin">
+          <Route element={<DashBoard />} path="dashboard" />
+
+          <Route element={<UserRouter />} path="user/*" />
+
+          <Route element={<EmployerRoutes />} path="employer/*" />
+          {/* <Route element={<EmployerList />} path="employer" /> */}
+          <Route element={<TicketRoutes />} path="requests/*" />
         </Route>
         <Route path="*" element={<HomePage />} />
       </Routes>

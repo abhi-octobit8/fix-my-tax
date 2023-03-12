@@ -1,16 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Form,
-  Input,
-  Select,
-  Card,
-  Upload,
-  Collapse,
-  Space,
-  Row,
-  Col,
-} from "antd";
+import { Button, Form, Input, Select, Upload, Row, Col } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./ContactUs.css";
 import TextArea from "antd/lib/input/TextArea";
@@ -56,12 +45,6 @@ const ContactUs = () => {
   const [form] = Form.useForm();
   const onFinish = async (values) => {
     console.log("registration values:", values);
-    debugger;
-    // const registerData = {
-    //   values,
-    //   isActive: true,
-    //   roleNames: ["string"],
-    // };
   };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>

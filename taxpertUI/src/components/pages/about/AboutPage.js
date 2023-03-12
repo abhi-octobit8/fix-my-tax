@@ -1,10 +1,5 @@
 import React from "react";
 import "./AboutPage.css";
-// import benefits from "../../../assets/img/benefits.png";
-// import transparency from "../../../assets/img/transparency.png";
-// import experts from "../../../assets/img/experts.png";
-// import tax from "../../../assets/img/tax.jpg";
-// import user from "../../../assets/img/user.jpg";
 
 const AboutPage = () => (
   <>

@@ -1,18 +1,17 @@
-import { Button, Card, Col, Row, Space } from "antd";
 import React from "react";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
+import { Button, Card, Col, Row } from "antd";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
 import card3 from "../../../assets/img/card3.svg";
 import about from "../../../assets/img/about.jpeg";
-
-import "./HomePage.css";
 import {
   AuthorizedIcon,
   RatingIcon,
   SafeSecureIcon,
   TrustedUserIcon,
 } from "../../../common/icons/icons";
+// E:\zupier\Git\TaxpertRepo\taxpertUI\src\common\icons\icons.js
 import logo1 from "../../../assets/img/banner2.png";
 import xocovoPartner from "../../../assets/img/xocovo.png";
 import smartPartner from "../../../assets/img/smartpartner.png";
@@ -20,6 +19,8 @@ import medimaaPartner from "../../../assets/img/medimaa.png";
 import xocovoPartner1 from "../../../assets/img/zupier.jpeg";
 import { PATH } from "../../../shared/Route";
 import useRedirectPath from "../../hooks/useRedirectPath";
+
+import "./HomePage.css";
 
 function HomePage() {
   const navigator = useRedirectPath();
@@ -114,7 +115,7 @@ function HomePage() {
             <img
               className="cover"
               src={about}
-              alt="about-image"
+              alt="about"
               width="100%"
               height="400px"
             />
@@ -244,21 +245,23 @@ function HomePage() {
           <hr className="taxpert-line" />
           <h4>Read What Our Customers Say</h4>
         </div>
-        <div class="video-section">
-          <div class="videos first-video">
+        <div className="video-section">
+          <div className="videos first-video">
             <iframe
+              title="video"
               width="100%"
               height="100%"
-              frameborder="0"
+              frameBorder="0"
               src="https://www.youtube.com/embed/84R6m0Zj-Dc"
             ></iframe>
           </div>
 
-          <div class="videos second-video">
+          <div className="videos second-video">
             <iframe
+              title="video"
               width="100%"
               height="100%"
-              frameborder="0"
+              frameBorder="0"
               src="https://www.youtube.com/embed/UZRIObmTSjg"
             ></iframe>
           </div>
@@ -337,16 +340,16 @@ function HomePage() {
         <div className="container">
           <ul>
             <li>
-              <img src={xocovoPartner} width={135} height={45} />
+              <img src={xocovoPartner} width={135} height={45} alt="logo" />
             </li>
             <li>
-              <img src={smartPartner} width={135} height={45} />
+              <img src={smartPartner} width={135} height={45} alt="logo" />
             </li>
             <li>
-              <img src={medimaaPartner} width={135} height={45} />
+              <img src={medimaaPartner} width={135} height={45} alt="logo" />
             </li>
             <li>
-              <img src={xocovoPartner1} width={135} height={45} />
+              <img src={xocovoPartner1} width={135} height={45} alt="logo" />
             </li>
           </ul>
         </div>

@@ -90,6 +90,7 @@ export const checkLogin = async (userId) => {
     throw e;
   }
 };
+
 export const doLogin = (apiResponse) => {
   const { accessToken, userId } = apiResponse;
   setItem("accessToken", accessToken);

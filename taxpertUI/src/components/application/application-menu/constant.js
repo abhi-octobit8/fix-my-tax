@@ -7,6 +7,7 @@ const overflow = {
 const USER_ROLE = {
   PUBLIC: "public",
   AUTHORIZED: "authorize",
+  ADMIN: "ADMIN",
   NON_AUTHORIZED: "not authorized",
 };
 const MENU_BUILTIN_PLACEMENTS = {
@@ -97,6 +98,23 @@ const MENU_ITEMS = [
       },
     ],
   },
+  {
+    label: "Account",
+    role: USER_ROLE.ADMIN,
+    to: "/admin/dashboard",
+    children: [
+      {
+        label: "DashBoard",
+        role: USER_ROLE.ADMIN,
+        to: "/admin/dashboard",
+      },
+      // {
+      //   label: "Pending Request",
+      //   role: USER_ROLE.ADMIN,
+      //   to: "/admin/user",
+      // },
+    ],
+  },
   // {
   //   label: "Register",
   //   role: USER_ROLE.NON_AUTHORIZED,
@@ -105,9 +123,10 @@ const MENU_ITEMS = [
 ];
 function getMenuItems(collection, userData) {
   let isAuthorized = false;
-  if (userData != null) {
-    isAuthorized = true;
-  }
+  // if (userData != null) {
+  //   isAuthorized = true;
+  // }
+  const userAuthRole = userData && userData?.roleNames[0];
   const entitledMenuItems = collection.reduce((acc, item) => {
     const { label, role, to } = item;
     const formattedItem = {
@@ -118,11 +137,12 @@ function getMenuItems(collection, userData) {
     let condition = false;
     if (role === USER_ROLE.PUBLIC) {
       condition = true;
-    } else if (role === USER_ROLE.AUTHORIZED && isAuthorized) {
-      condition = true;
-    } else if (role === USER_ROLE.NON_AUTHORIZED && !isAuthorized) {
+    } else if (role === userAuthRole) {
       condition = true;
     }
+    // else if (role === USER_ROLE.NON_AUTHORIZED && !isAuthorized) {
+    //   condition = true;
+    // }
 
     if (condition) {
       // take only public

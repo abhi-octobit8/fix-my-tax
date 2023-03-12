@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CreateRequestPage.less";
-import { Button, Checkbox, Form, Input, Select, Card } from "antd";
+import { Button, Form, Input, Select, Card } from "antd";
 import TextArea from "antd/lib/input/TextArea";
-const { Option } = Select;
 
 const formItemLayout = {
   labelCol: {
