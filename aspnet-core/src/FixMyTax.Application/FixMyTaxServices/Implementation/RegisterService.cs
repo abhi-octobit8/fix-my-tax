@@ -1,4 +1,6 @@
 ﻿using Abp.Domain.Repositories;
+using Abp.MailKit;
+using Abp.Net.Mail;
 using Abp.Runtime.Session;
 using Abp.UI;
 using FixMyTax.Authorization.Users;
@@ -22,25 +24,28 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         private readonly IRepository<Attachment> _fileRepository;
         private readonly UserRegistrationManager _userRegistrationManager;
         private readonly UserManager _userManager;
+        private readonly IEmailSender _emailSender;
+        //EmailSettingNames
 
         public RegisterService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository,
-            IRepository<Attachment> fileRepository, UserRegistrationManager userRegistrationManager, UserManager userManager)
+            IRepository<Attachment> fileRepository, UserRegistrationManager userRegistrationManager, UserManager userManager, IEmailSender emailSender)
         {
             _ticketRepository = ticketRepository;
             _responseRepository = responseRepository;
             _fileRepository = fileRepository;
             _userRegistrationManager = userRegistrationManager;
             _userManager = userManager;
+           _emailSender = emailSender;
         }
 
         public async Task<RegistrationOutput> Create(InputRegistration input)
         {
             var password = RandomString(10, true);
             RegistrationOutput output = new RegistrationOutput();
-
+            
             try
             {
-                var result = await _userManager.CheckDuplicateUsernameOrEmailAddressAsync(1, input.Email, input.Email);             
+                var result = await _userManager.CheckDuplicateUsernameOrEmailAddressAsync(1, input.Email, input.Email);
                 var user = await _userRegistrationManager.RegisterAsync(
                 input.Name,
                 string.Empty,
@@ -54,7 +59,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 output.Password = password;
 
                 //create ticket
-                if(input.TicketDetails != null)
+                if (input.TicketDetails != null)
                 {
                     RequestTicket ticket = new RequestTicket();
                     ticket.ServiceType = (FixMyTaxModels.ServiceType)input.TicketDetails.ServiceType;
@@ -74,7 +79,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                     var id = _ticketRepository.InsertAndGetId(ticket);
                     output.TicketId = id;
                 }
-                
+
                 output.Error = false;
             }
             catch(Exception ex)
@@ -83,6 +88,14 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 output.ErrorMsg = ex.Message;
             }
 
+
+
+        //    _emailSender.Send(
+        //to: input.Email,
+        //subject: "You have a new task!",
+        //body: $"A new task is assigned for you: <b>{input.Name}</b>",
+        //isBodyHtml: true
+        // );
             return output;
         }
 
