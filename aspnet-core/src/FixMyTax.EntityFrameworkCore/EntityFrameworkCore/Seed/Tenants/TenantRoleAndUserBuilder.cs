@@ -31,12 +31,30 @@ namespace FixMyTax.EntityFrameworkCore.Seed.Tenants
         private void CreateRolesAndUsers()
         {
             // Admin role
-
             var adminRole = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Admin);
             if (adminRole == null)
             {
                 adminRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Admin, StaticRoleNames.Tenants.Admin) { IsStatic = true }).Entity;
                 _context.SaveChanges();
+            }
+
+            if (_tenantId == 1)
+            {
+                // advocate role
+                var advocateRole = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Advocate);
+                if (advocateRole == null)
+                {
+                    advocateRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Advocate, StaticRoleNames.Tenants.Advocate) { IsStatic = true }).Entity;
+                    _context.SaveChanges();
+                }
+
+                //customer role
+                var customerRole = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Customer);
+                if (customerRole == null)
+                {
+                    customerRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Customer, StaticRoleNames.Tenants.Customer) { IsStatic = true }).Entity;
+                    _context.SaveChanges();
+                }
             }
 
             // Grant all permissions to admin role
@@ -68,7 +86,6 @@ namespace FixMyTax.EntityFrameworkCore.Seed.Tenants
             }
 
             // Admin user
-
             var adminUser = _context.Users.IgnoreQueryFilters().FirstOrDefault(u => u.TenantId == _tenantId && u.UserName == AbpUserBase.AdminUserName);
             if (adminUser == null)
             {

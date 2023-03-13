@@ -246,6 +246,62 @@ namespace FixMyTax.Users
 
             return true;
         }
+
+        public async Task<UserDto> CreateAdvocateAsync(CreateUserDto input)
+        {
+            CheckCreatePermission();
+
+            var user = ObjectMapper.Map<User>(input);
+
+            user.TenantId = AbpSession.TenantId;
+            user.IsEmailConfirmed = true;
+
+            await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
+
+            CheckErrors(await _userManager.CreateAsync(user, input.Password));
+
+            CheckErrors(await _userManager.SetRolesAsync(user, new string[] {StaticRoleNames.Tenants.Advocate}));
+
+            CurrentUnitOfWork.SaveChanges();
+
+            return MapToEntityDto(user);
+        }
+
+        public async Task<ListResultDto<UserDto>> GetAdvocates()
+        {
+            CheckGetAllPermission();
+            var users = await Repository.GetAllListAsync();
+
+            List<User> advocates = new List<User>();
+            foreach (var user in users)
+            {
+               if(await _userManager.IsInRoleAsync(user, StaticRoleNames.Tenants.Advocate))
+                {
+                    advocates.Add(user);
+                }
+            }
+
+            return new ListResultDto<UserDto>(ObjectMapper.Map<List<UserDto>>(advocates));
+
+        }
+
+        public async Task<ListResultDto<UserDto>> GetCustomers()
+        {
+            CheckGetAllPermission();
+            var users = await Repository.GetAllListAsync();
+
+            List<User> customers = new List<User>();
+            foreach (var user in users)
+            {
+                if (await _userManager.IsInRoleAsync(user, StaticRoleNames.Tenants.Customer))
+                {
+                    customers.Add(user);
+                }
+            }
+
+            return new ListResultDto<UserDto>(ObjectMapper.Map<List<UserDto>>(customers));
+
+        }
     }
 }
 
