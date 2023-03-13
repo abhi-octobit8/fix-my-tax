@@ -54,6 +54,9 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 password,
                 true);
                 await _userManager.SetPhoneNumberAsync(user, input.PhoneNumber);
+                
+                
+                
                 output.UserId = user.Id;
                 output.UserName = input.Email;
                 output.Password = password;
@@ -81,6 +84,8 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 }
 
                 output.Error = false;
+
+                
             }
             catch(Exception ex)
             {
@@ -88,14 +93,19 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 output.ErrorMsg = ex.Message;
             }
 
+            _emailSender.Send(
+                    to: input.Email,
+                    subject: "FixMyTax Account Created",
+                    body: $"<b>Hi {input.Email} </b> <br/>A new acount created for you with following details. <br/> username: <b>{output.UserName}</b> <br/> password : <b>{output.Password}</b>",
+                    isBodyHtml: true
+                );
 
-
-        //    _emailSender.Send(
-        //to: input.Email,
-        //subject: "You have a new task!",
-        //body: $"A new task is assigned for you: <b>{input.Name}</b>",
-        //isBodyHtml: true
-        // );
+            _emailSender.Send(
+                to: "admin@fixmytax.com",
+                subject: "You have a new task!",
+                body: $"A new task is created on the portal  task link: <b>{output.TicketId}</b>",
+                isBodyHtml: true
+            );
             return output;
         }
 
