@@ -4,17 +4,17 @@ import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
-import { getAllEmployer } from "../../../../services/employer.service";
+import { getAllAdvocate } from "../../../../services/advocate.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import { PATH } from "../../../../shared/Route";
 import useRedirectPath from "../../../hooks/useRedirectPath";
 
-const EmployerList = () => {
+const AdvocateList = () => {
   const navigator = useRedirectPath();
-  const requestList = useSelector((state) => state.employer?.employerListData);
+  const requestList = useSelector((state) => state.advocate?.advocateListData);
   React.useEffect(() => {
     (async () => {
-      await getAllEmployer();
+      await getAllAdvocate();
     })();
   }, []);
   const columns = [
@@ -69,12 +69,12 @@ const EmployerList = () => {
   return (
     <Card>
       <ListHeader
-        leftContent={<h2>Employer</h2>}
+        leftContent={<h2>Advocate</h2>}
         rightContent={
           <Button
             type="primary"
             shape="circle"
-            onClick={() => navigator.goTo(PATH.CREATE_EMPLOYER)}
+            onClick={() => navigator.goTo(PATH.CREATE_ADVOCATE)}
             icon={<PlusOutlined />}
           />
         }
@@ -98,4 +98,4 @@ const EmployerList = () => {
   );
 };
 
-export default EmployerList;
+export default AdvocateList;

@@ -25,9 +25,7 @@ const Login = (props) => {
     const loginResponse = await API({
       method: "post",
       url: "/TokenAuth/Authenticate",
-      // headers: {
-      //   "abp.tenantid": checkTenantAvaialable.tenantId,
-      // },
+
       body: loginData,
     });
     doLogin({ ...loginResponse });

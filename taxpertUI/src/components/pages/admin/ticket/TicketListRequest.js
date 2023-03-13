@@ -5,7 +5,7 @@ import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
 import useRedirectPath from "../../../hooks/useRedirectPath";
-import { getAllEmployer } from "../../../../services/employer.service";
+import { getAllAdvocate } from "../../../../services/advocate.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import { useState } from "react";
 import AssignTicket from "./AssignTicket";
@@ -14,10 +14,10 @@ import { PATH } from "../../../../shared/Route";
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
   const [isModelOpen, setIsModelOpen] = useState(false);
-  const requestList = useSelector((state) => state.employer?.employerListData);
+  const requestList = useSelector((state) => state.advocate?.advocateListData);
   React.useEffect(() => {
     (async () => {
-      await getAllEmployer();
+      await getAllAdvocate();
     })();
   }, []);
 

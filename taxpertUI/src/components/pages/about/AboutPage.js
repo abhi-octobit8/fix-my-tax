@@ -1,4 +1,9 @@
 import React from "react";
+import max_benefit from "../../../assets/img/max_benefit.png";
+import upfront from "../../../assets/img/upfront.png";
+import team from "../../../assets/img/team.png";
+import tax from "../../../assets/img/about_tax.png";
+import user from "../../../assets/img/user.jpg";
 import "./AboutPage.css";
 
 const AboutPage = () => (
@@ -17,11 +22,12 @@ const AboutPage = () => (
         <div className="cards-in-place">
           <img
             className="img-place"
-            src="https://cdn-icons-png.flaticon.com/512/1578/1578656.png"
-            alt=""
+            src={max_benefit}
+            alt="text"
             width="80px"
             height="80px"
           />
+
           <br />
           <h6 className="headings">Maximum Benefits</h6>
           <p className="text-area">
@@ -33,8 +39,8 @@ const AboutPage = () => (
         <div className="cards-in-place">
           <img
             className="img-place"
-            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/audit-2010222-1696751.png"
-            alt=""
+            src={upfront}
+            alt="text"
             width="80px"
             height="80px"
           />
@@ -48,8 +54,8 @@ const AboutPage = () => (
         <div className="cards-in-place">
           <img
             className="img-place"
-            src="https://cdn.iconscout.com/icon/premium/png-128-thumb/expert-team-2625507-2178318.png"
-            alt=""
+            src={team}
+            alt="text"
             width="80px"
             height="80px"
           />
@@ -75,10 +81,11 @@ const AboutPage = () => (
         relationship with money. Our mission is to simplify finances, save money
         and time for millions of Indian businesses and people.
       </div>
+
       <img
         className="section-2-image"
-        src="https://img.freepik.com/free-vector/businessman-accountant-filling-financial-document-form-clipboard-payment-date-tax-form-income-tax-return-company-tax-payment-concept-illustration_335657-2320.jpg?w=2000"
-        alt="extra image"
+        src={tax}
+        alt="extra"
         width="800px"
         height="500px"
       />
@@ -91,11 +98,8 @@ const AboutPage = () => (
       <div className="">
         <div className="cards-inline">
           <div className="card">
-            <img
-              src="https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg"
-              className="card-img-top"
-              alt="user image"
-            />
+            <img className="card-img-top" src={user} alt="user" />
+
             <div className="card-body">
               <div className="card-text">
                 <h5>Name</h5>
@@ -104,11 +108,7 @@ const AboutPage = () => (
             </div>
           </div>
           <div className="card">
-            <img
-              src="https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg"
-              className="card-img-top"
-              alt="user image"
-            />
+            <img className="card-img-top" src={user} alt="user" />
             <div className="card-body">
               <div className="card-text">
                 <h5>Name</h5>
@@ -117,11 +117,7 @@ const AboutPage = () => (
             </div>
           </div>
           <div className="card">
-            <img
-              src="https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg"
-              className="card-img-top"
-              alt="user image"
-            />
+            <img className="card-img-top" src={user} alt="user" />
             <div className="card-body">
               <div className="card-text">
                 <h5>Name</h5>
@@ -130,11 +126,7 @@ const AboutPage = () => (
             </div>
           </div>
           <div className="card">
-            <img
-              src="https://t3.ftcdn.net/jpg/05/17/79/88/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct.jpg"
-              className="card-img-top"
-              alt="user image"
-            />
+            <img className="card-img-top" src={user} alt="user" />
             <div className="card-body">
               <div className="card-text">
                 <h5>Name</h5>

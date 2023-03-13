@@ -1,3 +1,5 @@
+import { PATH } from "../../../../shared/Route";
+
 export const MENU_ITEMS = [
   {
     label: "DashBoard",
@@ -15,8 +17,8 @@ export const MENU_ITEMS = [
     to: "/admin/user",
   },
   {
-    label: "Employer",
-    key: "employer",
-    to: "/admin/employer",
+    label: "Advocate",
+    key: "advocate",
+    to: PATH.ADVOCATE_LIST,
   },
 ];

@@ -26,7 +26,7 @@ const AssignTicket = (props) => {
       title={<h3>Assign Ticket</h3>}
     >
       <Form form={form} layout="vertical" onFinish={onFormSubmit}>
-        <Form.Item label="Employer" name="employer" rules={[requiredValidator]}>
+        <Form.Item label="Advocate" name="advocate" rules={[requiredValidator]}>
           <Select
             showSearch
             allowClear

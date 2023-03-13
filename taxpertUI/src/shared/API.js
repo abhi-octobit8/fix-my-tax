@@ -50,10 +50,11 @@ const API = async (apiData) => {
   try {
     let apiUrl = `/${url}`.replace(/\/\//g, "/");
     const accessToken = getItem(ACCESS_TOKEN);
-    let requestHeaders = headers;
+    let requestHeaders = { ...headers, "abp.tenantid": 1 };
     if (byPassAuthAPIs.indexOf(url) === -1) {
       requestHeaders = {
         ...headers,
+        "abp.tenantid": 1,
         Authorization: `Bearer ${accessToken}`,
         Accept: `application/json, text/plain`,
       };

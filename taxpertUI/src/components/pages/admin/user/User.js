@@ -68,17 +68,7 @@ const UserComponent = () => {
   ];
   return (
     <Card>
-      <ListHeader
-        leftContent={<h2>User</h2>}
-        rightContent={
-          <Button
-            type="primary"
-            shape="circle"
-            onClick={() => navigator.goTo(PATH.CREATE_USER)}
-            icon={<PlusOutlined />}
-          />
-        }
-      ></ListHeader>
+      <ListHeader leftContent={<h2>User</h2>}></ListHeader>
       <Row>
         <Col sm={{ span: 10, offset: 0 }}></Col>
       </Row>

@@ -9,22 +9,22 @@ import request, {
 import user, {
   initialState as userInitialState,
 } from "../store/user/user.reducer";
-import employer, {
-  initialState as employerInitialState,
-} from "../store/employer/employer.reducer";
+import advocate, {
+  initialState as advocateInitialState,
+} from "../store/advocate/advocate.reducer";
 
 export default combineReducers({
   authentication,
   request,
   user,
-  employer,
+  advocate,
 });
 
 const initialState = {
   authentication: authenticationInitialState,
   request: requestInitialState,
   user: userInitialState,
-  employer: employerInitialState,
+  advocate: advocateInitialState,
 };
 
 export { initialState };

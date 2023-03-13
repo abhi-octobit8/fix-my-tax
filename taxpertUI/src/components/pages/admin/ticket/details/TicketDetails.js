@@ -74,7 +74,7 @@ const TicketDetails = (props) => {
   ];
   // React.useEffect(() => {
   //   (async () => {
-  //     await getAllEmployer();
+  //     await getAllAdvocate();
   //   })();
   // }, []);
 
