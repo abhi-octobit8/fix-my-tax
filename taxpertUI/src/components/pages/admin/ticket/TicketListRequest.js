@@ -1,57 +1,76 @@
-import React from "react";
-import { Button, Card, Col, Row, Space } from "antd";
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import ListHeader from "../../../../common/ListHeader/ListHeader";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Button, Card, Col, Row, Space } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 import Tag from "antd/es/tag";
 import useRedirectPath from "../../../hooks/useRedirectPath";
-import { getAllEmployer } from "../../../../services/employer.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
-import { useState } from "react";
 import AssignTicket from "./AssignTicket";
-import { PATH } from "../../../../shared/Route";
+import ListHeader from "../../../../common/ListHeader/ListHeader";
+import { getAllTickets } from "../../../../services/ticket.service";
+import { DATE_FORMATS, getLocalTime } from "../../../../shared/timeUtils";
+import { getKeyFromObject } from "../../../../shared/utils";
+import { ServiceType } from "../../services/constant";
+import useUserRole from "../../../hooks/useUserRole";
+import { USER_ROLE } from "../../../application/application-menu/constant";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
-  const [isModelOpen, setIsModelOpen] = useState(false);
-  const requestList = useSelector((state) => state.employer?.employerListData);
+  const userRole = useUserRole();
+  const [modelInfoOpen, setModelInfoOpen] = useState({
+    open: false,
+    record: {},
+  });
+  const requestList = useSelector((state) => state.request.ticketListData);
   React.useEffect(() => {
     (async () => {
-      await getAllEmployer();
+      await getAllTickets();
     })();
   }, []);
 
-  const onHandleAssignTicket = React.useCallback((formValues) => {
-    setIsModelOpen(true);
+  const onHandleAssignTicket = React.useCallback((record) => {
+    debugger;
+    setModelInfoOpen({ open: true, record });
   }, []);
 
   const OnHandleCancel = React.useCallback((formValues) => {
-    setIsModelOpen(false);
+    setModelInfoOpen({ open: false, record: {} });
   }, []);
+
   const columns = [
     {
-      title: "UserName",
-      dataIndex: "userName",
-      key: "userName",
-      width: 150,
-      render: (text) => <div>{text}</div>,
+      title: "Request",
+      dataIndex: "section",
+      key: "section",
+      width: 250,
+      render: (text, value) => {
+        return (
+          <Space>
+            <span>{value.section}</span>
+            <span>{value.subSection}</span>
+          </Space>
+        );
+      },
     },
     {
-      title: "FullName",
-      dataIndex: "name",
-      key: "name",
+      title: "Service",
+      dataIndex: "serviceType",
+      key: "serviceType",
       width: 150,
-      render: (text) => <div>{text}</div>,
+      render: (text, value) => {
+        return <span>{getKeyFromObject(ServiceType, text)}</span>;
+      },
     },
     {
-      title: "EmailAddress",
-      dataIndex: "emailAddress",
-      key: "emailAddress",
+      title: "Creation Time",
+      dataIndex: "creationTime",
+      key: "creationTime",
       width: 150,
-      render: (text) => <div>{text}</div>,
+      render: (value) =>
+        getLocalTime(value, DATE_FORMATS.LIST_DATE_TIME_FORMAT),
     },
     {
-      title: "IsActive",
+      title: "Status",
       dataIndex: "isActive",
       key: "isActive",
       width: 150,
@@ -59,8 +78,15 @@ const TicketListRequest = () => {
         text === true ? (
           <Tag color="#2db7f5">{"Yes"}</Tag>
         ) : (
-          <Tag color="red">{"No"}</Tag>
+          <Tag color="#2db7f5">{"new"}</Tag>
         ),
+    },
+    {
+      title: "Attachement",
+      dataIndex: "attachments",
+      key: "attachments",
+      width: 150,
+      render: (value) => value.map((item) => item.filename).join(),
     },
     {
       title: "Actions",
@@ -68,12 +94,17 @@ const TicketListRequest = () => {
       fixed: "right",
       align: "center",
       width: 160,
-      render: (productId) => {
+      render: (productId, record) => {
         return (
           <Space onClick={(event) => event.stopPropagation()}>
-            <Button type="default" onClick={onHandleAssignTicket}>
-              Assign
-            </Button>
+            {userRole === USER_ROLE.ADMIN && (
+              <Button
+                type="default"
+                onClick={() => onHandleAssignTicket(record)}
+              >
+                Assign
+              </Button>
+            )}
             <DeleteOutlined title="Delete" style={{ color: "red" }} />
           </Space>
         );
@@ -106,6 +137,7 @@ const TicketListRequest = () => {
             xxl={{ span: 24, offset: 0 }}
           >
             <FixMyTaxTable
+              size="small"
               columns={columns}
               dataSource={requestList}
               onRow={(record) => onRowClick(record)}
@@ -113,7 +145,7 @@ const TicketListRequest = () => {
           </Col>
         </Row>
       </Card>
-      <AssignTicket open={isModelOpen} onClose={OnHandleCancel} />
+      <AssignTicket modelInfo={modelInfoOpen} onClose={OnHandleCancel} />
     </React.Fragment>
   );
 };

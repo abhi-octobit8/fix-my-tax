@@ -1,3 +1,4 @@
+import CollectionUtilService from "../../../services/CollectionUtilService";
 import { PATH } from "../../../shared/Route";
 
 const overflow = {
@@ -9,6 +10,8 @@ const USER_ROLE = {
   AUTHORIZED: "authorize",
   ADMIN: "ADMIN",
   NON_AUTHORIZED: "not authorized",
+  CUSTOMER: "CUSTOMER",
+  ADVOCATE: "ADVOCATE",
 };
 const MENU_BUILTIN_PLACEMENTS = {
   topLeft: {
@@ -81,39 +84,39 @@ const MENU_ITEMS = [
     role: USER_ROLE.PUBLIC,
     to: PATH.CONTACT_US,
   },
+  // {
+  //   label: "Account",
+  //   role: [USER_ROLE.CUSTOMER, USER_ROLE.ADMIN, USER_ROLE.ADVOCATE],
+  //   to: "/request/newrequest",
+  //   children: [
+  //     {
+  //       label: "Request",
+  //       role: USER_ROLE.AUTHORIZED,
+  //       to: "/request/newrequest",
+  //     },
+  //     {
+  //       label: "Pending Request",
+  //       role: USER_ROLE.AUTHORIZED,
+  //       to: "/request/pendingrequest",
+  //     },
+  //   ],
+  // },
   {
     label: "Account",
-    role: USER_ROLE.AUTHORIZED,
-    to: "/request/newrequest",
-    children: [
-      {
-        label: "Request",
-        role: USER_ROLE.AUTHORIZED,
-        to: "/request/newrequest",
-      },
-      {
-        label: "Pending Request",
-        role: USER_ROLE.AUTHORIZED,
-        to: "/request/pendingrequest",
-      },
-    ],
-  },
-  {
-    label: "Account",
-    role: USER_ROLE.ADMIN,
+    role: [USER_ROLE.CUSTOMER, USER_ROLE.ADMIN, USER_ROLE.ADVOCATE],
     to: "/admin/dashboard",
-    children: [
-      {
-        label: "DashBoard",
-        role: USER_ROLE.ADMIN,
-        to: "/admin/dashboard",
-      },
-      // {
-      //   label: "Pending Request",
-      //   role: USER_ROLE.ADMIN,
-      //   to: "/admin/user",
-      // },
-    ],
+    // children: [
+    //   {
+    //     label: "DashBoard",
+    //     role: [USER_ROLE.CUSTOMER, USER_ROLE.ADMIN, USER_ROLE.ADVOCATE],
+    //     to: "/admin/dashboard",
+    //   },
+    //   // {
+    //   //   label: "Pending Request",
+    //   //   role: USER_ROLE.ADMIN,
+    //   //   to: "/admin/user",
+    //   // },
+    // ],
   },
   // {
   //   label: "Register",
@@ -135,10 +138,19 @@ function getMenuItems(collection, userData) {
     };
 
     let condition = false;
+    // if (role === USER_ROLE.PUBLIC) {
+    //   condition = true;
+    // } else if (role === userAuthRole) {
+    //   condition = true;
+    // }
+
     if (role === USER_ROLE.PUBLIC) {
       condition = true;
-    } else if (role === userAuthRole) {
-      condition = true;
+    } else {
+      const hasRole = CollectionUtilService.hasRole(role, userAuthRole);
+      if (hasRole) {
+        condition = true;
+      }
     }
     // else if (role === USER_ROLE.NON_AUTHORIZED && !isAuthorized) {
     //   condition = true;
@@ -164,4 +176,4 @@ function getMenuItems(collection, userData) {
   return entitledMenuItems;
 }
 
-export { MENU_BUILTIN_PLACEMENTS, MENU_ITEMS, getMenuItems };
+export { MENU_BUILTIN_PLACEMENTS, MENU_ITEMS, USER_ROLE, getMenuItems };

@@ -1,14 +1,14 @@
-import { EMPLOYER_ACTIONS } from "./employerActionTypes";
+import { ADVOCATE_ACTIONS } from "./advocateActionTypes";
 
 const initialState = {
-  employerListData: [],
+  advocateListData: [],
 };
 export default function requestReducer(state = initialState, action) {
   switch (action.type) {
-    case EMPLOYER_ACTIONS.GET_ALL_EMPLOYER_LIST_SUCCESS:
+    case ADVOCATE_ACTIONS.GET_ALL_ADVOCATE_LIST_SUCCESS:
       return {
         ...state,
-        employerListData: action.payload,
+        advocateListData: action.payload,
       };
 
     default:

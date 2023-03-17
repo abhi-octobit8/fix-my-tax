@@ -3,19 +3,40 @@ import Button from "antd/es/button";
 // import Form from "antd/lib/form/Form";
 import Modal from "antd/lib/modal/Modal";
 import React from "react";
+import { useSelector } from "react-redux";
+import { getAllAdvocate } from "../../../../services/advocate.service";
+import { updateAssignment } from "../../../../services/ticket.service";
 import { requiredValidator } from "../../../../shared/validator";
+import useUserData from "../../../hooks/useUserData";
+const { Option } = Select;
 
 const AssignTicket = (props) => {
-  const { open, onClose } = props;
+  const { modelInfo, onClose } = props;
+  const { open, record } = modelInfo;
+  const userData = useUserData();
+  const advocateList = useSelector((state) => state.advocate?.advocateListData);
+
+  React.useEffect(() => {
+    (async () => {
+      if (open) {
+        await getAllAdvocate();
+      }
+    })();
+  }, [open]);
   const [form] = Form.useForm();
   const onFormSubmit = React.useCallback(
-    (formValues) => {
+    async (formValues) => {
       console.log(formValues);
 
-      form.resetFields();
+      const formData = {
+        ticketIds: [record.id],
+        assignUserId: formValues.advocate,
+      };
+
+      const res = await updateAssignment(formData);
       onClose();
     },
-    [onClose]
+    [onClose, record]
   );
   return (
     <Modal
@@ -26,8 +47,17 @@ const AssignTicket = (props) => {
       title={<h3>Assign Ticket</h3>}
     >
       <Form form={form} layout="vertical" onFinish={onFormSubmit}>
-        <Form.Item label="Employer" name="employer" rules={[requiredValidator]}>
-          <Select
+        <Form.Item label="PSP" name="advocate" rules={[requiredValidator]}>
+          <Select placeholder="Select your PSP" allowClear>
+            {advocateList.map((x, i) => {
+              return (
+                <Option value={x.id} key={i}>
+                  {x.userName}
+                </Option>
+              );
+            })}
+          </Select>
+          {/* <Select
             showSearch
             allowClear
             options={[
@@ -48,7 +78,7 @@ const AssignTicket = (props) => {
                 label: "Lucy4",
               },
             ]}
-          />
+          /> */}
         </Form.Item>
 
         <Space>

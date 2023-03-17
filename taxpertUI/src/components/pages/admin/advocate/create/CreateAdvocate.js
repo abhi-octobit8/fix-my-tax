@@ -1,7 +1,10 @@
 import React from "react";
-import "./CreateEmployer.less";
+import "./CreateAdvocate.less";
 import { Button, Form, Input, Select, Card } from "antd";
 import TextArea from "antd/lib/input/TextArea";
+import { createAdvocate } from "../../../../../services/advocate.service";
+import { PATH } from "../../../../../shared/Route";
+import useRedirectPath from "../../../../hooks/useRedirectPath";
 
 const formItemLayout = {
   labelCol: {
@@ -33,14 +36,25 @@ const tailFormItemLayout = {
     },
   },
 };
-const CreateEmployer = (props) => {
+const CreateAdvocate = (props) => {
+  const navigator = useRedirectPath();
   const [form] = Form.useForm();
+
   const onFinish = async (values) => {
     console.log("registration values:", values);
+    const formData = {
+      ...values,
+      isActive: true,
+      // roleNames: ["string"],
+    };
+    const res = await createAdvocate(formData);
+    if (res.id) {
+      navigator.goTo(PATH.ADVOCATE_LIST);
+    }
   };
 
   return (
-    <Card title="Create Employer" bordered={false}>
+    <Card title="Create PSP" bordered={false}>
       <Form
         {...formItemLayout}
         form={form}
@@ -53,48 +67,56 @@ const CreateEmployer = (props) => {
         scrollToFirstError
       >
         <Form.Item
-          label="Subject"
+          label="Name"
           name="name"
           rules={[{ required: true, message: "This field is required" }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          label="Type"
+          label="SurName"
           name="surname"
           rules={[{ required: true, message: "This field is required" }]}
         >
-          <Select
-            defaultValue="itr-notice"
-            style={{
-              width: 120,
-            }}
-            options={[
-              {
-                value: "itr-notice",
-                label: "ITR Notice",
-              },
-              {
-                value: "gst-notice",
-                label: "GST Notice",
-              },
-            ]}
-          />
+          <Input />
         </Form.Item>
         <Form.Item
-          label="Query"
-          name="query"
+          label="User name"
+          name="username"
           rules={[{ required: true, message: "This field is required" }]}
         >
-          <TextArea showCount maxLength={500} />
+          <Input />
         </Form.Item>
+        <Form.Item label="Email" {...formItemLayout} name={"emailAddress"}>
+          <Input />
+        </Form.Item>
+
         <Form.Item
-          label="Attachment"
+          label="Password"
           {...formItemLayout}
-          name={"attachment"}
-          rules={[{ required: true, message: "This field is required" }]}
+          name={"password"}
+          rules={[
+            {
+              required: true,
+              message: "Please input your password!",
+            },
+          ]}
         >
-          <input className="FileInput" type="file" />
+          <Input type="password" />
+        </Form.Item>
+
+        <Form.Item
+          label="ConfirmPassword"
+          {...formItemLayout}
+          name={"confirm"}
+          rules={[
+            {
+              required: true,
+              message: "Please input your confirm password!",
+            },
+          ]}
+        >
+          <Input type="password" />
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>
@@ -107,4 +129,4 @@ const CreateEmployer = (props) => {
   );
 };
 
-export default CreateEmployer;
+export default CreateAdvocate;

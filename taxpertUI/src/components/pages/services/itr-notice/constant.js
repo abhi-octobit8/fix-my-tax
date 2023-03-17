@@ -140,10 +140,10 @@ const sectionData = {
 const FIELD_NAME = {
   NAME: "name",
   EMAIL: "email",
-  SERVICE: "service",
+  SERVICE_TYPE: "serviceType",
   SECTION: "section",
-  SUBSECTION: "subsection",
-  NOTICE_SELECTION: "selectedNotice",
+  SUBSECTION: "subSection",
+  PRICE: "price",
   SELECT_TIME: "date-time-picker",
   UPLOAD_NOTICE: "uploadNotice",
   UPLOAD_ITR: "uploadITR",

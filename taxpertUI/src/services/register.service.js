@@ -10,45 +10,38 @@ export const getNewRequest = async (id) => {
   return res.items;
 };
 
-export const registerNotice = async (values) => {
-  const formData = {
-    noticeType: NOTICE_TYPE.ITR_NOTICE,
-    name: values.name,
-    email: values.email,
-    phoneNumber: values.phoneNumber,
-    noticeQuestion: values.service,
-  };
-  console.log(values);
+export const registerNotice = async (body, uploadfileData) => {
+  console.log(body);
   // debugger;
   const registerResponse = await API({
     method: "post",
     url: "services/app/RegisterService/Create",
-    body: formData,
+    body: body,
   });
-  //   if (registerResponse.ticketId && values.uploadNotice) {
-  //     let formData = new FormData();
+  if (registerResponse.ticketId && uploadfileData) {
+    let formData = new FormData();
 
-  //     // let file = values.uploadNotice;
-  //     formData.append(
-  //       "file",
-  //       values.uploadNotice[0],
-  //       values.uploadNotice[0].name
-  //     );
+    formData.append(
+      "file",
+      uploadfileData[0].originFileObj,
+      uploadfileData[0].originFileObj.name
+    );
 
-  //     const uploadData = {
-  //       id: registerResponse.ticketId,
-  //       file: formData,
-  //     };
-  //     const uploadFile = await uploadRequestFile(uploadData);
-  //     debugger;
-  //   }
+    const uploadData = {
+      id: registerResponse.ticketId,
+      formData,
+    };
+
+    await uploadRequestFile(uploadData);
+  }
   return registerResponse;
 };
 
-const uploadRequestFile = async (uploadData) => {
+export const uploadRequestFile = async (uploadData) => {
   const res = await API({
-    url: `services/app/FileService/UploadRequestFile`,
-    body: uploadData,
+    url: `services/app/FileService/UploadRequestFile?id=${uploadData.id}`,
+    method: "post",
+    body: uploadData.formData,
   });
-  return res.items;
+  return res;
 };

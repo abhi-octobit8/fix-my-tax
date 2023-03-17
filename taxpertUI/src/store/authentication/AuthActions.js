@@ -79,7 +79,8 @@ export const checkLogin = async (userId) => {
   try {
     const userInfo = await API({
       method: "get",
-      url: `services/app/User/Get?Id=${userId}`,
+      //url: `services/app/User/Get?Id=${userId}`,
+      url: `services/app/FMTCustomerService/GetCustomerById?Id=${userId}`,
     });
     dispatch({
       type: AUTH_ACTIONS.SET_USER,

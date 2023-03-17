@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import CreateUser from "./create/CreateUser";
+// import CreateUser from "./create/CreateUser";
 import UserComponent from "./User";
 // import loadable from "@loadable/component";
 
@@ -12,7 +12,7 @@ function UserRouter() {
     <div>
       <Routes>
         <Route element={<UserComponent />} index />
-        <Route element={<CreateUser />} path="create" />
+        {/* <Route element={<CreateUser />} path="create" /> */}
         {/* <Route element={<UserList />} index />
         <Route element={<Create />} path="create" /> */}
       </Routes>

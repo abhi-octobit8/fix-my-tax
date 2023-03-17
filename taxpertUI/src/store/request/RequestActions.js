@@ -15,3 +15,9 @@ export const setTicketListData = (payloadData) => {
     payload: payloadData,
   });
 };
+export const setTicketDetailsData = (payloadData) => {
+  dispatch({
+    type: REQUEST_ACTIONS.GET_TICKET_DETAILS_SUCCESS,
+    payload: payloadData,
+  });
+};

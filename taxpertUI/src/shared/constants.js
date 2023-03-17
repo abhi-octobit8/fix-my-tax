@@ -22,3 +22,13 @@ export const VALIDATION_PATTERN = {
   ZIP: new RegExp("^\\d{5}(?:[-\\s]\\d{4})?$"),
   PHONE: new RegExp("^\\d{10}?$"),
 };
+
+export const TicketStatus = {
+  None: 0,
+  New: 1,
+  Assigned: 2,
+  Responded: 3,
+  Reopen: 4,
+  Resolved: 5,
+  Closed: 6,
+};

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./RegisterPage.less";
 import { Button, Checkbox, Form, Input, Select, Card } from "antd";
 import API from "../../../shared/API";
+import { phoneNumberValidator } from "../../../shared/validator";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -165,6 +166,7 @@ const RegisterPage = (props) => {
               required: true,
               message: "Please input your phone number!",
             },
+            phoneNumberValidator,
           ]}
         >
           <Input

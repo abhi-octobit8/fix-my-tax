@@ -25,16 +25,14 @@ const Login = (props) => {
     const loginResponse = await API({
       method: "post",
       url: "/TokenAuth/Authenticate",
-      // headers: {
-      //   "abp.tenantid": checkTenantAvaialable.tenantId,
-      // },
+
       body: loginData,
     });
     doLogin({ ...loginResponse });
     await checkLogin(loginResponse.userId);
 
     setLoading(false);
-    navigate("/request/newrequest");
+    navigate("/admin/dashboard");
   };
 
   const onFinishFailed = (errorInfo) => {

@@ -6,10 +6,15 @@ import "./AdminLayout.css";
 import { Layout, Menu } from "antd";
 import { MENU_ITEMS } from "./constant";
 import { Content } from "antd/lib/layout/layout";
+import { useSelector } from "react-redux";
+import { getMenuItems } from "../../../application/application-menu/constant";
 
 const displayName = "AdminLayout";
 
 function AdminLayout(props) {
+  const userData = useSelector((state) => state.authentication.user);
+  const data = getMenuItems(MENU_ITEMS, userData);
+
   return (
     <Layout className="account-layout">
       <Sider width={200}>
@@ -21,7 +26,7 @@ function AdminLayout(props) {
             borderRight: 1,
           }}
         >
-          {MENU_ITEMS.map((child) => {
+          {data.map((child) => {
             return (
               <Menu.Item key={child.to}>
                 <Link to={child.to}>{child.label}</Link>

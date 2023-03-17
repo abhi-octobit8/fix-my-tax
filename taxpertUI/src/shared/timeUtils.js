@@ -17,10 +17,10 @@ export const getLocalTime = (
     return time;
   }
   //utc to local
-  let convertedTime = moment.utc(time).clone().local();
+  // let convertedTime = moment.utc(time).clone().local();
 
   //direct local
-  // let convertedTime = moment(time).clone().local();
+  let convertedTime = moment(time).clone().local();
   if (!isMoment) {
     return convertedTime.format(format);
   }

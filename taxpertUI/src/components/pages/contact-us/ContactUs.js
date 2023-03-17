@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, Form, Input, Select, Upload, Row, Col } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { UploadOutlined, PhoneTwoTone, MailTwoTone } from "@ant-design/icons";
 import "./ContactUs.css";
 import TextArea from "antd/lib/input/TextArea";
+import { phoneNumberValidator } from "../../../shared/validator";
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -131,6 +132,7 @@ const ContactUs = () => {
                     required: true,
                     message: "Please input your phone number!",
                   },
+                  phoneNumberValidator,
                 ]}
               >
                 <Input
@@ -157,20 +159,11 @@ const ContactUs = () => {
           <Col className="content-padding" xs={24} md={12} lg={12} sm={24}>
             <h6 style={{ fontSize: "20px" }}>We are here to help</h6>
 
-            <img
-              src="https://media.istockphoto.com/id/1218145182/vector/blue-phone-icon-symbol-in-trendy-flat-style-isolated-on-white-background-telephone-logo-and.jpg?s=170667a&w=0&k=20&c=fRGLeIX_unLtmu7MvCHBnP2CPFhiTu1GxoWDq31683g="
-              alt="location icon"
-              width="40px"
-              height="55px"
-            />
+            <PhoneTwoTone />
             <span style={{ marginLeft: "8px" }}>+91 9839441144</span>
             <br />
-            <img
-              src="https://www.seekpng.com/png/small/0-9454_mail-icon-png-white-circle-dash-coin-logo.png"
-              alt="location icon"
-              width="40px"
-              height="40px"
-            />
+
+            <MailTwoTone />
             <span style={{ marginLeft: "11px" }}>contact@fixmytax.in</span>
             <br />
           </Col>

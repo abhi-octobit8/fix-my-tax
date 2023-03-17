@@ -1,6 +1,7 @@
 import API from "../shared/API";
 import {
   setNewRequestData,
+  setTicketDetailsData,
   setTicketListData,
 } from "../store/request/RequestActions";
 
@@ -18,4 +19,22 @@ export const getAllTickets = async (id) => {
   });
   setTicketListData(res.items);
   return res.items;
+};
+
+export const getTicketDetails = async (id) => {
+  const res = await API({
+    url: `/services/app/TicketService/Get?id=${id}`,
+  });
+  setTicketDetailsData(res);
+  return res;
+};
+
+export const updateAssignment = async (formData) => {
+  const res = await API({
+    url: `services/app/TicketService/UpdateAssignment`,
+    method: "PUT",
+    body: formData,
+    successMessage: "Ticket Assigned successfully",
+  });
+  return res;
 };

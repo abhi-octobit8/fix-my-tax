@@ -22,10 +22,10 @@ import LatestNewsPage from "../pages/latest-news/LatestNewsPage";
 import AdminLayout from "../pages/admin/admin-layout/AdminLayout";
 import UserComponent from "../pages/admin/user/User";
 import DashBoard from "../pages/admin/dahboard/DashBoard";
-import EmployerList from "../pages/admin/employer/EmployerList";
+import AdvocateList from "../pages/admin/advocate/AdvocateList";
 import TicketListRequest from "../pages/admin/ticket/TicketListRequest";
 import UserRouter from "../pages/admin/user/UserRouter";
-import EmployerRoutes from "../pages/admin/employer/EmployerRoutes";
+import AdvocateRoutes from "../pages/admin/advocate/AdvocateRoutes";
 import TicketRoutes from "../pages/admin/ticket/TicketRoutes";
 // React.lazy(() =>
 //       import(
@@ -71,8 +71,8 @@ function AuthenticatedApplication() {
 
           <Route element={<UserRouter />} path="user/*" />
 
-          <Route element={<EmployerRoutes />} path="employer/*" />
-          {/* <Route element={<EmployerList />} path="employer" /> */}
+          <Route element={<AdvocateRoutes />} path="advocate/*" />
+          {/* <Route element={<AdvocateList />} path="advocate" /> */}
           <Route element={<TicketRoutes />} path="requests/*" />
         </Route>
         <Route path="*" element={<HomePage />} />
