@@ -1,23 +1,24 @@
-import React from "react";
-import { Button, Card, Col, Row, Space } from "antd";
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import ListHeader from "../../../../common/ListHeader/ListHeader";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Button, Card, Col, Row, Space } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 import Tag from "antd/es/tag";
 import useRedirectPath from "../../../hooks/useRedirectPath";
-import { getAllAdvocate } from "../../../../services/advocate.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
-import { useState } from "react";
 import AssignTicket from "./AssignTicket";
-import { PATH } from "../../../../shared/Route";
+import ListHeader from "../../../../common/ListHeader/ListHeader";
+import { getAllTickets } from "../../../../services/ticket.service";
+import { DATE_FORMATS, getLocalTime } from "../../../../shared/timeUtils";
+import { getKeyFromObject } from "../../../../shared/utils";
+import { ServiceType } from "../../services/constant";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
   const [isModelOpen, setIsModelOpen] = useState(false);
-  const requestList = useSelector((state) => state.advocate?.advocateListData);
+  const requestList = useSelector((state) => state.request.ticketListData);
   React.useEffect(() => {
     (async () => {
-      await getAllAdvocate();
+      await getAllTickets();
     })();
   }, []);
 
@@ -28,30 +29,43 @@ const TicketListRequest = () => {
   const OnHandleCancel = React.useCallback((formValues) => {
     setIsModelOpen(false);
   }, []);
+
   const columns = [
     {
-      title: "UserName",
-      dataIndex: "userName",
-      key: "userName",
-      width: 150,
-      render: (text) => <div>{text}</div>,
+      title: "Request",
+      dataIndex: "section",
+      key: "section",
+      width: 250,
+      // render: (text, value) => <div>{text}</div>,
+      render: (text, value) => {
+        return (
+          <Space>
+            <span>{value.section}</span>
+            <span>{value.subSection}</span>
+          </Space>
+        );
+      },
     },
     {
-      title: "FullName",
-      dataIndex: "name",
-      key: "name",
+      title: "Service",
+      dataIndex: "serviceType",
+      key: "serviceType",
       width: 150,
-      render: (text) => <div>{text}</div>,
+      // render: (text) => <div>{text}</div>,
+      render: (text, value) => {
+        return <span>{getKeyFromObject(ServiceType, text)}</span>;
+      },
     },
     {
-      title: "EmailAddress",
-      dataIndex: "emailAddress",
-      key: "emailAddress",
+      title: "Creation Time",
+      dataIndex: "creationTime",
+      key: "creationTime",
       width: 150,
-      render: (text) => <div>{text}</div>,
+      render: (value) =>
+        getLocalTime(value, DATE_FORMATS.LIST_DATE_TIME_FORMAT),
     },
     {
-      title: "IsActive",
+      title: "Status",
       dataIndex: "isActive",
       key: "isActive",
       width: 150,
@@ -59,8 +73,18 @@ const TicketListRequest = () => {
         text === true ? (
           <Tag color="#2db7f5">{"Yes"}</Tag>
         ) : (
-          <Tag color="red">{"No"}</Tag>
+          <Tag color="#2db7f5">{"new"}</Tag>
         ),
+    },
+    {
+      title: "Attachement",
+      dataIndex: "attachments",
+      key: "attachments",
+      width: 150,
+      // render: (value) => {
+      //   return <RenderAttachement attachements={value}></RenderAttachement>;
+      // },
+      render: (value) => value.map((item) => item.filename).join(),
     },
     {
       title: "Actions",
@@ -106,6 +130,7 @@ const TicketListRequest = () => {
             xxl={{ span: 24, offset: 0 }}
           >
             <FixMyTaxTable
+              size="small"
               columns={columns}
               dataSource={requestList}
               onRow={(record) => onRowClick(record)}

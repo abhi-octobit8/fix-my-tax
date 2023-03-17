@@ -136,6 +136,10 @@ export const isFalsyValueWithoutZero = (value) => {
   return !value && value !== 0;
 };
 
+export const getKeyFromObject = (obj, value) => {
+  return Object.keys(obj).find((key) => obj[key] === value);
+};
+
 export const renderMoney = (value) => {
   let returnValue = "$0.00";
   try {

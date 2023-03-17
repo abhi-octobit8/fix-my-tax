@@ -4,19 +4,38 @@ import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
-import { getAllAdvocate } from "../../../../services/advocate.service";
+import {
+  deleteAdvocate,
+  getAllAdvocate,
+} from "../../../../services/advocate.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import { PATH } from "../../../../shared/Route";
+import { getRandomString } from "../../../../shared/utils";
 import useRedirectPath from "../../../hooks/useRedirectPath";
+import { useState } from "react";
 
 const AdvocateList = () => {
   const navigator = useRedirectPath();
+  const [listUpdate, setListUpdate] = useState();
   const requestList = useSelector((state) => state.advocate?.advocateListData);
   React.useEffect(() => {
     (async () => {
       await getAllAdvocate();
     })();
-  }, []);
+  }, [listUpdate]);
+
+  const callDeleteAdvocate = async (id) => {
+    try {
+      if (
+        window.confirm(
+          "Are you sure, you want to delete data for this Advocate?"
+        )
+      ) {
+        await deleteAdvocate(id);
+        setListUpdate(getRandomString());
+      }
+    } catch (e) {}
+  };
   const columns = [
     {
       title: "UserName",
@@ -53,14 +72,18 @@ const AdvocateList = () => {
     },
     {
       title: "Actions",
-      dataIndex: "productId",
+      dataIndex: "id",
       fixed: "right",
       align: "center",
       width: 60,
-      render: (productId) => {
+      render: (id) => {
         return (
           <Space>
-            <DeleteOutlined title="Delete" style={{ color: "red" }} />
+            <DeleteOutlined
+              onClick={() => callDeleteAdvocate(id)}
+              title="Delete"
+              style={{ color: "red" }}
+            />
           </Space>
         );
       },

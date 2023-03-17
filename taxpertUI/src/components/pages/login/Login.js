@@ -32,7 +32,7 @@ const Login = (props) => {
     await checkLogin(loginResponse.userId);
 
     setLoading(false);
-    navigate("/request/newrequest");
+    navigate("/admin/dashboard");
   };
 
   const onFinishFailed = (errorInfo) => {

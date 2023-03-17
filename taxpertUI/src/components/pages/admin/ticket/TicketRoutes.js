@@ -3,7 +3,6 @@ import TicketDetails from "./details/TicketDetails";
 import TicketListRequest from "./TicketListRequest";
 
 function TicketRoutes() {
-  debugger;
   return (
     <div>
       <Routes>

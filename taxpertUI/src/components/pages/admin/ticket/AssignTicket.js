@@ -3,16 +3,27 @@ import Button from "antd/es/button";
 // import Form from "antd/lib/form/Form";
 import Modal from "antd/lib/modal/Modal";
 import React from "react";
+import { useSelector } from "react-redux";
+import { getAllAdvocate } from "../../../../services/advocate.service";
 import { requiredValidator } from "../../../../shared/validator";
+const { Option } = Select;
 
 const AssignTicket = (props) => {
   const { open, onClose } = props;
+  const advocateList = useSelector((state) => state.advocate?.advocateListData);
+
+  React.useEffect(() => {
+    (async () => {
+      if (open) {
+        await getAllAdvocate();
+      }
+    })();
+  }, [open]);
   const [form] = Form.useForm();
   const onFormSubmit = React.useCallback(
     (formValues) => {
       console.log(formValues);
 
-      form.resetFields();
       onClose();
     },
     [onClose]
@@ -27,7 +38,16 @@ const AssignTicket = (props) => {
     >
       <Form form={form} layout="vertical" onFinish={onFormSubmit}>
         <Form.Item label="Advocate" name="advocate" rules={[requiredValidator]}>
-          <Select
+          <Select placeholder="Select your Section Type" allowClear>
+            {advocateList.map((x, i) => {
+              return (
+                <Option value={x.id} key={i}>
+                  {x.userName}
+                </Option>
+              );
+            })}
+          </Select>
+          {/* <Select
             showSearch
             allowClear
             options={[
@@ -48,7 +68,7 @@ const AssignTicket = (props) => {
                 label: "Lucy4",
               },
             ]}
-          />
+          /> */}
         </Form.Item>
 
         <Space>

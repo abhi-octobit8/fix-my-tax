@@ -41,7 +41,6 @@ const CreateAdvocate = (props) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
-    debugger;
     console.log("registration values:", values);
     const formData = {
       ...values,
@@ -52,7 +51,6 @@ const CreateAdvocate = (props) => {
     if (res.id) {
       navigator.goTo(PATH.ADVOCATE_LIST);
     }
-    debugger;
   };
 
   return (

@@ -13,10 +13,14 @@ import {
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./ItrNotice.css";
-import { registerNotice } from "../../../../services/register.service";
+import {
+  registerNotice,
+  uploadRequestFile,
+} from "../../../../services/register.service";
 import { useState } from "react";
 import { FIELD_NAME } from "./constant";
-import { fixMytaxServicesInfo } from "../constant";
+import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
+import { message } from "../../../../shared/utils";
 const { Option } = Select;
 const { Panel } = Collapse;
 
@@ -60,6 +64,8 @@ const normFile = (e) => {
 const ItrNoticeService = (props) => {
   const { notice } = fixMytaxServicesInfo;
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [optionData, setOptionData] = useState({
     sectionList: [],
     subSectionsList: [],
@@ -76,8 +82,46 @@ const ItrNoticeService = (props) => {
   }, []);
 
   const onFinish = async (values) => {
-    const data = await registerNotice(values);
-    console.log(data);
+    setIsLoading(true);
+    const registerFormData = {
+      name: values.name,
+      email: values.email,
+      phoneNumber: values.phoneNumber,
+      ticketDetails: {
+        fixMyTaxServiceType: FixMyTaxServiceType.ITR_TDS_TCS_Notice,
+        serviceType: values.serviceType,
+        section: values.section,
+        subSection: values.subSection,
+        subject: values.subject,
+        question: values.question,
+        description: values.description,
+        // status: 0,
+        price: values.price,
+        // paymentStaus: 0,
+        // transactionNumber: "678678",
+      },
+    };
+    console.log(registerFormData);
+
+    const res = await registerNotice(registerFormData, values.uploadITR);
+    setIsLoading(false);
+    if (res.ticketId) {
+      message.success("Request Created successfully.");
+    }
+    // let formData = new FormData();
+
+    // formData.append(
+    //   "file",
+    //   values.uploadITR[0].originFileObj,
+    //   values.uploadITR[0].originFileObj.name
+    // );
+
+    // const uploadData = {
+    //   id: 2,
+    //   formData,
+    // };
+    // debugger;
+    // const data = await uploadRequestFile(uploadData);
     // debugger;
   };
 
@@ -95,7 +139,7 @@ const ItrNoticeService = (props) => {
       }));
     }
     form.setFieldValue(FIELD_NAME.SUBSECTION, "");
-    form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, "");
+    form.setFieldValue(FIELD_NAME.PRICE, "");
   };
 
   const onHandleSubSection = (value) => {
@@ -106,13 +150,13 @@ const ItrNoticeService = (props) => {
       // setOptionData((prevState) => ({
       //   ...prevState,
       // }));
-      form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, priceValue);
+      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
     } else {
       setOptionData((prevState) => ({
         sectionList: [],
         subSectionsList: [],
       }));
-      form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, "");
+      form.setFieldValue(FIELD_NAME.PRICE, "");
     }
   };
   const prefixSelector = (
@@ -126,6 +170,14 @@ const ItrNoticeService = (props) => {
       </Select>
     </Form.Item>
   );
+
+  // const onChangeHandler = (event) => {
+  //   debugger;
+  //   // this.setState({
+  //   //   selectedFile: event.currentTarget.files,
+  //   // });
+  //   setSelectedFile(event.currentTarget.files);
+  // };
 
   return (
     <React.Fragment>
@@ -189,7 +241,7 @@ const ItrNoticeService = (props) => {
             </Form.Item>
 
             <Form.Item
-              name={FIELD_NAME.SERVICE}
+              name={FIELD_NAME.SERVICE_TYPE}
               label="Service Type"
               rules={[
                 {
@@ -200,7 +252,7 @@ const ItrNoticeService = (props) => {
             >
               <Select placeholder="Select your Service Type">
                 {/* <Option value="video">Video Consultation</Option> */}
-                <Option value="reply">Notice Reply</Option>
+                <Option value="2">Notice Reply</Option>
               </Select>
             </Form.Item>
 
@@ -251,7 +303,7 @@ const ItrNoticeService = (props) => {
                 })}
               </Select>
             </Form.Item>
-            <Form.Item name={FIELD_NAME.NOTICE_SELECTION} label="Price">
+            <Form.Item name={FIELD_NAME.PRICE} label="Price">
               <Input disabled={true} addonAfter="INR"></Input>
             </Form.Item>
 
@@ -278,7 +330,7 @@ const ItrNoticeService = (props) => {
               }}
             </Form.Item>
 
-            <Form.Item
+            {/* <Form.Item
               name={FIELD_NAME.UPLOAD_NOTICE}
               label="Upload Notice"
               valuePropName="fileList"
@@ -293,7 +345,7 @@ const ItrNoticeService = (props) => {
               >
                 <Button icon={<UploadOutlined />}>Click to upload</Button>
               </Upload>
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item
               name={FIELD_NAME.UPLOAD_ITR}
               label="Upload Computation of Income & 26AS"
@@ -309,6 +361,11 @@ const ItrNoticeService = (props) => {
               >
                 <Button icon={<UploadOutlined />}>Click to upload</Button>
               </Upload>
+              {/* <input
+                className="FileInput"
+                type="file"
+                onChange={onChangeHandler}
+              /> */}
             </Form.Item>
 
             <Form.Item
@@ -332,7 +389,7 @@ const ItrNoticeService = (props) => {
             </Form.Item>
 
             <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" loading={isLoading}>
                 Submit
               </Button>
             </Form.Item>

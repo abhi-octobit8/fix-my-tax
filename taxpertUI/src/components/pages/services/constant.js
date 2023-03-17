@@ -1,4 +1,4 @@
-export const fixMytaxServicesInfo = {
+const fixMytaxServicesInfo = {
   notice: {
     "131-1A": {
       subSections: {
@@ -335,3 +335,17 @@ export const fixMytaxServicesInfo = {
     },
   },
 };
+
+const FixMyTaxServiceType = {
+  GST_Notice: 1,
+  ITR_TDS_TCS_Notice: 2,
+  ITR_TDS_TCS_Filing: 3,
+  Consultation: 4,
+};
+
+const ServiceType = {
+  VideoConsultation: 1,
+  NoticeReply: 2,
+};
+
+export { FixMyTaxServiceType, fixMytaxServicesInfo, ServiceType };
