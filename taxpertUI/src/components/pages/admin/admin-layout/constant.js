@@ -15,13 +15,13 @@ export const MENU_ITEMS = [
     to: "/admin/requests",
   },
   {
-    label: "User",
+    label: "Assessee",
     key: "user",
     role: [USER_ROLE.ADMIN],
     to: "/admin/user",
   },
   {
-    label: "Advocate",
+    label: "PSP",
     key: "advocate",
     role: [USER_ROLE.ADMIN],
     to: PATH.ADVOCATE_LIST,

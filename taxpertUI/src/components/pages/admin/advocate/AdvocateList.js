@@ -92,7 +92,7 @@ const AdvocateList = () => {
   return (
     <Card>
       <ListHeader
-        leftContent={<h2>Advocate</h2>}
+        leftContent={<h2>Professional Service Provider</h2>}
         rightContent={
           <Button
             type="primary"

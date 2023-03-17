@@ -21,6 +21,7 @@ import { useState } from "react";
 import { FIELD_NAME } from "./constant";
 import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
 import { message } from "../../../../shared/utils";
+import { phoneNumberValidator } from "../../../../shared/validator";
 const { Option } = Select;
 const { Panel } = Collapse;
 
@@ -89,7 +90,7 @@ const ItrNoticeService = (props) => {
       phoneNumber: values.phoneNumber,
       ticketDetails: {
         fixMyTaxServiceType: FixMyTaxServiceType.ITR_TDS_TCS_Notice,
-        serviceType: values.serviceType,
+        serviceType: 2, // notice reply always for time being
         section: values.section,
         subSection: values.subSection,
         subject: values.subject,
@@ -108,21 +109,6 @@ const ItrNoticeService = (props) => {
     if (res.ticketId) {
       message.success("Request Created successfully.");
     }
-    // let formData = new FormData();
-
-    // formData.append(
-    //   "file",
-    //   values.uploadITR[0].originFileObj,
-    //   values.uploadITR[0].originFileObj.name
-    // );
-
-    // const uploadData = {
-    //   id: 2,
-    //   formData,
-    // };
-    // debugger;
-    // const data = await uploadRequestFile(uploadData);
-    // debugger;
   };
 
   const onHandleSection = (value) => {
@@ -240,7 +226,7 @@ const ItrNoticeService = (props) => {
               <Input />
             </Form.Item>
 
-            <Form.Item
+            {/* <Form.Item
               name={FIELD_NAME.SERVICE_TYPE}
               label="Service Type"
               rules={[
@@ -251,10 +237,10 @@ const ItrNoticeService = (props) => {
               ]}
             >
               <Select placeholder="Select your Service Type">
-                {/* <Option value="video">Video Consultation</Option> */}
+                <Option value="video">Video Consultation</Option>
                 <Option value="2">Notice Reply</Option>
               </Select>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
               name={FIELD_NAME.SECTION}
@@ -376,6 +362,7 @@ const ItrNoticeService = (props) => {
                   required: true,
                   message: "Please input your phone number!",
                 },
+                phoneNumberValidator,
               ]}
             >
               <InputNumber

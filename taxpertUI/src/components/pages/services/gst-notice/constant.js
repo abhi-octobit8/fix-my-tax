@@ -23,7 +23,7 @@ const FIELD_NAME = {
   NOTICE_SELECTION: "selectedNotice",
   SELECT_TIME: "date-time-picker",
   UPLOAD_NOTICE: "uploadNotice",
-  UPLOAD_DOCUMENT: "uploadDocument",
+  UPLOAD_GST: "uploadGSTNotice",
   PHONE_NUMBER: "phoneNumber",
 };
 

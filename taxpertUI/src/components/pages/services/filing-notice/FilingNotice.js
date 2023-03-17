@@ -13,7 +13,10 @@ import {
 import { UploadOutlined } from "@ant-design/icons";
 import { FIELD_NAME } from "./constant";
 import { useState } from "react";
-import { fixMytaxServicesInfo } from "../constant";
+import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
+import { phoneNumberValidator } from "../../../../shared/validator";
+import { registerNotice } from "../../../../services/register.service";
+import { message } from "../../../../shared/utils";
 const { Panel } = Collapse;
 const { Option } = Select;
 
@@ -58,7 +61,9 @@ const normFile = (e) => {
 const FilingNotice = () => {
   const { filing } = fixMytaxServicesInfo;
   const titleHeader = "Filing ITR/TCS/TDS";
+  const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
+
   const [optionData, setOptionData] = useState({
     sectionList: [],
     subSectionsList: [],
@@ -73,46 +78,51 @@ const FilingNotice = () => {
 
   const onFinish = async (values) => {
     console.log("registration values:", values);
-    // debugger;
-    // const registerData = {
-    //   values,
-    //   isActive: true,
-    //   roleNames: ["string"],
-    // };
+    setIsLoading(true);
+    try {
+      const registerFormData = {
+        name: values.name,
+        email: values.email,
+        phoneNumber: values.phoneNumber,
+        ticketDetails: {
+          fixMyTaxServiceType: FixMyTaxServiceType.ITR_TDS_TCS_Filing,
+          serviceType: 2, // notice reply always for time being
+          section: values.section,
+          subSection: "",
+          subject: values.subject,
+          question: values.question,
+          description: values.description,
+          // status: 0,
+          price: values.price,
+          // paymentStaus: 0,
+          // transactionNumber: "678678",
+        },
+      };
+      console.log(registerFormData);
+
+      const res = await registerNotice(registerFormData, values.uploadDocument);
+
+      if (res.ticketId) {
+        message.success("Request Created successfully.");
+      }
+    } catch (e) {
+      console.error("error in creation", e);
+    } finally {
+      setIsLoading(false);
+    }
   };
   const onHandleSection = (value) => {
     console.log(value);
     if (value) {
-      // const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
       const priceValue = filing[value].price;
-      // setOptionData((prevState) => ({
-      //   ...prevState,
-      // }));
-      form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, priceValue);
+      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
     } else {
       setOptionData((prevState) => ({
         sectionList: [],
       }));
-      form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, "");
+      form.setFieldValue(FIELD_NAME.PRICE, "");
     }
   };
-
-  // const onHandleSection = (value) => {
-  //   if (value) {
-  //     const item = Object.keys(data[value].price);
-  //     // setOptionData((prevState) => ({
-  //     //   ...prevState,
-  //     //   subSectionsList: item,
-  //     // }));
-  //   } else {
-  //     // setOptionData((prevState) => ({
-  //     //   ...prevState,
-  //     //   subSectionsList: [],
-  //     // }));
-  //   }
-  //   // form.setFieldValue(FIELD_NAME.SUBSECTION, "");
-  //   // form.setFieldValue(FIELD_NAME.NOTICE_SELECTION, "");
-  // };
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
@@ -157,15 +167,15 @@ const FilingNotice = () => {
           >
             <Form.Item
               label="Name"
-              name="name"
+              name={FIELD_NAME.NAME}
               rules={[{ required: true, message: "This field is required" }]}
             >
               <Input />
             </Form.Item>
 
             <Form.Item
-              name="emailAddress"
-              label="E-mail1"
+              name={FIELD_NAME.EMAIL}
+              label="E-mail"
               rules={[
                 {
                   type: "email",
@@ -204,12 +214,12 @@ const FilingNotice = () => {
               </Select>
             </Form.Item>
 
-            <Form.Item name={FIELD_NAME.NOTICE_SELECTION} label="Price">
+            <Form.Item name={FIELD_NAME.PRICE} label="Price">
               <Input disabled={true} addonAfter="INR"></Input>
             </Form.Item>
             <React.Fragment>
               <Form.Item
-                name="uploadConsultationNotice"
+                name={FIELD_NAME.UPLOAD_DOCUMENT}
                 label="Upload Document"
                 valuePropName="fileList"
                 getValueFromEvent={normFile}
@@ -227,13 +237,14 @@ const FilingNotice = () => {
             </React.Fragment>
 
             <Form.Item
-              name="phone"
+              name={FIELD_NAME.PHONE_NUMBER}
               label="Phone Number"
               rules={[
                 {
                   required: true,
                   message: "Please input your phone number!",
                 },
+                phoneNumberValidator,
               ]}
             >
               <Input
@@ -245,7 +256,7 @@ const FilingNotice = () => {
             </Form.Item>
 
             <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" loading={isLoading}>
                 Submit
               </Button>
             </Form.Item>

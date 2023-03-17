@@ -54,7 +54,7 @@ const CreateAdvocate = (props) => {
   };
 
   return (
-    <Card title="Create Advocate" bordered={false}>
+    <Card title="Create PSP" bordered={false}>
       <Form
         {...formItemLayout}
         form={form}

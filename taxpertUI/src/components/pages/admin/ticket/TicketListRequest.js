@@ -11,10 +11,16 @@ import { getAllTickets } from "../../../../services/ticket.service";
 import { DATE_FORMATS, getLocalTime } from "../../../../shared/timeUtils";
 import { getKeyFromObject } from "../../../../shared/utils";
 import { ServiceType } from "../../services/constant";
+import useUserRole from "../../../hooks/useUserRole";
+import { USER_ROLE } from "../../../application/application-menu/constant";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
-  const [isModelOpen, setIsModelOpen] = useState(false);
+  const userRole = useUserRole();
+  const [modelInfoOpen, setModelInfoOpen] = useState({
+    open: false,
+    record: {},
+  });
   const requestList = useSelector((state) => state.request.ticketListData);
   React.useEffect(() => {
     (async () => {
@@ -22,12 +28,13 @@ const TicketListRequest = () => {
     })();
   }, []);
 
-  const onHandleAssignTicket = React.useCallback((formValues) => {
-    setIsModelOpen(true);
+  const onHandleAssignTicket = React.useCallback((record) => {
+    debugger;
+    setModelInfoOpen({ open: true, record });
   }, []);
 
   const OnHandleCancel = React.useCallback((formValues) => {
-    setIsModelOpen(false);
+    setModelInfoOpen({ open: false, record: {} });
   }, []);
 
   const columns = [
@@ -36,7 +43,6 @@ const TicketListRequest = () => {
       dataIndex: "section",
       key: "section",
       width: 250,
-      // render: (text, value) => <div>{text}</div>,
       render: (text, value) => {
         return (
           <Space>
@@ -51,7 +57,6 @@ const TicketListRequest = () => {
       dataIndex: "serviceType",
       key: "serviceType",
       width: 150,
-      // render: (text) => <div>{text}</div>,
       render: (text, value) => {
         return <span>{getKeyFromObject(ServiceType, text)}</span>;
       },
@@ -81,9 +86,6 @@ const TicketListRequest = () => {
       dataIndex: "attachments",
       key: "attachments",
       width: 150,
-      // render: (value) => {
-      //   return <RenderAttachement attachements={value}></RenderAttachement>;
-      // },
       render: (value) => value.map((item) => item.filename).join(),
     },
     {
@@ -92,12 +94,17 @@ const TicketListRequest = () => {
       fixed: "right",
       align: "center",
       width: 160,
-      render: (productId) => {
+      render: (productId, record) => {
         return (
           <Space onClick={(event) => event.stopPropagation()}>
-            <Button type="default" onClick={onHandleAssignTicket}>
-              Assign
-            </Button>
+            {userRole === USER_ROLE.ADMIN && (
+              <Button
+                type="default"
+                onClick={() => onHandleAssignTicket(record)}
+              >
+                Assign
+              </Button>
+            )}
             <DeleteOutlined title="Delete" style={{ color: "red" }} />
           </Space>
         );
@@ -138,7 +145,7 @@ const TicketListRequest = () => {
           </Col>
         </Row>
       </Card>
-      <AssignTicket open={isModelOpen} onClose={OnHandleCancel} />
+      <AssignTicket modelInfo={modelInfoOpen} onClose={OnHandleCancel} />
     </React.Fragment>
   );
 };

@@ -28,3 +28,13 @@ export const getTicketDetails = async (id) => {
   setTicketDetailsData(res);
   return res;
 };
+
+export const updateAssignment = async (formData) => {
+  const res = await API({
+    url: `services/app/TicketService/UpdateAssignment`,
+    method: "PUT",
+    body: formData,
+    successMessage: "Ticket Assigned successfully",
+  });
+  return res;
+};

@@ -68,7 +68,7 @@ const UserComponent = () => {
   ];
   return (
     <Card>
-      <ListHeader leftContent={<h2>User</h2>}></ListHeader>
+      <ListHeader leftContent={<h2>Assessee</h2>}></ListHeader>
       <Row>
         <Col sm={{ span: 10, offset: 0 }}></Col>
       </Row>

@@ -148,6 +148,29 @@ const fixMytaxServicesInfo = {
       },
       description: "",
     },
+    others: {
+      subSections: {
+        "FIRST APPEAL PREPARATION & FILING": {
+          price: 7100,
+        },
+        "FIRST APPEAL SUBSEQUENT WRITTEN SUBMISSION": {
+          price: 15000,
+        },
+        "FIRST APPEAL PREPARATION INCLUDING WRITTEN SUBMISSION & FILING": {
+          price: 21000,
+        },
+        "SECOND APPEAL PREPARATION & FILING": {
+          price: 11000,
+        },
+        "SECOND APPEAL SUBSEQUENT WRITTEN SUBMISSION": {
+          price: 25000,
+        },
+        "SECOND APPEAL PREPARATION INCLUDING WRITTEN SUBMISSION & FILING": {
+          price: 31000,
+        },
+      },
+      description: "",
+    },
   },
   gst: {
     "GST REG-03": {
@@ -279,7 +302,20 @@ const fixMytaxServicesInfo = {
       price: 21000,
     },
   },
-  consultation: {},
+  consultation: {
+    "CONSULTANCY RELATED TO PROPERTY OR BUSINESS SITUATED IN INDIA": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 11000,
+    },
+    others: {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 11000,
+    },
+  },
   filing: {
     "ITR-1": {
       subSections: null,
@@ -332,6 +368,48 @@ const fixMytaxServicesInfo = {
         "NGOs / SOCIETIES / TRUST / CHARITABLE COMPANIES WITH INCOME TAX EXEMPTION APPROVAL",
       dcouments: [],
       price: 7100,
+    },
+    "TDS QUARTERLY RETURNS - 24 - Q1, Q2 & Q3": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 2100,
+    },
+    "TDS QUARTERLY RETURNS - 24 - Q4": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 4000,
+    },
+    "TDS QUARTERLY RETURNS - 26 - Q1, Q2, Q3 & Q4": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 2100,
+    },
+    "TCS QUARTERLY RETURNS": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 2100,
+    },
+    "CORRECTION IN TDS / TCS STATEMENTS": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 1100,
+    },
+    "TDS ON SALE OF PROPERTY": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 5100,
+    },
+    "REFUND MATTERS FOR EXCESS TDS / TCS DEPOSIT": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 5100,
     },
   },
 };

@@ -11,6 +11,12 @@ import {
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./ConsultationNotice.css";
+import { phoneNumberValidator } from "../../../../shared/validator";
+import { FIELD_NAME } from "./constant";
+import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
+import { useState } from "react";
+import { registerNotice } from "../../../../services/register.service";
+import { message } from "../../../../shared/utils";
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -54,16 +60,73 @@ const normFile = (e) => {
 };
 const ConsultationNotice = () => {
   const titleHeader = "Consultation";
+  const { consultation } = fixMytaxServicesInfo;
+  const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
+
+  const [optionData, setOptionData] = useState({
+    sectionList: [],
+    subSectionsList: [],
+  });
+
+  React.useEffect(() => {
+    setOptionData((prevState) => ({
+      ...prevState,
+      sectionList: Object.keys(consultation),
+    }));
+  }, []);
+
   const onFinish = async (values) => {
     console.log("registration values:", values);
-    // debugger;
-    // const registerData = {
-    //   values,
-    //   isActive: true,
-    //   roleNames: ["string"],
-    // };
+    setIsLoading(true);
+    try {
+      const registerFormData = {
+        name: values.name,
+        email: values.email,
+        phoneNumber: values.phoneNumber,
+        ticketDetails: {
+          fixMyTaxServiceType: FixMyTaxServiceType.Consultation,
+          serviceType: 2, // notice reply always for time being
+          section: values.section,
+          subSection: "",
+          subject: values.subject,
+          question: values.question,
+          description: values.description,
+          // status: 0,
+          price: values.price,
+          // paymentStaus: 0,
+          // transactionNumber: "678678",
+        },
+      };
+      console.log(registerFormData);
+
+      const res = await registerNotice(registerFormData, values.uploadDocument);
+
+      if (res.ticketId) {
+        message.success("Request Created successfully.");
+      }
+    } catch (e) {
+      console.error("error in creation", e);
+    } finally {
+      setIsLoading(false);
+    }
   };
+  const onHandleSection = (value) => {
+    console.log(value);
+    if (value) {
+      const priceValue = consultation[value].price;
+      // setOptionData((prevState) => ({
+      //   ...prevState,
+      // }));
+      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
+    } else {
+      setOptionData((prevState) => ({
+        sectionList: [],
+      }));
+      form.setFieldValue(FIELD_NAME.PRICE, "");
+    }
+  };
+
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -91,11 +154,118 @@ const ConsultationNotice = () => {
         </div>
       </section>
       <section className="section-consultation-card">
-        <Card bordered={true}>
+        <Card className="card-container" bordered={true}>
           <div className="Card-header-title">
             <h1>{titleHeader}</h1>
           </div>
           <Form
+            {...formItemLayout}
+            form={form}
+            name="register"
+            onFinish={onFinish}
+            initialValues={{
+              residence: ["zhejiang", "hangzhou", "xihu"],
+              prefix: "91",
+            }}
+            scrollToFirstError
+          >
+            <Form.Item
+              label="Name"
+              name={FIELD_NAME.NAME}
+              rules={[{ required: true, message: "This field is required" }]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              name={FIELD_NAME.EMAIL}
+              label="E-mail"
+              rules={[
+                {
+                  type: "email",
+                  message: "The input is not valid E-mail!",
+                },
+                {
+                  required: true,
+                  message: "Please input your E-mail!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name={FIELD_NAME.SECTION}
+              label="Section Type"
+              rules={[
+                {
+                  required: true,
+                  message: "Please select Section Type!",
+                },
+              ]}
+            >
+              <Select
+                placeholder="Select your Section Type"
+                onChange={onHandleSection}
+                allowClear
+              >
+                {optionData.sectionList.map((x, i) => {
+                  return (
+                    <Option value={x} key={i}>
+                      {x}
+                    </Option>
+                  );
+                })}
+              </Select>
+            </Form.Item>
+
+            <Form.Item name={FIELD_NAME.PRICE} label="Price">
+              <Input disabled={true} addonAfter="INR"></Input>
+            </Form.Item>
+            <React.Fragment>
+              <Form.Item
+                name={FIELD_NAME.UPLOAD_DOCUMENT}
+                label="Upload Document"
+                valuePropName="fileList"
+                getValueFromEvent={normFile}
+              >
+                <Upload
+                  beforeUpload={(file) => {
+                    // console.log(file);
+                    return false;
+                  }}
+                  multiple={false}
+                >
+                  <Button icon={<UploadOutlined />}>Click to upload</Button>
+                </Upload>
+              </Form.Item>
+            </React.Fragment>
+
+            <Form.Item
+              name={FIELD_NAME.PHONE_NUMBER}
+              label="Phone Number"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your phone number!",
+                },
+                phoneNumberValidator,
+              ]}
+            >
+              <Input
+                addonBefore={prefixSelector}
+                style={{
+                  width: "100%",
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item {...tailFormItemLayout}>
+              <Button type="primary" htmlType="submit" loading={isLoading}>
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+          {/* <Form
             {...formItemLayout}
             form={form}
             name="register"
@@ -157,6 +327,7 @@ const ConsultationNotice = () => {
                   required: true,
                   message: "Please input your phone number!",
                 },
+                phoneNumberValidator,
               ]}
             >
               <Input
@@ -172,7 +343,7 @@ const ConsultationNotice = () => {
                 Submit
               </Button>
             </Form.Item>
-          </Form>
+          </Form> */}
         </Card>
       </section>
 

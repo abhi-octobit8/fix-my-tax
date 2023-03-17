@@ -3,6 +3,7 @@ import { Button, Form, Input, Select, Upload, Row, Col } from "antd";
 import { UploadOutlined, PhoneTwoTone, MailTwoTone } from "@ant-design/icons";
 import "./ContactUs.css";
 import TextArea from "antd/lib/input/TextArea";
+import { phoneNumberValidator } from "../../../shared/validator";
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -131,6 +132,7 @@ const ContactUs = () => {
                     required: true,
                     message: "Please input your phone number!",
                   },
+                  phoneNumberValidator,
                 ]}
               >
                 <Input

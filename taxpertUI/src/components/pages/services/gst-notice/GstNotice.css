@@ -53,3 +53,14 @@ margin-right: 10%;
 .gst-section-header{
     text-align: center;
 }
+.section-gst-card .card-container {
+    padding: 20px 20px;
+    margin: 50px;
+}
+.section-gst-card  .card-container  .Card-header-title{
+      text-align: center;
+    padding-bottom: 30px;
+    }s
+    .section-gst-card  .card-container    .ant-form-item-label > label{
+      font-size: 18px;
+    }
