@@ -13,7 +13,7 @@ export const getAllAdvocate = async () => {
 export const deleteAdvocate = async (id) => {
   await API({
     url: `/services/app/User/Delete?Id=${id}`,
-    successMessage: "Advocate deleted successfully",
+    successMessage: "PSP deleted successfully",
     method: "delete",
   });
 };

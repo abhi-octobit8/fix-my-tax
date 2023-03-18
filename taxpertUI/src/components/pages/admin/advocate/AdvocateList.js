@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Card, Col, Row, Space } from "antd";
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Dropdown, Row, Space } from "antd";
+import { DeleteOutlined, MoreOutlined, PlusOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
@@ -36,6 +36,17 @@ const AdvocateList = () => {
       }
     } catch (e) {}
   };
+
+  const items = [
+    {
+      key: "edit",
+      label: "Edit",
+    },
+    {
+      key: "delete",
+      label: "Delete",
+    },
+  ];
   const columns = [
     {
       title: "UserName",
@@ -78,12 +89,31 @@ const AdvocateList = () => {
       width: 60,
       render: (id) => {
         return (
-          <Space>
-            <DeleteOutlined
-              onClick={() => callDeleteAdvocate(id)}
-              title="Delete"
-              style={{ color: "red" }}
-            />
+          <Space size="middle">
+            <Dropdown
+              menu={{
+                items,
+                onClick: (e) => {
+                  // eslint-disable-next-line default-case
+                  switch (e.key) {
+                    case "edit":
+                      console.log(id);
+                      break;
+                    case "delete":
+                      callDeleteAdvocate(id);
+                      break;
+                  }
+                },
+              }}
+              placement="bottomRight"
+              arrow={{
+                pointAtCenter: true,
+              }}
+            >
+              <a>
+                <MoreOutlined />
+              </a>
+            </Dropdown>
           </Space>
         );
       },

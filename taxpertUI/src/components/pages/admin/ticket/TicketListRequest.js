@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Button, Card, Col, Row, Space } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Dropdown, Row, Space } from "antd";
+import { DeleteOutlined, MoreOutlined } from "@ant-design/icons";
 import Tag from "antd/es/tag";
 import useRedirectPath from "../../../hooks/useRedirectPath";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
@@ -13,6 +13,7 @@ import { getKeyFromObject } from "../../../../shared/utils";
 import { ServiceType } from "../../services/constant";
 import useUserRole from "../../../hooks/useUserRole";
 import { USER_ROLE } from "../../../application/application-menu/constant";
+import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
@@ -29,7 +30,6 @@ const TicketListRequest = () => {
   }, []);
 
   const onHandleAssignTicket = React.useCallback((record) => {
-    debugger;
     setModelInfoOpen({ open: true, record });
   }, []);
 
@@ -90,23 +90,47 @@ const TicketListRequest = () => {
     },
     {
       title: "Actions",
-      dataIndex: "productId",
+      dataIndex: "id",
       fixed: "right",
       align: "center",
-      width: 160,
+      width: 60,
+      onCell: (record) => {
+        return {
+          onClick: (event) => {
+            event.stopPropagation();
+          },
+        };
+      },
       render: (productId, record) => {
         return (
-          <Space onClick={(event) => event.stopPropagation()}>
-            {userRole === USER_ROLE.ADMIN && (
-              <Button
-                type="default"
-                onClick={() => onHandleAssignTicket(record)}
+          <span>
+            <Space>
+              <Dropdown
+                menu={{
+                  items: getActionItems(items, userRole),
+                  onClick: (e) => {
+                    // eslint-disable-next-line default-case
+                    switch (e.key) {
+                      case TICKET_LIST_ACTION.ASSIGN:
+                        onHandleAssignTicket(record);
+                        break;
+                      case TICKET_LIST_ACTION.DELETE:
+                        console.log(record);
+                        break;
+                    }
+                  },
+                }}
+                placement="bottomRight"
+                arrow={{
+                  pointAtCenter: true,
+                }}
               >
-                Assign
-              </Button>
-            )}
-            <DeleteOutlined title="Delete" style={{ color: "red" }} />
-          </Space>
+                <a>
+                  <MoreOutlined />
+                </a>
+              </Dropdown>
+            </Space>
+          </span>
         );
       },
     },

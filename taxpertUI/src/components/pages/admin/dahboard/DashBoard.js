@@ -1,8 +1,10 @@
 import React from "react";
 import { Button, Card, Col, Row, Table } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, ClusterOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { useSelector } from "react-redux";
+
+import "./DashBoard.less";
 
 const DashBoard = () => {
   const requestList = useSelector((state) => state.request?.newRequestList);
@@ -48,23 +50,14 @@ const DashBoard = () => {
     },
   ];
   return (
-    <Card>
+    <Card className="dashboard-card-container">
       <ListHeader leftContent={<h2>DashBoard</h2>}></ListHeader>
-      <Row>
-        <Col sm={{ span: 10, offset: 0 }}></Col>
-      </Row>
-      <Row style={{ marginTop: 20 }}>
-        <Col
-          xs={{ span: 24, offset: 0 }}
-          sm={{ span: 24, offset: 0 }}
-          md={{ span: 24, offset: 0 }}
-          lg={{ span: 24, offset: 0 }}
-          xl={{ span: 24, offset: 0 }}
-          xxl={{ span: 24, offset: 0 }}
-        >
-          <Table bordered={true} columns={columns} />
-        </Col>
-      </Row>
+
+      <div className="content-padding dashboard-card-content">
+        {" "}
+        <ClusterOutlined />
+        Coming Soon
+      </div>
     </Card>
   );
 };
