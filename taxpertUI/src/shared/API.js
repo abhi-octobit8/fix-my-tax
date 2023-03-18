@@ -98,7 +98,6 @@ const API = async (apiData) => {
     } else {
       return response.data.result;
     }
-    // return response.data.result? response.data.result:response.data;
   } catch (exception) {
     const exceptionResponse = exception.response;
     // if (exceptionResponse.data.hasError) {

@@ -1,10 +1,7 @@
 import React from "react";
-import "./TicketDetails.less";
 import {
   Button,
   Form,
-  Input,
-  Select,
   Card,
   Comment,
   List,
@@ -17,49 +14,25 @@ import { useParams } from "react-router-dom";
 import Tooltip from "antd/es/tooltip";
 import { getTicketDetails } from "../../../../../services/ticket.service";
 import { useSelector } from "react-redux";
-import { getKeyFromObject } from "../../../../../shared/utils";
+import { downloaFile, getKeyFromObject } from "../../../../../shared/utils";
 import { ServiceType } from "../../../services/constant";
-const { Title, Paragraph, Text, Link } = Typography;
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 6,
-    },
-  },
-  wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 14,
-    },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+
+import "./TicketDetails.less";
+
+const { Title, Paragraph } = Typography;
 
 const TicketDetails = (props) => {
   const { id } = useParams();
   const ticketdetailsData = useSelector((state) => state.request.ticketDetails);
-  console.log(id);
 
   React.useEffect(() => {
     (async () => {
       await getTicketDetails(id);
     })();
+  }, []);
+
+  const onHandleDownloadFile = React.useCallback(async (item) => {
+    await downloaFile({ id: item.id, name: item.filename });
   }, []);
 
   const [form] = Form.useForm();
@@ -132,14 +105,26 @@ const TicketDetails = (props) => {
           {" "}
           <Tag color="#2db7f5">{"new"}</Tag>
         </Descriptions.Item>
-        <Descriptions.Item label="Section">
+        <Descriptions.Item label="Section" span={3}>
           {ticketdetailsData?.section}
         </Descriptions.Item>
-        <Descriptions.Item label="Sub Section" span={2}>
+        <Descriptions.Item label="Sub Section" span={3}>
           {ticketdetailsData?.subSection}
         </Descriptions.Item>
-        <Descriptions.Item label="Attachment" span={3}>
-          attachements list come here
+        <Descriptions.Item
+          label="Attachment"
+          className="description-item-label"
+          span={3}
+        >
+          {ticketdetailsData?.attachments?.map((item) => {
+            return (
+              <>
+                <Button onClick={() => onHandleDownloadFile(item)} type="link">
+                  {item.filename}
+                </Button>
+              </>
+            );
+          })}
         </Descriptions.Item>
       </Descriptions>
       <Title level={5}>Description</Title>
@@ -149,36 +134,7 @@ const TicketDetails = (props) => {
         </Paragraph>
       </Typography>
 
-      {/* <Form
-        {...formItemLayout}
-        form={form}
-        name="register"
-        onFinish={onFinish}
-        initialValues={{
-          residence: ["zhejiang", "hangzhou", "xihu"],
-          prefix: "91",
-          id: id,
-        }}
-        scrollToFirstError
-      >
-        <Form.Item
-          label="Subject"
-          name="name"
-          rules={[{ required: true, message: "This field is required" }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form> */}
       <Comment
-        // avatar={
-        //   <Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-        // }
         content={
           <Editor
           // onChange={handleChange}

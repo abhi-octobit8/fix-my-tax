@@ -38,3 +38,13 @@ export const updateAssignment = async (formData) => {
   });
   return res;
 };
+
+export const downloadAPI = async (id) => {
+  const res = await API({
+    url: `services/app/FileService/DownloadFile?id=${id}`,
+    method: "POST",
+    responseTypeData: "blob",
+  });
+  debugger;
+  return res;
+};
