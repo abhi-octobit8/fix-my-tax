@@ -7,7 +7,6 @@ import UserComponent from "./User";
 // const UserList = loadable(() => import("./User"));
 
 function UserRouter() {
-  //   debugger;
   return (
     <div>
       <Routes>

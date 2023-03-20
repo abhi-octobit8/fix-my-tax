@@ -5,7 +5,6 @@ export const getAllAdvocate = async () => {
   const res = await API({
     url: `/services/app/User/GetAdvocates`,
   });
-  // debugger;
   setAdvocateListData(res.items);
   return res.items;
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Button, Card, Col, Dropdown, Row, Space } from "antd";
-import { DeleteOutlined, MoreOutlined } from "@ant-design/icons";
+import { Card, Col, Dropdown, Row, Space } from "antd";
+import { MoreOutlined } from "@ant-design/icons";
 import Tag from "antd/es/tag";
 import useRedirectPath from "../../../hooks/useRedirectPath";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
@@ -12,20 +12,29 @@ import { DATE_FORMATS, getLocalTime } from "../../../../shared/timeUtils";
 import { getKeyFromObject } from "../../../../shared/utils";
 import { ServiceType } from "../../services/constant";
 import useUserRole from "../../../hooks/useUserRole";
-import { USER_ROLE } from "../../../application/application-menu/constant";
 import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
   const userRole = useUserRole();
+
+  const [responseInfo, setResponeInfo] = useState({ loading: false, data: [] });
   const [modelInfoOpen, setModelInfoOpen] = useState({
     open: false,
     record: {},
   });
-  const requestList = useSelector((state) => state.request.ticketListData);
   React.useEffect(() => {
     (async () => {
-      await getAllTickets();
+      setResponeInfo((prevState) => ({
+        ...prevState,
+        loading: true,
+      }));
+      const res = await getAllTickets();
+      setResponeInfo((prevState) => ({
+        ...prevState,
+        data: res,
+        loading: false,
+      }));
     })();
   }, []);
 
@@ -147,7 +156,7 @@ const TicketListRequest = () => {
   return (
     <React.Fragment>
       <Card>
-        <ListHeader leftContent={<h2>All Request</h2>}></ListHeader>
+        <ListHeader leftContent={<h2>All Request </h2>}></ListHeader>
         <Row>
           <Col sm={{ span: 10, offset: 0 }}></Col>
         </Row>
@@ -163,8 +172,9 @@ const TicketListRequest = () => {
             <FixMyTaxTable
               size="small"
               columns={columns}
-              dataSource={requestList}
+              dataSource={responseInfo.data}
               onRow={(record) => onRowClick(record)}
+              loading={responseInfo.loading}
             />
           </Col>
         </Row>

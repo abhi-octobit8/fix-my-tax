@@ -16,7 +16,6 @@ const items = [
   },
 ];
 const getActionItems = (data, role) => {
-  debugger;
   let newArr = [...data];
   if (role !== USER_ROLE.ADMIN) {
     newArr.splice(0, 1);

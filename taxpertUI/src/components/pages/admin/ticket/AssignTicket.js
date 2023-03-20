@@ -3,6 +3,7 @@ import Button from "antd/es/button";
 // import Form from "antd/lib/form/Form";
 import Modal from "antd/lib/modal/Modal";
 import React from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { getAllAdvocate } from "../../../../services/advocate.service";
 import { updateAssignment } from "../../../../services/ticket.service";
@@ -13,6 +14,7 @@ const { Option } = Select;
 const AssignTicket = (props) => {
   const { modelInfo, onClose } = props;
   const { open, record } = modelInfo;
+  const [isLoading, setIsLoading] = useState(false);
   const userData = useUserData();
   const advocateList = useSelector((state) => state.advocate?.advocateListData);
 
@@ -27,13 +29,14 @@ const AssignTicket = (props) => {
   const onFormSubmit = React.useCallback(
     async (formValues) => {
       console.log(formValues);
-
+      setIsLoading(true);
       const formData = {
         ticketIds: [record.id],
         assignUserId: formValues.advocate,
       };
 
       const res = await updateAssignment(formData);
+      setIsLoading(false);
       onClose();
     },
     [onClose, record]
@@ -57,28 +60,6 @@ const AssignTicket = (props) => {
               );
             })}
           </Select>
-          {/* <Select
-            showSearch
-            allowClear
-            options={[
-              {
-                value: "lucy1",
-                label: "Lucy1",
-              },
-              {
-                value: "lucy2",
-                label: "Lucy2",
-              },
-              {
-                value: "lucy3",
-                label: "Lucy3",
-              },
-              {
-                value: "lucy4",
-                label: "Lucy4",
-              },
-            ]}
-          /> */}
         </Form.Item>
 
         <Space>

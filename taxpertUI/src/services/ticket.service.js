@@ -45,6 +45,5 @@ export const downloadAPI = async (id) => {
     method: "POST",
     responseTypeData: "blob",
   });
-  debugger;
   return res;
 };

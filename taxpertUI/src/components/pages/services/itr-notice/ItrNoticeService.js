@@ -157,14 +157,6 @@ const ItrNoticeService = (props) => {
     </Form.Item>
   );
 
-  // const onChangeHandler = (event) => {
-  //   debugger;
-  //   // this.setState({
-  //   //   selectedFile: event.currentTarget.files,
-  //   // });
-  //   setSelectedFile(event.currentTarget.files);
-  // };
-
   return (
     <React.Fragment>
       <section id="service-banner" className="service-banner">

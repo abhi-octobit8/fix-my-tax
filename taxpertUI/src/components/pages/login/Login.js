@@ -20,8 +20,6 @@ const Login = (props) => {
       userNameOrEmailAddress: values.username,
       password: values.password,
     };
-    // const checkTenantAvaialable = await isTenantAvailable();
-    // debugger;
     const loginResponse = await API({
       method: "post",
       url: "/TokenAuth/Authenticate",

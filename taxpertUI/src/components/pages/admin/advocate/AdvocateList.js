@@ -13,10 +13,17 @@ import { PATH } from "../../../../shared/Route";
 import { getRandomString } from "../../../../shared/utils";
 import useRedirectPath from "../../../hooks/useRedirectPath";
 import { useState } from "react";
+import CreateEditPSP from "./create-edit/CreateEditPSP";
+import { MODE } from "./create-edit/constant";
 
 const AdvocateList = () => {
   const navigator = useRedirectPath();
   const [listUpdate, setListUpdate] = useState();
+  const [modelInfoOpen, setModelInfoOpen] = useState({
+    open: false,
+    mode: MODE.CREATE,
+    record: {},
+  });
   const requestList = useSelector((state) => state.advocate?.advocateListData);
   React.useEffect(() => {
     (async () => {
@@ -27,15 +34,24 @@ const AdvocateList = () => {
   const callDeleteAdvocate = async (id) => {
     try {
       if (
-        window.confirm(
-          "Are you sure, you want to delete data for this Advocate?"
-        )
+        window.confirm("Are you sure, you want to delete data for this PSP?")
       ) {
         await deleteAdvocate(id);
         setListUpdate(getRandomString());
       }
     } catch (e) {}
   };
+
+  // const onHandleCreate = React.useCallback((record) => {
+  //   setModelInfoOpen({ open: true, mode: MODE.CREATE, record });
+  // }, []);
+
+  const OnHandleCancel = React.useCallback((formValues) => {
+    setModelInfoOpen((prevState) => ({
+      ...prevState,
+      open: false,
+    }));
+  }, []);
 
   const items = [
     {
@@ -120,34 +136,45 @@ const AdvocateList = () => {
     },
   ];
   return (
-    <Card>
-      <ListHeader
-        leftContent={<h2>Professional Service Provider</h2>}
-        rightContent={
-          <Button
-            type="primary"
-            shape="circle"
-            onClick={() => navigator.goTo(PATH.CREATE_ADVOCATE)}
-            icon={<PlusOutlined />}
-          />
-        }
-      ></ListHeader>
-      <Row>
-        <Col sm={{ span: 10, offset: 0 }}></Col>
-      </Row>
-      <Row style={{ marginTop: 20 }}>
-        <Col
-          xs={{ span: 24, offset: 0 }}
-          sm={{ span: 24, offset: 0 }}
-          md={{ span: 24, offset: 0 }}
-          lg={{ span: 24, offset: 0 }}
-          xl={{ span: 24, offset: 0 }}
-          xxl={{ span: 24, offset: 0 }}
-        >
-          <FixMyTaxTable columns={columns} dataSource={requestList} />
-        </Col>
-      </Row>
-    </Card>
+    <React.Fragment>
+      {" "}
+      <Card>
+        <ListHeader
+          leftContent={<h2>Professional Service Provider</h2>}
+          rightContent={
+            <Button
+              type="primary"
+              shape="circle"
+              // onClick={() => navigator.goTo(PATH.CREATE_ADVOCATE)}
+              onClick={() =>
+                setModelInfoOpen({ open: true, mode: MODE.CREATE, record: {} })
+              }
+              icon={<PlusOutlined />}
+            />
+          }
+        ></ListHeader>
+        <Row>
+          <Col sm={{ span: 10, offset: 0 }}></Col>
+        </Row>
+        <Row style={{ marginTop: 20 }}>
+          <Col
+            xs={{ span: 24, offset: 0 }}
+            sm={{ span: 24, offset: 0 }}
+            md={{ span: 24, offset: 0 }}
+            lg={{ span: 24, offset: 0 }}
+            xl={{ span: 24, offset: 0 }}
+            xxl={{ span: 24, offset: 0 }}
+          >
+            <FixMyTaxTable columns={columns} dataSource={requestList} />
+          </Col>
+        </Row>
+      </Card>
+      <CreateEditPSP
+        modelInfo={modelInfoOpen}
+        onClose={OnHandleCancel}
+        setListUpdate={setListUpdate}
+      ></CreateEditPSP>
+    </React.Fragment>
   );
 };
 
