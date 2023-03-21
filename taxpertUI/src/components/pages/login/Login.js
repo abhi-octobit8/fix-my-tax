@@ -30,7 +30,7 @@ const Login = (props) => {
     await checkLogin(loginResponse.userId);
 
     setLoading(false);
-    navigate("/admin/dashboard");
+    navigate("/admin/requests");
   };
 
   const onFinishFailed = (errorInfo) => {

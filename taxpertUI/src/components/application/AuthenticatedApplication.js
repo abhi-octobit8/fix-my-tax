@@ -71,7 +71,7 @@ function AuthenticatedApplication() {
 
           <Route element={<UserRouter />} path="user/*" />
 
-          <Route element={<AdvocateRoutes />} path="advocate/*" />
+          <Route element={<AdvocateRoutes />} path="psp/*" />
           {/* <Route element={<AdvocateList />} path="advocate" /> */}
           <Route element={<TicketRoutes />} path="requests/*" />
         </Route>
