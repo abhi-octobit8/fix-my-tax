@@ -104,7 +104,7 @@ const MENU_ITEMS = [
   {
     label: "Account",
     role: [USER_ROLE.CUSTOMER, USER_ROLE.ADMIN, USER_ROLE.ADVOCATE],
-    to: "/admin/dashboard",
+    to: "/admin/requests",
     // children: [
     //   {
     //     label: "DashBoard",
@@ -118,17 +118,10 @@ const MENU_ITEMS = [
     //   // },
     // ],
   },
-  // {
-  //   label: "Register",
-  //   role: USER_ROLE.NON_AUTHORIZED,
-  //   to: PATH.REGISTER,
-  // },
 ];
 function getMenuItems(collection, userData) {
   let isAuthorized = false;
-  // if (userData != null) {
-  //   isAuthorized = true;
-  // }
+
   const userAuthRole = userData && userData?.roleNames[0];
   const entitledMenuItems = collection.reduce((acc, item) => {
     const { label, role, to } = item;
@@ -138,11 +131,6 @@ function getMenuItems(collection, userData) {
     };
 
     let condition = false;
-    // if (role === USER_ROLE.PUBLIC) {
-    //   condition = true;
-    // } else if (role === userAuthRole) {
-    //   condition = true;
-    // }
 
     if (role === USER_ROLE.PUBLIC) {
       condition = true;
@@ -152,9 +140,6 @@ function getMenuItems(collection, userData) {
         condition = true;
       }
     }
-    // else if (role === USER_ROLE.NON_AUTHORIZED && !isAuthorized) {
-    //   condition = true;
-    // }
 
     if (condition) {
       // take only public

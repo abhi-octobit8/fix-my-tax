@@ -1,7 +1,7 @@
 import { notification, message as AntMessage } from "antd";
 import { template } from "lodash";
-import API from "./API";
 import qs from "qs";
+import { downloadAPI } from "../services/ticket.service";
 
 export const showNotification = ({ type, message, description, ...props }) => {
   if (type) {
@@ -204,26 +204,13 @@ export const numberFormatter = (num, digits = 0) => {
   );
 };
 
-export const getcsvData = async (url) => {
-  try {
-    const excelData = await API({
-      method: "GET",
-      url: url,
-      responseTypeData: "blob",
-    });
-    return excelData;
-  } catch (e) {
-    message.error("Error in getting csv data.");
-  }
-};
-
-export const downloadCsvFile = async ({ url, name }) => {
-  const data = await getcsvData(url);
+export const downloaFile = async ({ id, name = "report" }) => {
+  const data = await downloadAPI(id);
   var blob = new Blob([data]);
   const url1 = window.URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url1;
-  link.setAttribute("download", `${name}.xlsx`);
+  link.setAttribute("download", `${name}`);
   document.body.appendChild(link);
   link.click();
 };

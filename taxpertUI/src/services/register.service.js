@@ -12,7 +12,6 @@ export const getNewRequest = async (id) => {
 
 export const registerNotice = async (body, uploadfileData) => {
   console.log(body);
-  // debugger;
   const registerResponse = await API({
     method: "post",
     url: "services/app/RegisterService/Create",

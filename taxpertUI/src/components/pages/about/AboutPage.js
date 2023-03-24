@@ -91,7 +91,7 @@ const AboutPage = () => (
       />
     </div>
     <br />
-    <div className="sec-3">
+    {/* <div className="sec-3">
       <h6 className="sec-3-head">Meet Our Core Team</h6>
       <hr className="taxpert-line" />
       <br />
@@ -136,7 +136,7 @@ const AboutPage = () => (
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
   </>
 );
 

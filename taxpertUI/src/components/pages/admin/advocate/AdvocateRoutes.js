@@ -3,7 +3,6 @@ import AdvocateList from "./AdvocateList";
 import CreateAdvocate from "./create/CreateAdvocate";
 
 function AdvocateRoutes() {
-  // debugger;
   return (
     <div>
       <Routes>

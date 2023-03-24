@@ -33,14 +33,14 @@ export const MENU_ITEMS_SERVICE_FOOTER = [
     key: 2,
     to: PATH.ITR_NOTICE_PATH,
   },
-  {
-    label: "Terms of service",
-    key: 3,
-    to: "/tnc",
-  },
-  {
-    label: "Privacy Policy",
-    key: 4,
-    to: "/privacy-policy",
-  },
+  // {
+  //   label: "Terms of service",
+  //   key: 3,
+  //   to: "/tnc",
+  // },
+  // {
+  //   label: "Privacy Policy",
+  //   key: 4,
+  //   to: "/privacy-policy",
+  // },
 ];

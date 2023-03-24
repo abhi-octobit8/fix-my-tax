@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Text;
@@ -63,23 +64,26 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             RequestTicket ticket = new RequestTicket();
             if (roles.Contains(StaticRoleNames.Tenants.Customer))
             {
-                ticket = await _ticketRepository.GetAsync(id);
-                if(ticket.CreatorUserId != AbpSession.UserId)
+                ticket = _ticketRepository.GetAll().Include(x => x.Attachments).Where(x => x.Id == id).FirstOrDefault();
+
+                if (ticket.CreatorUserId != AbpSession.UserId)
                 {
                     throw new UserFriendlyException("Not Authorised");
                 }
             }
             else if (roles.Contains(StaticRoleNames.Tenants.Advocate))
             {
-                ticket = await _ticketRepository.GetAsync(id);
-                if(ticket.AssignedUserId != AbpSession.UserId)
+                ticket = _ticketRepository.GetAll().Include(x => x.Attachments).Where(x => x.Id == id).FirstOrDefault();
+                if (ticket.AssignedUserId != AbpSession.UserId)
                 {
                     throw new UserFriendlyException("Not Authorised");
                 }
             }
             else if (roles.Contains(StaticRoleNames.Tenants.Admin))
             {
-                ticket = await _ticketRepository.GetAsync(id);
+                //ticket = await _ticketRepository.GetAsync(id);
+                ticket = _ticketRepository.GetAll().Include(x => x.Attachments).Where(x => x.Id == id).FirstOrDefault();
+
             }
 
             return ObjectMapper.Map<TicketDto>(ticket);
@@ -96,7 +100,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 tickets = await _ticketRepository
                 .GetAll().Include(x => x.Attachments)
                 .Where(t => t.CreatorUserId == AbpSession.UserId)
-                .OrderBy(t => t.CreationTime)
+                .OrderByDescending(t => t.CreationTime)
                 .ToListAsync();
             }
             else if (roles.Contains(StaticRoleNames.Tenants.Advocate))
@@ -104,14 +108,14 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 tickets = await _ticketRepository
                 .GetAll().Include(x => x.Attachments)
                 .Where(t => t.AssignedUserId == AbpSession.UserId)
-                .OrderBy(t => t.CreationTime)
+                .OrderByDescending(t => t.CreationTime)
                 .ToListAsync();
             }
             else if (roles.Contains(StaticRoleNames.Tenants.Admin))
             {
                 tickets = await _ticketRepository
                 .GetAll().Include(x => x.Attachments)
-                .OrderBy(t => t.CreationTime)
+                .OrderByDescending(t => t.CreationTime)
                 .ToListAsync();
             }
 

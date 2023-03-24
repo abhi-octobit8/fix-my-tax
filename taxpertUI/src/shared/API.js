@@ -98,26 +98,26 @@ const API = async (apiData) => {
     } else {
       return response.data.result;
     }
-    // return response.data.result? response.data.result:response.data;
   } catch (exception) {
+    debugger;
     const exceptionResponse = exception.response;
-    // if (exceptionResponse.data.hasError) {
-    //   if (url != "/employee") {
-    //     showNotification({
-    //       message: exceptionResponse.data.error.message,
-    //       description: exceptionResponse.data.error.details,
-    //       type: "error",
-    //     });
-    //   }
-    //   if (exceptionResponse.data.exception) {
-    //     return await handleError({
-    //       exception,
-    //       url,
-    //       apiData,
-    //       hideErrorMessage: true,
-    //     });
-    //   }
-    // }
+    if (exceptionResponse.data.error) {
+      // if (url != "/employee") {
+      showNotification({
+        message: exceptionResponse.data.error.message,
+        // description: exceptionResponse.data.error.details,
+        type: "error",
+      });
+      // }
+      // if (exceptionResponse.data.exception) {
+      //   return await handleError({
+      //     exception,
+      //     url,
+      //     apiData,
+      //     hideErrorMessage: true,
+      //   });
+      // }
+    }
     if (axios.isCancel(exception)) {
       // console.log("cancelled",exception);
     } else {

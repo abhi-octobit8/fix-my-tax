@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Button, Card, Col, Row, Space } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
-import Tag from "antd/es/tag";
+import { Card, Col, Dropdown, Row, Space, Tag } from "antd";
+import { MoreOutlined } from "@ant-design/icons";
 import useRedirectPath from "../../../hooks/useRedirectPath";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import AssignTicket from "./AssignTicket";
@@ -12,24 +10,34 @@ import { DATE_FORMATS, getLocalTime } from "../../../../shared/timeUtils";
 import { getKeyFromObject } from "../../../../shared/utils";
 import { ServiceType } from "../../services/constant";
 import useUserRole from "../../../hooks/useUserRole";
-import { USER_ROLE } from "../../../application/application-menu/constant";
+import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
   const userRole = useUserRole();
+
+  const [responseInfo, setResponeInfo] = useState({ loading: false, data: [] });
   const [modelInfoOpen, setModelInfoOpen] = useState({
     open: false,
     record: {},
   });
-  const requestList = useSelector((state) => state.request.ticketListData);
+
   React.useEffect(() => {
     (async () => {
-      await getAllTickets();
+      setResponeInfo((prevState) => ({
+        ...prevState,
+        loading: true,
+      }));
+      const res = await getAllTickets();
+      setResponeInfo((prevState) => ({
+        ...prevState,
+        data: res,
+        loading: false,
+      }));
     })();
   }, []);
 
   const onHandleAssignTicket = React.useCallback((record) => {
-    debugger;
     setModelInfoOpen({ open: true, record });
   }, []);
 
@@ -90,23 +98,47 @@ const TicketListRequest = () => {
     },
     {
       title: "Actions",
-      dataIndex: "productId",
+      dataIndex: "id",
       fixed: "right",
       align: "center",
-      width: 160,
+      width: 60,
+      onCell: (record) => {
+        return {
+          onClick: (event) => {
+            event.stopPropagation();
+          },
+        };
+      },
       render: (productId, record) => {
         return (
-          <Space onClick={(event) => event.stopPropagation()}>
-            {userRole === USER_ROLE.ADMIN && (
-              <Button
-                type="default"
-                onClick={() => onHandleAssignTicket(record)}
+          <span>
+            <Space>
+              <Dropdown
+                menu={{
+                  items: getActionItems(items, userRole),
+                  onClick: (e) => {
+                    // eslint-disable-next-line default-case
+                    switch (e.key) {
+                      case TICKET_LIST_ACTION.ASSIGN:
+                        onHandleAssignTicket(record);
+                        break;
+                      case TICKET_LIST_ACTION.DELETE:
+                        console.log(record);
+                        break;
+                    }
+                  },
+                }}
+                placement="bottomRight"
+                arrow={{
+                  pointAtCenter: true,
+                }}
               >
-                Assign
-              </Button>
-            )}
-            <DeleteOutlined title="Delete" style={{ color: "red" }} />
-          </Space>
+                <a>
+                  <MoreOutlined />
+                </a>
+              </Dropdown>
+            </Space>
+          </span>
         );
       },
     },
@@ -123,7 +155,7 @@ const TicketListRequest = () => {
   return (
     <React.Fragment>
       <Card>
-        <ListHeader leftContent={<h2>All Request</h2>}></ListHeader>
+        <ListHeader leftContent={<h2>All Request </h2>}></ListHeader>
         <Row>
           <Col sm={{ span: 10, offset: 0 }}></Col>
         </Row>
@@ -139,8 +171,9 @@ const TicketListRequest = () => {
             <FixMyTaxTable
               size="small"
               columns={columns}
-              dataSource={requestList}
+              dataSource={responseInfo.data}
               onRow={(record) => onRowClick(record)}
+              loading={responseInfo.loading}
             />
           </Col>
         </Row>
