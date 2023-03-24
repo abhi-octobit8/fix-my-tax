@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Card, Col, Dropdown, Row, Space } from "antd";
+import { Card, Col, Dropdown, Row, Space, Tag } from "antd";
 import { MoreOutlined } from "@ant-design/icons";
-import Tag from "antd/es/tag";
 import useRedirectPath from "../../../hooks/useRedirectPath";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import AssignTicket from "./AssignTicket";
@@ -23,6 +21,7 @@ const TicketListRequest = () => {
     open: false,
     record: {},
   });
+
   React.useEffect(() => {
     (async () => {
       setResponeInfo((prevState) => ({

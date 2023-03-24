@@ -15,6 +15,7 @@ const items = [
     label: TICKET_LIST_ACTION.DELETE,
   },
 ];
+
 const getActionItems = (data, role) => {
   let newArr = [...data];
   if (role !== USER_ROLE.ADMIN) {
@@ -22,4 +23,5 @@ const getActionItems = (data, role) => {
   }
   return newArr;
 };
+
 export { items, TICKET_LIST_ACTION, getActionItems };

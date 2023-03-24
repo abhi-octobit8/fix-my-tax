@@ -1,21 +1,16 @@
-import { Form, Select, Space } from "antd";
-import Button from "antd/es/button";
-// import Form from "antd/lib/form/Form";
-import Modal from "antd/lib/modal/Modal";
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Form, Select, Space, Button, Modal } from "antd";
 import { getAllAdvocate } from "../../../../services/advocate.service";
 import { updateAssignment } from "../../../../services/ticket.service";
 import { requiredValidator } from "../../../../shared/validator";
-import useUserData from "../../../hooks/useUserData";
 const { Option } = Select;
 
 const AssignTicket = (props) => {
   const { modelInfo, onClose } = props;
   const { open, record } = modelInfo;
   const [isLoading, setIsLoading] = useState(false);
-  const userData = useUserData();
   const advocateList = useSelector((state) => state.advocate?.advocateListData);
 
   React.useEffect(() => {
@@ -25,6 +20,7 @@ const AssignTicket = (props) => {
       }
     })();
   }, [open]);
+
   const [form] = Form.useForm();
   const onFormSubmit = React.useCallback(
     async (formValues) => {
@@ -41,6 +37,7 @@ const AssignTicket = (props) => {
     },
     [onClose, record]
   );
+
   return (
     <Modal
       destroyOnClose
@@ -61,13 +58,11 @@ const AssignTicket = (props) => {
             })}
           </Select>
         </Form.Item>
-
         <Space>
           <Button onClick={onClose} type="text">
             Cancel
           </Button>
-
-          <Button htmlType="submit" type="primary">
+          <Button htmlType="submit" type="primary" loading={isLoading}>
             Submit
           </Button>
         </Space>

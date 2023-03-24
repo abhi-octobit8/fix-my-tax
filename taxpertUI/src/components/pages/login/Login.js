@@ -1,16 +1,13 @@
 import React, { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Form, Input, Row } from "antd";
 import "./Login.less";
 import API from "../../../shared/API";
 import { checkLogin, doLogin } from "../../../store/authentication/AuthActions";
-import { isTenantAvailable } from "../../../services/auth.service";
 
 const Login = (props) => {
   const navigate = useNavigate();
   const form = useRef();
-  const checkBtn = useRef();
 
   const [loading, setLoading] = useState(false);
 
@@ -20,6 +17,7 @@ const Login = (props) => {
       userNameOrEmailAddress: values.username,
       password: values.password,
     };
+    setLoading(true);
     const loginResponse = await API({
       method: "post",
       url: "/TokenAuth/Authenticate",
@@ -90,6 +88,7 @@ const Login = (props) => {
                 type="primary"
                 htmlType="submit"
                 className="login-form-button"
+                loading={loading}
               >
                 Login
               </Button>

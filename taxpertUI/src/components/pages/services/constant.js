@@ -5,6 +5,9 @@ const fixMytaxServicesInfo = {
         "REPLY IN RESPONSE TO SUMMON NOTICE": {
           price: 5100,
         },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
+        },
       },
       description: "",
     },
@@ -19,6 +22,9 @@ const fixMytaxServicesInfo = {
           },
         "REPLY IN RESPONSE TO NOTICE (RAISED BY ADI OR DI OFFICE)": {
           price: 7100,
+        },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
         },
       },
       description: "",
@@ -38,6 +44,9 @@ const fixMytaxServicesInfo = {
           {
             price: 11000,
           },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
+        },
         "OTHERS NOTICES": {
           price: 11000,
         },
@@ -49,6 +58,9 @@ const fixMytaxServicesInfo = {
         "REPLY FOR COMPLIANCE": {
           price: 3100,
         },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
+        },
       },
       description: "",
     },
@@ -56,6 +68,9 @@ const fixMytaxServicesInfo = {
       subSections: {
         "FOR RECTIFICATION OF DEMAND RAISED VIDE INTIMATION 143-1": {
           price: 2100,
+        },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
         },
       },
       description: "",
@@ -68,6 +83,9 @@ const fixMytaxServicesInfo = {
         "REPLY IN RESPONSE TO NOTICE - RESPONDED": {
           price: 7100,
         },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
+        },
         "OTHERS NOTICES": {
           price: 11000,
         },
@@ -79,6 +97,9 @@ const fixMytaxServicesInfo = {
         "REPLY IN RESPONSE TO NOTICE": {
           price: 21000,
         },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
+        },
       },
       description: "",
     },
@@ -86,6 +107,9 @@ const fixMytaxServicesInfo = {
       subSections: {
         "REPLY IN RESPONSE TO NOTICE": {
           price: 1100,
+        },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
         },
       },
       description: "",
@@ -95,6 +119,9 @@ const fixMytaxServicesInfo = {
         "INTIMATION FOR DISCONTINUATION OF BUSINESS": {
           price: 5100,
         },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
+        },
       },
       description: "",
     },
@@ -103,6 +130,9 @@ const fixMytaxServicesInfo = {
         "REPLY FOR DEPOSIT OF ADVANCE TAX": {
           price: 2100,
         },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
+        },
       },
       description: "",
     },
@@ -110,6 +140,9 @@ const fixMytaxServicesInfo = {
       subSections: {
         "REPLY IN RESPONSE TO NOTICE": {
           price: 5100,
+        },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
         },
       },
       description: "",
@@ -121,6 +154,9 @@ const fixMytaxServicesInfo = {
         },
         "REPLY IN RESPONSE TO NOTICE - EARLIER DEMAND ADJUSTED WITH REFUND": {
           price: 5100,
+        },
+        "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
+          price: 1500,
         },
         "OTHERS NOTICES": {
           price: 7100,
@@ -143,29 +179,29 @@ const fixMytaxServicesInfo = {
           price: 5100,
         },
         "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
-          price: 1100,
+          price: 1500,
         },
       },
       description: "",
     },
     others: {
       subSections: {
-        "FIRST APPEAL PREPARATION & FILING": {
+        "FORM - 35 - FILING": {
           price: 7100,
         },
-        "FIRST APPEAL SUBSEQUENT WRITTEN SUBMISSION": {
+        "FORM - 35 - SUBSEQUENT WRITTEN SUBMISSIONS": {
           price: 15000,
         },
-        "FIRST APPEAL PREPARATION INCLUDING WRITTEN SUBMISSION & FILING": {
+        "FORM - 35 - FILING WITH WRITTEN SUBMISSIONS": {
           price: 21000,
         },
-        "SECOND APPEAL PREPARATION & FILING": {
+        "FORM - 36 - FILING": {
           price: 11000,
         },
-        "SECOND APPEAL SUBSEQUENT WRITTEN SUBMISSION": {
+        "FORM - 36 - SUBSEQUENT WRITTEN SUBMISSIONS": {
           price: 25000,
         },
-        "SECOND APPEAL PREPARATION INCLUDING WRITTEN SUBMISSION & FILING": {
+        "FORM - 36 - FILING WITH WRITTEN SUBMISSIONS": {
           price: 31000,
         },
       },
@@ -301,20 +337,28 @@ const fixMytaxServicesInfo = {
       dcouments: [],
       price: 21000,
     },
+    "ANY OTHER NOTICE": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      price: 5100,
+    },
   },
   consultation: {
-    "CONSULTANCY RELATED TO PROPERTY OR BUSINESS SITUATED IN INDIA": {
-      subSections: null,
-      description: "",
-      dcouments: [],
-      price: 11000,
-    },
-    others: {
-      subSections: null,
-      description: "",
-      dcouments: [],
-      price: 11000,
-    },
+    "Visitors may enjoy knowledge about intricacies of taxation laws as per Statute":
+      {
+        subSections: null,
+        description: "",
+        dcouments: [],
+        price: 2500,
+      },
+    "Visitors may seek legal opinion on any complex taxation matters from our Team of Qualified Professionals @ Legal Consultancy":
+      {
+        subSections: null,
+        description: "",
+        dcouments: [],
+        price: 5100,
+      },
   },
   filing: {
     "ITR-1": {
@@ -340,13 +384,29 @@ const fixMytaxServicesInfo = {
       price: 2100,
     },
 
-    "ITR-4": {
+    "ITR-4(Assessee with Professional Income and Income from Other Sources)": {
       subSections: null,
       description:
         "Assessee with Professional Income and Income from Other Sources",
       dcouments: [],
       price: 1500,
     },
+    "ITR-4(Assessee with Professional Income as well as House Property and Income from Other Sources)":
+      {
+        subSections: null,
+        description:
+          "Assessee with Professional Income and Income from Other Sources",
+        dcouments: [],
+        price: 2100,
+      },
+    "ITR-4(Assessee with Professional Income as well as House Property, Capital Gain and Income from Other Sources)":
+      {
+        subSections: null,
+        description:
+          "Assessee with Professional Income and Income from Other Sources",
+        dcouments: [],
+        price: 4100,
+      },
     "ITR-5": {
       subSections: null,
       description:
@@ -399,7 +459,7 @@ const fixMytaxServicesInfo = {
       dcouments: [],
       price: 1100,
     },
-    "TDS ON SALE OF PROPERTY": {
+    "TDS ON SALE OF PROPERTY -CHALLAN CUM RETURN": {
       subSections: null,
       description: "",
       dcouments: [],

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   Button,
   Form,
@@ -12,16 +13,14 @@ import {
   InputNumber,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import "./ItrNotice.css";
-import {
-  registerNotice,
-  uploadRequestFile,
-} from "../../../../services/register.service";
-import { useState } from "react";
+import { registerNotice } from "../../../../services/register.service";
 import { FIELD_NAME } from "./constant";
 import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
 import { message } from "../../../../shared/utils";
 import { phoneNumberValidator } from "../../../../shared/validator";
+
+import "./ItrNotice.css";
+
 const { Option } = Select;
 const { Panel } = Collapse;
 
@@ -247,7 +246,7 @@ const ItrNoticeService = (props) => {
               <Select
                 placeholder="Select your Section Type"
                 onChange={onHandleSection}
-                allowClear
+                showSearch
               >
                 {optionData.sectionList.map((x, i) => {
                   return (
@@ -271,6 +270,7 @@ const ItrNoticeService = (props) => {
               <Select
                 placeholder="Select your SubSection Type"
                 onChange={onHandleSubSection}
+                showSearch
               >
                 {optionData.subSectionsList.map((x, i) => {
                   return (
@@ -281,7 +281,7 @@ const ItrNoticeService = (props) => {
                 })}
               </Select>
             </Form.Item>
-            <Form.Item name={FIELD_NAME.PRICE} label="Price">
+            <Form.Item name={FIELD_NAME.PRICE} label="Fee">
               <Input disabled={true} addonAfter="INR"></Input>
             </Form.Item>
 

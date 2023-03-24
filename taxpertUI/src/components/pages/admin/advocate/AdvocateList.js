@@ -1,23 +1,19 @@
 import React from "react";
-import { Button, Card, Col, Dropdown, Row, Space } from "antd";
-import { DeleteOutlined, MoreOutlined, PlusOutlined } from "@ant-design/icons";
-import ListHeader from "../../../../common/ListHeader/ListHeader";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import Tag from "antd/es/tag";
+import { Button, Card, Col, Dropdown, Row, Space, Tag } from "antd";
+import { MoreOutlined, PlusOutlined } from "@ant-design/icons";
 import {
   deleteAdvocate,
   getAllAdvocate,
 } from "../../../../services/advocate.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
-import { PATH } from "../../../../shared/Route";
 import { getRandomString } from "../../../../shared/utils";
-import useRedirectPath from "../../../hooks/useRedirectPath";
-import { useState } from "react";
+import ListHeader from "../../../../common/ListHeader/ListHeader";
 import CreateEditPSP from "./create-edit/CreateEditPSP";
 import { MODE } from "./create-edit/constant";
 
 const AdvocateList = () => {
-  const navigator = useRedirectPath();
   const [listUpdate, setListUpdate] = useState();
   const [modelInfoOpen, setModelInfoOpen] = useState({
     open: false,
@@ -41,10 +37,6 @@ const AdvocateList = () => {
       }
     } catch (e) {}
   };
-
-  // const onHandleCreate = React.useCallback((record) => {
-  //   setModelInfoOpen({ open: true, mode: MODE.CREATE, record });
-  // }, []);
 
   const OnHandleCancel = React.useCallback((formValues) => {
     setModelInfoOpen((prevState) => ({
@@ -145,7 +137,6 @@ const AdvocateList = () => {
             <Button
               type="primary"
               shape="circle"
-              // onClick={() => navigator.goTo(PATH.CREATE_ADVOCATE)}
               onClick={() =>
                 setModelInfoOpen({ open: true, mode: MODE.CREATE, record: {} })
               }

@@ -1,4 +1,6 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   Button,
   Form,
@@ -8,16 +10,14 @@ import {
   Descriptions,
   Tag,
   Typography,
+  Tooltip,
 } from "antd";
-import TextArea from "antd/lib/input/TextArea";
-import { useParams } from "react-router-dom";
-import Tooltip from "antd/es/tooltip";
 import { getTicketDetails } from "../../../../../services/ticket.service";
-import { useSelector } from "react-redux";
 import { downloaFile, getKeyFromObject } from "../../../../../shared/utils";
 import { ServiceType } from "../../../services/constant";
 
 import "./TicketDetails.less";
+import TextArea from "antd/lib/input/TextArea";
 
 const { Title, Paragraph } = Typography;
 

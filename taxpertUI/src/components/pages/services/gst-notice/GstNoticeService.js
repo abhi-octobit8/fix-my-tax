@@ -206,7 +206,7 @@ const GstNoticeService = () => {
               <Select
                 placeholder="Select your Section Type"
                 onChange={onHandleSection}
-                allowClear
+                showSearch
               >
                 {optionData.sectionList.map((x, i) => {
                   return (
@@ -218,7 +218,7 @@ const GstNoticeService = () => {
               </Select>
             </Form.Item>
 
-            <Form.Item name={FIELD_NAME.PRICE} label="Price">
+            <Form.Item name={FIELD_NAME.PRICE} label="Fee">
               <Input disabled={true} addonAfter="INR"></Input>
             </Form.Item>
             <React.Fragment>

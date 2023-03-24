@@ -1,16 +1,11 @@
 import React from "react";
-
-import { Button, Form, Input, Select, Card, Modal } from "antd";
-import TextArea from "antd/lib/input/TextArea";
+import { useState } from "react";
+import { Button, Form, Input, Modal } from "antd";
 import { createAdvocate } from "../../../../../services/advocate.service";
-import { PATH } from "../../../../../shared/Route";
-import useRedirectPath from "../../../../hooks/useRedirectPath";
-
-import "./CreateEditPSP.less";
-import { getNewRequest } from "../../../../../services/ticket.service";
 import { getRandomString } from "../../../../../shared/utils";
 import { MODE } from "./constant";
-import { useState } from "react";
+
+import "./CreateEditPSP.less";
 
 const formItemLayout = {
   labelCol: {
@@ -135,7 +130,7 @@ const CreateEditPSP = (props) => {
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={isLoading}>
             Submit
           </Button>
         </Form.Item>

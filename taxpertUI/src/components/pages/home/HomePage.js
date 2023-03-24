@@ -239,7 +239,7 @@ function HomePage() {
           </div>
         </div>
       </section>
-      <section className="testimonial-value-section">
+      {/* <section className="testimonial-value-section">
         <div className="section-header">
           <h1>Testimonial</h1>
           <hr className="taxpert-line" />
@@ -331,8 +331,8 @@ function HomePage() {
             </div>
           </div>
         </div>
-      </section>
-      <section className="our-value-section">
+      </section> */}
+      {/* <section className="our-value-section">
         <div className="section-header">
           <h1>Our Value Partner</h1>
           <hr className="taxpert-line" />
@@ -353,7 +353,7 @@ function HomePage() {
             </li>
           </ul>
         </div>
-      </section>
+      </section> */}
     </React.Fragment>
   );
 }
