@@ -13,22 +13,28 @@ const Login = (props) => {
 
   const onFinish = async (values) => {
     console.log("Success:", values);
-    const loginData = {
-      userNameOrEmailAddress: values.username,
-      password: values.password,
-    };
-    setLoading(true);
-    const loginResponse = await API({
-      method: "post",
-      url: "/TokenAuth/Authenticate",
+    try {
+      const loginData = {
+        userNameOrEmailAddress: values.username,
+        password: values.password,
+      };
+      setLoading(true);
+      const loginResponse = await API({
+        method: "post",
+        url: "/TokenAuth/Authenticate",
 
-      body: loginData,
-    });
-    doLogin({ ...loginResponse });
-    await checkLogin(loginResponse.userId);
+        body: loginData,
+      });
+      doLogin({ ...loginResponse });
+      await checkLogin(loginResponse.userId);
 
-    setLoading(false);
-    navigate("/admin/requests");
+      setLoading(false);
+      navigate("/admin/requests");
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const onFinishFailed = (errorInfo) => {

@@ -99,16 +99,14 @@ const API = async (apiData) => {
       return response.data.result;
     }
   } catch (exception) {
-    debugger;
     const exceptionResponse = exception.response;
-    if (exceptionResponse.data.error) {
-      // if (url != "/employee") {
+    if (exceptionResponse.data.error && !hideErrorMessage) {
       showNotification({
         message: exceptionResponse.data.error.message,
         // description: exceptionResponse.data.error.details,
         type: "error",
       });
-      // }
+
       // if (exceptionResponse.data.exception) {
       //   return await handleError({
       //     exception,

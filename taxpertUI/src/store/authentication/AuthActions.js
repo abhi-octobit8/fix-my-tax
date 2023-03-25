@@ -81,6 +81,7 @@ export const checkLogin = async (userId) => {
       method: "get",
       //url: `services/app/User/Get?Id=${userId}`,
       url: `services/app/FMTCustomerService/GetCustomerById?Id=${userId}`,
+      hideErrorMessage: true,
     });
     dispatch({
       type: AUTH_ACTIONS.SET_USER,

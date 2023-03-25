@@ -7,27 +7,10 @@ import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { getAllTickets } from "../../../../services/ticket.service";
 import { DATE_FORMATS, getLocalTime } from "../../../../shared/timeUtils";
 
-// const RenderAttachement = (attachements) => {
-//   debugger;
-//   return (
-//     <>
-//       {attachements.map((item) => (
-//         <div className="user">{item.filename}</div>
-//       ))}
-//     </>
-//     // <ul>
-//     //   {attachements.map((item, index) => {
-//     //     return <li key={index}>{item.filename}</li>;
-//     //   })}
-//     // </ul>
-//   );
-// };
-
 const NewRequest = () => {
   const listData = useSelector((state) => state.request.ticketListData);
   const navigate = useNavigate();
   const RenderAttachement = (attachements) => {
-    debugger;
     return (
       <>
         {attachements.map((item) => (

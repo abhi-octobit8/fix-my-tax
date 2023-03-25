@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card, Col, Dropdown, Row, Space, Tag } from "antd";
-import { MoreOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Dropdown, Row, Space, Tag } from "antd";
+import { MoreOutlined, PlusOutlined } from "@ant-design/icons";
 import useRedirectPath from "../../../hooks/useRedirectPath";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import AssignTicket from "./AssignTicket";
@@ -155,7 +155,12 @@ const TicketListRequest = () => {
   return (
     <React.Fragment>
       <Card>
-        <ListHeader leftContent={<h2>All Request </h2>}></ListHeader>
+        <ListHeader
+          leftContent={<h2>All Request </h2>}
+          rightContent={
+            <Button type="primary" shape="circle" icon={<PlusOutlined />} />
+          }
+        ></ListHeader>
         <Row>
           <Col sm={{ span: 10, offset: 0 }}></Col>
         </Row>
