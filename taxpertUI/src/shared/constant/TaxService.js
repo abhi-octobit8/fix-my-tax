@@ -8,11 +8,11 @@ export const FIX_MY_TAX_SERVICE_TYPES = [
     value: 2,
   },
   {
-    name: "Consultation",
+    name: "Filing ITR/TCS/TDS",
     value: 3,
   },
   {
-    name: "Filing ITR/TCS/TDS",
+    name: "Consultation",
     value: 4,
   },
 ];

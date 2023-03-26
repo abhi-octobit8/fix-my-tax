@@ -17,6 +17,7 @@ import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
 import { useState } from "react";
 import { registerNotice } from "../../../../services/register.service";
 import { message } from "../../../../shared/utils";
+import ConsultationNoticeFormContainer from "../../../../common/constultation-notice-form/ConsultationNoticeFormContainer";
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -158,7 +159,10 @@ const ConsultationNotice = () => {
           <div className="Card-header-title">
             <h1>{titleHeader}</h1>
           </div>
-          <Form
+          <ConsultationNoticeFormContainer
+            selectedFixMyTaxService={FixMyTaxServiceType.Consultation}
+          />
+          {/* <Form
             {...formItemLayout}
             form={form}
             name="register"
@@ -264,7 +268,7 @@ const ConsultationNotice = () => {
                 Submit
               </Button>
             </Form.Item>
-          </Form>
+          </Form> */}
           {/* <Form
             {...formItemLayout}
             form={form}

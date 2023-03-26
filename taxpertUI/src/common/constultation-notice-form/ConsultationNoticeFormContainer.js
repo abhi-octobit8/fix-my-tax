@@ -6,9 +6,9 @@ import { createTicketService } from "../../services/ticket.service";
 import { PATH } from "../../shared/Route";
 import { message } from "../../shared/utils";
 
-import GstNoticeForm from "./GstNoticeForm";
+import ConsultationNoticeForm from "./ConsultationNoticeForm";
 
-const GstNoticeFormContainer = (props) => {
+const ConsultationNoticeFormContainer = (props) => {
   const { selectedFixMyTaxService } = props;
   const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const GstNoticeFormContainer = (props) => {
 
       const res = await createTicketService(
         registerFormData,
-        values.uploadGSTNotice
+        values.uploadDocument
       );
       if (res.ticketId) {
         message.success("Request Created successfully.");
@@ -61,17 +61,14 @@ const GstNoticeFormContainer = (props) => {
         },
       };
 
-      const res = await registerNotice(
-        registerFormData,
-        values.uploadGSTNotice
-      );
+      const res = await registerNotice(registerFormData, values.uploadDocument);
       if (res.ticketId) {
         message.success("Request Created successfully.");
       }
     }
   };
 
-  return <GstNoticeForm onFinish={onFinish} />;
+  return <ConsultationNoticeForm onFinish={onFinish} />;
 };
 
-export default GstNoticeFormContainer;
+export default ConsultationNoticeFormContainer;

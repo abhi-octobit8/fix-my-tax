@@ -10,6 +10,7 @@ import { FIX_MY_TAX_SERVICE_TYPES } from "../../../../../shared/constant/TaxServ
 import ItrNoticeForm from "../../../../../common/itr-notice-form/ItrNoticeForm";
 import ItrNoticeFormContainer from "../../../../../common/itr-notice-form/ItrNoticeFormContainer";
 import GstNoticeFormContainer from "../../../../../common/gst-notice-form/GstNoticeFormContainer";
+import ConsultationNoticeFormContainer from "../../../../../common/constultation-notice-form/ConsultationNoticeFormContainer";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -62,8 +63,18 @@ const CreateTicket = (props) => {
         return (
           <GstNoticeFormContainer selectedFixMyTaxService={selectedService} />
         );
+      case 4:
+        return (
+          <ConsultationNoticeFormContainer
+            selectedFixMyTaxService={selectedService}
+          />
+        );
       case 3:
-        return;
+        return (
+          <ConsultationNoticeFormContainer
+            selectedFixMyTaxService={selectedService}
+          />
+        );
 
       default:
         return;
