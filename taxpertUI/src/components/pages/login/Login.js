@@ -4,6 +4,7 @@ import { Button, Card, Col, Form, Input, Row } from "antd";
 import "./Login.less";
 import API from "../../../shared/API";
 import { checkLogin, doLogin } from "../../../store/authentication/AuthActions";
+import { PATH } from "../../../shared/Route";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -12,7 +13,6 @@ const Login = (props) => {
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (values) => {
-    console.log("Success:", values);
     try {
       const loginData = {
         userNameOrEmailAddress: values.username,
@@ -29,7 +29,7 @@ const Login = (props) => {
       await checkLogin(loginResponse.userId);
 
       setLoading(false);
-      navigate("/admin/requests");
+      navigate(PATH.TICKET_REQUEST_LIST);
     } catch (e) {
       console.error(e);
     } finally {

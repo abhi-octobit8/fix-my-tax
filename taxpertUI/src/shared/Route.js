@@ -13,6 +13,7 @@ const PATH = {
   CREATE_ADVOCATE: "/admin/advocate/create",
   TICKET_DETAILS: "admin/requests/details/:id",
   ADVOCATE_LIST: "/admin/psp",
+  TICKET_REQUEST_LIST: "/admin/requests",
 };
 
 export { PATH };

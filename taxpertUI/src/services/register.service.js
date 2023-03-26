@@ -1,14 +1,5 @@
 import API from "../shared/API";
-import { NOTICE_TYPE } from "../shared/constants";
 import { setNewRequestData } from "../store/request/RequestActions";
-
-export const getNewRequest = async (id) => {
-  const res = await API({
-    url: `/services/app/BagScanService/GetSearchByTag`,
-  });
-  setNewRequestData(res.items);
-  return res.items;
-};
 
 export const registerNotice = async (body, uploadfileData) => {
   console.log(body);

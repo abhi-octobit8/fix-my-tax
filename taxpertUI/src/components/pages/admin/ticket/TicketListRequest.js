@@ -11,6 +11,7 @@ import { getKeyFromObject } from "../../../../shared/utils";
 import { ServiceType } from "../../services/constant";
 import useUserRole from "../../../hooks/useUserRole";
 import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
+import { USER_ROLE } from "../../../application/application-menu/constant";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
@@ -39,6 +40,10 @@ const TicketListRequest = () => {
 
   const onHandleAssignTicket = React.useCallback((record) => {
     setModelInfoOpen({ open: true, record });
+  }, []);
+
+  const onHandleCreate = React.useCallback(() => {
+    navigator.goTo(`/admin/requests/create`);
   }, []);
 
   const OnHandleCancel = React.useCallback((formValues) => {
@@ -158,7 +163,16 @@ const TicketListRequest = () => {
         <ListHeader
           leftContent={<h2>All Request </h2>}
           rightContent={
-            <Button type="primary" shape="circle" icon={<PlusOutlined />} />
+            <>
+              {userRole == USER_ROLE.CUSTOMER ? (
+                <Button
+                  onClick={onHandleCreate}
+                  type="primary"
+                  shape="circle"
+                  icon={<PlusOutlined />}
+                />
+              ) : null}
+            </>
           }
         ></ListHeader>
         <Row>
