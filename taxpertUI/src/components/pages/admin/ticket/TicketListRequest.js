@@ -94,13 +94,19 @@ const TicketListRequest = () => {
           <Tag color="#2db7f5">{"new"}</Tag>
         ),
     },
-    {
-      title: "Attachement",
-      dataIndex: "attachments",
-      key: "attachments",
-      width: 150,
-      render: (value) => value.map((item) => item.filename).join(),
-    },
+    // {
+    //   title: "Attachment Available",
+    //   dataIndex: "attachments",
+    //   key: "attachments",
+    //   width: 150,
+    //   render: (value) =>
+    //     value.length > 0 ? (
+    //       <Tag color="green">{"Yes"}</Tag>
+    //     ) : (
+    //       <Tag color="orange">{"No"}</Tag>
+    //     ),
+    //   // render: (value) => value.map((item) => item.filename).join(),
+    // },
     {
       title: "Actions",
       dataIndex: "id",

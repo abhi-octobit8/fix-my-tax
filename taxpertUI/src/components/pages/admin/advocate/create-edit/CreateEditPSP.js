@@ -44,18 +44,24 @@ const CreateEditPSP = (props) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
-    setIsLoading(true);
-    const formData = {
-      ...values,
-      isActive: true,
-    };
-    const res = await createAdvocate(formData);
-    setIsLoading(false);
-    if (res.id) {
-      setListUpdate(getRandomString());
+    try {
+      setIsLoading(true);
+      const formData = {
+        ...values,
+        isActive: true,
+      };
+      const res = await createAdvocate(formData);
+
+      if (res.id) {
+        setListUpdate(getRandomString());
+      }
+      form.resetFields();
+      onClose();
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
     }
-    form.resetFields();
-    onClose();
   };
 
   return (

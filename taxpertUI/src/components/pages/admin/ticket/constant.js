@@ -10,16 +10,13 @@ const items = [
     key: TICKET_LIST_ACTION.ASSIGN,
     label: TICKET_LIST_ACTION.ASSIGN,
   },
-  {
-    key: TICKET_LIST_ACTION.DELETE,
-    label: TICKET_LIST_ACTION.DELETE,
-  },
 ];
 
 const getActionItems = (data, role) => {
   let newArr = [...data];
   if (role !== USER_ROLE.ADMIN) {
-    newArr.splice(0, 1);
+    // newArr.splice(0, 1);
+    return [];
   }
   return newArr;
 };

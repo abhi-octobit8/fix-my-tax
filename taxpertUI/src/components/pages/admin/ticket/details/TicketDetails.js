@@ -11,31 +11,54 @@ import {
   Tag,
   Typography,
   Tooltip,
+  Upload,
 } from "antd";
+import {
+  UploadOutlined,
+  CheckCircleOutlined,
+  CheckOutlined,
+} from "@ant-design/icons";
 import { getTicketDetails } from "../../../../../services/ticket.service";
-import { downloaFile, getKeyFromObject } from "../../../../../shared/utils";
+import {
+  downloaFile,
+  getKeyFromObject,
+  getRandomString,
+  message,
+} from "../../../../../shared/utils";
 import { ServiceType } from "../../../services/constant";
 
 import "./TicketDetails.less";
 import TextArea from "antd/lib/input/TextArea";
+import { uploadRequestFile } from "../../../../../services/register.service";
+import { useState } from "react";
+import CheckableTag from "antd/lib/tag/CheckableTag";
 
 const { Title, Paragraph } = Typography;
 
+const normFile = (e) => {
+  console.log("Upload event:", e);
+  if (Array.isArray(e)) {
+    return e;
+  }
+  return e?.fileList;
+};
 const TicketDetails = (props) => {
   const { id } = useParams();
+  const [isUplaoding, setIsUploading] = useState(false);
+  const [updateData, setUpdateData] = useState();
   const ticketdetailsData = useSelector((state) => state.request.ticketDetails);
 
   React.useEffect(() => {
     (async () => {
       await getTicketDetails(id);
     })();
-  }, []);
+  }, [updateData]);
 
   const onHandleDownloadFile = React.useCallback(async (item) => {
     await downloaFile({ id: item.id, name: item.filename });
   }, []);
 
-  const [form] = Form.useForm();
+  const [updloadForm] = Form.useForm();
   const testData = [
     {
       author: "Han Solo",
@@ -73,6 +96,24 @@ const TicketDetails = (props) => {
     console.log("registration values:", values);
   };
 
+  const onUploadSubmit = async (values) => {
+    try {
+      setIsUploading(true);
+      const res = await uploadRequestFile(values.uploadDocument, id);
+      debugger;
+      if (res) {
+        message.success(res);
+        setUpdateData(getRandomString());
+        updloadForm.resetFields();
+        // navigate(PATH.TICKET_REQUEST_LIST);
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   const Editor = ({ onChange, onSubmit, submitting, value }) => (
     <>
       <Form.Item>
@@ -81,7 +122,7 @@ const TicketDetails = (props) => {
       <Form.Item>
         <Button
           htmlType="submit"
-          loading={submitting}
+          // loading={isUplaoding}
           onClick={onSubmit}
           type="primary"
         >
@@ -112,6 +153,9 @@ const TicketDetails = (props) => {
           {ticketdetailsData?.subSection}
         </Descriptions.Item>
         <Descriptions.Item
+          contentStyle={{
+            display: "inline",
+          }}
           label="Attachment"
           className="description-item-label"
           span={3}
@@ -119,7 +163,11 @@ const TicketDetails = (props) => {
           {ticketdetailsData?.attachments?.map((item) => {
             return (
               <>
-                <Button onClick={() => onHandleDownloadFile(item)} type="link">
+                <Button
+                  loading={isUplaoding}
+                  onClick={() => onHandleDownloadFile(item)}
+                  type="link"
+                >
                   {item.filename}
                 </Button>
               </>
@@ -133,6 +181,41 @@ const TicketDetails = (props) => {
           <pre>{ticketdetailsData?.subSection}</pre>
         </Paragraph>
       </Typography>
+
+      <Form
+        form={updloadForm}
+        name="register"
+        onFinish={onUploadSubmit}
+        layout="inline"
+        scrollToFirstError
+      >
+        <Form.Item
+          name="uploadDocument"
+          label="Upload File"
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
+        >
+          <Upload
+            beforeUpload={(file) => {
+              return false;
+            }}
+            multiple={false}
+          >
+            <Button icon={<UploadOutlined />}>Click to upload</Button>
+          </Upload>
+        </Form.Item>
+        <Form.Item>
+          <Tooltip title="Start Upload">
+            {/* <CheckCircleOutlined /> */}
+            <Button
+              size="small"
+              icon={<CheckOutlined />}
+              type="default"
+              htmlType="submit"
+            ></Button>
+          </Tooltip>
+        </Form.Item>
+      </Form>
 
       <Comment
         content={
