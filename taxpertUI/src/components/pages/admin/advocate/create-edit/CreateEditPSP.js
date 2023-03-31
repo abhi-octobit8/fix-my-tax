@@ -39,9 +39,18 @@ const tailFormItemLayout = {
 };
 const CreateEditPSP = (props) => {
   const { modelInfo, onClose, setListUpdate } = props;
+
   const [isLoading, setIsLoading] = useState(false);
   const { open, mode, record } = modelInfo;
   const [form] = Form.useForm();
+
+  React.useEffect(() => {
+    if (mode === MODE.EDIT) {
+      form.setFieldsValue({
+        ...record,
+      });
+    }
+  }, [form, mode, record]);
 
   const onFinish = async (values) => {
     try {
@@ -50,8 +59,13 @@ const CreateEditPSP = (props) => {
         ...values,
         isActive: true,
       };
-      const res = await createAdvocate(formData);
-
+      let res = {};
+      if (mode === MODE.CREATE) {
+        res = await createAdvocate(formData);
+      } else {
+        //call update api
+        // res = await updateAdvocate(formData);
+      }
       if (res.id) {
         setListUpdate(getRandomString());
       }
@@ -64,11 +78,16 @@ const CreateEditPSP = (props) => {
     }
   };
 
+  const onCancel = React.useCallback(() => {
+    form.resetFields();
+    onClose();
+  }, [form, onClose]);
+
   return (
     <Modal
       destroyOnClose
       footer=""
-      onCancel={onClose}
+      onCancel={onCancel}
       open={open}
       style={{
         top: 30,
@@ -98,7 +117,7 @@ const CreateEditPSP = (props) => {
         </Form.Item>
         <Form.Item
           label="User name"
-          name="username"
+          name="userName"
           rules={[{ required: true, message: "This field is required" }]}
         >
           <Input />
@@ -106,34 +125,37 @@ const CreateEditPSP = (props) => {
         <Form.Item label="Email" {...formItemLayout} name={"emailAddress"}>
           <Input />
         </Form.Item>
+        {mode != MODE.EDIT && (
+          <>
+            <Form.Item
+              label="Password"
+              {...formItemLayout}
+              name={"password"}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your password!",
+                },
+              ]}
+            >
+              <Input type="password" />
+            </Form.Item>
 
-        <Form.Item
-          label="Password"
-          {...formItemLayout}
-          name={"password"}
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
-        >
-          <Input type="password" />
-        </Form.Item>
-
-        <Form.Item
-          label="ConfirmPassword"
-          {...formItemLayout}
-          name={"confirm"}
-          rules={[
-            {
-              required: true,
-              message: "Please input your confirm password!",
-            },
-          ]}
-        >
-          <Input type="password" />
-        </Form.Item>
+            <Form.Item
+              label="ConfirmPassword"
+              {...formItemLayout}
+              name={"confirm"}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your confirm password!",
+                },
+              ]}
+            >
+              <Input type="password" />
+            </Form.Item>
+          </>
+        )}
 
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit" loading={isLoading}>

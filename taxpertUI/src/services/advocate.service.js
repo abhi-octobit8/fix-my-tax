@@ -26,3 +26,12 @@ export const createAdvocate = async (body) => {
   // setAdvocateListData(res.items);
   return res;
 };
+export const updateAdvocate = async (body) => {
+  const res = await API({
+    url: `/services/app/User/CreateAdvocate`,
+    method: "post",
+    body,
+  });
+  // setAdvocateListData(res.items);
+  return res;
+};

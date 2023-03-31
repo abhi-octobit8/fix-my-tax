@@ -95,7 +95,7 @@ const AdvocateList = () => {
       fixed: "right",
       align: "center",
       width: 60,
-      render: (id) => {
+      render: (id, row) => {
         return (
           <Space size="middle">
             <Dropdown
@@ -105,7 +105,12 @@ const AdvocateList = () => {
                   // eslint-disable-next-line default-case
                   switch (e.key) {
                     case "edit":
-                      console.log(id);
+                      // console.log(id);
+                      setModelInfoOpen({
+                        open: true,
+                        mode: MODE.EDIT,
+                        record: row,
+                      });
                       break;
                     case "delete":
                       callDeleteAdvocate(id);
