@@ -1,12 +1,15 @@
 import axios from "axios";
-import { API_END_POINT, API_STATUSES } from "./constants";
+import {
+  // API_END_POINT,
+  API_STATUSES,
+} from "./constants";
 import { showMessage, showNotification } from "./utils";
 import { STORAGE_KEYS } from "./storage/storageKeys";
 import { erLocalStorage } from "./storage/erLocalStorage";
 import { erCache } from "./storage/erCache";
 import { isEmpty, get } from "lodash";
 import { getStore } from "../store";
-
+const API_END_POINT_NEW = process.env.REACT_APP_API_END_POINT;
 const dispatch = getStore().dispatch;
 const { getItem, getJSONItem, setItem } = erLocalStorage;
 const { ACCESS_TOKEN, REFRESH_TOKEN } = STORAGE_KEYS;
@@ -65,7 +68,7 @@ const API = async (apiData) => {
       source.cancel();
     }
     source = CancelToken.source();
-    apiUrl = `${API_END_POINT}${apiUrl}`;
+    apiUrl = `${API_END_POINT_NEW}${apiUrl}`;
     // If the APIs are called for the services then the token data in the query string as well.
     // if (apiUrl.indexOf("/services") === 0) {
     //   queryParams.token = accessToken;
