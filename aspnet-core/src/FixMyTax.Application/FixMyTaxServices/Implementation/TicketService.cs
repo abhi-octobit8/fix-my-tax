@@ -170,7 +170,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 }
 
                 var assignedUser = _userManager.GetUserById(assignments.AssignUserId);
-                _emailSender.Send(
+                _emailSender.SendAsync(
                     to: assignedUser.EmailAddress,
                     subject: "Ticket Assigned",
                     body: $"<b>Hi {assignedUser.Name} </b> <br/>A new ticket has been assigned to you. Please ensure timely response for teh ticket.",
