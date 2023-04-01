@@ -26,7 +26,9 @@ namespace FixMyTax.FixMyTaxModels
         public string TransactionNumber { get; set; }
         public string PaymentInfo { get; set; }
         public ICollection<Attachment> Attachments { get; set; }
-        public int AssignedUserId { get; set; } 
+        public int AssignedUserId { get; set; }
+        
+        public int AssignmentByUserId { get; set; }
         public DateTime AssignmentDatetime { get; set; }
         public string ExtensionData { get; set; }
     }

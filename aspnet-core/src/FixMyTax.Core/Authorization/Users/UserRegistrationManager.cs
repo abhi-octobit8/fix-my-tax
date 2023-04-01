@@ -67,6 +67,29 @@ namespace FixMyTax.Authorization.Users
             return user;
         }
 
+        public async Task<string> ForgotPasswordToken(string emailAddress)
+        {
+            var user = await _userManager.FindByEmailAsync(emailAddress);
+            if (user == null)
+            {
+                throw new UserFriendlyException("User not found!");
+            }
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            return token;
+        }
+
+        public async Task<bool> ResetPasswordToken(string emailAddress, string token, string newpassword)
+        {
+            var user = await _userManager.FindByEmailAsync(emailAddress);
+            if (user == null)
+            {
+                throw new UserFriendlyException("User not found!");
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user,token, newpassword);
+            return result.Succeeded;
+        }
 
         private void CheckForTenant()
         {

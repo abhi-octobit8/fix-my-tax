@@ -2,6 +2,7 @@
 using Abp.Authorization;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.Net.Mail;
 using Abp.UI;
 using FixMyTax.Authorization;
 using FixMyTax.Authorization.Roles;
@@ -27,18 +28,20 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         private readonly IRepository<TicketResponse> _responseRepository;
         private readonly IRepository<Attachment> _fileRepository;
         private readonly UserManager _userManager;
+        private readonly IEmailSender _emailSender;
 
 
         public TicketService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository,
-            IRepository<Attachment> fileRepository, UserManager userManager)
+            IRepository<Attachment> fileRepository, UserManager userManager, IEmailSender emailSender)
         {
             _ticketRepository = ticketRepository;
             _responseRepository = responseRepository;
             _fileRepository = fileRepository;
             _userManager = userManager;
+            _emailSender = emailSender;
         }
 
-        public async Task Create(CreateTicketInput input)
+        public async Task<TicketListDto> Create(CreateTicketInput input)
         {
             var user = _userManager.GetUserById(AbpSession.UserId.Value);
             var roles = await _userManager.GetRolesAsync(user);
@@ -48,13 +51,29 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             }
             var ticket = ObjectMapper.Map<RequestTicket>(input);
             ticket.Status = TicketStatus.New;
-            await _ticketRepository.InsertAsync(ticket);
+            var tickeEntity = await _ticketRepository.InsertAsync(ticket);
+            return ObjectMapper.Map<TicketListDto>(tickeEntity);
         }
 
-        public async Task CreateResponse(CreateResponseInput input)
+        public async Task<ResponseDto> CreateResponse(CreateResponseInput input)
         {
             var response = ObjectMapper.Map<TicketResponse>(input);
-            await _responseRepository.InsertAsync(response);
+            var requestEntity = _ticketRepository.FirstOrDefault(x => x.Id == input.RequestTicketId);
+            if (requestEntity == null)
+            {
+                throw new UserFriendlyException("Ticket not found");
+            }
+            requestEntity.Status = TicketStatus.Responded;
+            _ticketRepository.Update(requestEntity);
+            var entity = await _responseRepository.InsertAsync(response);
+
+            return ObjectMapper.Map<ResponseDto>(entity);
+        }
+
+        public async Task<ResponseDto> GetResponseByRequestId(int requestId)
+        {
+            var resposne = _responseRepository.GetAll().Include(x => x.Attachments).Where(x => x.RequestTicketId == requestId).FirstOrDefault();
+            return ObjectMapper.Map<ResponseDto>(resposne);
         }
 
         public async Task<TicketDto> Get(int id)
@@ -83,7 +102,6 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             {
                 //ticket = await _ticketRepository.GetAsync(id);
                 ticket = _ticketRepository.GetAll().Include(x => x.Attachments).Where(x => x.Id == id).FirstOrDefault();
-
             }
 
             return ObjectMapper.Map<TicketDto>(ticket);
@@ -123,6 +141,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 ObjectMapper.Map<List<TicketListDto>>(tickets)
             );
         }
+        
 
         public async Task<bool> UpdateAssignment(UpdateAssignment assignments)
         {
@@ -139,14 +158,48 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 var entity = _ticketRepository.FirstOrDefault(x => x.Id == ticketId);
                 if(entity != null)
                 {
+                    entity.AssignmentByUserId = (int)user.Id;
                     entity.AssignedUserId = assignments.AssignUserId;
                     entity.AssignmentDatetime = current;
+                    entity.Status = TicketStatus.Assigned;
                     _ticketRepository.Update(entity);
                 }
                 else
                 {
                     throw new UserFriendlyException("Ticket not found");
                 }
+
+                var assignedUser = _userManager.GetUserById(assignments.AssignUserId);
+                _emailSender.Send(
+                    to: assignedUser.EmailAddress,
+                    subject: "Ticket Assigned",
+                    body: $"<b>Hi {assignedUser.Name} </b> <br/>A new ticket has been assigned to you. Please ensure timely response for teh ticket.",
+                    isBodyHtml: true
+                );
+            }
+
+            return true;
+        }
+
+        public async Task<bool> UpdateTicketStatus(int requestTicketId, TicketStatus status)
+        {
+            var user = _userManager.GetUserById(AbpSession.UserId.Value);
+            var roles = await _userManager.GetRolesAsync(user);
+
+            if (!roles.Contains(StaticRoleNames.Tenants.Admin) && !roles.Contains(StaticRoleNames.Tenants.Advocate))
+            {
+                throw new UserFriendlyException("Not Authorised");
+            }
+
+            var entity = _ticketRepository.FirstOrDefault(x => x.Id == requestTicketId);
+            if (entity != null)
+            {
+                entity.Status = status;
+                _ticketRepository.Update(entity);
+            }
+            else
+            {
+                throw new UserFriendlyException("Ticket not found");
             }
 
             return true;

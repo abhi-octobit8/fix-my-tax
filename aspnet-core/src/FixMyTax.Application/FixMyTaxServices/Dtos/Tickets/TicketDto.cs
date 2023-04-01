@@ -27,6 +27,14 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
         public string TransactionNumber { get; set; }
         public string PaymentInfo { get; set; }
 
+        public int AssignedUserId { get; set; }
+        public string AssignedUserName { get; set; }
+        public int AssignmentByUserId { get; set; }
+        public string AssignmentByUserName { get; set; }
+        public DateTime AssignmentDatetime { get; set; }
+
+        public string CreatorUserName { get; set; }
+
         public ICollection<AttachmentDto> Attachments { get; set; }
     }
 }
