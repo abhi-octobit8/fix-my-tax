@@ -100,7 +100,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 );
 
             _emailSender.Send(
-                to: "admin@fixmytax.com",
+                to: "contact@xoqovo.com",
                 subject: "You have a new task!",
                 body: $"A new task is created on the portal  task link: <b>{output.TicketId}</b>",
                 isBodyHtml: true
