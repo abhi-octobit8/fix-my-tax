@@ -32,6 +32,7 @@ import TextArea from "antd/lib/input/TextArea";
 import { uploadRequestFile } from "../../../../../services/register.service";
 import { useState } from "react";
 import CheckableTag from "antd/lib/tag/CheckableTag";
+import CommentDetails from "./CommentDetails";
 
 const { Title, Paragraph } = Typography;
 
@@ -216,14 +217,15 @@ const TicketDetails = (props) => {
           </Tooltip>
         </Form.Item>
       </Form>
+      <CommentDetails ticketId={id} />
 
-      <Comment
+      {/* <Comment
         content={
           <Editor
-          // onChange={handleChange}
-          // onSubmit={handleSubmit}
-          // submitting={submitting}
-          // value={value}
+            // onChange={handleChange}
+            onSubmit={onHandleCommentSubmit}
+            // submitting={submitting}
+            // value={value}
           />
         }
       />
@@ -243,7 +245,7 @@ const TicketDetails = (props) => {
             />
           </li>
         )}
-      />
+      /> */}
     </Card>
   );
 };

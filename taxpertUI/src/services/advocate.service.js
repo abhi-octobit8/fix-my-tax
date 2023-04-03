@@ -28,10 +28,11 @@ export const createAdvocate = async (body) => {
 };
 export const updateAdvocate = async (body) => {
   const res = await API({
-    url: `/services/app/User/CreateAdvocate`,
-    method: "post",
+    url: `/services/app/User/Update`,
+    method: "put",
     body,
   });
+  debugger;
   // setAdvocateListData(res.items);
   return res;
 };

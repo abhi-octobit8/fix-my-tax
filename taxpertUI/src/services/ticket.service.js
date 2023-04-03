@@ -65,3 +65,24 @@ export const downloadAPI = async (id) => {
   });
   return res;
 };
+
+export const getAllTicketComments = async (id) => {
+  try {
+    const res = await API({
+      url: `services/app/CommentService/GetAll?requestTicketId=${id}`,
+    });
+    return res.items;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const createTicketComment = async (body) => {
+  const res = await API({
+    method: "post",
+    url: "services/app/CommentService/Create",
+    body: body,
+  });
+
+  return res;
+};

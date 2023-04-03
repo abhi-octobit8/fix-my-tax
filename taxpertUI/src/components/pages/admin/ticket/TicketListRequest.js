@@ -25,16 +25,25 @@ const TicketListRequest = () => {
 
   React.useEffect(() => {
     (async () => {
-      setResponeInfo((prevState) => ({
-        ...prevState,
-        loading: true,
-      }));
-      const res = await getAllTickets();
-      setResponeInfo((prevState) => ({
-        ...prevState,
-        data: res,
-        loading: false,
-      }));
+      try {
+        setResponeInfo((prevState) => ({
+          ...prevState,
+          loading: true,
+        }));
+        const res = await getAllTickets();
+        setResponeInfo((prevState) => ({
+          ...prevState,
+          data: res,
+          loading: false,
+        }));
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setResponeInfo((prevState) => ({
+          ...prevState,
+          loading: false,
+        }));
+      }
     })();
   }, []);
 

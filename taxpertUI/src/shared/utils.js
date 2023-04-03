@@ -9,7 +9,7 @@ export const showNotification = ({ type, message, description, ...props }) => {
     return notification[type]({
       message: message || toCapitalCase(type),
       description,
-      duration: null,
+      duration: 2,
       ...props,
     });
   } else {
