@@ -12,7 +12,7 @@ export const MENU_ITEMS = [
     label: "All Request",
     key: "ticket",
     role: [USER_ROLE.ADMIN, USER_ROLE.ADVOCATE, USER_ROLE.CUSTOMER],
-    to: "/admin/requests",
+    to: PATH.TICKET_REQUEST_LIST,
   },
   {
     label: "Assessee",

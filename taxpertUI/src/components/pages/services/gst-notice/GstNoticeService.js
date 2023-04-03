@@ -10,6 +10,7 @@ import { useState } from "react";
 import { phoneNumberValidator } from "../../../../shared/validator";
 import { message } from "../../../../shared/utils";
 import { registerNotice } from "../../../../services/register.service";
+import GstNoticeFormContainer from "../../../../common/gst-notice-form/GstNoticeFormContainer";
 const { Panel } = Collapse;
 const { Option } = Select;
 
@@ -158,113 +159,9 @@ const GstNoticeService = () => {
           <div className="Card-header-title">
             <h1>{titleHeader}</h1>
           </div>
-          <Form
-            {...formItemLayout}
-            form={form}
-            name="register"
-            onFinish={onFinish}
-            initialValues={{
-              residence: ["zhejiang", "hangzhou", "xihu"],
-              prefix: "91",
-            }}
-            scrollToFirstError
-          >
-            <Form.Item
-              label="Name"
-              name={FIELD_NAME.NAME}
-              rules={[{ required: true, message: "This field is required" }]}
-            >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
-              name={FIELD_NAME.EMAIL}
-              label="E-mail"
-              rules={[
-                {
-                  type: "email",
-                  message: "The input is not valid E-mail!",
-                },
-                {
-                  required: true,
-                  message: "Please input your E-mail!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name={FIELD_NAME.SECTION}
-              label="Section Type"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select Section Type!",
-                },
-              ]}
-            >
-              <Select
-                placeholder="Select your Section Type"
-                onChange={onHandleSection}
-                showSearch
-              >
-                {optionData.sectionList.map((x, i) => {
-                  return (
-                    <Option value={x} key={i}>
-                      {x}
-                    </Option>
-                  );
-                })}
-              </Select>
-            </Form.Item>
-
-            <Form.Item name={FIELD_NAME.PRICE} label="Fee">
-              <Input disabled={true} addonAfter="INR"></Input>
-            </Form.Item>
-            <React.Fragment>
-              <Form.Item
-                name={FIELD_NAME.UPLOAD_GST}
-                label="Upload Document"
-                valuePropName="fileList"
-                getValueFromEvent={normFile}
-              >
-                <Upload
-                  beforeUpload={(file) => {
-                    // console.log(file);
-                    return false;
-                  }}
-                  multiple={false}
-                >
-                  <Button icon={<UploadOutlined />}>Click to upload</Button>
-                </Upload>
-              </Form.Item>
-            </React.Fragment>
-
-            <Form.Item
-              name={FIELD_NAME.PHONE_NUMBER}
-              label="Phone Number"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your phone number!",
-                },
-                phoneNumberValidator,
-              ]}
-            >
-              <Input
-                addonBefore={prefixSelector}
-                style={{
-                  width: "100%",
-                }}
-              />
-            </Form.Item>
-
-            <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit" loading={isLoading}>
-                Submit
-              </Button>
-            </Form.Item>
-          </Form>
+          <GstNoticeFormContainer
+            selectedFixMyTaxService={FixMyTaxServiceType.GST_Notice}
+          />
         </Card>
       </section>
       <div className="gst-site-card-wrapper">

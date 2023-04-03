@@ -17,6 +17,7 @@ import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
 import { phoneNumberValidator } from "../../../../shared/validator";
 import { registerNotice } from "../../../../services/register.service";
 import { message } from "../../../../shared/utils";
+import FillingNoticeFormContainer from "../../../../common/filling-notice-form/FillingNoticeFormContainer";
 const { Panel } = Collapse;
 const { Option } = Select;
 
@@ -154,7 +155,10 @@ const FilingNotice = () => {
           <div className="Card-header-title">
             <h1>{titleHeader}</h1>
           </div>
-          <Form
+          <FillingNoticeFormContainer
+            selectedFixMyTaxService={FixMyTaxServiceType.ITR_TDS_TCS_Filing}
+          />
+          {/* <Form
             {...formItemLayout}
             form={form}
             name="register"
@@ -260,7 +264,7 @@ const FilingNotice = () => {
                 Submit
               </Button>
             </Form.Item>
-          </Form>
+          </Form> */}
         </Card>
       </section>
       <section className="section-container">
