@@ -19,13 +19,13 @@ namespace FixMyTax.FixMyTaxServices.Mapper
             _userManager = userManager;
 
             CreateMap<RequestTicket, TicketListDto>()
-                .ForMember(dest => dest.AssignedUserName, src => src.MapFrom(x => _userManager.GetUserById(x.AssignedUserId).Name))
-                .ForMember(dest => dest.AssignmentByUserName, src => src.MapFrom(x => _userManager.GetUserById(x.AssignmentByUserId).Name))
+                .ForMember(dest => dest.AssignedUserName, src => src.MapFrom(x => x.AssignedUserId != 0 ? _userManager.GetUserById(x.AssignedUserId).Name : ""))
+                .ForMember(dest => dest.AssignmentByUserName, src => src.MapFrom(x => x.AssignmentByUserId != 0 ? _userManager.GetUserById(x.AssignmentByUserId).Name : ""))
                 .ForMember(dest => dest.CreatorUserName, src => src.MapFrom(x => _userManager.GetUserById(x.CreatorUserId.Value).Name));
 
             CreateMap<RequestTicket, TicketDto>()
-                .ForMember(dest => dest.AssignedUserName, src => src.MapFrom(x => _userManager.GetUserById(x.AssignedUserId).Name))
-                .ForMember(dest => dest.AssignmentByUserName, src => src.MapFrom(x => _userManager.GetUserById(x.AssignmentByUserId).Name))
+                .ForMember(dest => dest.AssignedUserName, src => src.MapFrom(x => x.AssignedUserId != 0 ?  _userManager.GetUserById(x.AssignedUserId).Name : ""))
+                .ForMember(dest => dest.AssignmentByUserName, src => src.MapFrom(x => x.AssignmentByUserId != 0 ? _userManager.GetUserById(x.AssignmentByUserId).Name : ""))
                 .ForMember(dest => dest.CreatorUserName, src => src.MapFrom(x => _userManager.GetUserById(x.CreatorUserId.Value).Name));
 
             CreateMap<Comment, CommentDto>()
