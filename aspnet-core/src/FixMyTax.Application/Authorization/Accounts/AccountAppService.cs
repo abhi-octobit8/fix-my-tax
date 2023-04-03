@@ -1,5 +1,7 @@
+using System;
 using System.Threading.Tasks;
 using Abp.Configuration;
+using Abp.Net.Mail;
 using Abp.Zero.Configuration;
 using FixMyTax.Authorization.Accounts.Dto;
 using FixMyTax.Authorization.Users;
@@ -11,13 +13,17 @@ namespace FixMyTax.Authorization.Accounts
         // from: http://regexlib.com/REDetails.aspx?regexp_id=1923
         public const string PasswordRegex = "(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s)[0-9a-zA-Z!@#$%^&*()]*$";
 
-    private readonly UserRegistrationManager _userRegistrationManager;
+        private readonly UserRegistrationManager _userRegistrationManager;
+        private readonly IEmailSender _emailSender;
 
         public AccountAppService(
-            UserRegistrationManager userRegistrationManager)
+            UserRegistrationManager userRegistrationManager, IEmailSender emailSender)
         {
             _userRegistrationManager = userRegistrationManager;
+            _emailSender = emailSender;
         }
+
+        
 
         public async Task<IsTenantAvailableOutput> IsTenantAvailable(IsTenantAvailableInput input)
         {
@@ -52,6 +58,52 @@ namespace FixMyTax.Authorization.Accounts
             {
                 CanLogin = user.IsActive && (user.IsEmailConfirmed || !isEmailConfirmationRequiredForLogin)
             };
+        }
+
+        public async Task<ForgotPasswordOutput> ForgotPassword(ForgotPasswordInput input)
+        {
+            try
+            {
+                var token = await _userRegistrationManager.ForgotPasswordToken(input.EmailAddress);
+
+                await _emailSender.SendAsync(
+                    to: "neeraj1032@gmail.com",
+                    subject: "FixMyTax Password Reset",
+                    body: $"<b>Hi {input.EmailAddress} </b> <br/>Please click on the following link to reset your password. <br/> https://fixmytax.zupiers.com/resetpassword/{token}",
+                    isBodyHtml: true
+                );
+                return new ForgotPasswordOutput(true);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error(ex.Message, ex);
+                return new ForgotPasswordOutput(false);
+            }
+        }
+
+        public async Task<ResetPasswordOutput> ResetPassword(ResetPasswordInput input)
+        {
+            try
+            {
+                var success = await _userRegistrationManager.ResetPasswordToken(input.EmailAddress, input.Token, input.NewPassword);
+
+                if (success)
+                {
+                    await _emailSender.SendAsync(
+                        to: "neeraj1032@gmail.com",
+                        subject: "FixMyTax Password Reset",
+                        body: $"<b>Hi {input.EmailAddress} </b> <br/>Password reset successfully",
+                        isBodyHtml: true
+                    );
+                }
+                
+                return new ResetPasswordOutput(success);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, ex);
+                return new ResetPasswordOutput(false);
+            }
         }
     }
 }

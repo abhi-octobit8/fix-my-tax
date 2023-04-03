@@ -12,6 +12,9 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
     [AutoMapFrom(typeof(TicketResponse))]
     public class ResponseDto : FullAuditedEntity
     {
+        public int RequestTicketId { get; set; }
+        public string Response { get; set; }
 
+        public ICollection<AttachmentDto> Attachments { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FixMyTax.FixMyTaxServices
 {
-    internal interface IEventService
+    public interface IEventService
     {
     }
 }

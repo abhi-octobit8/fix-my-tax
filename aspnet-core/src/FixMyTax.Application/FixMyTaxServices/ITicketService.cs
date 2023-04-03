@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using FixMyTax.FixMyTaxModels;
 using FixMyTax.FixMyTaxServices.Dtos.Tickets;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,14 @@ namespace FixMyTax.FixMyTaxServices
         Task<ListResultDto<TicketListDto>> GetAll();
         Task<TicketDto> Get(int id);
 
-        System.Threading.Tasks.Task Create(CreateTicketInput input);
+        Task<TicketListDto> Create(CreateTicketInput input);
 
-        System.Threading.Tasks.Task CreateResponse(CreateResponseInput input);
+        Task<ResponseDto> CreateResponse(CreateResponseInput input);
+
+        Task<ResponseDto> GetResponseByRequestId(int requestId);
 
         Task<bool> UpdateAssignment(UpdateAssignment updateAssignment);
+
+        Task<bool> UpdateTicketStatus(int requestTicketId, TicketStatus status);
     }
 }

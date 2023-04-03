@@ -25,7 +25,6 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         private readonly UserRegistrationManager _userRegistrationManager;
         private readonly UserManager _userManager;
         private readonly IEmailSender _emailSender;
-        //EmailSettingNames
 
         public RegisterService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository,
             IRepository<Attachment> fileRepository, UserRegistrationManager userRegistrationManager, UserManager userManager, IEmailSender emailSender)
