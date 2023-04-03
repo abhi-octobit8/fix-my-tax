@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card, Col, Dropdown, Row, Space, Tag } from "antd";
-import { MoreOutlined } from "@ant-design/icons";
+import { Button, Card, Col, Dropdown, Row, Space, Tag } from "antd";
+import { MoreOutlined, PlusOutlined } from "@ant-design/icons";
 import useRedirectPath from "../../../hooks/useRedirectPath";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import AssignTicket from "./AssignTicket";
@@ -11,6 +11,7 @@ import { getKeyFromObject } from "../../../../shared/utils";
 import { ServiceType } from "../../services/constant";
 import useUserRole from "../../../hooks/useUserRole";
 import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
+import { USER_ROLE } from "../../../application/application-menu/constant";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
@@ -39,6 +40,10 @@ const TicketListRequest = () => {
 
   const onHandleAssignTicket = React.useCallback((record) => {
     setModelInfoOpen({ open: true, record });
+  }, []);
+
+  const onHandleCreate = React.useCallback(() => {
+    navigator.goTo(`/admin/requests/create`);
   }, []);
 
   const OnHandleCancel = React.useCallback((formValues) => {
@@ -89,13 +94,19 @@ const TicketListRequest = () => {
           <Tag color="#2db7f5">{"new"}</Tag>
         ),
     },
-    {
-      title: "Attachement",
-      dataIndex: "attachments",
-      key: "attachments",
-      width: 150,
-      render: (value) => value.map((item) => item.filename).join(),
-    },
+    // {
+    //   title: "Attachment Available",
+    //   dataIndex: "attachments",
+    //   key: "attachments",
+    //   width: 150,
+    //   render: (value) =>
+    //     value.length > 0 ? (
+    //       <Tag color="green">{"Yes"}</Tag>
+    //     ) : (
+    //       <Tag color="orange">{"No"}</Tag>
+    //     ),
+    //   // render: (value) => value.map((item) => item.filename).join(),
+    // },
     {
       title: "Actions",
       dataIndex: "id",
@@ -155,7 +166,21 @@ const TicketListRequest = () => {
   return (
     <React.Fragment>
       <Card>
-        <ListHeader leftContent={<h2>All Request </h2>}></ListHeader>
+        <ListHeader
+          leftContent={<h2>All Request </h2>}
+          rightContent={
+            <>
+              {userRole == USER_ROLE.CUSTOMER ? (
+                <Button
+                  onClick={onHandleCreate}
+                  type="primary"
+                  shape="circle"
+                  icon={<PlusOutlined />}
+                />
+              ) : null}
+            </>
+          }
+        ></ListHeader>
         <Row>
           <Col sm={{ span: 10, offset: 0 }}></Col>
         </Row>

@@ -104,7 +104,7 @@ const MENU_ITEMS = [
   {
     label: "Account",
     role: [USER_ROLE.CUSTOMER, USER_ROLE.ADMIN, USER_ROLE.ADVOCATE],
-    to: "/admin/requests",
+    to: PATH.TICKET_REQUEST_LIST,
     // children: [
     //   {
     //     label: "DashBoard",

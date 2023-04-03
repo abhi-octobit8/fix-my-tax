@@ -4,14 +4,7 @@ import {
   setTicketDetailsData,
   setTicketListData,
 } from "../store/request/RequestActions";
-
-export const getNewRequest = async (id) => {
-  const res = await API({
-    url: `/services/app/BagScanService/GetSearchByTag`,
-  });
-  setNewRequestData(res.items);
-  return res.items;
-};
+import { uploadRequestFile } from "./register.service";
 
 export const getAllTickets = async (id) => {
   const res = await API({
@@ -19,6 +12,31 @@ export const getAllTickets = async (id) => {
   });
   setTicketListData(res.items);
   return res.items;
+};
+
+export const createTicketService = async (body, uploadfileData) => {
+  const registerResponse = await API({
+    method: "post",
+    url: "services/app/TicketService/Create",
+    body: body,
+  });
+  if (registerResponse.ticketId && uploadfileData) {
+    let formData = new FormData();
+
+    formData.append(
+      "file",
+      uploadfileData[0].originFileObj,
+      uploadfileData[0].originFileObj.name
+    );
+
+    const uploadData = {
+      id: registerResponse.ticketId,
+      formData,
+    };
+
+    await uploadRequestFile(uploadData);
+  }
+  return registerResponse;
 };
 
 export const getTicketDetails = async (id) => {

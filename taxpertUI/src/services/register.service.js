@@ -1,14 +1,5 @@
 import API from "../shared/API";
-import { NOTICE_TYPE } from "../shared/constants";
 import { setNewRequestData } from "../store/request/RequestActions";
-
-export const getNewRequest = async (id) => {
-  const res = await API({
-    url: `/services/app/BagScanService/GetSearchByTag`,
-  });
-  setNewRequestData(res.items);
-  return res.items;
-};
 
 export const registerNotice = async (body, uploadfileData) => {
   console.log(body);
@@ -18,25 +9,39 @@ export const registerNotice = async (body, uploadfileData) => {
     body: body,
   });
   if (registerResponse.ticketId && uploadfileData) {
-    let formData = new FormData();
+    // let formData = new FormData();
 
-    formData.append(
-      "file",
-      uploadfileData[0].originFileObj,
-      uploadfileData[0].originFileObj.name
-    );
+    // formData.append(
+    //   "file",
+    //   uploadfileData[0].originFileObj,
+    //   uploadfileData[0].originFileObj.name
+    // );
 
-    const uploadData = {
-      id: registerResponse.ticketId,
-      formData,
-    };
+    // const uploadData = {
+    //   id: registerResponse.ticketId,
+    //   formData,
+    // };
 
-    await uploadRequestFile(uploadData);
+    await uploadRequestFile(uploadfileData, registerResponse.ticketId);
   }
   return registerResponse;
 };
 
-export const uploadRequestFile = async (uploadData) => {
+export const uploadRequestFile = async (uploadfileData, id) => {
+  debugger;
+  let formData = new FormData();
+
+  formData.append(
+    "file",
+    uploadfileData[0].originFileObj,
+    uploadfileData[0].originFileObj.name
+  );
+
+  const uploadData = {
+    id: id,
+    formData,
+  };
+
   const res = await API({
     url: `services/app/FileService/UploadRequestFile?id=${uploadData.id}`,
     method: "post",

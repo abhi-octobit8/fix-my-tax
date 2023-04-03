@@ -24,17 +24,24 @@ const AssignTicket = (props) => {
   const [form] = Form.useForm();
   const onFormSubmit = React.useCallback(
     async (formValues) => {
-      console.log(formValues);
-      setIsLoading(true);
-      const formData = {
-        ticketIds: [record.id],
-        assignUserId: formValues.advocate,
-      };
+      try {
+        console.log(formValues);
+        setIsLoading(true);
+        const formData = {
+          ticketIds: [record.id],
+          assignUserId: formValues.advocate,
+        };
 
-      const res = await updateAssignment(formData);
-      setIsLoading(false);
-      onClose();
+        const res = await updateAssignment(formData);
+
+        onClose();
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
     },
+
     [onClose, record]
   );
 
