@@ -52,6 +52,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             var ticket = ObjectMapper.Map<RequestTicket>(input);
             ticket.Status = TicketStatus.New;
             var tickeEntity = await _ticketRepository.InsertAsync(ticket);
+            CurrentUnitOfWork.SaveChanges();
             return ObjectMapper.Map<TicketListDto>(tickeEntity);
         }
 
@@ -66,7 +67,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             requestEntity.Status = TicketStatus.Responded;
             _ticketRepository.Update(requestEntity);
             var entity = await _responseRepository.InsertAsync(response);
-
+            CurrentUnitOfWork.SaveChanges();
             return ObjectMapper.Map<ResponseDto>(entity);
         }
 
@@ -201,7 +202,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             {
                 throw new UserFriendlyException("Ticket not found");
             }
-
+            CurrentUnitOfWork.SaveChanges();
             return true;
         }
     }

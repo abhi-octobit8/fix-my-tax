@@ -67,7 +67,7 @@ namespace FixMyTax.Authorization.Accounts
                 var token = await _userRegistrationManager.ForgotPasswordToken(input.EmailAddress);
 
                 await _emailSender.SendAsync(
-                    to: "neeraj1032@gmail.com",
+                    to: input.EmailAddress,
                     subject: "FixMyTax Password Reset",
                     body: $"<b>Hi {input.EmailAddress} </b> <br/>Please click on the following link to reset your password. <br/> https://fixmytax.zupiers.com/resetpassword/{token}",
                     isBodyHtml: true
@@ -90,7 +90,7 @@ namespace FixMyTax.Authorization.Accounts
                 if (success)
                 {
                     await _emailSender.SendAsync(
-                        to: "neeraj1032@gmail.com",
+                        to: input.EmailAddress,
                         subject: "FixMyTax Password Reset",
                         body: $"<b>Hi {input.EmailAddress} </b> <br/>Password reset successfully",
                         isBodyHtml: true

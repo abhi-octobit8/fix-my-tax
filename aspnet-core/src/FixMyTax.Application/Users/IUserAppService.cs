@@ -6,7 +6,7 @@ using FixMyTax.Users.Dto;
 
 namespace FixMyTax.Users
 {
-    public interface IUserAppService : IAsyncCrudAppService<UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>
+    public interface IUserAppService : IAsyncCrudAppService<UserDto, long, PagedUserResultRequestDto, CreateUserDto, UpdateUserDto>
     {
         Task<UserDto> CreateAdvocateAsync(CreateUserDto input);
 
