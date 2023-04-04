@@ -4,7 +4,7 @@ import { Button, Card, Col, Row } from "antd";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
 import card3 from "../../../assets/img/card3.svg";
-import about from "../../../assets/img/about.jpeg";
+import about from "../../../assets/img/team.jpg";
 import {
   AuthorizedIcon,
   RatingIcon,

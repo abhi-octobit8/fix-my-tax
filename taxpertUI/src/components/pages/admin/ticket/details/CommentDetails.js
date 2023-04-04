@@ -15,12 +15,11 @@ const CommentList = ({ comments }) => (
       comments.length > 1 ? "Comments" : "Comments"
     }`}
     itemLayout="horizontal"
-    // renderItem={(props) => <Comment {...props} />}
     renderItem={(item) => (
       <li>
         <Comment
           actions={item.actions}
-          author={"shamsher"}
+          author={item.creatorUserName}
           avatar={item.avatar}
           content={item.text}
           datetime={getLocalTime(

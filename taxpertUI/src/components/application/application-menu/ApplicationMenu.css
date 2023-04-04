@@ -17,9 +17,9 @@
   block-size: 64px;
   /* color: rgba(246, 246, 246, 0.65); */
   color: rgba(2, 19, 35, 0.85);
-  font-size: 15px;
+  font-size: 18px;
   line-height: 64px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .application-menu {

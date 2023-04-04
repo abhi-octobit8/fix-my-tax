@@ -70,7 +70,7 @@ const MENU_ITEMS = [
     ],
   },
   {
-    label: "About",
+    label: "About Us",
     role: USER_ROLE.PUBLIC,
     to: PATH.ABOUT,
   },

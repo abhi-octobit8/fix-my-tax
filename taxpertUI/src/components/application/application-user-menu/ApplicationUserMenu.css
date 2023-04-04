@@ -11,6 +11,7 @@
   position: relative;
   cursor: pointer;
   transition: color 0.3s ease;
+  font-size: 18px;
 }
 
 /* .application-user-menu-trigger:hover {
