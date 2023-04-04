@@ -69,9 +69,8 @@ const CreateEditPSP = (props) => {
       } else {
         //call update api
         const formData = {
-          ...record,
+          id: record.id,
           ...values,
-          isActive: true,
         };
         res = await updateAdvocate(formData);
       }
