@@ -32,6 +32,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         {
             var comment = ObjectMapper.Map<Comment>(input);
             var commentEntity = await _commentRepository.InsertAsync(comment);
+            CurrentUnitOfWork.SaveChanges();
             return ObjectMapper.Map<CommentDto>(commentEntity);
         }
 
