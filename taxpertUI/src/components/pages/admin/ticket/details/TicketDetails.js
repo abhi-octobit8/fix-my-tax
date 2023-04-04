@@ -12,6 +12,8 @@ import {
   Typography,
   Tooltip,
   Upload,
+  Row,
+  Col,
 } from "antd";
 import {
   UploadOutlined,
@@ -32,6 +34,7 @@ import TextArea from "antd/lib/input/TextArea";
 import { uploadRequestFile } from "../../../../../services/register.service";
 import { useState } from "react";
 import CheckableTag from "antd/lib/tag/CheckableTag";
+import SidePanel from "./side-panel/SidePanel";
 import CommentDetails from "./CommentDetails";
 
 const { Title, Paragraph } = Typography;
@@ -135,47 +138,52 @@ const TicketDetails = (props) => {
 
   return (
     <Card title="Ticket Details" bordered={false}>
-      <Descriptions>
-        <Descriptions.Item label="Id">
-          {" "}
-          {ticketdetailsData?.id}
-        </Descriptions.Item>
-        <Descriptions.Item label="Service Type">
-          {getKeyFromObject(ServiceType, ticketdetailsData?.serviceType)}
-        </Descriptions.Item>
-        <Descriptions.Item label="Status">
-          {" "}
-          <Tag color="#2db7f5">{"new"}</Tag>
-        </Descriptions.Item>
-        <Descriptions.Item label="Section" span={3}>
-          {ticketdetailsData?.section}
-        </Descriptions.Item>
-        <Descriptions.Item label="Sub Section" span={3}>
-          {ticketdetailsData?.subSection}
-        </Descriptions.Item>
-        <Descriptions.Item
-          contentStyle={{
-            display: "inline",
-          }}
-          label="Attachment"
-          className="description-item-label"
-          span={3}
-        >
-          {ticketdetailsData?.attachments?.map((item) => {
-            return (
-              <>
-                <Button
-                  loading={isUplaoding}
-                  onClick={() => onHandleDownloadFile(item)}
-                  type="link"
-                >
-                  {item.filename}
-                </Button>
-              </>
-            );
-          })}
-        </Descriptions.Item>
-      </Descriptions>
+      <Row gutter={20}>
+        <Col xs={24} xl={18}>
+          <Descriptions>
+            <Descriptions.Item label="Ticket #">
+              {" "}
+              {ticketdetailsData?.id}
+            </Descriptions.Item>
+            <Descriptions.Item label="Service Type" span={2}>
+              {getKeyFromObject(ServiceType, ticketdetailsData?.serviceType)}
+            </Descriptions.Item>
+
+            <Descriptions.Item label="Section" span={3}>
+              {ticketdetailsData?.section}
+            </Descriptions.Item>
+            <Descriptions.Item label="Sub Section" span={3}>
+              {ticketdetailsData?.subSection}
+            </Descriptions.Item>
+            <Descriptions.Item
+              contentStyle={{
+                display: "inline",
+              }}
+              label="Attachment"
+              className="description-item-label"
+              span={3}
+            >
+              {ticketdetailsData?.attachments?.map((item) => {
+                return (
+                  <>
+                    <Button
+                      loading={isUplaoding}
+                      onClick={() => onHandleDownloadFile(item)}
+                      type="link"
+                    >
+                      {item.filename}
+                    </Button>
+                  </>
+                );
+              })}
+            </Descriptions.Item>
+          </Descriptions>
+        </Col>
+        <Col xs={24} xl={6}>
+          <SidePanel ticketdetailsData={ticketdetailsData} />
+        </Col>
+      </Row>
+
       <Title level={5}>Description</Title>
       <Typography>
         <Paragraph>

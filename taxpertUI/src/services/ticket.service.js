@@ -86,3 +86,18 @@ export const createTicketComment = async (body) => {
 
   return res;
 };
+
+export const updateTicketStatus = async (data, id) => {
+  debugger;
+  const res = await API({
+    method: "put",
+    url: `services/app/TicketService/updateTicketStatus?requestTicketId=${id}`,
+    body: data,
+  });
+  if (res) {
+    await getTicketDetails(id);
+  }
+  debugger;
+
+  return res;
+};

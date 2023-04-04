@@ -12,6 +12,7 @@ import { ServiceType } from "../../services/constant";
 import useUserRole from "../../../hooks/useUserRole";
 import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
 import { USER_ROLE } from "../../../application/application-menu/constant";
+import { TicketStatus } from "../../../../shared/constants";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
@@ -78,7 +79,7 @@ const TicketListRequest = () => {
       title: "Service",
       dataIndex: "serviceType",
       key: "serviceType",
-      width: 150,
+      width: 100,
       render: (text, value) => {
         return <span>{getKeyFromObject(ServiceType, text)}</span>;
       },
@@ -93,29 +94,29 @@ const TicketListRequest = () => {
     },
     {
       title: "Status",
-      dataIndex: "isActive",
-      key: "isActive",
-      width: 150,
+      dataIndex: "status",
+      key: "status",
+      width: 100,
       render: (text) =>
         text === true ? (
-          <Tag color="#2db7f5">{"Yes"}</Tag>
+          <Tag color="#2db7f5">{getKeyFromObject(TicketStatus, text)}</Tag>
         ) : (
-          <Tag color="#2db7f5">{"new"}</Tag>
+          <Tag color="#2db7f5">{getKeyFromObject(TicketStatus, text)}</Tag>
         ),
     },
+    {
+      title: "Assigned To",
+      dataIndex: "assignedUserName",
+      key: "assignedUserName",
+      width: 150,
+    },
     // {
-    //   title: "Attachment Available",
-    //   dataIndex: "attachments",
-    //   key: "attachments",
+    //   title: "Assigned By",
+    //   dataIndex: "assignmentByUserName",
+    //   key: "assignmentByUserName",
     //   width: 150,
-    //   render: (value) =>
-    //     value.length > 0 ? (
-    //       <Tag color="green">{"Yes"}</Tag>
-    //     ) : (
-    //       <Tag color="orange">{"No"}</Tag>
-    //     ),
-    //   // render: (value) => value.map((item) => item.filename).join(),
     // },
+
     {
       title: "Actions",
       dataIndex: "id",
