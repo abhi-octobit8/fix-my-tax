@@ -181,7 +181,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             return true;
         }
 
-        public async Task<bool> UpdateTicketStatus(int requestTicketId, TicketStatus status)
+        public async Task<bool> UpdateTicketStatus(int requestTicketId, TicketStatusInput status)
         {
             var user = _userManager.GetUserById(AbpSession.UserId.Value);
             var roles = await _userManager.GetRolesAsync(user);
@@ -194,7 +194,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             var entity = _ticketRepository.FirstOrDefault(x => x.Id == requestTicketId);
             if (entity != null)
             {
-                entity.Status = status;
+                entity.Status = status.Status;
                 _ticketRepository.Update(entity);
             }
             else
