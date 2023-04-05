@@ -236,7 +236,11 @@ const ItrNoticeForm = (props) => {
           })}
         </Select>
       </Form.Item>
-      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
+      <Form.Item
+        name={FIELD_NAME.PRICE}
+        label="Fee"
+        extra="This Fee Included GST"
+      >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
 
