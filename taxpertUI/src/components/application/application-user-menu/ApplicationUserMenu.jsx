@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Dropdown from "antd/es/dropdown";
 import { MENU_ITEMS, MENU_KEY } from "./constant";
 
@@ -7,15 +7,24 @@ import { Menu } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { doLogout } from "../../../store/authentication/AuthActions";
+import ChangePassword from "./change-password/ChangePassword";
 
 const displayName = "ApplicationUserMenu";
 
 function ApplicationUserMenu() {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.authentication.user);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const onHandleClose = React.useCallback(() => {
+    setModalOpen(false);
+  }, []);
   const handleMenuClick = React.useCallback((menuItem) => {
     const { key } = menuItem;
     const menuActionMap = {
+      [MENU_KEY.CHANGE_PASSWORD]: () => {
+        setModalOpen(true);
+      },
       [MENU_KEY.LOGOUT]: () => {
         doLogout();
         navigate("/");
@@ -54,6 +63,7 @@ function ApplicationUserMenu() {
           </Menu.Item>
         </Menu>
       )}
+      <ChangePassword open={modalOpen} onClose={onHandleClose} />
     </>
   );
 }

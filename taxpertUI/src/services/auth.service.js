@@ -11,3 +11,14 @@ export const isTenantAvailable = async () => {
   });
   return response;
 };
+
+export const changePasswordService = async (body) => {
+  const res = await API({
+    method: "post",
+    url: "services/app/User/ChangePassword",
+    body: body,
+    successMessage: "Password Updated successfully",
+  });
+
+  return res;
+};

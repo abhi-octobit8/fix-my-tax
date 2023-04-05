@@ -24,9 +24,19 @@ export const createAdvocate = async (body) => {
     method: "post",
     body,
   });
-  // setAdvocateListData(res.items);
   return res;
 };
+
+export const resetPassword = async (body) => {
+  const res = await API({
+    url: `/services/app/User/ResetPassword`,
+    successMessage: "Password Updated successfully",
+    method: "post",
+    body,
+  });
+  return res;
+};
+
 export const updateAdvocate = async (body) => {
   const res = await API({
     url: `/services/app/User/Update`,

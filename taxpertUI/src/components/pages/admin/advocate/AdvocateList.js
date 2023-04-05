@@ -12,9 +12,14 @@ import { getRandomString } from "../../../../shared/utils";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import CreateEditPSP from "./create-edit/CreateEditPSP";
 import { MODE } from "./create-edit/constant";
+import ResetPassword from "./reset-password/ResetPassword";
 
 const AdvocateList = () => {
   const [listUpdate, setListUpdate] = useState();
+  const [openModalResetInfo, setOpenModalResetInfo] = useState({
+    open: false,
+    record: {},
+  });
   const [modelInfoOpen, setModelInfoOpen] = useState({
     open: false,
     mode: MODE.CREATE,
@@ -45,10 +50,21 @@ const AdvocateList = () => {
     }));
   }, []);
 
+  const OnHandleResetCancel = React.useCallback((formValues) => {
+    setOpenModalResetInfo((prevState) => ({
+      ...prevState,
+      open: false,
+    }));
+  }, []);
+
   const items = [
     {
       key: "edit",
       label: "Edit",
+    },
+    {
+      key: "reset",
+      label: "Reset Password",
     },
     {
       key: "delete",
@@ -112,6 +128,12 @@ const AdvocateList = () => {
                         record: row,
                       });
                       break;
+                    case "reset":
+                      setOpenModalResetInfo({
+                        open: true,
+                        record: row,
+                      });
+                      break;
                     case "delete":
                       callDeleteAdvocate(id);
                       break;
@@ -170,6 +192,10 @@ const AdvocateList = () => {
         onClose={OnHandleCancel}
         setListUpdate={setListUpdate}
       ></CreateEditPSP>
+      <ResetPassword
+        modelInfo={openModalResetInfo}
+        onClose={OnHandleResetCancel}
+      ></ResetPassword>
     </React.Fragment>
   );
 };

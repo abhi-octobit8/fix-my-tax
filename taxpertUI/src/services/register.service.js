@@ -9,19 +9,6 @@ export const registerNotice = async (body, uploadfileData) => {
     body: body,
   });
   if (registerResponse.ticketId && uploadfileData) {
-    // let formData = new FormData();
-
-    // formData.append(
-    //   "file",
-    //   uploadfileData[0].originFileObj,
-    //   uploadfileData[0].originFileObj.name
-    // );
-
-    // const uploadData = {
-    //   id: registerResponse.ticketId,
-    //   formData,
-    // };
-
     await uploadRequestFile(uploadfileData, registerResponse.ticketId);
   }
   return registerResponse;
