@@ -7,7 +7,7 @@ import AssignTicket from "./AssignTicket";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { getAllTickets } from "../../../../services/ticket.service";
 import { DATE_FORMATS, getLocalTime } from "../../../../shared/timeUtils";
-import { getKeyFromObject } from "../../../../shared/utils";
+import { getKeyFromObject, getMenuActionItems } from "../../../../shared/utils";
 import { ServiceType } from "../../services/constant";
 import useUserRole from "../../../hooks/useUserRole";
 import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
@@ -136,7 +136,8 @@ const TicketListRequest = () => {
             <Space>
               <Dropdown
                 menu={{
-                  items: getActionItems(items, userRole),
+                  // items: getActionItems(items, userRole),
+                  items: getMenuActionItems(items, userRole),
                   onClick: (e) => {
                     // eslint-disable-next-line default-case
                     switch (e.key) {

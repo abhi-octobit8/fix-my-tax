@@ -9,6 +9,7 @@ const items = [
   {
     key: TICKET_LIST_ACTION.ASSIGN,
     label: TICKET_LIST_ACTION.ASSIGN,
+    role: [USER_ROLE.ADMIN],
   },
 ];
 

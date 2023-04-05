@@ -43,15 +43,13 @@ function ApplicationUserMenu() {
           placement="bottomRight"
           trigger="click"
         >
-          <div className="application-user-menu-trigger">
-            {userData.userName}
-          </div>
+          <div className="application-user-menu-trigger">{userData.name}</div>
         </Dropdown>
       ) : (
         <Menu size="large">
           <Menu.Item>
             <NavLink to="/login">
-              <span>Login</span>
+              <span className="application-user-menu-trigger">Login</span>
             </NavLink>
           </Menu.Item>
         </Menu>
