@@ -5,7 +5,7 @@ import {
   createAdvocate,
   updateAdvocate,
 } from "../../../../../services/advocate.service";
-import { getRandomString } from "../../../../../shared/utils";
+import { getRandomString, message } from "../../../../../shared/utils";
 import { MODE } from "./constant";
 
 import "./CreateEditPSP.less";

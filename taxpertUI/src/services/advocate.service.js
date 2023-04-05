@@ -20,6 +20,7 @@ export const deleteAdvocate = async (id) => {
 export const createAdvocate = async (body) => {
   const res = await API({
     url: `/services/app/User/CreateAdvocate`,
+    successMessage: "PSP Created successfully",
     method: "post",
     body,
   });
@@ -29,6 +30,7 @@ export const createAdvocate = async (body) => {
 export const updateAdvocate = async (body) => {
   const res = await API({
     url: `/services/app/User/Update`,
+    successMessage: "PSP Updated successfully",
     method: "put",
     body,
   });
