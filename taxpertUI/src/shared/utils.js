@@ -208,8 +208,7 @@ export const numberFormatter = (num, digits = 0) => {
 
 export const getResetToken = (path) => {
   console.log(path.split("/"));
-  debugger;
-  const token = path.replace("/resetpassword", "");
+  const token = path.replace("/resetpassword/", "");
 
   return token;
 };

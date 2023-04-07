@@ -107,11 +107,11 @@ const Login = (props) => {
               </Button>
             </Form.Item>
           </Form>
-          <Form.Item>
+          {/* <Form.Item>
             <a href="#" onClick={() => setModalForgetPassword(true)}>
               Forgot password?
             </a>
-          </Form.Item>
+          </Form.Item> */}
         </Col>
         <Col sm={{ span: 10, offset: 0 }}></Col>
       </Row>

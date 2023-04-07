@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Button, Card, Col, Form, Input, Row } from "antd";
+import { Button, Card, Col, Form, Input, message, Row } from "antd";
 import "./ResetPassword.less";
 import { PATH } from "../../../shared/Route";
 import { resetUserPasswordService } from "../../../services/auth.service";
@@ -22,9 +22,17 @@ const ResetPassword = (props) => {
         newPassword: values.newPassword,
       };
       setLoading(true);
-      const loginResponse = await resetUserPasswordService(resetData);
+      const res = await resetUserPasswordService(resetData);
+      if (res.success) {
+        message.success(res.message);
+        navigate(PATH.LOGIN);
+      } else {
+        message.error(
+          "There is some error. Please check Email id And try again."
+        );
+      }
 
-      navigate(PATH.LOGIN);
+      // navigate(PATH.LOGIN);
     } catch (e) {
       console.error(e);
     } finally {
