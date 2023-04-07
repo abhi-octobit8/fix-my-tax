@@ -22,3 +22,13 @@ export const changePasswordService = async (body) => {
 
   return res;
 };
+
+export const forgotPasswordService = async (body) => {
+  const res = await API({
+    method: "post",
+    url: "services/app/Account/ForgotPassword",
+    body: body,
+  });
+
+  return res;
+};

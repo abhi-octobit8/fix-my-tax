@@ -14,6 +14,7 @@ namespace FixMyTax.Authorization.Accounts.Dto
         public ForgotPasswordOutput(bool success)
         {
             Message = success ? "An email with password reset instruction has been sent to the given mail id" : "Error";
+            Success = success;
         }
     }
 }
