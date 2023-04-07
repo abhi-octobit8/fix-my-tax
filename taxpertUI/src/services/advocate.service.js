@@ -27,7 +27,7 @@ export const createAdvocate = async (body) => {
   return res;
 };
 
-export const resetPassword = async (body) => {
+export const resetAdvocatePassword = async (body) => {
   const res = await API({
     url: `/services/app/User/ResetPassword`,
     successMessage: "Password Updated successfully",

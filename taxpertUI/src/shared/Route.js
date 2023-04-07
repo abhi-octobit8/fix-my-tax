@@ -14,6 +14,7 @@ const PATH = {
   TICKET_DETAILS: "admin/requests/details/:id",
   ADVOCATE_LIST: "/admin/psp",
   TICKET_REQUEST_LIST: "/admin/requests",
+  LOGIN: "/login",
 };
 
 export { PATH };

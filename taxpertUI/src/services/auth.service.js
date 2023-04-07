@@ -32,3 +32,13 @@ export const forgotPasswordService = async (body) => {
 
   return res;
 };
+
+export const resetUserPasswordService = async (body) => {
+  const res = await API({
+    method: "post",
+    url: "services/app/Account/ResetPassword",
+    body: body,
+  });
+
+  return res;
+};

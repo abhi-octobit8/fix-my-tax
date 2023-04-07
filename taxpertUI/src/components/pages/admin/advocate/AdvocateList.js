@@ -12,7 +12,7 @@ import { getRandomString } from "../../../../shared/utils";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import CreateEditPSP from "./create-edit/CreateEditPSP";
 import { MODE } from "./create-edit/constant";
-import ResetPassword from "./reset-password/ResetPassword";
+import ResetAdvocatePassword from "./reset-password/ResetAdvocatePassword";
 
 const AdvocateList = () => {
   const [listUpdate, setListUpdate] = useState();
@@ -192,10 +192,10 @@ const AdvocateList = () => {
         onClose={OnHandleCancel}
         setListUpdate={setListUpdate}
       ></CreateEditPSP>
-      <ResetPassword
+      <ResetAdvocatePassword
         modelInfo={openModalResetInfo}
         onClose={OnHandleResetCancel}
-      ></ResetPassword>
+      ></ResetAdvocatePassword>
     </React.Fragment>
   );
 };

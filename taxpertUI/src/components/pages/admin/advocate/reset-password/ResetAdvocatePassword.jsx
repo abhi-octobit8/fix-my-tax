@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Form, Input, Modal } from "antd";
-import { resetPassword } from "../../../../../services/advocate.service";
+import { resetAdvocatePassword } from "../../../../../services/advocate.service";
 
 const formItemLayout = {
   labelCol: {
@@ -33,7 +33,7 @@ const tailFormItemLayout = {
     },
   },
 };
-const ResetPassword = (props) => {
+const ResetAdvocatePassword = (props) => {
   const { modelInfo, onClose } = props;
   const { open, record } = modelInfo;
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +49,7 @@ const ResetPassword = (props) => {
         userId: record.id,
       };
 
-      await resetPassword(formData);
+      await resetAdvocatePassword(formData);
 
       form.resetFields();
       onClose();
@@ -108,4 +108,4 @@ const ResetPassword = (props) => {
   );
 };
 
-export default ResetPassword;
+export default ResetAdvocatePassword;
