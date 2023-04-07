@@ -18,6 +18,7 @@ import { phoneNumberValidator } from "../../../../shared/validator";
 import { registerNotice } from "../../../../services/register.service";
 import { message } from "../../../../shared/utils";
 import FillingNoticeFormContainer from "../../../../common/filling-notice-form/FillingNoticeFormContainer";
+import { SUCCESS_MESSAGE_INFO } from "../../../../shared/constant/MessageInfo";
 const { Panel } = Collapse;
 const { Option } = Select;
 
@@ -104,7 +105,7 @@ const FilingNotice = () => {
       const res = await registerNotice(registerFormData, values.uploadDocument);
 
       if (res.ticketId) {
-        message.success("Request Created successfully.");
+        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
       }
     } catch (e) {
       console.error("error in creation", e);

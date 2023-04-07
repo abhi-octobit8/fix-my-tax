@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button, Menu } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
@@ -10,6 +11,9 @@ import "./ApplicationFooter.css";
 const displayName = "ApplicationFooter";
 
 function ApplicationFooter() {
+  const handleClick = (path) => {
+    window.open(path, "_blank");
+  };
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -58,11 +62,23 @@ function ApplicationFooter() {
               <h4>Information</h4>
               <ul>
                 {MENU_ITEMS_SERVICE_FOOTER.map((item, index) => {
-                  return (
-                    <li key={index}>
-                      <NavLink to={item.to}>{item.label}</NavLink>
-                    </li>
-                  );
+                  if (item.file) {
+                    debugger;
+                    return (
+                      // eslint-disable-next-line react/jsx-no-comment-textnodes
+                      <li key={index}>
+                        {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid,
+                        jsx-a11y/anchor-is-valid */}
+                        <a onClick={() => handleClick(item.to)}>{item.label}</a>
+                      </li>
+                    );
+                  } else {
+                    return (
+                      <li key={index}>
+                        <NavLink to={item.to}>{item.label}</NavLink>
+                      </li>
+                    );
+                  }
                 })}
               </ul>
             </div>

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useUserRole from "../../components/hooks/useUserRole";
 import { registerNotice } from "../../services/register.service";
 import { createTicketService } from "../../services/ticket.service";
+import { SUCCESS_MESSAGE_INFO } from "../../shared/constant/MessageInfo";
 import { PATH } from "../../shared/Route";
 import { message } from "../../shared/utils";
 
@@ -37,7 +38,7 @@ const GstNoticeFormContainer = (props) => {
         values.uploadGSTNotice
       );
       if (res.ticketId) {
-        message.success("Request Created successfully.");
+        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
         navigate(PATH.TICKET_REQUEST_LIST);
       }
     } else {
@@ -66,7 +67,7 @@ const GstNoticeFormContainer = (props) => {
         values.uploadGSTNotice
       );
       if (res.ticketId) {
-        message.success("Request Created successfully.");
+        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
       }
     }
   };

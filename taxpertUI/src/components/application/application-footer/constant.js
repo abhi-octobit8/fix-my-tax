@@ -34,13 +34,15 @@ export const MENU_ITEMS_SERVICE_FOOTER = [
     to: PATH.ITR_NOTICE_PATH,
   },
   // {
-  //   label: "Terms of service",
+  //   label: "Privacy Policy",
   //   key: 3,
-  //   to: "/tnc",
+  //   to: "/news/privacyPolicy.pdf",
+  //   file: true,
   // },
   // {
-  //   label: "Privacy Policy",
+  //   label: "Term & Condition",
   //   key: 4,
-  //   to: "/privacy-policy",
+  //   to: "/news/privacyPolicy.pdf",
+  //   file: true,
   // },
 ];
