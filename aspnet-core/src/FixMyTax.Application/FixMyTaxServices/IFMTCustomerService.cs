@@ -12,5 +12,7 @@ namespace FixMyTax.FixMyTaxServices
     public interface IFMTCustomerService
     {
         Task<UserDto> GetCustomerById(int id);
+
+        Task<bool> ChangePassword(ChangePasswordDto input);
     }
 }
