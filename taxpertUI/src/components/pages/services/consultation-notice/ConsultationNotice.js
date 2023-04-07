@@ -104,7 +104,7 @@ const ConsultationNotice = () => {
 
       const res = await registerNotice(registerFormData, values.uploadDocument);
 
-      if (res.ticketId) {
+      if (res.id) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
       }
     } catch (e) {

@@ -20,7 +20,7 @@ export const createTicketService = async (body, uploadfileData) => {
     url: "services/app/TicketService/Create",
     body: body,
   });
-  if (registerResponse.ticketId && uploadfileData) {
+  if (registerResponse.id && uploadfileData) {
     let formData = new FormData();
 
     formData.append(
@@ -30,7 +30,7 @@ export const createTicketService = async (body, uploadfileData) => {
     );
 
     const uploadData = {
-      id: registerResponse.ticketId,
+      id: registerResponse.id,
       formData,
     };
 

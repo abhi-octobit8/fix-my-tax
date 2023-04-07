@@ -16,7 +16,7 @@ const SidePanel = ({ ticketdetailsData }) => {
         statusValue={statusValue}
         editState={editState}
         setEditState={setEditState}
-        ticketId={id}
+        id={id}
       />
       <div>
         <span>

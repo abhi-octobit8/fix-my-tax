@@ -37,7 +37,7 @@ const FillingNoticeFormContainer = (props) => {
         registerFormData,
         values.uploadDocument
       );
-      if (res.ticketId) {
+      if (res.id) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
         navigate(PATH.TICKET_REQUEST_LIST);
       }
@@ -63,7 +63,7 @@ const FillingNoticeFormContainer = (props) => {
       };
 
       const res = await registerNotice(registerFormData, values.uploadDocument);
-      if (res.ticketId) {
+      if (res.id) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
       }
     }

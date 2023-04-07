@@ -8,8 +8,8 @@ export const registerNotice = async (body, uploadfileData) => {
     url: "services/app/RegisterService/Create",
     body: body,
   });
-  if (registerResponse.ticketId && uploadfileData) {
-    await uploadRequestFile(uploadfileData, registerResponse.ticketId);
+  if (registerResponse.id && uploadfileData) {
+    await uploadRequestFile(uploadfileData, registerResponse.id);
   }
   return registerResponse;
 };

@@ -21,7 +21,7 @@ export default function UpdateTicketStatus({
   editState,
   setEditState,
   statusValue = "Closed",
-  ticketId,
+  id,
 }) {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ export default function UpdateTicketStatus({
     const formData = {
       status: value,
     };
-    const res = await updateTicketStatus(formData, ticketId);
+    const res = await updateTicketStatus(formData, id);
     if (res) {
       message.success("Status Updated successfully.");
     }

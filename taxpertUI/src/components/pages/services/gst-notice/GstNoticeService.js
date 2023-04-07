@@ -100,7 +100,7 @@ const GstNoticeService = () => {
         values.uploadGSTNotice
       );
 
-      if (res.ticketId) {
+      if (res.id) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
       }
     } catch (e) {

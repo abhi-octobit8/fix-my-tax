@@ -40,7 +40,7 @@ const ItrNoticeFormContainer = (props) => {
       };
 
       const res = await createTicketService(registerFormData, values.uploadITR);
-      if (res.ticketId) {
+      if (res.id) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
         navigate(PATH.TICKET_REQUEST_LIST);
       }
@@ -65,7 +65,7 @@ const ItrNoticeFormContainer = (props) => {
       };
 
       const res = await registerNotice(registerFormData, values.uploadITR);
-      if (res.ticketId) {
+      if (res.id) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
       }
     }

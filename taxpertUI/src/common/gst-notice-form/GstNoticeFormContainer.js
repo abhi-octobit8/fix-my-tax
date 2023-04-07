@@ -37,7 +37,7 @@ const GstNoticeFormContainer = (props) => {
         registerFormData,
         values.uploadGSTNotice
       );
-      if (res.ticketId) {
+      if (res.id) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
         navigate(PATH.TICKET_REQUEST_LIST);
       }
@@ -66,7 +66,7 @@ const GstNoticeFormContainer = (props) => {
         registerFormData,
         values.uploadGSTNotice
       );
-      if (res.ticketId) {
+      if (res.id) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
       }
     }
