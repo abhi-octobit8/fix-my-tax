@@ -80,6 +80,7 @@ const FillingNoticeForm = (props) => {
     try {
       setIsLoading(true);
       await onFinish(values);
+      form.resetFields();
     } catch (e) {
       console.error(e);
     } finally {
