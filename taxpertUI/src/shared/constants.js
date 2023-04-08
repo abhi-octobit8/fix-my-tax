@@ -22,6 +22,7 @@ export const VALIDATION_PATTERN = {
   FLOAT: new RegExp("^\\d*(\\.\\d+)?$"),
   ZIP: new RegExp("^\\d{5}(?:[-\\s]\\d{4})?$"),
   PHONE: new RegExp("^\\d{10}?$"),
+  PASSWORD: new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*d)[a-zA-Zd]+$"),
 };
 
 export const TicketStatus = {

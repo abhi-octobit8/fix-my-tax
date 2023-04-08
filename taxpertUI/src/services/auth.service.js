@@ -11,3 +11,34 @@ export const isTenantAvailable = async () => {
   });
   return response;
 };
+
+export const changePasswordService = async (body) => {
+  const res = await API({
+    method: "post",
+    url: "services/app/User/ChangePassword",
+    body: body,
+    successMessage: "Password Updated successfully",
+  });
+
+  return res;
+};
+
+export const forgotPasswordService = async (body) => {
+  const res = await API({
+    method: "post",
+    url: "services/app/Account/ForgotPassword",
+    body: body,
+  });
+
+  return res;
+};
+
+export const resetUserPasswordService = async (body) => {
+  const res = await API({
+    method: "post",
+    url: "services/app/Account/ResetPassword",
+    body: body,
+  });
+
+  return res;
+};

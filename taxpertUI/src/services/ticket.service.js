@@ -20,7 +20,7 @@ export const createTicketService = async (body, uploadfileData) => {
     url: "services/app/TicketService/Create",
     body: body,
   });
-  if (registerResponse.ticketId && uploadfileData) {
+  if (registerResponse.id && uploadfileData) {
     let formData = new FormData();
 
     formData.append(
@@ -30,7 +30,7 @@ export const createTicketService = async (body, uploadfileData) => {
     );
 
     const uploadData = {
-      id: registerResponse.ticketId,
+      id: registerResponse.id,
       formData,
     };
 
@@ -63,5 +63,41 @@ export const downloadAPI = async (id) => {
     method: "POST",
     responseTypeData: "blob",
   });
+  return res;
+};
+
+export const getAllTicketComments = async (id) => {
+  try {
+    const res = await API({
+      url: `services/app/CommentService/GetAll?requestTicketId=${id}`,
+    });
+    return res.items;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const createTicketComment = async (body) => {
+  const res = await API({
+    method: "post",
+    url: "services/app/CommentService/Create",
+    body: body,
+  });
+
+  return res;
+};
+
+export const updateTicketStatus = async (data, id) => {
+  debugger;
+  const res = await API({
+    method: "put",
+    url: `services/app/TicketService/updateTicketStatus?requestTicketId=${id}`,
+    body: data,
+  });
+  if (res) {
+    await getTicketDetails(id);
+  }
+  debugger;
+
   return res;
 };

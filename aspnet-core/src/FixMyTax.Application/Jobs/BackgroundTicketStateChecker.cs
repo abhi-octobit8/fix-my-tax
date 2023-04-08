@@ -57,7 +57,7 @@ namespace FixMyTax.Jobs
                     if (sendMail)
                     {
                         _emailSender.SendAsync(
-                            to: "contact@xoqovo.com",
+                            to: "karsathi.ajit@gmail.com",
                             subject: "Ticket Overdue",
                             body: $"<b>Hi admin </b> <br/>No action has benn taken on this ticket from last 3 days. ticket details <br/> {ticket.Id}",
                             isBodyHtml: true

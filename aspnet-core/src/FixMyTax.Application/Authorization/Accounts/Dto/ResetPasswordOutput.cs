@@ -14,6 +14,7 @@ namespace FixMyTax.Authorization.Accounts.Dto
         public ResetPasswordOutput(bool success)
         {
             Message = success ? "password reset successfully. login with new password." : "Error";
+            Success = success;
         }
     }
 }

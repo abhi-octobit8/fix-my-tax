@@ -1,8 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Form, Input, Modal } from "antd";
-import { createAdvocate } from "../../../../../services/advocate.service";
-import { getRandomString } from "../../../../../shared/utils";
+import {
+  createAdvocate,
+  updateAdvocate,
+} from "../../../../../services/advocate.service";
+import { getRandomString, message } from "../../../../../shared/utils";
 import { MODE } from "./constant";
 
 import "./CreateEditPSP.less";
@@ -55,16 +58,21 @@ const CreateEditPSP = (props) => {
   const onFinish = async (values) => {
     try {
       setIsLoading(true);
-      const formData = {
-        ...values,
-        isActive: true,
-      };
+
       let res = {};
       if (mode === MODE.CREATE) {
+        const formData = {
+          ...values,
+          isActive: true,
+        };
         res = await createAdvocate(formData);
       } else {
         //call update api
-        // res = await updateAdvocate(formData);
+        const formData = {
+          id: record.id,
+          ...values,
+        };
+        res = await updateAdvocate(formData);
       }
       if (res.id) {
         setListUpdate(getRandomString());

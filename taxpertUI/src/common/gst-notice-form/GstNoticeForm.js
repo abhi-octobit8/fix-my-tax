@@ -8,6 +8,7 @@ import {
   Upload,
   DatePicker,
   InputNumber,
+  Checkbox,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
@@ -176,7 +177,11 @@ const GstNoticeForm = (props) => {
         </Select>
       </Form.Item>
 
-      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
+      <Form.Item
+        name={FIELD_NAME.PRICE}
+        label="Fee"
+        extra="This Fee Included GST"
+      >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
       <React.Fragment>
@@ -218,7 +223,23 @@ const GstNoticeForm = (props) => {
           />
         </Form.Item>
       )}
-
+      <Form.Item
+        name="agreement"
+        valuePropName="checked"
+        rules={[
+          {
+            validator: (_, value) =>
+              value
+                ? Promise.resolve()
+                : Promise.reject(new Error("Should accept agreement")),
+          },
+        ]}
+        {...tailFormItemLayout}
+      >
+        <Checkbox>
+          I have read the <a href="#">Terms & Condition.</a>
+        </Checkbox>
+      </Form.Item>
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit" loading={isLoading}>
           Submit

@@ -23,6 +23,6 @@ namespace FixMyTax.FixMyTaxServices
 
         Task<bool> UpdateAssignment(UpdateAssignment updateAssignment);
 
-        Task<bool> UpdateTicketStatus(int requestTicketId, TicketStatus status);
+        Task<bool> UpdateTicketStatus(int requestTicketId, TicketStatusInput status);
     }
 }

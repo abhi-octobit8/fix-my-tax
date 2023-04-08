@@ -20,18 +20,31 @@ export const deleteAdvocate = async (id) => {
 export const createAdvocate = async (body) => {
   const res = await API({
     url: `/services/app/User/CreateAdvocate`,
+    successMessage: "PSP Created successfully",
     method: "post",
     body,
   });
-  // setAdvocateListData(res.items);
   return res;
 };
-export const updateAdvocate = async (body) => {
+
+export const resetAdvocatePassword = async (body) => {
   const res = await API({
-    url: `/services/app/User/CreateAdvocate`,
+    url: `/services/app/User/ResetPassword`,
+    successMessage: "Password Updated successfully",
     method: "post",
     body,
   });
+  return res;
+};
+
+export const updateAdvocate = async (body) => {
+  const res = await API({
+    url: `/services/app/User/Update`,
+    successMessage: "PSP Updated successfully",
+    method: "put",
+    body,
+  });
+  debugger;
   // setAdvocateListData(res.items);
   return res;
 };

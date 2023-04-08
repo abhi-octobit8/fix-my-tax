@@ -70,9 +70,14 @@ const MENU_ITEMS = [
     ],
   },
   {
-    label: "About",
+    label: "About Us",
     role: USER_ROLE.PUBLIC,
     to: PATH.ABOUT,
+  },
+  {
+    label: "MemberShip",
+    role: USER_ROLE.PUBLIC,
+    to: PATH.MEMBERSHIP,
   },
   // {
   //   label: "Latest News",

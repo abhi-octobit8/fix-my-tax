@@ -1,26 +1,64 @@
 import React from "react";
-import { StarOutlined, StarFilled } from "@ant-design/icons";
+import {
+  StarOutlined,
+  StarFilled,
+  CheckCircleFilled,
+  CheckCircleTwoTone,
+} from "@ant-design/icons";
 import { Button, Card, Col, Row } from "antd";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
 import card3 from "../../../assets/img/card3.svg";
-import about from "../../../assets/img/about.jpeg";
+import about from "../../../assets/img/team.jpg";
 import {
   AuthorizedIcon,
   RatingIcon,
   SafeSecureIcon,
   TrustedUserIcon,
 } from "../../../common/icons/icons";
-// E:\zupier\Git\TaxpertRepo\taxpertUI\src\common\icons\icons.js
-import logo1 from "../../../assets/img/banner2.png";
-import xocovoPartner from "../../../assets/img/xocovo.png";
-import smartPartner from "../../../assets/img/smartpartner.png";
-import medimaaPartner from "../../../assets/img/medimaa.png";
-import xocovoPartner1 from "../../../assets/img/zupier.jpeg";
+import logo1 from "../../../assets/img/sahab.png";
+import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
+import promoter2 from "../../../assets/img/nidhi_singh.PNG";
+// import xocovoPartner from "../../../assets/img/xocovo.png";
+// import smartPartner from "../../../assets/img/smartpartner.png";
+// import medimaaPartner from "../../../assets/img/medimaa.png";
+// import xocovoPartner1 from "../../../assets/img/zupier.jpeg";
 import { PATH } from "../../../shared/Route";
 import useRedirectPath from "../../hooks/useRedirectPath";
 
 import "./HomePage.css";
+
+const items = [
+  { id: 1, value: "Income Tax & GST Return Filing" },
+  { id: 2, value: "Facilitate Tax Payment of Income Tax & GST" },
+  {
+    id: 3,
+    value:
+      "Preparation & Filing of Reply Petitions for Assessments of Income Tax & GST",
+  },
+  {
+    id: 4,
+    value:
+      "Drafting of Written Submission & Filing of First Appeal [Income Tax & GST]",
+  },
+  {
+    id: 5,
+    value:
+      "Drafting of Written Submission & Filing of Second Appeal [Income Tax & GST]",
+  },
+  // {
+  //   id: 6,
+  //   value: "Video Conferencing Facility",
+  // },
+  {
+    id: 7,
+    value: "Appearance on behalf of Assessee",
+  },
+  {
+    id: 8,
+    value: "Business Decisions Consultancy",
+  },
+];
 
 function HomePage() {
   const navigator = useRedirectPath();
@@ -32,6 +70,34 @@ function HomePage() {
           <div className="row ">
             <div className="col-lg-6 banner-section-content ">
               <h2> We will manage your taxes, you enjoy life.</h2>
+              <ul>
+                {items.map((item, index) => {
+                  return (
+                    <>
+                      <li>
+                        {" "}
+                        {/* <CheckCircleTwoTone twoToneColor="#f47c01" />{" "} */}
+                        <CheckCircleFilled
+                          style={{ fontSize: "16px", color: "#f47c01" }}
+                        />{" "}
+                        {item.value}
+                      </li>
+                    </>
+                  );
+                })}
+                {/* <li>
+                  {" "}
+                  <DoubleRightOutlined />
+                  shamsher
+                </li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li> */}
+              </ul>
 
               <Button
                 type="primary"
@@ -239,6 +305,96 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <section className="promoters-section">
+        <div className="section-header">
+          <h1>Our Founder And Promoters</h1>
+          <hr className="taxpert-line" />
+        </div>
+
+        <div className="testimonial-containter">
+          <div className="box">
+            <img
+              className="cover promoters-image"
+              src={promoter1}
+              alt="text"
+              height={400}
+              width={400}
+            />
+            <div className="content">
+              <div className="info">
+                <div className="name">Dr. Pawan Jaiswal</div>
+                <div>
+                  <span className="name">Qualifications: </span>{" "}
+                  <span className="job">
+                    M.Com., Ph.D., M.B.A., F.C.M.A, M.I.MA., Ex.RP – MCA & SEBI,
+                    F.I.V., CA(I) (Senior Tax & Cost Management Consultant).
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p>
+              Dr. Jaiswal is having experience and expertise in the field of
+              Direct & Indirect Taxation, Financial Management and Enterprise
+              Start-up for a career spanning over 3 decades. He is also approved
+              valuer for Government Agencies and member of various Government
+              Policy making Agencies. Rising from a humble back-ground with the
+              sole aspiration to ease the complicities of taxation for common
+              man in India and across the globe. Besides being a Tax & Finance
+              Expert, he is also an avid speaker on the subject delivering
+              thousands on lecturers on Government & Corporate platforms and
+              actively involved in social and philanthropic activities for the
+              upliftment of poor and needy strata of the society.
+            </p>
+            <br />
+            {/* <div className="content">
+              <div className="info">
+                <div className="name">Subhas Chandra Dubey</div>
+                <div className="job">IPS</div>
+                <div className="stars">
+                  <StarFilled style={{ color: "#17a2b8" }} />
+                  <StarFilled style={{ color: "#17a2b8" }} />
+                  <StarFilled style={{ color: "#17a2b8" }} />
+                  <StarFilled style={{ color: "#17a2b8" }} />
+                  <StarOutlined />
+                </div>
+              </div>
+            </div> */}
+          </div>
+          <div className="box">
+            <img
+              className="cover promoters-image"
+              src={promoter2}
+              alt="text"
+              height={400}
+              width={400}
+            />
+            <div className="content">
+              <div className="info">
+                <div className="name">Smt. Nidhi Pawan Singh</div>
+                <div>
+                  <span className="name">Qualifications: </span>{" "}
+                  <span className="job">MSc, LLB, MBA, A.M.I.M.A.</span>
+                </div>
+                <br />
+              </div>
+            </div>
+            <p>
+              Smt. Singh is a dynamic Advocate representing the image of women
+              empowerment having vast experience in the domain of law
+              specifically [Direct & Indirect Taxation] for a career spanning
+              over 2 decades. She is also Empanelled as Mediator of Allahabad
+              High Court Mediation and Conciliation Centre [AHCMCC]. Her areas
+              of work interest include Taxation, Business Management and
+              Mathematics. Along-with her husband Dr. Pawan Jaiswal she is also
+              involved in silent philanthropic activities for upliftment of
+              weaker section of society. Belonging to a family of bureaucrats;
+              her main forte is administration.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* <section className="testimonial-value-section">
         <div className="section-header">
           <h1>Testimonial</h1>

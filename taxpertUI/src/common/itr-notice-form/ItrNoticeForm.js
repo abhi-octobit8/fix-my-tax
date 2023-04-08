@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useState } from "react";
 import {
@@ -9,6 +10,7 @@ import {
   Collapse,
   DatePicker,
   InputNumber,
+  Checkbox,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
@@ -88,6 +90,9 @@ const ItrNoticeForm = (props) => {
     }
   };
 
+  const handleClick = (path) => {
+    window.open(path, "_blank");
+  };
   const onHandleSection = (value) => {
     if (value) {
       const item = Object.keys(notice[value].subSections);
@@ -236,7 +241,11 @@ const ItrNoticeForm = (props) => {
           })}
         </Select>
       </Form.Item>
-      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
+      <Form.Item
+        name={FIELD_NAME.PRICE}
+        label="Fee"
+        extra="This Fee Included GST"
+      >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
 
@@ -317,6 +326,29 @@ const ItrNoticeForm = (props) => {
         </Form.Item>
       )}
 
+      <Form.Item
+        name="agreement"
+        valuePropName="checked"
+        rules={[
+          {
+            validator: (_, value) =>
+              value
+                ? Promise.resolve()
+                : Promise.reject(new Error("Should accept agreement")),
+          },
+        ]}
+        {...tailFormItemLayout}
+      >
+        <Checkbox>
+          I have read the{" "}
+          <a
+            href="#"
+            onClick={() => handleClick("/news/TERMS_CONDITIONS_FMT.pdf")}
+          >
+            Terms & Condition.
+          </a>
+        </Checkbox>
+      </Form.Item>
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit" loading={isLoading}>
           Submit

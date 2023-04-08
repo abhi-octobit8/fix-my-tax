@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Form, Input, Row } from "antd";
@@ -5,9 +6,11 @@ import "./Login.less";
 import API from "../../../shared/API";
 import { checkLogin, doLogin } from "../../../store/authentication/AuthActions";
 import { PATH } from "../../../shared/Route";
+import ForgotPassword from "./ForgotPassword";
 
 const Login = (props) => {
   const navigate = useNavigate();
+  const [modalForgetPossword, setModalForgetPassword] = useState(false);
   const form = useRef();
 
   const [loading, setLoading] = useState(false);
@@ -40,6 +43,10 @@ const Login = (props) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  const onHandleClose = React.useCallback(() => {
+    setModalForgetPassword(false);
+  }, []);
 
   return (
     <Card className="card-container" bordered={true}>
@@ -100,9 +107,15 @@ const Login = (props) => {
               </Button>
             </Form.Item>
           </Form>
+          {/* <Form.Item>
+            <a href="#" onClick={() => setModalForgetPassword(true)}>
+              Forgot password?
+            </a>
+          </Form.Item> */}
         </Col>
         <Col sm={{ span: 10, offset: 0 }}></Col>
       </Row>
+      <ForgotPassword open={modalForgetPossword} onClose={onHandleClose} />
     </Card>
   );
 };

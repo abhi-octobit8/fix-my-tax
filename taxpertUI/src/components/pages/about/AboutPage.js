@@ -8,12 +8,38 @@ import "./AboutPage.css";
 
 const AboutPage = () => (
   <>
-    <div className="mission-head">Our Mission</div>
-    <p className="mission">
-      We are here to solve all your tax related queries so that you may enjoy
-      peace of mind
-    </p>
-    <br />
+    <section id="service-banner" className="service-banner">
+      <div className="container" data-aos="fade-up">
+        <div className="row justify-content-center">
+          <div className="service-banner-info">
+            <div className="service-banner-title">Our Mission</div>
+            <div>
+              At our taxation consultancy firm, our mission is to provide
+              unparalleled tax solutions and guidance to our clients, enabling
+              them to make informed decisions and achieve their financial
+              objectives. We believe that tax compliance is not just a legal
+              obligation, but also an opportunity to optimize financial
+              performance and minimize risks. Our team of highly skilled
+              professionals strives to provide comprehensive tax services,
+              tailored to meet the specific needs of each client. We are
+              committed to staying up-to-date with the latest tax regulations,
+              trends and strategies, so that we can deliver innovative and
+              effective solutions that add value to our clients.
+            </div>
+            <div>
+              We understand that taxation can be complex and overwhelming, which
+              is why we are dedicated to providing clear, concise and timely
+              communication with our clients. Our goal is to build long-lasting
+              relationships with our clients, based on trust, integrity and
+              mutual respect. We are passionate about helping our clients
+              succeed and are committed to providing exceptional service and
+              support throughout their journey.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {/* //txt here */}
     <div className="section-1">
       <h6 className="sec-1-head">
         Your Tax Prep Comes with Built-in Reassurance
@@ -68,8 +94,8 @@ const AboutPage = () => (
         </div>
       </div>
     </div>
-    <br />
-    <h6 className="sec-2-heading">
+    {/* <br /> */}
+    {/* <h6 className="sec-2-heading">
       From Compliance to Financial Services, We Cover Them All
     </h6>
 
@@ -89,7 +115,7 @@ const AboutPage = () => (
         width="800px"
         height="500px"
       />
-    </div>
+    </div> */}
     <br />
     {/* <div className="sec-3">
       <h6 className="sec-3-head">Meet Our Core Team</h6>

@@ -11,6 +11,7 @@ import { phoneNumberValidator } from "../../../../shared/validator";
 import { message } from "../../../../shared/utils";
 import { registerNotice } from "../../../../services/register.service";
 import GstNoticeFormContainer from "../../../../common/gst-notice-form/GstNoticeFormContainer";
+import { SUCCESS_MESSAGE_INFO } from "../../../../shared/constant/MessageInfo";
 const { Panel } = Collapse;
 const { Option } = Select;
 
@@ -99,8 +100,8 @@ const GstNoticeService = () => {
         values.uploadGSTNotice
       );
 
-      if (res.ticketId) {
-        message.success("Request Created successfully.");
+      if (res.id) {
+        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
       }
     } catch (e) {
       console.error("error in creation", e);

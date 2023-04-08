@@ -1,6 +1,8 @@
 import { notification, message as AntMessage } from "antd";
 import { template } from "lodash";
 import qs from "qs";
+import { USER_ROLE } from "../components/application/application-menu/constant";
+import CollectionUtilService from "../services/CollectionUtilService";
 import { downloadAPI } from "../services/ticket.service";
 
 export const showNotification = ({ type, message, description, ...props }) => {
@@ -9,7 +11,7 @@ export const showNotification = ({ type, message, description, ...props }) => {
     return notification[type]({
       message: message || toCapitalCase(type),
       description,
-      duration: null,
+      duration: 2,
       ...props,
     });
   } else {
@@ -204,6 +206,13 @@ export const numberFormatter = (num, digits = 0) => {
   );
 };
 
+export const getResetToken = (path) => {
+  console.log(path.split("/"));
+  const token = path.replace("/resetpassword/", "");
+
+  return token;
+};
+
 export const downloaFile = async ({ id, name = "report" }) => {
   const data = await downloadAPI(id);
   var blob = new Blob([data]);
@@ -237,4 +246,43 @@ export const print = (location) => {
   const pdfUrl = `${window.location.origin}${location}`;
   const w = window.open(pdfUrl);
   w.print();
+};
+
+export const getMenuActionItems = (collection, userRole) => {
+  const entitledMenuItems = collection.reduce((acc, item) => {
+    const { label, role, to } = item;
+    const formattedItem = {
+      label,
+      to,
+    };
+
+    let condition = false;
+
+    if (role === USER_ROLE.PUBLIC) {
+      condition = true;
+    } else {
+      const hasRole = CollectionUtilService.hasRole(role, userRole);
+      if (hasRole) {
+        condition = true;
+      }
+    }
+
+    if (condition) {
+      // take only public
+      if (Array.isArray(item.children)) {
+        const formattedChildren = getMenuActionItems(item.children, userRole);
+
+        if (formattedChildren.length > 0) {
+          formattedItem.children = formattedChildren;
+
+          acc.push(formattedItem);
+        }
+      } else {
+        acc.push(formattedItem);
+      }
+    }
+
+    return acc;
+  }, []);
+  return entitledMenuItems;
 };

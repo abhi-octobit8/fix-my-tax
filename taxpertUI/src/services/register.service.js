@@ -8,21 +8,8 @@ export const registerNotice = async (body, uploadfileData) => {
     url: "services/app/RegisterService/Create",
     body: body,
   });
-  if (registerResponse.ticketId && uploadfileData) {
-    // let formData = new FormData();
-
-    // formData.append(
-    //   "file",
-    //   uploadfileData[0].originFileObj,
-    //   uploadfileData[0].originFileObj.name
-    // );
-
-    // const uploadData = {
-    //   id: registerResponse.ticketId,
-    //   formData,
-    // };
-
-    await uploadRequestFile(uploadfileData, registerResponse.ticketId);
+  if (registerResponse.id && uploadfileData) {
+    await uploadRequestFile(uploadfileData, registerResponse.id);
   }
   return registerResponse;
 };
