@@ -13,6 +13,8 @@ import {
 } from "../../../common/icons/icons";
 // E:\zupier\Git\TaxpertRepo\taxpertUI\src\common\icons\icons.js
 import logo1 from "../../../assets/img/banner2.png";
+import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
+import promoter2 from "../../../assets/img/nidhi_singh.PNG";
 import xocovoPartner from "../../../assets/img/xocovo.png";
 import smartPartner from "../../../assets/img/smartpartner.png";
 import medimaaPartner from "../../../assets/img/medimaa.png";
@@ -239,6 +241,96 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <section className="promoters-section">
+        <div className="section-header">
+          <h1>Our Founder And Promoters</h1>
+          <hr className="taxpert-line" />
+        </div>
+
+        <div className="testimonial-containter">
+          <div className="box">
+            <img
+              className="cover promoters-image"
+              src={promoter1}
+              alt="text"
+              height={400}
+              width={400}
+            />
+            <div className="content">
+              <div className="info">
+                <div className="name">Dr. Pawan Jaiswal</div>
+                <div>
+                  <span className="name">Qualifications: </span>{" "}
+                  <span className="job">
+                    M.Com., Ph.D., M.B.A., F.C.M.A, M.I.MA., Ex.RP – MCA & SEBI,
+                    F.I.V., CA(I) (Senior Tax & Cost Management Consultant).
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p>
+              Dr. Jaiswal is having experience and expertise in the field of
+              Direct & Indirect Taxation, Financial Management and Enterprise
+              Start-up for a career spanning over 3 decades. He is also approved
+              valuer for Government Agencies and member of various Government
+              Policy making Agencies. Rising from a humble back-ground with the
+              sole aspiration to ease the complicities of taxation for common
+              man in India and across the globe. Besides being a Tax & Finance
+              Expert, he is also an avid speaker on the subject delivering
+              thousands on lecturers on Government & Corporate platforms and
+              actively involved in social and philanthropic activities for the
+              upliftment of poor and needy strata of the society.
+            </p>
+            <br />
+            {/* <div className="content">
+              <div className="info">
+                <div className="name">Subhas Chandra Dubey</div>
+                <div className="job">IPS</div>
+                <div className="stars">
+                  <StarFilled style={{ color: "#17a2b8" }} />
+                  <StarFilled style={{ color: "#17a2b8" }} />
+                  <StarFilled style={{ color: "#17a2b8" }} />
+                  <StarFilled style={{ color: "#17a2b8" }} />
+                  <StarOutlined />
+                </div>
+              </div>
+            </div> */}
+          </div>
+          <div className="box">
+            <img
+              className="cover promoters-image"
+              src={promoter2}
+              alt="text"
+              height={400}
+              width={400}
+            />
+            <div className="content">
+              <div className="info">
+                <div className="name">Smt. Nidhi Pawan Singh</div>
+                <div>
+                  <span className="name">Qualifications: </span>{" "}
+                  <span className="job">MSc, LLB, MBA, A.M.I.M.A.</span>
+                </div>
+                <br />
+              </div>
+            </div>
+            <p>
+              Smt. Singh is a dynamic Advocate representing the image of women
+              empowerment having vast experience in the domain of law
+              specifically [Direct & Indirect Taxation] for a career spanning
+              over 2 decades. She is also Empanelled as Mediator of Allahabad
+              High Court Mediation and Conciliation Centre [AHCMCC]. Her areas
+              of work interest include Taxation, Business Management and
+              Mathematics. Along-with her husband Dr. Pawan Jaiswal she is also
+              involved in silent philanthropic activities for upliftment of
+              weaker section of society. Belonging to a family of bureaucrats;
+              her main forte is administration.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* <section className="testimonial-value-section">
         <div className="section-header">
           <h1>Testimonial</h1>
