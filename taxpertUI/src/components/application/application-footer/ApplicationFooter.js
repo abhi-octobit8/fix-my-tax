@@ -63,7 +63,6 @@ function ApplicationFooter() {
               <ul>
                 {MENU_ITEMS_SERVICE_FOOTER.map((item, index) => {
                   if (item.file) {
-                    debugger;
                     return (
                       // eslint-disable-next-line react/jsx-no-comment-textnodes
                       <li key={index}>

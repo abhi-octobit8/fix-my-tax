@@ -187,10 +187,10 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             var user = _userManager.GetUserById(AbpSession.UserId.Value);
             var roles = await _userManager.GetRolesAsync(user);
 
-            if (!roles.Contains(StaticRoleNames.Tenants.Admin) && !roles.Contains(StaticRoleNames.Tenants.Advocate))
-            {
-                throw new UserFriendlyException("Not Authorised");
-            }
+            //if (!roles.Contains(StaticRoleNames.Tenants.Admin) && !roles.Contains(StaticRoleNames.Tenants.Advocate))
+            //{
+            //    throw new UserFriendlyException("Not Authorised");
+            //}
 
             var entity = _ticketRepository.FirstOrDefault(x => x.Id == requestTicketId);
             if (entity != null)

@@ -250,10 +250,11 @@ export const print = (location) => {
 
 export const getMenuActionItems = (collection, userRole) => {
   const entitledMenuItems = collection.reduce((acc, item) => {
-    const { label, role, to } = item;
+    const { label, role, to, key } = item;
     const formattedItem = {
       label,
       to,
+      key,
     };
 
     let condition = false;
@@ -281,7 +282,7 @@ export const getMenuActionItems = (collection, userRole) => {
         acc.push(formattedItem);
       }
     }
-
+    console.log("acc", acc);
     return acc;
   }, []);
   return entitledMenuItems;

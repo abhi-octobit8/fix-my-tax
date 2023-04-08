@@ -22,7 +22,6 @@ const ItrNoticeFormContainer = (props) => {
   const userRole = useUserRole();
   const onFinish = async (values) => {
     // check request created from new assessee or existing assessee
-    debugger;
 
     if (userRole) {
       const registerFormData = {

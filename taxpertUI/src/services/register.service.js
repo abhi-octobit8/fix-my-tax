@@ -15,7 +15,6 @@ export const registerNotice = async (body, uploadfileData) => {
 };
 
 export const uploadRequestFile = async (uploadfileData, id) => {
-  debugger;
   let formData = new FormData();
 
   formData.append(

@@ -44,7 +44,6 @@ export const updateAdvocate = async (body) => {
     method: "put",
     body,
   });
-  debugger;
   // setAdvocateListData(res.items);
   return res;
 };

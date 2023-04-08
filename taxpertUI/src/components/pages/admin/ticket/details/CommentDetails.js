@@ -50,7 +50,6 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
 );
 const CommentDetails = (props) => {
   const { ticketId } = props;
-  debugger;
   const [comments, setComments] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [updateData, setUpdateData] = useState();
@@ -77,7 +76,6 @@ const CommentDetails = (props) => {
         setValue("");
         setUpdateData(getRandomString());
       }
-      debugger;
       //   setTimeout(() => {
       //     setSubmitting(false);
       //     setValue("");

@@ -139,6 +139,7 @@ const TicketListRequest = () => {
                   // items: getActionItems(items, userRole),
                   items: getMenuActionItems(items, userRole),
                   onClick: (e) => {
+                    debugger;
                     // eslint-disable-next-line default-case
                     switch (e.key) {
                       case TICKET_LIST_ACTION.ASSIGN:

@@ -104,7 +104,6 @@ const TicketDetails = (props) => {
     try {
       setIsUploading(true);
       const res = await uploadRequestFile(values.uploadDocument, id);
-      debugger;
       if (res) {
         message.success(res);
         setUpdateData(getRandomString());

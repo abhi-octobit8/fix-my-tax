@@ -27,7 +27,6 @@ export default function UpdateTicketStatus({
   const dispatch = useDispatch();
 
   const updateStatus = async (status) => {
-    debugger;
     const { key } = status;
     const value = TicketStatus[key];
     const formData = {
@@ -37,7 +36,6 @@ export default function UpdateTicketStatus({
     if (res) {
       message.success("Status Updated successfully.");
     }
-    debugger;
     console.log("shamsher", key);
     setLoading(true);
     setEditState(false);

@@ -6,10 +6,9 @@ import { getKeyFromObject } from "../../../../../../shared/utils";
 import { useState } from "react";
 
 const SidePanel = ({ ticketdetailsData }) => {
-  const { status, id } = ticketdetailsData;
+  const { status, id, assignedUserName } = ticketdetailsData;
   const [editState, setEditState] = useState(false);
   const statusValue = getKeyFromObject(TicketStatus, status);
-  debugger;
   return (
     <Space direction={"vertical"} style={{ width: "100%" }}>
       <UpdateTicketStatus
@@ -20,7 +19,8 @@ const SidePanel = ({ ticketdetailsData }) => {
       />
       <div>
         <span>
-          <strong>PSP : </strong>shamsher
+          <strong>PSP : </strong>
+          {assignedUserName}
         </span>
       </div>
     </Space>

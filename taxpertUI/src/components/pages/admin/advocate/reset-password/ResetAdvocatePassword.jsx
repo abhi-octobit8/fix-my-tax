@@ -40,7 +40,6 @@ const ResetAdvocatePassword = (props) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
-    debugger;
     try {
       setIsLoading(true);
 
