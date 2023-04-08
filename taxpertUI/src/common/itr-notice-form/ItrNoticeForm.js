@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useState } from "react";
 import {
@@ -89,6 +90,9 @@ const ItrNoticeForm = (props) => {
     }
   };
 
+  const handleClick = (path) => {
+    window.open(path, "_blank");
+  };
   const onHandleSection = (value) => {
     if (value) {
       const item = Object.keys(notice[value].subSections);
@@ -336,7 +340,13 @@ const ItrNoticeForm = (props) => {
         {...tailFormItemLayout}
       >
         <Checkbox>
-          I have read the <a href="#">Terms & Condition.</a>
+          I have read the{" "}
+          <a
+            href="#"
+            onClick={() => handleClick("/news/TERMS_CONDITIONS_FMT.pdf")}
+          >
+            Terms & Condition.
+          </a>
         </Checkbox>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>

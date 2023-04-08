@@ -64,6 +64,10 @@ export const emailValidator = {
   pattern: VALIDATION_PATTERN.EMAIL,
   message: "Please provide valid email address",
 };
+export const passwordValidator = {
+  pattern: VALIDATION_PATTERN.PASSWORD,
+  message: "Password Should Contain special,lowecase and uppercase letter",
+};
 
 export const phoneNumberValidator = {
   pattern: VALIDATION_PATTERN.PHONE,

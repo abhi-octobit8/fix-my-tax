@@ -14,25 +14,32 @@ const AboutPage = () => (
       tax solutions and guidance to our clients, enabling them to make informed
       decisions and achieve their financial objectives. We believe that tax
       compliance is not just a legal obligation, but also an opportunity to
-      optimize financial performance and minimize risks.
+      optimize financial performance and minimize risks. Our team of highly
+      skilled professionals strives to provide comprehensive tax services,
+      tailored to meet the specific needs of each client. We are committed to
+      staying up-to-date with the latest tax regulations, trends and strategies,
+      so that we can deliver innovative and effective solutions that add value
+      to our clients.
     </p>
-    <p className="mission">
+    {/* <p className="mission">
       Our team of highly skilled professionals strives to provide comprehensive
       tax services, tailored to meet the specific needs of each client. We are
       committed to staying up-to-date with the latest tax regulations, trends
       and strategies, so that we can deliver innovative and effective solutions
       that add value to our clients.
-    </p>
+    </p> */}
     <p className="mission">
       We understand that taxation can be complex and overwhelming, which is why
       we are dedicated to providing clear, concise and timely communication with
       our clients. Our goal is to build long-lasting relationships with our
-      clients, based on trust, integrity and mutual respect.
+      clients, based on trust, integrity and mutual respect. We are passionate
+      about helping our clients succeed and are committed to providing
+      exceptional service and support throughout their journey.
     </p>
-    <p className="mission">
+    {/* <p className="mission">
       We are passionate about helping our clients succeed and are committed to
       providing exceptional service and support throughout their journey.
-    </p>
+    </p> */}
     <br />
     <div className="section-1">
       <h6 className="sec-1-head">

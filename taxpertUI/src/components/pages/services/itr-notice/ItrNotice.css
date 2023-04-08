@@ -1,6 +1,6 @@
 .service-banner {
-    background: linear-gradient(rgba(27, 47, 69, 0.8), rgba(27, 47, 69, 0.8));
-    background-color: #2a4671;
+    /* background: linear-gradient(rgba(27, 47, 69, 0.8), rgba(27, 47, 69, 0.8)); */
+    background-color: #253483;
     background-size: cover;
     padding: 100px 0;
   }
