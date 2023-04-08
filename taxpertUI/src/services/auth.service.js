@@ -15,7 +15,7 @@ export const isTenantAvailable = async () => {
 export const changePasswordService = async (body) => {
   const res = await API({
     method: "post",
-    url: "services/app/User/ChangePassword",
+    url: "services/app/FMTCustomerService/ChangePassword",
     body: body,
     successMessage: "Password Updated successfully",
   });
