@@ -74,6 +74,11 @@ const MENU_ITEMS = [
     role: USER_ROLE.PUBLIC,
     to: PATH.ABOUT,
   },
+  {
+    label: "MemberShip",
+    role: USER_ROLE.PUBLIC,
+    to: PATH.MEMBERSHIP,
+  },
   // {
   //   label: "Latest News",
   //   role: USER_ROLE.PUBLIC,

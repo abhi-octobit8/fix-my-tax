@@ -1,5 +1,10 @@
 import React from "react";
-import { StarOutlined, StarFilled } from "@ant-design/icons";
+import {
+  StarOutlined,
+  StarFilled,
+  CheckCircleFilled,
+  CheckCircleTwoTone,
+} from "@ant-design/icons";
 import { Button, Card, Col, Row } from "antd";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
@@ -11,18 +16,49 @@ import {
   SafeSecureIcon,
   TrustedUserIcon,
 } from "../../../common/icons/icons";
-// E:\zupier\Git\TaxpertRepo\taxpertUI\src\common\icons\icons.js
-import logo1 from "../../../assets/img/banner2.png";
+import logo1 from "../../../assets/img/sahab.png";
 import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
 import promoter2 from "../../../assets/img/nidhi_singh.PNG";
-import xocovoPartner from "../../../assets/img/xocovo.png";
-import smartPartner from "../../../assets/img/smartpartner.png";
-import medimaaPartner from "../../../assets/img/medimaa.png";
-import xocovoPartner1 from "../../../assets/img/zupier.jpeg";
+// import xocovoPartner from "../../../assets/img/xocovo.png";
+// import smartPartner from "../../../assets/img/smartpartner.png";
+// import medimaaPartner from "../../../assets/img/medimaa.png";
+// import xocovoPartner1 from "../../../assets/img/zupier.jpeg";
 import { PATH } from "../../../shared/Route";
 import useRedirectPath from "../../hooks/useRedirectPath";
 
 import "./HomePage.css";
+
+const items = [
+  { id: 1, value: "Income Tax & GST Return Filing" },
+  { id: 2, value: "Facilitate Tax Payment of Income Tax & GST" },
+  {
+    id: 3,
+    value:
+      "Preparation & Filing of Reply Petitions for Assessments of Income Tax & GST",
+  },
+  {
+    id: 4,
+    value:
+      "Drafting of Written Submission & Filing of First Appeal [Income Tax & GST]",
+  },
+  {
+    id: 5,
+    value:
+      "Drafting of Written Submission & Filing of Second Appeal [Income Tax & GST]",
+  },
+  // {
+  //   id: 6,
+  //   value: "Video Conferencing Facility",
+  // },
+  {
+    id: 7,
+    value: "Appearance on behalf of Assessee",
+  },
+  {
+    id: 8,
+    value: "Business Decisions Consultancy",
+  },
+];
 
 function HomePage() {
   const navigator = useRedirectPath();
@@ -34,6 +70,34 @@ function HomePage() {
           <div className="row ">
             <div className="col-lg-6 banner-section-content ">
               <h2> We will manage your taxes, you enjoy life.</h2>
+              <ul>
+                {items.map((item, index) => {
+                  return (
+                    <>
+                      <li>
+                        {" "}
+                        {/* <CheckCircleTwoTone twoToneColor="#f47c01" />{" "} */}
+                        <CheckCircleFilled
+                          style={{ fontSize: "16px", color: "#f47c01" }}
+                        />{" "}
+                        {item.value}
+                      </li>
+                    </>
+                  );
+                })}
+                {/* <li>
+                  {" "}
+                  <DoubleRightOutlined />
+                  shamsher
+                </li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li>
+                <li>shamsher</li> */}
+              </ul>
 
               <Button
                 type="primary"

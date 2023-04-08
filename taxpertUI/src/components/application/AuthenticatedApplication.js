@@ -28,6 +28,7 @@ import UserRouter from "../pages/admin/user/UserRouter";
 import AdvocateRoutes from "../pages/admin/advocate/AdvocateRoutes";
 import TicketRoutes from "../pages/admin/ticket/TicketRoutes";
 import ResetPassword from "../pages/reset-password/ResetPassword";
+import MembershipPage from "../pages/membership/MembershipPage";
 // React.lazy(() =>
 //       import(
 //         /* webpackChunkName: "product-module" */ "./modules/product/ProductRoutes.js"
@@ -49,6 +50,7 @@ function AuthenticatedApplication() {
         <Route element={<Login />} path="/login" />
         <Route element={<ResetPassword />} path="/resetpassword/*" />
         <Route path="about" element={<AboutPage />} />
+        <Route path="membership" element={<MembershipPage />} />
         <Route path={PATH.ITR_NOTICE_PATH} element={<ItrNoticeService />} />
         <Route path={PATH.GST_NOTICE} element={<GstNoticeService />} />
         <Route

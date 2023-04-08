@@ -1,6 +1,7 @@
 const PATH = {
   HOME: "/home",
   ABOUT: "/about",
+  MEMBERSHIP: "/membership",
   NEW_REQUEST_CREATE: "/newrequest/create",
   ITR_NOTICE_PATH: "/service/itr-notice",
   GST_NOTICE: "/service/gst-notice",

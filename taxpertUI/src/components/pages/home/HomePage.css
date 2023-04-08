@@ -5,6 +5,7 @@
   background-color: #253483;
   background-size: cover;
   padding: 50px 0;
+
 }
 
 @media (min-width: 1365px) {
@@ -15,18 +16,20 @@
 
 .banner-to-action h2 {
   /* color: #fff; */
-  font-size: 40px;
+  /* font-size: 40px; */
   margin-bottom: 25px;
   font-weight: 700;
+  color:white
 }
 .banner-to-action .banner-image{
   text-align: right;
 }
 .banner-section-content{
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
   justify-content: center;
+  color:white
 }
 /* .banner-to-action p {
   color: #fff;
