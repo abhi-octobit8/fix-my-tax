@@ -79,7 +79,9 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                     ticket.CreatorUserId = user.Id;
                     ticket.CreationTime = DateTime.Now;
                     var id = _ticketRepository.InsertAndGetId(ticket);
-                    output.TicketId = id;
+                    output.id = id;
+
+
                 }
 
                 output.Error = false;

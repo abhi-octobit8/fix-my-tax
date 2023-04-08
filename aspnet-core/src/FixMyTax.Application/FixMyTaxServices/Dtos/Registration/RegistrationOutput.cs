@@ -10,7 +10,7 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Registration
     {
         public long UserId { get; set; }
         public string UserName { get; set; }
-        public int TicketId { get; set; }
+        public int id { get; set; }
         public string Password { get; set; }
         public bool Error { get; set; }
         public string ErrorMsg { get; set; }
