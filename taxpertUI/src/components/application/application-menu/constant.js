@@ -45,7 +45,7 @@ const MENU_ITEMS = [
   {
     label: "Services",
     role: USER_ROLE.PUBLIC,
-    to: PATH.ITR_NOTICE_PATH,
+    to: "",
     children: [
       {
         label: "Filing ITR/TCS/TDS",

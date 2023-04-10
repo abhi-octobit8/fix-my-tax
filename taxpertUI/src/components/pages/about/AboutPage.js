@@ -15,7 +15,7 @@ const AboutPage = () => (
         <div className="row justify-content-center">
           <div className="section-banner-info">
             <div className="section-banner-title">Our Mission</div>
-            <div>
+            <p className="section-banner-data">
               At our taxation consultancy firm, our mission is to provide
               unparalleled tax solutions and guidance to our clients, enabling
               them to make informed decisions and achieve their financial
@@ -27,8 +27,8 @@ const AboutPage = () => (
               committed to staying up-to-date with the latest tax regulations,
               trends and strategies, so that we can deliver innovative and
               effective solutions that add value to our clients.
-            </div>
-            <div>
+            </p>
+            <p className="section-banner-data">
               We understand that taxation can be complex and overwhelming, which
               is why we are dedicated to providing clear, concise and timely
               communication with our clients. Our goal is to build long-lasting
@@ -36,7 +36,7 @@ const AboutPage = () => (
               mutual respect. We are passionate about helping our clients
               succeed and are committed to providing exceptional service and
               support throughout their journey.
-            </div>
+            </p>
           </div>
         </div>
       </div>
