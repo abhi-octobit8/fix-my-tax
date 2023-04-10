@@ -196,7 +196,7 @@ const ItrNoticeForm = (props) => {
 
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="Section Type"
+        label="UNDER SECTION"
         rules={[
           {
             required: true,
@@ -220,7 +220,7 @@ const ItrNoticeForm = (props) => {
       </Form.Item>
       <Form.Item
         name={FIELD_NAME.SUBSECTION}
-        label="SubSection Type"
+        label="TYPE OF NOTICE"
         rules={[
           {
             required: true,
@@ -291,7 +291,7 @@ const ItrNoticeForm = (props) => {
             </Form.Item> */}
       <Form.Item
         name={FIELD_NAME.UPLOAD_ITR}
-        label="Upload Computation of Income & 26AS"
+        label="NOTICE / OTHER DOCUMENTS"
         valuePropName="fileList"
         getValueFromEvent={normFile}
       >

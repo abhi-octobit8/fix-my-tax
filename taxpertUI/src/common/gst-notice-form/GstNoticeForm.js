@@ -155,7 +155,7 @@ const GstNoticeForm = (props) => {
       )}
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="Section Type"
+        label="NOTICE TYPE"
         rules={[
           {
             required: true,
@@ -188,7 +188,7 @@ const GstNoticeForm = (props) => {
       <React.Fragment>
         <Form.Item
           name={FIELD_NAME.UPLOAD_GST}
-          label="Upload Document"
+          label="UPLOAD COPY OF NOTICE & SUPPORTING DOCUMENTS"
           valuePropName="fileList"
           getValueFromEvent={normFile}
         >

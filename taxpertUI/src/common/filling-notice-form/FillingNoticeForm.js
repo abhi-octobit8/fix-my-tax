@@ -25,7 +25,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 8,
+      span: 10,
     },
   },
   wrapperCol: {
@@ -154,7 +154,7 @@ const FillingNoticeForm = (props) => {
       )}
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="Section Type"
+        label="TYPE OF ITR / TDS-TCS RETURN"
         rules={[
           {
             required: true,
@@ -187,7 +187,7 @@ const FillingNoticeForm = (props) => {
       <React.Fragment>
         <Form.Item
           name={FIELD_NAME.UPLOAD_DOCUMENT}
-          label="Upload Document"
+          label="UPLOAD COMPUTATION OF INCOME,AIS,TIS &26AS"
           valuePropName="fileList"
           getValueFromEvent={normFile}
         >

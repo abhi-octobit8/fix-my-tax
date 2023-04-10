@@ -154,7 +154,7 @@ const ConsultationNoticeForm = (props) => {
       )}
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="Section Type"
+        label="NATURE OF QUERY"
         rules={[
           {
             required: true,

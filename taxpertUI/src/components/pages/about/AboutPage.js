@@ -4,15 +4,17 @@ import upfront from "../../../assets/img/upfront.png";
 import team from "../../../assets/img/team.png";
 import tax from "../../../assets/img/about_tax.png";
 import user from "../../../assets/img/user.jpg";
+import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
+import promoter2 from "../../../assets/img/nidhi_singh.PNG";
 import "./AboutPage.css";
 
 const AboutPage = () => (
   <>
-    <section id="service-banner" className="service-banner">
+    <section id="service-banner" className="section-banner">
       <div className="container" data-aos="fade-up">
         <div className="row justify-content-center">
-          <div className="service-banner-info">
-            <div className="service-banner-title">Our Mission</div>
+          <div className="section-banner-info">
+            <div className="section-banner-title">Our Mission</div>
             <div>
               At our taxation consultancy firm, our mission is to provide
               unparalleled tax solutions and guidance to our clients, enabling
@@ -39,7 +41,81 @@ const AboutPage = () => (
         </div>
       </div>
     </section>
-    {/* //txt here */}
+    <section className="promoters-section">
+      <div className="section-header">
+        <h1>Our Founder And Promoters</h1>
+        <hr className="taxpert-line" />
+      </div>
+
+      <div className="testimonial-containter">
+        <div className="box">
+          <img
+            className="cover promoters-image"
+            src={promoter1}
+            alt="text"
+            height={400}
+            width={400}
+          />
+          <div className="content">
+            <div className="info">
+              <div className="name">Dr. Pawan Jaiswal</div>
+              <div>
+                <span className="name">Qualifications: </span>{" "}
+                <span className="job">
+                  M.Com., Ph.D., M.B.A., F.C.M.A, M.I.MA., Ex.RP – MCA & SEBI,
+                  F.I.V., CA(I) (Senior Tax & Cost Management Consultant).
+                </span>
+              </div>
+            </div>
+          </div>
+          <p>
+            Dr. Jaiswal is having experience and expertise in the field of
+            Direct & Indirect Taxation, Financial Management and Enterprise
+            Start-up for a career spanning over 3 decades. He is also approved
+            valuer for Government Agencies and member of various Government
+            Policy making Agencies. Rising from a humble back-ground with the
+            sole aspiration to ease the complicities of taxation for common man
+            in India and across the globe. Besides being a Tax & Finance Expert,
+            he is also an avid speaker on the subject delivering thousands on
+            lecturers on Government & Corporate platforms and actively involved
+            in social and philanthropic activities for the upliftment of poor
+            and needy strata of the society.
+          </p>
+          <br />
+        </div>
+        <div className="box">
+          <img
+            className="cover promoters-image"
+            src={promoter2}
+            alt="text"
+            height={400}
+            width={400}
+          />
+          <div className="content">
+            <div className="info">
+              <div className="name">Smt. Nidhi Pawan Singh</div>
+              <div>
+                <span className="name">Qualifications: </span>{" "}
+                <span className="job">MSc, LLB, MBA, A.M.I.M.A.</span>
+              </div>
+              <br />
+            </div>
+          </div>
+          <p>
+            Smt. Singh is a dynamic Advocate representing the image of women
+            empowerment having vast experience in the domain of law specifically
+            [Direct & Indirect Taxation] for a career spanning over 2 decades.
+            She is also Empanelled as Mediator of Allahabad High Court Mediation
+            and Conciliation Centre [AHCMCC]. Her areas of work interest include
+            Taxation, Business Management and Mathematics. Along-with her
+            husband Dr. Pawan Jaiswal she is also involved in silent
+            philanthropic activities for upliftment of weaker section of
+            society. Belonging to a family of bureaucrats; her main forte is
+            administration.
+          </p>
+        </div>
+      </div>
+    </section>
     <div className="section-1">
       <h6 className="sec-1-head">
         Your Tax Prep Comes with Built-in Reassurance
@@ -94,75 +170,6 @@ const AboutPage = () => (
         </div>
       </div>
     </div>
-    {/* <br /> */}
-    {/* <h6 className="sec-2-heading">
-      From Compliance to Financial Services, We Cover Them All
-    </h6>
-
-    <div className="section-2">
-      <div className="about-text">
-        <br />
-        We are a technology company that builds trusted, useful and insightful
-        platforms for our clients to run their finances and improve their
-        relationship with money. Our mission is to simplify finances, save money
-        and time for millions of Indian businesses and people.
-      </div>
-
-      <img
-        className="section-2-image"
-        src={tax}
-        alt="extra"
-        width="800px"
-        height="500px"
-      />
-    </div> */}
-    <br />
-    {/* <div className="sec-3">
-      <h6 className="sec-3-head">Meet Our Core Team</h6>
-      <hr className="taxpert-line" />
-      <br />
-      <div className="">
-        <div className="cards-inline">
-          <div className="card">
-            <img className="card-img-top" src={user} alt="user" />
-
-            <div className="card-body">
-              <div className="card-text">
-                <h5>Name</h5>
-                <h6>Designation</h6>
-              </div>
-            </div>
-          </div>
-          <div className="card">
-            <img className="card-img-top" src={user} alt="user" />
-            <div className="card-body">
-              <div className="card-text">
-                <h5>Name</h5>
-                <h6>Designation</h6>
-              </div>
-            </div>
-          </div>
-          <div className="card">
-            <img className="card-img-top" src={user} alt="user" />
-            <div className="card-body">
-              <div className="card-text">
-                <h5>Name</h5>
-                <h6>Designation</h6>
-              </div>
-            </div>
-          </div>
-          <div className="card">
-            <img className="card-img-top" src={user} alt="user" />
-            <div className="card-body">
-              <div className="card-text">
-                <h5>Name</h5>
-                <h6>Designation</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> */}
   </>
 );
 
