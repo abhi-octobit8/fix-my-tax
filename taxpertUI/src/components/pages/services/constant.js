@@ -212,13 +212,19 @@ const fixMytaxServicesInfo = {
           fee: 11000,
           price: 12980,
         },
-        "NOTICES UNDER OTHER SECTIONS": {
-          fee: 5100,
-          price: 6018,
-        },
+
         "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE": {
           fee: 1500,
           price: 1770,
+        },
+      },
+      description: "",
+    },
+    "NOTICE UNDER OTHER SECTIONS": {
+      subSections: {
+        "NOTICES UNDER OTHER SECTIONS": {
+          fee: 5100,
+          price: 6018,
         },
       },
       description: "",
@@ -426,6 +432,28 @@ const fixMytaxServicesInfo = {
         fee: 5100,
         price: 6018,
       },
+    "ANY BUSINESS RELATED CONSULTANCY  BEING PROPRIETORSHIP / PARTNERSHIP / LLP OR COMPANY":
+      {
+        subSections: null,
+        description: "",
+        dcouments: [],
+        fee: 2100,
+        price: 2478,
+      },
+    "ANY NGO RELATED CONSULTANCY BEING SOCIETY / TRUST / CHARITABLE COMPANY": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      fee: 2100,
+      price: 2478,
+    },
+    "ANY NGO INCOME RELATED QUERY": {
+      subSections: null,
+      description: "",
+      dcouments: [],
+      fee: 2100,
+      price: 2478,
+    },
   },
   filing: {
     "ITR-1": {

@@ -178,6 +178,28 @@ const ItrNoticeForm = (props) => {
           </Form.Item>
         </>
       )}
+      {!userRole && (
+        <Form.Item
+          name={FIELD_NAME.PHONE_NUMBER}
+          label="Phone Number"
+          rules={[
+            {
+              required: true,
+              message: "Please input your phone number!",
+            },
+            phoneNumberValidator,
+          ]}
+        >
+          <InputNumber
+            minLength={10}
+            maxLength={10}
+            addonBefore={prefixSelector}
+            style={{
+              width: "100%",
+            }}
+          />
+        </Form.Item>
+      )}
       {/* <Form.Item
               name={FIELD_NAME.SERVICE_TYPE}
               label="Service Type"
@@ -245,7 +267,7 @@ const ItrNoticeForm = (props) => {
       <Form.Item
         name={FIELD_NAME.PRICE}
         label="Fee"
-        extra="This Fee Included GST"
+        extra="FEE INCLUDING GST @ 18%"
       >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
@@ -304,28 +326,6 @@ const ItrNoticeForm = (props) => {
           <Button icon={<UploadOutlined />}>Click to upload</Button>
         </Upload>
       </Form.Item>
-      {!userRole && (
-        <Form.Item
-          name={FIELD_NAME.PHONE_NUMBER}
-          label="Phone Number"
-          rules={[
-            {
-              required: true,
-              message: "Please input your phone number!",
-            },
-            phoneNumberValidator,
-          ]}
-        >
-          <InputNumber
-            minLength={10}
-            maxLength={10}
-            addonBefore={prefixSelector}
-            style={{
-              width: "100%",
-            }}
-          />
-        </Form.Item>
-      )}
 
       <Form.Item
         name="agreement"

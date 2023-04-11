@@ -1,20 +1,9 @@
 import React from "react";
 import "./FilingNotice.css";
-import {
-  Button,
-  Form,
-  Input,
-  Select,
-  Card,
-  Upload,
-  Collapse,
-  Space,
-} from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Form, Select, Collapse, Space, Card } from "antd";
 import { FIELD_NAME } from "./constant";
 import { useState } from "react";
 import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
-import { phoneNumberValidator } from "../../../../shared/validator";
 import { registerNotice } from "../../../../services/register.service";
 import { message } from "../../../../shared/utils";
 import FillingNoticeFormContainer from "../../../../common/filling-notice-form/FillingNoticeFormContainer";
@@ -22,121 +11,10 @@ import { SUCCESS_MESSAGE_INFO } from "../../../../shared/constant/MessageInfo";
 const { Panel } = Collapse;
 const { Option } = Select;
 
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 6,
-    },
-  },
-  wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 12,
-    },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
-const normFile = (e) => {
-  console.log("Upload event:", e);
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
-
 const FilingNotice = () => {
   const { filing } = fixMytaxServicesInfo;
   const titleHeader = "Filing ITR/TCS/TDS";
-  const [isLoading, setIsLoading] = useState(false);
-  const [form] = Form.useForm();
 
-  const [optionData, setOptionData] = useState({
-    sectionList: [],
-    subSectionsList: [],
-  });
-
-  React.useEffect(() => {
-    setOptionData((prevState) => ({
-      ...prevState,
-      sectionList: Object.keys(filing),
-    }));
-  }, []);
-
-  const onFinish = async (values) => {
-    console.log("registration values:", values);
-    setIsLoading(true);
-    try {
-      const registerFormData = {
-        name: values.name,
-        email: values.email,
-        phoneNumber: values.phoneNumber,
-        ticketDetails: {
-          fixMyTaxServiceType: FixMyTaxServiceType.ITR_TDS_TCS_Filing,
-          serviceType: 2, // notice reply always for time being
-          section: values.section,
-          subSection: "",
-          subject: values.subject,
-          question: values.question,
-          description: values.description,
-          // status: 0,
-          price: values.price,
-          // paymentStaus: 0,
-          // transactionNumber: "678678",
-        },
-      };
-      console.log(registerFormData);
-
-      const res = await registerNotice(registerFormData, values.uploadDocument);
-
-      if (res.id) {
-        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-      }
-    } catch (e) {
-      console.error("error in creation", e);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  const onHandleSection = (value) => {
-    console.log(value);
-    if (value) {
-      const priceValue = filing[value].price;
-      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
-    } else {
-      setOptionData((prevState) => ({
-        sectionList: [],
-      }));
-      form.setFieldValue(FIELD_NAME.PRICE, "");
-    }
-  };
-
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="91">+91</Option>
-      </Select>
-    </Form.Item>
-  );
   return (
     <React.Fragment>
       <section id="service-banner" className="service-banner">
@@ -159,113 +37,6 @@ const FilingNotice = () => {
           <FillingNoticeFormContainer
             selectedFixMyTaxService={FixMyTaxServiceType.ITR_TDS_TCS_Filing}
           />
-          {/* <Form
-            {...formItemLayout}
-            form={form}
-            name="register"
-            onFinish={onFinish}
-            initialValues={{
-              residence: ["zhejiang", "hangzhou", "xihu"],
-              prefix: "91",
-            }}
-            scrollToFirstError
-          >
-            <Form.Item
-              label="Name"
-              name={FIELD_NAME.NAME}
-              rules={[{ required: true, message: "This field is required" }]}
-            >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
-              name={FIELD_NAME.EMAIL}
-              label="E-mail"
-              rules={[
-                {
-                  type: "email",
-                  message: "The input is not valid E-mail!",
-                },
-                {
-                  required: true,
-                  message: "Please input your E-mail!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name={FIELD_NAME.SECTION}
-              label="Section Type"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select Section Type!",
-                },
-              ]}
-            >
-              <Select
-                placeholder="Select your Section Type"
-                onChange={onHandleSection}
-                showSearch
-              >
-                {optionData.sectionList.map((x, i) => {
-                  return (
-                    <Option value={x} key={i}>
-                      {x}
-                    </Option>
-                  );
-                })}
-              </Select>
-            </Form.Item>
-
-            <Form.Item name={FIELD_NAME.PRICE} label="Fee">
-              <Input disabled={true} addonAfter="INR"></Input>
-            </Form.Item>
-            <React.Fragment>
-              <Form.Item
-                name={FIELD_NAME.UPLOAD_DOCUMENT}
-                label="Upload Document"
-                valuePropName="fileList"
-                getValueFromEvent={normFile}
-              >
-                <Upload
-                  beforeUpload={(file) => {
-                    // console.log(file);
-                    return false;
-                  }}
-                  multiple={false}
-                >
-                  <Button icon={<UploadOutlined />}>Click to upload</Button>
-                </Upload>
-              </Form.Item>
-            </React.Fragment>
-
-            <Form.Item
-              name={FIELD_NAME.PHONE_NUMBER}
-              label="Phone Number"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your phone number!",
-                },
-                phoneNumberValidator,
-              ]}
-            >
-              <Input
-                addonBefore={prefixSelector}
-                style={{
-                  width: "100%",
-                }}
-              />
-            </Form.Item>
-
-            <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit" loading={isLoading}>
-                Submit
-              </Button>
-            </Form.Item>
-          </Form> */}
         </Card>
       </section>
       <section className="section-container">
