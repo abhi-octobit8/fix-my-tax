@@ -44,9 +44,9 @@ function ApplicationMenu() {
         className: "application-menu-item-wrap",
         key: `${item.to}:root`,
         label: (
-          <NavLink className={getClassName} to={item.to}>
-            <span className="application-menu-item">{item.label}</span>
-          </NavLink>
+          // <NavLink className={getClassName} >
+          <span className="application-menu-item">{item.label}</span>
+          // </NavLink>
         ),
       };
     }

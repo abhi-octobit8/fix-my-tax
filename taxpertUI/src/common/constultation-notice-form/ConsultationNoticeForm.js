@@ -152,9 +152,31 @@ const ConsultationNoticeForm = (props) => {
           </Form.Item>
         </>
       )}
+      {!userRole && (
+        <Form.Item
+          name={FIELD_NAME.PHONE_NUMBER}
+          label="Phone Number"
+          rules={[
+            {
+              required: true,
+              message: "Please input your phone number!",
+            },
+            phoneNumberValidator,
+          ]}
+        >
+          <InputNumber
+            minLength={10}
+            maxLength={10}
+            addonBefore={prefixSelector}
+            style={{
+              width: "100%",
+            }}
+          />
+        </Form.Item>
+      )}
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="Section Type"
+        label="NATURE OF QUERY"
         rules={[
           {
             required: true,
@@ -180,7 +202,7 @@ const ConsultationNoticeForm = (props) => {
       <Form.Item
         name={FIELD_NAME.PRICE}
         label="Fee"
-        extra="This Fee Included GST"
+        extra="FEE INCLUDING GST @ 18%"
       >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
@@ -201,28 +223,6 @@ const ConsultationNoticeForm = (props) => {
           </Upload>
         </Form.Item>
       </React.Fragment>
-      {!userRole && (
-        <Form.Item
-          name={FIELD_NAME.PHONE_NUMBER}
-          label="Phone Number"
-          rules={[
-            {
-              required: true,
-              message: "Please input your phone number!",
-            },
-            phoneNumberValidator,
-          ]}
-        >
-          <InputNumber
-            minLength={10}
-            maxLength={10}
-            addonBefore={prefixSelector}
-            style={{
-              width: "100%",
-            }}
-          />
-        </Form.Item>
-      )}
 
       <Form.Item
         name="agreement"

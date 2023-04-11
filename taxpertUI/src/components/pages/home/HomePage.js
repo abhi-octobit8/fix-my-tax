@@ -46,10 +46,10 @@ const items = [
     value:
       "Drafting of Written Submission & Filing of Second Appeal [Income Tax & GST]",
   },
-  // {
-  //   id: 6,
-  //   value: "Video Conferencing Facility",
-  // },
+  {
+    id: 6,
+    value: "Video Conferencing Facility",
+  },
   {
     id: 7,
     value: "Appearance on behalf of Assessee",
@@ -57,6 +57,10 @@ const items = [
   {
     id: 8,
     value: "Business Decisions Consultancy",
+  },
+  {
+    id: 9,
+    value: "Provide Answers to your Notices & Queries",
   },
 ];
 
@@ -70,6 +74,7 @@ function HomePage() {
           <div className="row ">
             <div className="col-lg-6 banner-section-content ">
               <h2> We will manage your taxes, you enjoy life.</h2>
+              <h6> What We Do</h6>
               <ul>
                 {items.map((item, index) => {
                   return (
@@ -85,27 +90,7 @@ function HomePage() {
                     </>
                   );
                 })}
-                {/* <li>
-                  {" "}
-                  <DoubleRightOutlined />
-                  shamsher
-                </li>
-                <li>shamsher</li>
-                <li>shamsher</li>
-                <li>shamsher</li>
-                <li>shamsher</li>
-                <li>shamsher</li>
-                <li>shamsher</li>
-                <li>shamsher</li> */}
               </ul>
-
-              <Button
-                type="primary"
-                className="button-style-middle"
-                onClick={() => navigator.goTo(PATH.ITR_NOTICE_PATH)}
-              >
-                Start Here
-              </Button>
             </div>
             <div className="col-lg-6 banner-image">
               <img
@@ -115,6 +100,10 @@ function HomePage() {
                 height={400}
                 width={400}
               />
+              <h6>
+                {" "}
+                A Creative Genius of Tax Wizard CMA Vr. Dr. Pawan Jaiswal
+              </h6>
             </div>
           </div>
         </div>

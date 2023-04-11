@@ -5,6 +5,7 @@ import { getStore } from "./store";
 import { BrowserRouter as Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.less";
+import "./assets/css/common.css";
 // import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import Application from "./components/application/Application";

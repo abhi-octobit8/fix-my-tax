@@ -1,0 +1,24 @@
+/* all static service  page banner */
+.section-banner {
+    background-color: #253483;
+    background-size: cover;
+    padding: 100px 0;
+  }
+.section-banner .section-banner-title {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+.section-banner .section-banner-info {
+    margin: auto;
+    color: white;
+    text-align: center;
+
+}
+
+.section-banner .section-banner-info .section-banner-data {
+   text-align: justify;
+
+}
+

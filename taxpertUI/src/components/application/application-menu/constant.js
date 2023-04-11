@@ -45,8 +45,13 @@ const MENU_ITEMS = [
   {
     label: "Services",
     role: USER_ROLE.PUBLIC,
-    to: PATH.ITR_NOTICE_PATH,
+    to: "",
     children: [
+      {
+        label: "Filing ITR/TCS/TDS",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_FILING,
+      },
       {
         label: "ITR/TDS/TCS Notices",
         role: USER_ROLE.PUBLIC,
@@ -61,11 +66,6 @@ const MENU_ITEMS = [
         label: "Consultation",
         role: USER_ROLE.PUBLIC,
         to: PATH.SERVICE_COSULTATION,
-      },
-      {
-        label: "Filing ITR/TCS/TDS",
-        role: USER_ROLE.PUBLIC,
-        to: PATH.SERVICE_FILING,
       },
     ],
   },

@@ -21,6 +21,12 @@
   font-weight: 700;
   color:white
 }
+
+.banner-to-action h6 {
+
+  color:white
+}
+
 .banner-to-action .banner-image{
   text-align: right;
 }
@@ -197,13 +203,13 @@
     font-size: 20px;
     margin: 7px;
 }
-.button-style-middle{
+/* .button-style-middle{
     width: 50%;
     height: 50px;
     border-radius: 25px;
     font-size: 20px;
     margin: 10px;
-}
+} */
 .button-container{
   text-align: center;
 }
