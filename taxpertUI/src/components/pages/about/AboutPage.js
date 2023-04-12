@@ -149,8 +149,11 @@ const AboutPage = () => (
           <br />
           <h6 className="headings">Upfront Transparency</h6>
           <p className="text-area">
-            Some quick example text to build on the card title and makeu up the
-            bulk of the card's content
+            Our transparent approach means that we keep our clients informed and
+            involved throughout the entire process, ensuring they have a clear
+            understanding of their tax situation and the steps needed to achieve
+            their financial goals. Trust us to provide you with expert advice
+            and guidance in a straightforward and understandable manner.
           </p>
         </div>
         <div className="cards-in-place">

@@ -177,7 +177,7 @@ const GstNoticeForm = (props) => {
       )}
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="NOTICE TYPE"
+        label="NOTICE TYPE IN PRESCRIBED FORM"
         rules={[
           {
             required: true,

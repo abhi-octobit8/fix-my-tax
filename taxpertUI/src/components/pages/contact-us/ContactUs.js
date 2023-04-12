@@ -108,23 +108,6 @@ const ContactUs = () => {
               </Form.Item>
 
               <Form.Item
-                name="uploadNotice"
-                label="Upload "
-                valuePropName="fileList"
-                getValueFromEvent={normFile}
-              >
-                <Upload
-                  beforeUpload={(file) => {
-                    // console.log(file);
-                    return false;
-                  }}
-                  multiple={false}
-                >
-                  <Button icon={<UploadOutlined />}>Click to upload</Button>
-                </Upload>
-              </Form.Item>
-
-              <Form.Item
                 name="phone"
                 label="Phone Number"
                 rules={[
@@ -147,7 +130,7 @@ const ContactUs = () => {
                 name="query"
                 rules={[{ required: true, message: "This field is required" }]}
               >
-                <TextArea />
+                <TextArea showCount maxLength={100} />
               </Form.Item>
               <Form.Item {...tailFormItemLayout}>
                 <Button type="primary" htmlType="submit">
@@ -160,7 +143,7 @@ const ContactUs = () => {
             <h6 style={{ fontSize: "20px" }}>We are here to help</h6>
 
             <PhoneTwoTone />
-            <span style={{ marginLeft: "8px" }}>+91 9839441144</span>
+            <span style={{ marginLeft: "8px" }}>+91 6387022844</span>
             <br />
 
             <MailTwoTone />

@@ -102,7 +102,7 @@ function ApplicationFooter() {
                 U.P. - 211001
                 <br />
                 <br />
-                <strong>Phone</strong> +91 9839441144
+                <strong>Phone</strong> +91 6387022844
                 <br />
                 <strong>Email:</strong>contact@fixmytax.in
                 <br />
