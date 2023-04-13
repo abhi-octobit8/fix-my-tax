@@ -79,6 +79,11 @@ const MENU_ITEMS = [
     role: USER_ROLE.PUBLIC,
     to: PATH.MEMBERSHIP,
   },
+  {
+    label: "Register",
+    role: USER_ROLE.NON_AUTHORIZED,
+    to: PATH.REGISTER,
+  },
   // {
   //   label: "Latest News",
   //   role: USER_ROLE.PUBLIC,
@@ -138,6 +143,8 @@ function getMenuItems(collection, userData) {
     let condition = false;
 
     if (role === USER_ROLE.PUBLIC) {
+      condition = true;
+    } else if (role === USER_ROLE.NON_AUTHORIZED && !userAuthRole) {
       condition = true;
     } else {
       const hasRole = CollectionUtilService.hasRole(role, userAuthRole);

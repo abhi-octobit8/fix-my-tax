@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import "./RegisterPage.less";
-import { Button, Checkbox, Form, Input, Select, Card } from "antd";
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  Select,
+  Card,
+  Row,
+  Col,
+  Upload,
+} from "antd";
 import API from "../../../shared/API";
+import { UploadOutlined } from "@ant-design/icons";
 import { phoneNumberValidator } from "../../../shared/validator";
+import { Header3 } from "../../../common/Headers";
+import { REGISTER_CATEGORIES } from "./constant";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -34,6 +47,13 @@ const tailFormItemLayout = {
       offset: 8,
     },
   },
+};
+const normFile = (e) => {
+  console.log("Upload event:", e);
+  if (Array.isArray(e)) {
+    return e;
+  }
+  return e?.fileList;
 };
 const RegisterPage = (props) => {
   const [form] = Form.useForm();
@@ -71,6 +91,13 @@ const RegisterPage = (props) => {
 
   return (
     <Card className="card-container" bordered={true}>
+      <Row className="content-margin-tab">
+        {" "}
+        <Col span={8} offset={6}>
+          <Header3>Registration</Header3>
+        </Col>
+      </Row>
+      <div offset={8}></div>
       <Form
         {...formItemLayout}
         form={form}
@@ -89,20 +116,20 @@ const RegisterPage = (props) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           label="Surname"
           name="surname"
           rules={[{ required: true, message: "This field is required" }]}
         >
           <Input />
-        </Form.Item>
-        <Form.Item
+        </Form.Item> */}
+        {/* <Form.Item
           label="UserName"
           name="username"
           rules={[{ required: true, message: "This field is required" }]}
         >
           <Input />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           name="emailAddress"
@@ -120,8 +147,15 @@ const RegisterPage = (props) => {
         >
           <Input />
         </Form.Item>
-
         <Form.Item
+          label="Pan Card No"
+          name="panNumber"
+          rules={[{ required: true, message: "This field is required" }]}
+        >
+          <Input />
+        </Form.Item>
+
+        {/* <Form.Item
           name="password"
           label="Password"
           rules={[
@@ -156,8 +190,79 @@ const RegisterPage = (props) => {
           ]}
         >
           <Input.Password />
-        </Form.Item>
+        </Form.Item> */}
 
+        <Form.Item
+          name="category"
+          label="Category"
+          rules={[
+            {
+              required: true,
+              message: "Please select Category!",
+            },
+          ]}
+        >
+          <Select placeholder="Select Your Category" showSearch>
+            {REGISTER_CATEGORIES.map((x, i) => {
+              return (
+                <Option value={x.value} key={i}>
+                  {x.name}
+                </Option>
+              );
+            })}
+          </Select>
+        </Form.Item>
+        <Form.Item noStyle shouldUpdate>
+          {({ getFieldValue }) => {
+            const value = getFieldValue("category");
+            if (value && value !== 1) {
+              return (
+                <Form.Item
+                  name="uploadDocument"
+                  label="Upload Document"
+                  valuePropName="fileList"
+                  getValueFromEvent={normFile}
+                  extra="To verify the Category upload required Document"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please upload Document to verified document",
+                    },
+                  ]}
+                >
+                  <Upload
+                    beforeUpload={(file) => {
+                      return false;
+                    }}
+                    multiple={false}
+                    maxCount={1}
+                  >
+                    <Button icon={<UploadOutlined />}>Click to upload</Button>
+                  </Upload>
+                </Form.Item>
+              );
+            }
+            return null;
+          }}
+        </Form.Item>
+        {/* <React.Fragment>
+          <Form.Item
+            name="uploadDocument"
+            label="Upload Document"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+          >
+            <Upload
+              beforeUpload={(file) => {
+                return false;
+              }}
+              multiple={false}
+              maxCount={1}
+            >
+              <Button icon={<UploadOutlined />}>Click to upload</Button>
+            </Upload>
+          </Form.Item>
+        </React.Fragment> */}
         <Form.Item
           name="phone"
           label="Phone Number"
