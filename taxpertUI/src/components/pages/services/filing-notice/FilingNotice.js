@@ -6,7 +6,7 @@ import { useState } from "react";
 import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
 import { registerNotice } from "../../../../services/register.service";
 import { message } from "../../../../shared/utils";
-import FillingNoticeFormContainer from "../../../../common/filling-notice-form/FillingNoticeFormContainer";
+import FillingItrFormContainer from "../../../../common/filling-itr-form/FillingItrFormContainer";
 import { SUCCESS_MESSAGE_INFO } from "../../../../shared/constant/MessageInfo";
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -34,7 +34,7 @@ const FilingNotice = () => {
           <div className="Card-header-title">
             <h1>{titleHeader}</h1>
           </div>
-          <FillingNoticeFormContainer
+          <FillingItrFormContainer
             selectedFixMyTaxService={FixMyTaxServiceType.ITR_TDS_TCS_Filing}
           />
         </Card>
