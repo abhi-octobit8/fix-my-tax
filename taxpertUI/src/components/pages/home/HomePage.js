@@ -145,7 +145,7 @@ function HomePage() {
             <Button
               className="button-style"
               type="primary"
-              onClick={() => navigator.goTo(PATH.SERVICE_FILING)}
+              onClick={() => navigator.goTo(PATH.SERVICE_ITR_FILING)}
             >
               Filing
               <br />

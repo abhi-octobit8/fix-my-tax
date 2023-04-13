@@ -30,6 +30,7 @@ import TicketRoutes from "../pages/admin/ticket/TicketRoutes";
 import ResetPassword from "../pages/reset-password/ResetPassword";
 import MembershipPage from "../pages/membership/MembershipPage";
 import FilingItr from "../pages/services/filing-itr/FilingItr";
+import FilingTdsPage from "../pages/services/filing-tds/FilingTdsPage";
 // React.lazy(() =>
 //       import(
 //         /* webpackChunkName: "product-module" */ "./modules/product/ProductRoutes.js"
@@ -58,7 +59,8 @@ function AuthenticatedApplication() {
           path={PATH.SERVICE_COSULTATION}
           element={<ConsultationNotice />}
         />
-        <Route path={PATH.SERVICE_FILING} element={<FilingItr />} />
+        <Route path={PATH.SERVICE_ITR_FILING} element={<FilingItr />} />
+        <Route path={PATH.SERVICE_TDS_TCS_FILING} element={<FilingTdsPage />} />
         <Route path="latest-news" element={<LatestNewsPage />} />
 
         <Route path="home" element={<HomePage />} />

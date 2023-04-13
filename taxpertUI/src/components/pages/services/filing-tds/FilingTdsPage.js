@@ -1,23 +1,22 @@
 import React from "react";
-import "./FilingItr.css";
-import { Select, Collapse, Space, Card } from "antd";
-import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
-import FilingItrFormContainer from "../../../../modules/filing-itr/FilingItrFormContainer";
-// import FilingItrFormContainer from "../../../../common/filing-itr-form/FilingItrFormContainer";
+import "./FilingTdsPage.css";
+import { Collapse, Space, Card } from "antd";
+import { FixMyTaxServiceType } from "../constant";
+import {} from "../../../../services/register.service";
+import FilingTdsFormContainer from "../../../../modules/filing-tds/FilingTdsFormContainer";
+// import FilingTdsFormContainer from "../../../../common/filing-tds-form/FilingTdsFormContainer";
 const { Panel } = Collapse;
-const { Option } = Select;
 
-const FilingItr = () => {
-  const { filing } = fixMytaxServicesInfo;
+const FilingTdsPage = () => {
   const titleHeader = "Filing ITR/TCS/TDS";
 
   return (
     <React.Fragment>
-      <section id="service-banner--filing-itr" className="section-banner">
+      <section id="service-banner-tds" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
             <div className="section-banner-info">
-              <div className="section-banner-title">Filing ITR TCS TDS</div>
+              <div className="section-banner-title">Filing TCS TDS</div>
               <p className="section-banner-data">
                 All matters related to direct/indirect tax filing, TDS/TCS
                 filing and claim, enetrprise setup, consultancy on tax
@@ -33,7 +32,7 @@ const FilingItr = () => {
           <div className="section-header">
             <h2>{titleHeader}</h2>
           </div>
-          <FilingItrFormContainer
+          <FilingTdsFormContainer
             selectedFixMyTaxService={FixMyTaxServiceType.ITR_TDS_TCS_Filing}
           />
         </Card>
@@ -97,4 +96,4 @@ const FilingItr = () => {
   );
 };
 
-export default FilingItr;
+export default FilingTdsPage;

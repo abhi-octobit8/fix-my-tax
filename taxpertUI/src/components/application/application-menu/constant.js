@@ -48,9 +48,14 @@ const MENU_ITEMS = [
     to: "",
     children: [
       {
-        label: "Filing ITR/TCS/TDS",
+        label: "ITR Filing",
         role: USER_ROLE.PUBLIC,
-        to: PATH.SERVICE_FILING,
+        to: PATH.SERVICE_ITR_FILING,
+      },
+      {
+        label: "TDS/TCS Filing",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_TDS_TCS_FILING,
       },
       {
         label: "ITR/TDS/TCS Notices",

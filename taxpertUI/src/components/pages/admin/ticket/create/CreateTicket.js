@@ -11,7 +11,7 @@ import ItrNoticeForm from "../../../../../common/itr-notice-form/ItrNoticeForm";
 import ItrNoticeFormContainer from "../../../../../common/itr-notice-form/ItrNoticeFormContainer";
 import GstNoticeFormContainer from "../../../../../common/gst-notice-form/GstNoticeFormContainer";
 import ConsultationNoticeFormContainer from "../../../../../common/constultation-notice-form/ConsultationNoticeFormContainer";
-import FilingItrFormContainer from "../../../../../common/filing-itr-form/FilingItrFormContainer";
+import FilingItrFormContainer from "../../../../../modules/filing-itr/FilingItrFormContainer";
 const { Option } = Select;
 
 const formItemLayout = {
