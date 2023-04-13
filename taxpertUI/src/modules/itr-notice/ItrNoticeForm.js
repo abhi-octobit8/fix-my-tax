@@ -345,7 +345,7 @@ const ItrNoticeForm = (props) => {
           I have read the{" "}
           <a
             href="#"
-            onClick={() => handleClick("/news/TERMS_CONDITIONS_FMT.pdf")}
+            onClick={() => handleClick("/documents/TERMS_CONDITIONS_FMT.pdf")}
           >
             Terms & Condition.
           </a>

@@ -1,15 +1,15 @@
 import React from "react";
-import "./FilingItr.css";
-import { Select, Collapse, Space, Card } from "antd";
-import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
-import FilingItrFormContainer from "../../../../modules/filing-itr/FilingItrFormContainer";
-// import FilingItrFormContainer from "../../../../common/filing-itr-form/FilingItrFormContainer";
-const { Panel } = Collapse;
-const { Option } = Select;
 
-const FilingItr = () => {
-  const { filing } = fixMytaxServicesInfo;
-  const titleHeader = "Filing ITR/TCS/TDS";
+import { Collapse, Space, Card } from "antd";
+import { FixMyTaxServiceType } from "../constant";
+import FilingItrFormContainer from "../../../../modules/filing-itr/FilingItrFormContainer";
+
+import "./FilingItrPage.css";
+
+const { Panel } = Collapse;
+
+const FilingItrPage = () => {
+  const titleHeader = "ITR Filing";
 
   return (
     <React.Fragment>
@@ -17,12 +17,18 @@ const FilingItr = () => {
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
             <div className="section-banner-info">
-              <div className="section-banner-title">Filing ITR TCS TDS</div>
+              <div className="section-banner-title">ITR Filing</div>
               <p className="section-banner-data">
-                All matters related to direct/indirect tax filing, TDS/TCS
-                filing and claim, enetrprise setup, consultancy on tax
-                management for individuals and businesses. Other taxation
-                related queries doubts.
+                Welcome to our comprehensive filing income tax service provided
+                by our tax consultancy firm. We understand the importance of
+                timely and accurate tax filings, which is why we offer our
+                expertise to individuals, businesses, and organizations of all
+                sizes. Our team of experienced tax professionals will guide you
+                through the entire process, ensuring that all your tax
+                obligations are met while maximizing your tax savings. With our
+                thorough understanding of tax laws and regulations, we strive to
+                provide our clients with peace of mind during tax season. Trust
+                us to handle your tax filings with efficiency and accuracy.
               </p>
             </div>
           </div>
@@ -97,4 +103,4 @@ const FilingItr = () => {
   );
 };
 
-export default FilingItr;
+export default FilingItrPage;

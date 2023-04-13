@@ -139,7 +139,14 @@ export const isFalsyValueWithoutZero = (value) => {
 };
 
 export const getKeyFromObject = (obj, value) => {
-  return Object.keys(obj).find((key) => obj[key] === value);
+  return Object.keys(obj).findinfo;
+};
+export const getObjectFromList = (list, value) => {
+  return list.find((item) => item.key === value);
+};
+
+export const openFile = (path) => {
+  window.open(path, "_blank");
 };
 
 export const renderMoney = (value) => {

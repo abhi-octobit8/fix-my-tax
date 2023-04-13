@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useState } from "react";
 import {
@@ -6,16 +7,17 @@ import {
   Input,
   Select,
   Upload,
-  InputNumber,
   Checkbox,
+  Tooltip,
+  Space,
 } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
-import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
-import { phoneNumberValidator } from "../../shared/validator";
+import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
 
 import "./FilingItrForm.css";
+import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
+import { getObjectFromList, openFile } from "../../shared/utils";
 
 const { Option } = Select;
 
@@ -25,7 +27,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 10,
+      span: 8,
     },
   },
   wrapperCol: {
@@ -37,18 +39,7 @@ const formItemLayout = {
     },
   },
 };
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 14,
-      offset: 10,
-    },
-  },
-};
+
 const normFile = (e) => {
   console.log("Upload event:", e);
   if (Array.isArray(e)) {
@@ -58,7 +49,7 @@ const normFile = (e) => {
 };
 const FilingItrForm = (props) => {
   const { onFinish } = props;
-  const { filing } = fixMytaxServicesInfo;
+  const { itr_filling } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -72,7 +63,7 @@ const FilingItrForm = (props) => {
   React.useEffect(() => {
     setOptionData((prevState) => ({
       ...prevState,
-      sectionList: Object.keys(filing),
+      sectionList: itr_filling,
     }));
   }, []);
 
@@ -91,7 +82,7 @@ const FilingItrForm = (props) => {
   const onHandleSection = (value) => {
     console.log(value);
     if (value) {
-      const priceValue = filing[value].price;
+      const priceValue = getObjectFromList(itr_filling, value).fee;
       form.setFieldValue(FIELD_NAME.PRICE, priceValue);
     } else {
       setOptionData((prevState) => ({
@@ -101,104 +92,34 @@ const FilingItrForm = (props) => {
     }
   };
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="91">+91</Option>
-      </Select>
-    </Form.Item>
-  );
-
   return (
-    <Form
-      {...formItemLayout}
-      form={form}
-      name="register"
-      onFinish={onSubmit}
-      initialValues={{
-        prefix: "91",
-      }}
-      scrollToFirstError
-    >
-      {!userRole && (
-        <>
-          <Form.Item
-            label="Name"
-            name={FIELD_NAME.NAME}
-            rules={[{ required: true, message: "This field is required" }]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            name={FIELD_NAME.EMAIL}
-            label="E-mail"
-            rules={[
-              {
-                type: "email",
-                message: "The input is not valid E-mail!",
-              },
-              {
-                required: true,
-                message: "Please input your E-mail!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-        </>
-      )}
-      {!userRole && (
-        <Form.Item
-          name={FIELD_NAME.PHONE_NUMBER}
-          label="Phone Number"
-          rules={[
-            {
-              required: true,
-              message: "Please input your phone number!",
-            },
-            phoneNumberValidator,
-          ]}
-        >
-          <InputNumber
-            minLength={10}
-            maxLength={10}
-            addonBefore={prefixSelector}
-            style={{
-              width: "100%",
-            }}
-          />
-        </Form.Item>
-      )}
+    <Form onFinish={onFinish} {...formItemLayout} form={form} name="register">
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="TYPE OF ITR / TDS-TCS RETURN"
+        label="ITR Type"
         rules={[
           {
             required: true,
-            message: "Please select Section Type!",
+            message: "Select your ITR Type",
           },
         ]}
       >
         <Select
-          placeholder="Select your Section Type"
+          placeholder="Select your ITR Type"
           onChange={onHandleSection}
           showSearch
         >
           {optionData.sectionList.map((x, i) => {
             return (
-              <Option value={x} key={i}>
-                {x}
+              <Option value={x.key} key={i}>
+                <Tooltip title={x.description}>
+                  {x.name} ({x.description}
+                </Tooltip>
               </Option>
             );
           })}
         </Select>
       </Form.Item>
-
       <Form.Item
         name={FIELD_NAME.PRICE}
         label="Fee"
@@ -206,26 +127,50 @@ const FilingItrForm = (props) => {
       >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
-      <React.Fragment>
-        <Form.Item
-          name={FIELD_NAME.UPLOAD_DOCUMENT}
-          label="UPLOAD COMPUTATION OF INCOME,AIS,TIS &26AS"
-          valuePropName="fileList"
-          getValueFromEvent={normFile}
-        >
-          <Upload
-            beforeUpload={(file) => {
-              return false;
-            }}
-            multiple={false}
-            maxCount={1}
+      <Form.Item label="Upload Documents">
+        <Space>
+          <Form.Item
+            name={FIELD_NAME.UPLOAD_DOCUMENT}
+            noStyle
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+            rules={[
+              {
+                required: true,
+                message: "Upload Required Document",
+              },
+            ]}
           >
-            <Button icon={<UploadOutlined />}>Click to upload</Button>
-          </Upload>
-        </Form.Item>
-      </React.Fragment>
+            <Upload
+              beforeUpload={(file) => {
+                return false;
+              }}
+              multiple={false}
+              maxCount={1}
+              style={{
+                width: 160,
+              }}
+            >
+              <Button icon={<UploadOutlined />}>Click Upload File</Button>
+            </Upload>
+          </Form.Item>
 
+          <Tooltip title="Please merge file in single Pdf">
+            <InfoCircleOutlined
+              style={{ fontSize: "16px", color: "#f47c01" }}
+            />
+          </Tooltip>
+          <a
+            href="#"
+            onClick={() => openFile("/documents/ITR_FILINING_DOCUMENT.pdf")}
+          >
+            Documents Click Here
+          </a>
+        </Space>
+      </Form.Item>
       <Form.Item
+        label=" "
+        colon={false}
         name="agreement"
         valuePropName="checked"
         rules={[
@@ -236,14 +181,20 @@ const FilingItrForm = (props) => {
                 : Promise.reject(new Error("Should accept agreement")),
           },
         ]}
-        {...tailFormItemLayout}
       >
         <Checkbox>
-          I have read the <a href="#">Terms & Condition.</a>
+          I have read and I agree to the{" "}
+          <a
+            href="#"
+            onClick={() => openFile("/documents/TERMS_CONDITIONS_FMT.pdf")}
+          >
+            Terms & Condition.
+          </a>
         </Checkbox>
       </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit" loading={isLoading}>
+
+      <Form.Item label=" " colon={false}>
+        <Button type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
