@@ -63,6 +63,11 @@ const MENU_ITEMS = [
         to: PATH.ITR_NOTICE_PATH,
       },
       {
+        label: "GST Return",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_GST_RETURN,
+      },
+      {
         label: "GST Notice",
         role: USER_ROLE.PUBLIC,
         to: PATH.GST_NOTICE,
