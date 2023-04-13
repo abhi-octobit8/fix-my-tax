@@ -11,7 +11,7 @@ import ItrNoticeForm from "../../../../../common/itr-notice-form/ItrNoticeForm";
 import ItrNoticeFormContainer from "../../../../../common/itr-notice-form/ItrNoticeFormContainer";
 import GstNoticeFormContainer from "../../../../../common/gst-notice-form/GstNoticeFormContainer";
 import ConsultationNoticeFormContainer from "../../../../../common/constultation-notice-form/ConsultationNoticeFormContainer";
-import FillingItrFormContainer from "../../../../../common/filling-itr-form/FillingItrFormContainer";
+import FilingItrFormContainer from "../../../../../common/filing-itr-form/FilingItrFormContainer";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -66,7 +66,7 @@ const CreateTicket = (props) => {
         );
       case 3:
         return (
-          <FillingItrFormContainer selectedFixMyTaxService={selectedService} />
+          <FilingItrFormContainer selectedFixMyTaxService={selectedService} />
         );
       case 4:
         return (

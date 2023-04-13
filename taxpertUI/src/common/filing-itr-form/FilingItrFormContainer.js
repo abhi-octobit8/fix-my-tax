@@ -7,9 +7,9 @@ import { SUCCESS_MESSAGE_INFO } from "../../shared/constant/MessageInfo";
 import { PATH } from "../../shared/Route";
 import { message } from "../../shared/utils";
 
-import FillingItrForm from "./FillingItrForm";
+import FilingItrForm from "./FilingItrForm";
 
-const FillingItrFormContainer = (props) => {
+const FilingItrFormContainer = (props) => {
   const { selectedFixMyTaxService } = props;
   const navigate = useNavigate();
 
@@ -68,7 +68,7 @@ const FillingItrFormContainer = (props) => {
     }
   };
 
-  return <FillingItrForm onFinish={onFinish} />;
+  return <FilingItrForm onFinish={onFinish} />;
 };
 
-export default FillingItrFormContainer;
+export default FilingItrFormContainer;

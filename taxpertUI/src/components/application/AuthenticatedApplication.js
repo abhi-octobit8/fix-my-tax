@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 // import CreateRequestPage from "../pages/request/new-request/create-request/CreateRequestPage";
 import { PATH } from "../../shared/Route";
 import ConsultationNotice from "../pages/services/consultation-notice/ConsultationNotice";
-import FilingNotice from "../pages/services/filing-notice/FilingNotice";
+// import FilingItr from "../pages/services/filing-itr/FilingItr";
 import LatestNewsPage from "../pages/latest-news/LatestNewsPage";
 import AdminLayout from "../pages/admin/admin-layout/AdminLayout";
 import UserComponent from "../pages/admin/user/User";
@@ -29,6 +29,7 @@ import AdvocateRoutes from "../pages/admin/advocate/AdvocateRoutes";
 import TicketRoutes from "../pages/admin/ticket/TicketRoutes";
 import ResetPassword from "../pages/reset-password/ResetPassword";
 import MembershipPage from "../pages/membership/MembershipPage";
+import FilingItr from "../pages/services/filing-itr/FilingItr";
 // React.lazy(() =>
 //       import(
 //         /* webpackChunkName: "product-module" */ "./modules/product/ProductRoutes.js"
@@ -57,7 +58,7 @@ function AuthenticatedApplication() {
           path={PATH.SERVICE_COSULTATION}
           element={<ConsultationNotice />}
         />
-        <Route path={PATH.SERVICE_FILING} element={<FilingNotice />} />
+        <Route path={PATH.SERVICE_FILING} element={<FilingItr />} />
         <Route path="latest-news" element={<LatestNewsPage />} />
 
         <Route path="home" element={<HomePage />} />

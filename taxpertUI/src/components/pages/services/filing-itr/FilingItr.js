@@ -1,17 +1,17 @@
 import React from "react";
-import "./FilingNotice.css";
+import "./FilingItr.css";
 import { Form, Select, Collapse, Space, Card } from "antd";
 import { FIELD_NAME } from "./constant";
 import { useState } from "react";
 import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
 import { registerNotice } from "../../../../services/register.service";
 import { message } from "../../../../shared/utils";
-import FillingItrFormContainer from "../../../../common/filling-itr-form/FillingItrFormContainer";
+import FilingItrFormContainer from "../../../../common/filing-itr-form/FilingItrFormContainer";
 import { SUCCESS_MESSAGE_INFO } from "../../../../shared/constant/MessageInfo";
 const { Panel } = Collapse;
 const { Option } = Select;
 
-const FilingNotice = () => {
+const FilingItr = () => {
   const { filing } = fixMytaxServicesInfo;
   const titleHeader = "Filing ITR/TCS/TDS";
 
@@ -29,12 +29,12 @@ const FilingNotice = () => {
           </div>
         </div>
       </section>
-      <section className="section-filling-card">
+      <section className="section-filing-card">
         <Card className="card-container" bordered={true}>
           <div className="Card-header-title">
             <h1>{titleHeader}</h1>
           </div>
-          <FillingItrFormContainer
+          <FilingItrFormContainer
             selectedFixMyTaxService={FixMyTaxServiceType.ITR_TDS_TCS_Filing}
           />
         </Card>
@@ -98,4 +98,4 @@ const FilingNotice = () => {
   );
 };
 
-export default FilingNotice;
+export default FilingItr;

@@ -15,7 +15,7 @@ import { phoneNumberValidator } from "../../shared/validator";
 import { FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
 
-import "./FillingItrForm.css";
+import "./FilingItrForm.css";
 
 const { Option } = Select;
 
@@ -56,7 +56,7 @@ const normFile = (e) => {
   }
   return e?.fileList;
 };
-const FillingItrForm = (props) => {
+const FilingItrForm = (props) => {
   const { onFinish } = props;
   const { filing } = fixMytaxServicesInfo;
   const userRole = useUserRole();
@@ -251,4 +251,4 @@ const FillingItrForm = (props) => {
   );
 };
 
-export default FillingItrForm;
+export default FilingItrForm;
