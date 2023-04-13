@@ -9,7 +9,7 @@ import PendingRequest from "../pages/request/pending-request/PendingRequest";
 import Login from "../pages/login/Login";
 import ContactUs from "../pages/contact-us/ContactUs";
 import TnC from "../pages/tnc/TnC";
-import ItrNoticeService from "../pages/services/itr-notice/ItrNoticeService";
+import ItrNoticePage from "../pages/services/itr-notice/ItrNoticePage";
 import GstNoticeService from "../pages/services/gst-notice/GstNoticeService";
 import RegisterPage from "../pages/register/RegisterPage";
 import { checkLogin } from "../../store/authentication/AuthActions";
@@ -53,7 +53,7 @@ function AuthenticatedApplication() {
         <Route element={<ResetPassword />} path="/resetpassword/*" />
         <Route path="about" element={<AboutPage />} />
         <Route path="membership" element={<MembershipPage />} />
-        <Route path={PATH.ITR_NOTICE_PATH} element={<ItrNoticeService />} />
+        <Route path={PATH.ITR_NOTICE_PATH} element={<ItrNoticePage />} />
         <Route path={PATH.GST_NOTICE} element={<GstNoticeService />} />
         <Route
           path={PATH.SERVICE_COSULTATION}

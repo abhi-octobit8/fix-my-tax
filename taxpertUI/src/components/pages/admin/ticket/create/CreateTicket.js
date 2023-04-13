@@ -1,14 +1,13 @@
 import React from "react";
 import "./CreateTicket.less";
 import { Button, Form, Input, Select, Card, Row, Col } from "antd";
-import TextArea from "antd/lib/input/TextArea";
 // import { CreateTicket } from "../../../../../services/advocate.service";
 import { PATH } from "../../../../../shared/Route";
 import useRedirectPath from "../../../../hooks/useRedirectPath";
 import { useState } from "react";
 import { FIX_MY_TAX_SERVICE_TYPES } from "../../../../../shared/constant/TaxService";
-import ItrNoticeForm from "../../../../../common/itr-notice-form/ItrNoticeForm";
-import ItrNoticeFormContainer from "../../../../../common/itr-notice-form/ItrNoticeFormContainer";
+// import ItrNoticeForm from "../../../../../common/itr-notice-form/ItrNoticeForm";
+import ItrNoticeFormContainer from "../../../../../modules/itr-notice/ItrNoticeFormContainer";
 import GstNoticeFormContainer from "../../../../../common/gst-notice-form/GstNoticeFormContainer";
 import ConsultationNoticeFormContainer from "../../../../../common/constultation-notice-form/ConsultationNoticeFormContainer";
 import FilingItrFormContainer from "../../../../../modules/filing-itr/FilingItrFormContainer";

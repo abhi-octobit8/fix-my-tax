@@ -1,51 +1,42 @@
 import React from "react";
-import { useState } from "react";
-import {
-  Button,
-  Form,
-  Input,
-  Select,
-  Card,
-  Upload,
-  Collapse,
-  Space,
-  DatePicker,
-  InputNumber,
-} from "antd";
+import { Card, Collapse, Space } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 
-import "./ItrNotice.css";
-import ItrNoticeFormContainer from "../../../../common/itr-notice-form/ItrNoticeFormContainer";
+import "./ItrNoticePage.css";
+import ItrNoticeFormContainer from "../../../../modules/itr-notice/ItrNoticeFormContainer";
 
 const { Panel } = Collapse;
 
-const ItrNoticeService = (props) => {
+const ItrNoticePage = (props) => {
   const titleHeader = "Notice";
 
   return (
     <React.Fragment>
-      <section id="service-banner" className="service-banner">
+      <section id="service-banner-itr-notice" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
-            <div className="service-banner-info">
-              <div className="service-banner-title">
+            <div className="section-banner-info">
+              <div className="section-banner-title">
                 Income Tax Notices in India
               </div>
-              An income tax notice is a written communication sent by the Income
-              Tax Department to a taxpayer alerting an issue with his tax
-              account. The notice can be sent for different reasons like filing/
-              non-filing his/ her income tax return, for the purpose of making
-              the assessment or to ask the certain details etc. When a notice is
-              sent by the Income Tax Department, the taxpayer has to act on the
-              notice and get the matter resolved with the tax authorities.
+              <p className="section-banner-data">
+                An income tax notice is a written communication sent by the
+                Income Tax Department to a taxpayer alerting an issue with his
+                tax account. The notice can be sent for different reasons like
+                filing/ non-filing his/ her income tax return, for the purpose
+                of making the assessment or to ask the certain details etc. When
+                a notice is sent by the Income Tax Department, the taxpayer has
+                to act on the notice and get the matter resolved with the tax
+                authorities.
+              </p>
             </div>
           </div>
         </div>
       </section>
-      <section className="section-itr-card">
-        <Card className="card-container" bordered={true}>
-          <div className="Card-header-title">
-            <h1>{titleHeader}</h1>
+      <section>
+        <Card className="content-max-margin" bordered={true}>
+          <div className="section-header">
+            <h2>{titleHeader}</h2>
           </div>
           <ItrNoticeFormContainer
             selectedFixMyTaxService={FixMyTaxServiceType.ITR_TDS_TCS_Notice}
@@ -53,7 +44,7 @@ const ItrNoticeService = (props) => {
         </Card>
       </section>
 
-      <section className="section-container">
+      <section className="section-faq-container">
         <div className="section-header">
           <h4>FAQ’s on Income Tax Notice</h4>
           <hr className="taxpert-line" />
@@ -109,4 +100,4 @@ const ItrNoticeService = (props) => {
   );
 };
 
-export default ItrNoticeService;
+export default ItrNoticePage;
