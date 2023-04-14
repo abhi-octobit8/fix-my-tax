@@ -8,7 +8,7 @@ import { useState } from "react";
 import { FIX_MY_TAX_SERVICE_TYPES } from "../../../../../shared/constant/TaxService";
 // import ItrNoticeForm from "../../../../../common/itr-notice-form/ItrNoticeForm";
 import ItrNoticeFormContainer from "../../../../../modules/itr-notice/ItrNoticeFormContainer";
-import GstNoticeFormContainer from "../../../../../common/gst-notice-form/GstNoticeFormContainer";
+import GstNoticeFormContainer from "../../../../../modules/gst-notice-form/GstNoticeFormContainer";
 import ConsultationNoticeFormContainer from "../../../../../common/constultation-notice-form/ConsultationNoticeFormContainer";
 import FilingItrFormContainer from "../../../../../modules/filing-itr/FilingItrFormContainer";
 const { Option } = Select;

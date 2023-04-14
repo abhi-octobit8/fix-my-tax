@@ -1,50 +1,20 @@
 import React from "react";
-import "./GstNotice.css";
 
-import { Button, Card, Col, Form, Input, Row, Select, Upload } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Card, Col, Form, Row, Select } from "antd";
 import { Collapse, Space } from "antd";
 import { FIELD_NAME } from "./constant";
 import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
 import { useState } from "react";
-import { phoneNumberValidator } from "../../../../shared/validator";
 import { message } from "../../../../shared/utils";
 import { registerNotice } from "../../../../services/register.service";
-import GstNoticeFormContainer from "../../../../common/gst-notice-form/GstNoticeFormContainer";
+import GstNoticeFormContainer from "../../../../modules/gst-notice-form/GstNoticeFormContainer";
 import { SUCCESS_MESSAGE_INFO } from "../../../../shared/constant/MessageInfo";
+
+import "./GstNoticePage.css";
+
 const { Panel } = Collapse;
 const { Option } = Select;
 
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 6,
-    },
-  },
-  wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 12,
-    },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
 const normFile = (e) => {
   console.log("Upload event:", e);
   if (Array.isArray(e)) {
@@ -53,7 +23,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 
-const GstNoticeService = () => {
+const GstNoticePage = () => {
   const { gst } = fixMytaxServicesInfo;
   const [isLoading, setIsLoading] = useState(false);
   const titleHeader = "GST Notice";
@@ -125,40 +95,34 @@ const GstNoticeService = () => {
     }
   };
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="91">+91</Option>
-      </Select>
-    </Form.Item>
-  );
   return (
     <>
-      <div className="gst-banner">
-        <h3 className="gst-banner-title">GST Notice</h3>
+      <section id="service-banner-tds" className="section-banner">
+        <div className="container" data-aos="fade-up">
+          <div className="row justify-content-center">
+            <div className="section-banner-info">
+              <div className="section-banner-title">GST Notices</div>
+              <p className="section-banner-data">
+                We understand that receiving a GST notice can be stressful and
+                time-consuming, which is why we offer our expertise to handle
+                them for you. Our team of experienced tax professionals will
+                review and analyze the notice, ensuring that all necessary
+                actions are taken to resolve the issue promptly. With our
+                in-depth knowledge of GST laws and regulations, we aim to
+                provide our clients with hassle-free GST notice handling
+                services. Trust us to handle your GST notices with the utmost
+                professionalism and expertise, ensuring your compliance with GST
+                regulations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <p className="gst-banner-data">
-          Notices under the Goods and Services Tax (GST) Act are a method used
-          by tax authorities to communicate with taxpayers. GST notices are
-          often sent as a warning voice for any automation marked by authorities
-          especially in compliance with the GST, or to collect excess
-          information from taxpayers. The GST authorities send out mainly
-          notices where taxpayers are acting suspiciously and where there is a
-          supply of goods or services that are not possible under the tax
-          license. In ensuring the return of GST taxpayers, the authorities act
-          in accordance with the advice collected by them, obtained from another
-          government department, or a third party.
-        </p>
-      </div>
-
-      <section className="section-gst-card ">
-        <Card className="card-container" bordered={true}>
-          <div className="Card-header-title">
-            <h1>{titleHeader}</h1>
+      <section>
+        <Card className="content-max-margin" bordered={true}>
+          <div className="section-header">
+            <h2>{titleHeader}</h2>
           </div>
           <GstNoticeFormContainer
             selectedFixMyTaxService={FixMyTaxServiceType.GST_Notice}
@@ -231,50 +195,53 @@ const GstNoticeService = () => {
           </Col>
         </Row>
       </div>
-      <div className="gst-section-header">
-        <h4>FAQ’s on GST Notice</h4>
-        <hr className="taxpert-line" />
-      </div>
-      <div>
-        <Card>
-          <Space direction="vertical" className="section-faq-items">
-            <Collapse expandIconPosition={"end"} className="section-faq-item">
-              <Panel
-                header="Can I authorize my Chartered Accountant to reply to GST Notices on my behalf?"
-                key="1"
-              >
-                <p>
-                  Yes, a Chartered Accountant or any other representative can be
-                  authorized by the taxpayer for compliance of n GST notices on
-                  his/her behalf.
-                </p>
-              </Panel>
-            </Collapse>
-            <Collapse expandIconPosition={"end"}>
-              <Panel header="How can I reply to GST Notices?" key="1">
-                <p>
-                  The reply to GST Notices can be made by submitting response
-                  online on GST Portal. In addition, while doing so, taxpayers
-                  may use their own respective digital signature to substantiate
-                  their title/ownership.
-                </p>
-              </Panel>
-            </Collapse>
-            <Collapse expandIconPosition={"end"}>
-              <Panel header="Do I need to upload any documents?" key="1">
-                <p>
-                  Yes; the assessee has to upload doucment and information as
-                  desired by the GST authorities to prove his/her bonafide. you
-                  can avail the services of our experts to fixmytax before
-                  uploading any document to make his/her reply more precise and
-                  intense.
-                </p>
-              </Panel>
-            </Collapse>
-          </Space>
-        </Card>
-      </div>
+
+      <section className="section-faq-container">
+        <div className="section-header">
+          <h4>FAQ’s on GST Notice</h4>
+          <hr className="taxpert-line" />
+        </div>
+        <div>
+          <Card>
+            <Space direction="vertical" className="section-faq-items">
+              <Collapse expandIconPosition={"end"} className="section-faq-item">
+                <Panel
+                  header="Can I authorize my Chartered Accountant to reply to GST Notices on my behalf?"
+                  key="1"
+                >
+                  <p>
+                    Yes, a Chartered Accountant or any other representative can
+                    be authorized by the taxpayer for compliance of n GST
+                    notices on his/her behalf.
+                  </p>
+                </Panel>
+              </Collapse>
+              <Collapse expandIconPosition={"end"}>
+                <Panel header="How can I reply to GST Notices?" key="1">
+                  <p>
+                    The reply to GST Notices can be made by submitting response
+                    online on GST Portal. In addition, while doing so, taxpayers
+                    may use their own respective digital signature to
+                    substantiate their title/ownership.
+                  </p>
+                </Panel>
+              </Collapse>
+              <Collapse expandIconPosition={"end"}>
+                <Panel header="Do I need to upload any documents?" key="1">
+                  <p>
+                    Yes; the assessee has to upload doucment and information as
+                    desired by the GST authorities to prove his/her bonafide.
+                    you can avail the services of our experts to fixmytax before
+                    uploading any document to make his/her reply more precise
+                    and intense.
+                  </p>
+                </Panel>
+              </Collapse>
+            </Space>
+          </Card>
+        </div>
+      </section>
     </>
   );
 };
-export default GstNoticeService;
+export default GstNoticePage;

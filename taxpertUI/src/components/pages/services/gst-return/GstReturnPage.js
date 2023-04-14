@@ -1,13 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Collapse, Space, Card } from "antd";
-import { FixMyTaxServiceType } from "../constant";
-import {} from "../../../../services/register.service";
 import { Header1, Header3 } from "../../../../common/Headers";
-import GstNoticeFormContainer from "../../../../common/gst-notice-form/GstNoticeFormContainer";
+import { openFile } from "../../../../shared/utils";
 
 import "./GstReturnPage.css";
-import { openFile } from "../../../../shared/utils";
 
 const { Panel } = Collapse;
 
@@ -52,9 +49,6 @@ const GstReturnPage = () => {
             <h2>{titleHeader}</h2>
           </div>
           <Header1 className="section-header">Image come Here...</Header1>
-          {/* <GstNoticeFormContainer
-            selectedFixMyTaxService={FixMyTaxServiceType.ITR_TDS_TCS_Filing}
-          /> */}
         </Card>
       </section>
       <section className="section-faq-container">

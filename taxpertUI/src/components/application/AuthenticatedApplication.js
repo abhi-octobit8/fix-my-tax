@@ -7,7 +7,7 @@ import Login from "../pages/login/Login";
 import ContactUs from "../pages/contact-us/ContactUs";
 import TnC from "../pages/tnc/TnC";
 import ItrNoticePage from "../pages/services/itr-notice/ItrNoticePage";
-import GstNoticeService from "../pages/services/gst-notice/GstNoticeService";
+import GstNoticePage from "../pages/services/gst-notice/GstNoticePage";
 import RegisterPage from "../pages/register/RegisterPage";
 import { checkLogin } from "../../store/authentication/AuthActions";
 import { useSelector } from "react-redux";
@@ -44,7 +44,7 @@ function AuthenticatedApplication() {
         <Route path="about" element={<AboutPage />} />
         <Route path="membership" element={<MembershipPage />} />
         <Route path={PATH.ITR_NOTICE_PATH} element={<ItrNoticePage />} />
-        <Route path={PATH.GST_NOTICE} element={<GstNoticeService />} />
+        <Route path={PATH.GST_NOTICE} element={<GstNoticePage />} />
         <Route
           path={PATH.SERVICE_COSULTATION}
           element={<ConsultationNotice />}
