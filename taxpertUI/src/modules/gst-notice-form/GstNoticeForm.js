@@ -12,12 +12,12 @@ import {
   Tooltip,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
-import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
 import { FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
+import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
+import { getObjectFromList, openFile } from "../../shared/utils";
 
 import "./GstNoticeForm.css";
-import { openFile } from "../../shared/utils";
 
 const { Option } = Select;
 
@@ -49,7 +49,7 @@ const normFile = (e) => {
 };
 const GstNoticeForm = (props) => {
   const { onFinish } = props;
-  const { gst } = fixMytaxServicesInfo;
+  const { gst_notice } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +63,7 @@ const GstNoticeForm = (props) => {
   React.useEffect(() => {
     setOptionData((prevState) => ({
       ...prevState,
-      sectionList: Object.keys(gst),
+      sectionList: gst_notice,
     }));
   }, []);
 
@@ -80,9 +80,9 @@ const GstNoticeForm = (props) => {
   };
   const onHandleSection = (value) => {
     console.log(value);
+    console.log(value);
     if (value) {
-      const priceValue = gst[value].price;
-
+      const priceValue = getObjectFromList(gst_notice, value).fee;
       form.setFieldValue(FIELD_NAME.PRICE, priceValue);
     } else {
       setOptionData((prevState) => ({
@@ -120,8 +120,10 @@ const GstNoticeForm = (props) => {
         >
           {optionData.sectionList.map((x, i) => {
             return (
-              <Option value={x} key={i}>
-                {x}
+              <Option value={x.key} key={i}>
+                <Tooltip title={x.description}>
+                  {x.name} ({x.description}
+                </Tooltip>
               </Option>
             );
           })}

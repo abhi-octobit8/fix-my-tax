@@ -15,14 +15,6 @@ import "./GstNoticePage.css";
 const { Panel } = Collapse;
 const { Option } = Select;
 
-const normFile = (e) => {
-  console.log("Upload event:", e);
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
-
 const GstNoticePage = () => {
   const { gst } = fixMytaxServicesInfo;
   const [isLoading, setIsLoading] = useState(false);

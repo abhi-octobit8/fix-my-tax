@@ -679,6 +679,203 @@ const fixMytaxServiceInfoData = {
       documents: [],
     },
   ],
+  gst_notice: [
+    {
+      key: 1,
+      name: "GST REG-03",
+      subSections: null,
+      description:
+        "Notice issued for further information / clarification in response to application for new registration or amendment of GST registration certificate.",
+      documents: [],
+      fee: 1100,
+      price: 1298,
+    },
+    {
+      key: 2,
+      name: "GST REG-17",
+      subSections: null,
+      description:
+        "Show Cause Notice as to why GST registration be not be cancelled.",
+      documents: [],
+      fee: 2100,
+      price: 2478,
+    },
+    {
+      key: 3,
+      name: "GST REG-23",
+      subSections: null,
+      description:
+        "Show Cause Notice as to why registration of GST cancellation be revoked.",
+      documents: [],
+      fee: 2100,
+      price: 2478,
+    },
+    {
+      key: 4,
+      name: "GST REG-27",
+      subSections: null,
+      description:
+        "Notice where application for provisional registration has not been made for migration into GST from VAT regime or incomplete details have been provided.",
+      documents: [],
+      fee: 1100,
+      price: 1298,
+    },
+    {
+      key: 5,
+      name: "GST GSTR-3A",
+      subSections: null,
+      description:
+        "Notice to assessee who are default for not filing GST Returns in GSTR-1 or GSTR-3B or GSTR-4 or GSTR-8.",
+      documents: [],
+      fee: 2100,
+      price: 2478,
+    },
+    {
+      key: 6,
+      name: "GST CMP-05",
+      subSections: null,
+      description:
+        "Show Cause Notice for eligibility to be a composition dealer.",
+      documents: [],
+      fee: 2100,
+      price: 2478,
+    },
+    {
+      key: 7,
+      name: "GST PCT-03",
+      subSections: null,
+      description:
+        "Assessee with Professional Income as well as House Property and Income from Other SourcesAssessee with Professional Income as well as House Property and Income from Other SourcesShow Cause Notice for misconduct by GST practitioner.",
+      documents: [],
+      fee: 2100,
+      price: 2478,
+    },
+    {
+      key: 8,
+      name: "GST RFD-08",
+      subSections: null,
+      description: "Show Cause Notice on rejection of GST refund made.",
+      documents: [],
+      fee: 5100,
+      price: 6018,
+    },
+    {
+      key: 9,
+      name: "GST ASMT-02",
+      subSections: null,
+      description:
+        "Clarification / Additional documents required for provisional assessment.",
+      documents: [],
+      fee: 5100,
+      price: 6018,
+    },
+    {
+      key: 10,
+      name: "GST ASMT-06",
+      subSections: null,
+      description:
+        "Clarification / Additional documents required for final assessment.",
+      documents: [],
+      fee: 11000,
+      price: 12980,
+    },
+    {
+      key: 11,
+      name: "GST ASMT-10",
+      subSections: null,
+      description:
+        "For intimation of discrepancies in the GST Return after scrutiny.",
+      documents: [],
+      fee: 21000,
+      price: 24780,
+    },
+    {
+      key: 12,
+      name: "GST ASMT-14",
+      subSections: null,
+      description:
+        "Show Cause Notice under Section 63 for Best Judgment Assessment.",
+      documents: [],
+      fee: 7100,
+      price: 8378,
+    },
+    {
+      key: 13,
+      name: "GST ADT-01",
+      subSections: null,
+      description:
+        "Notice from the Authorities for conducting Audit under Section 65.",
+      documents: [],
+      fee: 7100,
+      price: 8378,
+    },
+    {
+      key: 14,
+      name: "GST RVN-01",
+      subSections: null,
+      description:
+        "Notice under Section 108 issued by the Revisional Authority in case of Revision.",
+      documents: [],
+      fee: 5100,
+      price: 6018,
+    },
+    {
+      key: 15,
+      name: "GST DRC-01",
+      subSections: null,
+      description: "Show Cause Notice for tax demanded in GST DRC-02.",
+      documents: [],
+      fee: 2100,
+      price: 2478,
+    },
+    {
+      key: 16,
+      name: "GST DRC-10",
+      subSections: null,
+      description: "Notice for auction of Goods under Section 79(1)(b).",
+      documents: [],
+      fee: 21000,
+      price: 24780,
+    },
+    {
+      key: 17,
+      name: "GST DRC-11",
+      subSections: null,
+      description: "Notice to the successful bidder.",
+      documents: [],
+      fee: 5100,
+      price: 6018,
+    },
+    {
+      key: 18,
+      name: "GST DRC-13",
+      subSections: null,
+      description:
+        "Notice under Section 79(1)(c) to the third person directing to deposit the amount specified.",
+      documents: [],
+      fee: 5100,
+      price: 6018,
+    },
+    {
+      key: 19,
+      name: "GST DRC-16",
+      subSections: null,
+      description:
+        "Notice under Section 79 for attachment and sale of movable / immovable goods & shares.",
+      documents: [],
+      fee: 21000,
+      price: 24780,
+    },
+    {
+      key: 20,
+      name: "ANY OTHER NOTICE",
+      subSections: null,
+      description: "others",
+      documents: [],
+      fee: 5100,
+      price: 6018,
+    },
+  ],
 };
 
 const fixMytaxServicesInfo = {
