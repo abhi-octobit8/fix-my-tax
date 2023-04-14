@@ -11,14 +11,18 @@ import {
   DatePicker,
   InputNumber,
   Checkbox,
+  Tooltip,
+  Space,
 } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
 import { phoneNumberValidator } from "../../shared/validator";
 import { FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
 
 import "./ItrNoticeForm.css";
+import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
+import { getObjectFromList, openFile } from "../../shared/utils";
 
 const { Option } = Select;
 
@@ -61,7 +65,7 @@ const normFile = (e) => {
 };
 const ItrNoticeForm = (props) => {
   const { onFinish } = props;
-  const { notice } = fixMytaxServicesInfo;
+  const { notices } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -75,7 +79,7 @@ const ItrNoticeForm = (props) => {
   React.useEffect(() => {
     setOptionData((prevState) => ({
       ...prevState,
-      sectionList: Object.keys(notice),
+      sectionList: notices,
     }));
   }, []);
 
@@ -96,10 +100,11 @@ const ItrNoticeForm = (props) => {
   };
   const onHandleSection = (value) => {
     if (value) {
-      const item = Object.keys(notice[value].subSections);
+      const { subSections } = getObjectFromList(notices, value);
+      // const item = Object.keys(notice[value].subSections);
       setOptionData((prevState) => ({
         ...prevState,
-        subSectionsList: item,
+        subSectionsList: subSections,
       }));
     } else {
       setOptionData((prevState) => ({
@@ -114,8 +119,11 @@ const ItrNoticeForm = (props) => {
   const onHandleSubSection = (value) => {
     console.log(value);
     if (value) {
+      // const sectionValue = getObjectFromList(tds_filing, value).fee;
       const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
-      const priceValue = notice[sectionValue].subSections[value].price;
+      debugger;
+      const sectionObj = getObjectFromList(notices, sectionValue);
+      const priceValue = getObjectFromList(sectionObj.subSections, value).fee;
 
       form.setFieldValue(FIELD_NAME.PRICE, priceValue);
     } else {
@@ -150,72 +158,6 @@ const ItrNoticeForm = (props) => {
       }}
       scrollToFirstError
     >
-      {!userRole && (
-        <>
-          <Form.Item
-            label="Name"
-            name={FIELD_NAME.NAME}
-            rules={[{ required: true, message: "This field is required" }]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            name={FIELD_NAME.EMAIL}
-            label="E-mail"
-            rules={[
-              {
-                type: "email",
-                message: "The input is not valid E-mail!",
-              },
-              {
-                required: true,
-                message: "Please input your E-mail!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-        </>
-      )}
-      {!userRole && (
-        <Form.Item
-          name={FIELD_NAME.PHONE_NUMBER}
-          label="Phone Number"
-          rules={[
-            {
-              required: true,
-              message: "Please input your phone number!",
-            },
-            phoneNumberValidator,
-          ]}
-        >
-          <InputNumber
-            minLength={10}
-            maxLength={10}
-            addonBefore={prefixSelector}
-            style={{
-              width: "100%",
-            }}
-          />
-        </Form.Item>
-      )}
-      {/* <Form.Item
-              name={FIELD_NAME.SERVICE_TYPE}
-              label="Service Type"
-              rules={[
-                {
-                  required: true,
-                  message: "Please select Service Type!",
-                },
-              ]}
-            >
-              <Select placeholder="Select your Service Type">
-                <Option value="video">Video Consultation</Option>
-                <Option value="2">Notice Reply</Option>
-              </Select>
-            </Form.Item> */}
-
       <Form.Item
         name={FIELD_NAME.SECTION}
         label="UNDER SECTION"
@@ -233,8 +175,8 @@ const ItrNoticeForm = (props) => {
         >
           {optionData.sectionList.map((x, i) => {
             return (
-              <Option value={x} key={i}>
-                {x}
+              <Option value={x.key} key={i}>
+                <Tooltip title={x.name}>{x.name}</Tooltip>
               </Option>
             );
           })}
@@ -242,7 +184,7 @@ const ItrNoticeForm = (props) => {
       </Form.Item>
       <Form.Item
         name={FIELD_NAME.SUBSECTION}
-        label="TYPE OF NOTICE"
+        label="Select your Notice Type"
         rules={[
           {
             required: true,
@@ -257,8 +199,8 @@ const ItrNoticeForm = (props) => {
         >
           {optionData.subSectionsList.map((x, i) => {
             return (
-              <Option value={x} key={i}>
-                {x}
+              <Option value={x.key} key={i}>
+                <Tooltip title={x.name}>{x.name}</Tooltip>
               </Option>
             );
           })}
@@ -272,63 +214,91 @@ const ItrNoticeForm = (props) => {
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
 
-      <Form.Item noStyle shouldUpdate>
-        {({ getFieldValue }) => {
-          const value = getFieldValue("service");
-          if (value === "video") {
-            return (
-              <Form.Item
-                name={FIELD_NAME.SELECT_TIME}
-                label="select Time"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please select Date!",
-                  },
-                ]}
-              >
-                <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />
-              </Form.Item>
-            );
-          }
-          return null;
-        }}
-      </Form.Item>
-
-      {/* <Form.Item
-              name={FIELD_NAME.UPLOAD_NOTICE}
-              label="Upload Notice"
-              valuePropName="fileList"
-              getValueFromEvent={normFile}
+      {/* <Form.Item label="Upload Copy of Notice & other supporting documents">
+        <Space>
+          <Form.Item
+            name={FIELD_NAME.UPLOAD_DOCUMENT}
+            noStyle
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+            rules={[
+              {
+                required: true,
+                message: "Upload Required Document",
+              },
+            ]}
+          >
+            <Upload
+              beforeUpload={(file) => {
+                return false;
+              }}
+              multiple={false}
+              maxCount={1}
+              style={{
+                width: 160,
+              }}
             >
-              <Upload
-                beforeUpload={(file) => {
-                  // console.log(file);
-                  return false;
-                }}
-                multiple={false}
-              >
-                <Button icon={<UploadOutlined />}>Click to upload</Button>
-              </Upload>
-            </Form.Item> */}
-      <Form.Item
-        name={FIELD_NAME.UPLOAD_ITR}
-        label="NOTICE / OTHER DOCUMENTS"
-        valuePropName="fileList"
-        getValueFromEvent={normFile}
-      >
-        <Upload
-          beforeUpload={(file) => {
-            return false;
-          }}
-          multiple={false}
-          maxCount={1}
-        >
-          <Button icon={<UploadOutlined />}>Click to upload</Button>
-        </Upload>
-      </Form.Item>
+              <Button icon={<UploadOutlined />}>Click Upload File</Button>
+            </Upload>
+          </Form.Item>
 
+          <Tooltip title="Please merge file in single Pdf">
+            <InfoCircleOutlined
+              style={{ fontSize: "16px", color: "#f47c01" }}
+            />
+          </Tooltip>
+          <a
+            href="#"
+            onClick={() => openFile("/documents/ITR_FILINING_DOCUMENT.pdf")}
+          >
+            Documents Click Here
+          </a>
+        </Space>
+      </Form.Item> */}
+      <Form.Item label="Upload Copy of Notice & other supporting documents">
+        <Space>
+          <Form.Item
+            name={FIELD_NAME.UPLOAD_ITR}
+            noStyle
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+            rules={[
+              {
+                required: true,
+                message: "Upload Required Document",
+              },
+            ]}
+          >
+            <Upload
+              beforeUpload={(file) => {
+                return false;
+              }}
+              multiple={false}
+              maxCount={1}
+              style={{
+                width: 160,
+              }}
+            >
+              <Button icon={<UploadOutlined />}>Click Upload File</Button>
+            </Upload>
+          </Form.Item>
+
+          <Tooltip title="Please merge file in single Pdf">
+            <InfoCircleOutlined
+              style={{ fontSize: "16px", color: "#f47c01" }}
+            />
+          </Tooltip>
+          <a
+            href="#"
+            onClick={() => openFile("/documents/ITR_FILINING_DOCUMENT.pdf")}
+          >
+            Documents Click Here
+          </a>
+        </Space>
+      </Form.Item>
       <Form.Item
+        label=" "
+        colon={false}
         name="agreement"
         valuePropName="checked"
         rules={[
@@ -339,19 +309,18 @@ const ItrNoticeForm = (props) => {
                 : Promise.reject(new Error("Should accept agreement")),
           },
         ]}
-        {...tailFormItemLayout}
       >
         <Checkbox>
-          I have read the{" "}
+          I have read and I agree to the{" "}
           <a
             href="#"
-            onClick={() => handleClick("/documents/TERMS_CONDITIONS_FMT.pdf")}
+            onClick={() => openFile("/documents/TERMS_CONDITIONS_FMT.pdf")}
           >
             Terms & Condition.
           </a>
         </Checkbox>
       </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
+      <Form.Item label=" " colon={false}>
         <Button type="primary" htmlType="submit" loading={isLoading}>
           Submit
         </Button>

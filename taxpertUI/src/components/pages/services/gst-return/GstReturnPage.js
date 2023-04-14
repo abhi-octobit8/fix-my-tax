@@ -1,15 +1,18 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Collapse, Space, Card } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 import {} from "../../../../services/register.service";
+import { Header1, Header3 } from "../../../../common/Headers";
 import GstNoticeFormContainer from "../../../../common/gst-notice-form/GstNoticeFormContainer";
 
 import "./GstReturnPage.css";
+import { openFile } from "../../../../shared/utils";
 
 const { Panel } = Collapse;
 
 const GstReturnPage = () => {
-  const titleHeader = "Gst Return Page";
+  const titleHeader = "Gst Return";
 
   return (
     <React.Fragment>
@@ -17,13 +20,28 @@ const GstReturnPage = () => {
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
             <div className="section-banner-info">
-              <div className="section-banner-title">Gst Return Page</div>
+              <div className="section-banner-title">Gst Return</div>
               <p className="section-banner-data">
-                All matters related to direct/indirect tax filing, TDS/TCS
-                filing and claim, enetrprise setup, consultancy on tax
-                management for individuals and businesses. Other taxation
-                related queries doubts.
+                We understand the importance of timely and accurate GST filings,
+                which is why we offer our expertise to individuals, businesses,
+                and organizations of all sizes. Our team of experienced tax
+                professionals will guide you through the entire process,
+                ensuring that all your GST obligations are met while maximizing
+                your tax savings. With our thorough understanding of GST laws
+                and regulations, we strive to provide our clients with peace of
+                mind during GST filing season. Trust us to handle your GST
+                filings with efficiency and accuracy.
               </p>
+              <div className="section-header">
+                <Header3>
+                  <a
+                    href="#"
+                    onClick={() => openFile("/documents/FORMS_UNDER_GST.pdf")}
+                  >
+                    Forms under GST Act
+                  </a>
+                </Header3>
+              </div>
             </div>
           </div>
         </div>
@@ -33,9 +51,10 @@ const GstReturnPage = () => {
           <div className="section-header">
             <h2>{titleHeader}</h2>
           </div>
-          <GstNoticeFormContainer
+          <Header1 className="section-header">Image come Here...</Header1>
+          {/* <GstNoticeFormContainer
             selectedFixMyTaxService={FixMyTaxServiceType.ITR_TDS_TCS_Filing}
-          />
+          /> */}
         </Card>
       </section>
       <section className="section-faq-container">

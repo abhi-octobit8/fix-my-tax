@@ -8,7 +8,7 @@ import FilingTdsFormContainer from "../../../../modules/filing-tds/FilingTdsForm
 const { Panel } = Collapse;
 
 const FilingTdsPage = () => {
-  const titleHeader = "Filing ITR/TCS/TDS";
+  const titleHeader = "TDS/TCS Filing";
 
   return (
     <React.Fragment>
@@ -16,12 +16,19 @@ const FilingTdsPage = () => {
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
             <div className="section-banner-info">
-              <div className="section-banner-title">Filing TCS TDS</div>
+              <div className="section-banner-title">TDS/TCS Filing</div>
               <p className="section-banner-data">
-                All matters related to direct/indirect tax filing, TDS/TCS
-                filing and claim, enetrprise setup, consultancy on tax
-                management for individuals and businesses. Other taxation
-                related queries doubts.
+                Introducing our reliable and efficient TDS/TCS filing service
+                provided by our tax consultancy firm. We understand that
+                complying with TDS/TCS regulations can be a daunting task, which
+                is why we offer our expertise to simplify the process for you.
+                Our team of experienced tax professionals will ensure that your
+                TDS/TCS obligations are met in a timely and accurate manner,
+                avoiding any potential penalties or interest charges. With our
+                in-depth knowledge of TDS/TCS laws and regulations, we aim to
+                provide our clients with hassle-free TDS/TCS filings. Trust us
+                to handle your TDS/TCS filings with the utmost professionalism
+                and expertise.
               </p>
             </div>
           </div>
