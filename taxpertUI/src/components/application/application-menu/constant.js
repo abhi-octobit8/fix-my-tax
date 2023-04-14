@@ -73,6 +73,11 @@ const MENU_ITEMS = [
         to: PATH.GST_NOTICE,
       },
       {
+        label: "Income Tax / GST Appeals",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_TAX_APPEAL,
+      },
+      {
         label: "Consultation",
         role: USER_ROLE.PUBLIC,
         to: PATH.SERVICE_COSULTATION,

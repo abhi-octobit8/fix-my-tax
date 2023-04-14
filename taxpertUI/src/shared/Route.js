@@ -4,6 +4,7 @@ const PATH = {
   MEMBERSHIP: "/membership",
   NEW_REQUEST_CREATE: "/newrequest/create",
   ITR_NOTICE_PATH: "/service/itr-notice",
+  SERVICE_TAX_APPEAL: "/service/tax-appeal",
   GST_NOTICE: "/service/gst-notice",
   SERVICE_COSULTATION: "/service/consultation",
   SERVICE_ITR_FILING: "/service/filing-itr",

@@ -24,6 +24,7 @@ import MembershipPage from "../pages/membership/MembershipPage";
 import FilingTdsPage from "../pages/services/filing-tds/FilingTdsPage";
 import GstReturnPage from "../pages/services/gst-return/GstReturnPage";
 import FilingItrPage from "../pages/services/filing-itr/FilingItrPage";
+import TaxAppealPage from "../pages/services/tax-appeal/TaxAppealPage";
 
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
@@ -44,6 +45,7 @@ function AuthenticatedApplication() {
         <Route path="about" element={<AboutPage />} />
         <Route path="membership" element={<MembershipPage />} />
         <Route path={PATH.ITR_NOTICE_PATH} element={<ItrNoticePage />} />
+        <Route path={PATH.SERVICE_TAX_APPEAL} element={<TaxAppealPage />} />
         <Route path={PATH.GST_NOTICE} element={<GstNoticePage />} />
         <Route
           path={PATH.SERVICE_COSULTATION}
