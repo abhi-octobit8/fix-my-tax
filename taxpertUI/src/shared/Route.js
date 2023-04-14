@@ -7,6 +7,7 @@ const PATH = {
   SERVICE_TAX_APPEAL: "/service/tax-appeal",
   GST_NOTICE: "/service/gst-notice",
   SERVICE_COSULTATION: "/service/consultation",
+  SERVICE_BUSINESS_CONSULTATION: "/service/business-consultation",
   SERVICE_ITR_FILING: "/service/filing-itr",
   SERVICE_GST_RETURN: "/service/gst-return",
   SERVICE_TDS_TCS_FILING: "/service/filing-tds-tcs",

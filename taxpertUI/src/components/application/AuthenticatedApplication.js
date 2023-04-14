@@ -12,7 +12,6 @@ import RegisterPage from "../pages/register/RegisterPage";
 import { checkLogin } from "../../store/authentication/AuthActions";
 import { useSelector } from "react-redux";
 import { PATH } from "../../shared/Route";
-import ConsultationNotice from "../pages/services/consultation-notice/ConsultationNotice";
 import LatestNewsPage from "../pages/latest-news/LatestNewsPage";
 import AdminLayout from "../pages/admin/admin-layout/AdminLayout";
 import DashBoard from "../pages/admin/dahboard/DashBoard";
@@ -25,6 +24,7 @@ import FilingTdsPage from "../pages/services/filing-tds/FilingTdsPage";
 import GstReturnPage from "../pages/services/gst-return/GstReturnPage";
 import FilingItrPage from "../pages/services/filing-itr/FilingItrPage";
 import TaxAppealPage from "../pages/services/tax-appeal/TaxAppealPage";
+import BusinessConsultationPage from "../pages/services/business-consultation/BusinessConsultationPage";
 
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
@@ -48,9 +48,10 @@ function AuthenticatedApplication() {
         <Route path={PATH.SERVICE_TAX_APPEAL} element={<TaxAppealPage />} />
         <Route path={PATH.GST_NOTICE} element={<GstNoticePage />} />
         <Route
-          path={PATH.SERVICE_COSULTATION}
-          element={<ConsultationNotice />}
+          path={PATH.SERVICE_BUSINESS_CONSULTATION}
+          element={<BusinessConsultationPage />}
         />
+
         <Route path={PATH.SERVICE_ITR_FILING} element={<FilingItrPage />} />
         <Route path={PATH.SERVICE_GST_RETURN} element={<GstReturnPage />} />
         <Route path={PATH.SERVICE_TDS_TCS_FILING} element={<FilingTdsPage />} />

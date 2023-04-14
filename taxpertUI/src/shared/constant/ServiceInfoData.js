@@ -958,6 +958,54 @@ const fixMytaxServiceInfoData = {
       documents: [],
     },
   ],
+
+  business_consultation: [
+    {
+      key: 1,
+      name: "Knowledge about intricacies of taxation laws as per Statute",
+      subSections: null,
+      description: "",
+      documents: [],
+      fee: 2500,
+      price: 2950,
+    },
+    {
+      key: 2,
+      name: "legal opinion on any complex taxation matters from our Team of Qualified Professionals @ Legal Consultancy",
+      subSections: null,
+      description: "",
+      documents: [],
+      fee: 5100,
+      price: 6018,
+    },
+    {
+      key: 3,
+      name: "Any business related consultancy  being proprietorship / partnership / llp or company",
+      subSections: null,
+      description: "",
+      documents: [],
+      fee: 2100,
+      price: 2478,
+    },
+    {
+      key: 4,
+      name: "Any ngo related consultancy being society / trust / charitable company",
+      subSections: null,
+      description: "",
+      documents: [],
+      fee: 2100,
+      price: 2478,
+    },
+    {
+      key: 5,
+      name: "Any ngo income related query",
+      subSections: null,
+      description: "",
+      documents: [],
+      fee: 2100,
+      price: 2478,
+    },
+  ],
 };
 
 const fixMytaxServicesInfo = {

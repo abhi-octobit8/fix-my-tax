@@ -77,10 +77,15 @@ const MENU_ITEMS = [
         role: USER_ROLE.PUBLIC,
         to: PATH.SERVICE_TAX_APPEAL,
       },
+      // {
+      //   label: "Consultation",
+      //   role: USER_ROLE.PUBLIC,
+      //   to: PATH.SERVICE_COSULTATION,
+      // },
       {
-        label: "Consultation",
+        label: "Business Consultation",
         role: USER_ROLE.PUBLIC,
-        to: PATH.SERVICE_COSULTATION,
+        to: PATH.SERVICE_BUSINESS_CONSULTATION,
       },
     ],
   },

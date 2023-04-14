@@ -160,7 +160,7 @@ const TaxAppealForm = (props) => {
     >
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="Type Of Appeal"
+        label="Type of Appeal"
         rules={[
           {
             required: true,
@@ -176,7 +176,8 @@ const TaxAppealForm = (props) => {
           {optionData.sectionList.map((x, i) => {
             return (
               <Option value={x.key} key={i}>
-                <Tooltip title={x.name}>{x.name}</Tooltip>
+                {/* <Tooltip title={x.name}>{x.name}</Tooltip> */}
+                {x.name}
               </Option>
             );
           })}
