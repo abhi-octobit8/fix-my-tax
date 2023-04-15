@@ -97,12 +97,22 @@ const TicketListRequest = () => {
       dataIndex: "status",
       key: "status",
       width: 100,
-      render: (text) =>
-        text === true ? (
-          <Tag color="#2db7f5">{getKeyFromObject(TicketStatus, text)}</Tag>
-        ) : (
-          <Tag color="#2db7f5">{getKeyFromObject(TicketStatus, text)}</Tag>
-        ),
+      render: (value) => {
+        debugger;
+        console.log(getKeyFromObject(TicketStatus, value));
+        return (
+          <>
+            {value === true ? (
+              <Tag color="#2db7f5">
+                {" "}
+                {getKeyFromObject(TicketStatus, value)}
+              </Tag>
+            ) : (
+              <Tag color="#2db7f5">{getKeyFromObject(TicketStatus, value)}</Tag>
+            )}
+          </>
+        );
+      },
     },
     {
       title: "Assigned To",

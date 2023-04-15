@@ -20,7 +20,7 @@ const STATUSES = {
 export default function UpdateTicketStatus({
   editState,
   setEditState,
-  statusValue = "Closed",
+  statusValue = "",
   id,
 }) {
   const [loading, setLoading] = useState(false);
