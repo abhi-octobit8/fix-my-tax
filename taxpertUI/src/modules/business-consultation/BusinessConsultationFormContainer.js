@@ -20,7 +20,6 @@ const BusinessConsultationFormContainer = (props) => {
   const onProceed = (values) => {
     //update reducer for selected service.
     console.log(values);
-    debugger;
 
     const formData = {
       ...values,

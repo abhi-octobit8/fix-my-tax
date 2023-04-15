@@ -13,7 +13,6 @@ export default function requestReducer(state = initialState, action) {
     //     advocateListData: action.payload,
     //   };
     case ORDER_ACTIONS.SET_ORDER_DATA:
-      debugger;
       return {
         ...state,
         orderInfo: action.payload,

@@ -25,8 +25,6 @@ const ItrNoticeFormContainer = (props) => {
 
   const onProceed = (values) => {
     //update reducer for selected service.
-    console.log(values);
-    debugger;
 
     const formData = {
       ...values,
@@ -37,7 +35,6 @@ const ItrNoticeFormContainer = (props) => {
   };
   const onFinish = async (values) => {
     // check request created from new assessee or existing assessee
-    debugger;
     if (userRole) {
       const registerFormData = {
         fixMyTaxServiceType: selectedFixMyTaxService,

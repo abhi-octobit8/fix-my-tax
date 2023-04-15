@@ -17,7 +17,12 @@ import { UploadOutlined } from "@ant-design/icons";
 import { phoneNumberValidator } from "../../../shared/validator";
 import { Header3 } from "../../../common/Headers";
 import { REGISTER_CATEGORIES } from "./constant";
-import { openFile } from "../../../shared/utils";
+import { message, openFile } from "../../../shared/utils";
+import {
+  registerNotice,
+  registerUser,
+} from "../../../services/register.service";
+import { SUCCESS_MESSAGE_INFO } from "../../../shared/constant/MessageInfo";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -58,27 +63,35 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const RegisterPage = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
   const onFinish = async (values) => {
-    console.log("registration values:", values);
+    try {
+      console.log("registration values:", values);
+      setIsLoading(true);
+      const registerFormData = {
+        name: values.name,
+        email: values.email,
+        phoneNumber: values.phoneNumber,
+      };
 
-    const registerData = {
-      values,
-      isActive: true,
-      roleNames: ["string"],
-    };
-
-    const register = await API({
-      method: "post",
-      url: "/services/app/user/create",
-      body: registerData,
-    });
-    // doLogin({ ...loginResponse });
-    // await checkLogin(loginResponse.userId);
-
-    // setLoading(false);
-    // navigate("/request/newrequest");
+      const res = await registerUser(registerFormData);
+      if (res.userId) {
+        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  // doLogin({ ...loginResponse });
+  // await checkLogin(loginResponse.userId);
+
+  // setLoading(false);
+  // navigate("/request/newrequest");
+
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -134,7 +147,7 @@ const RegisterPage = (props) => {
         </Form.Item> */}
 
         <Form.Item
-          name="emailAddress"
+          name="email"
           label="E-mail"
           rules={[
             {
@@ -266,7 +279,7 @@ const RegisterPage = (props) => {
           </Form.Item>
         </React.Fragment> */}
         <Form.Item
-          name="phone"
+          name="phoneNumber"
           label="Phone Number"
           rules={[
             {
@@ -309,7 +322,7 @@ const RegisterPage = (props) => {
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={isLoading}>
             Register
           </Button>
         </Form.Item>

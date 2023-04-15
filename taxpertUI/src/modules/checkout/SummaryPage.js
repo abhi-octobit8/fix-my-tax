@@ -3,11 +3,18 @@ import { Button, Card, Col, Collapse, Descriptions, Row, Space } from "antd";
 import { Header4 } from "../../common/Headers";
 import { toFixed } from "../../shared/utils";
 import { calculateTotalPayment } from "./CheckoutMethod";
+import { doLogout } from "../../store/authentication/AuthActions";
+import { Navigate, useNavigate } from "react-router-dom";
+import { PATH } from "../../shared/Route";
+import useUserRole from "../../components/hooks/useUserRole";
+import { USER_ROLE } from "../../components/application/application-menu/constant";
 
 const { Panel } = Collapse;
 
 const SummaryPage = (props) => {
-  const { orderDetails, userInfo } = props;
+  const navigate = useNavigate();
+  const userRole = useUserRole();
+  const { orderDetails, userInfo, onSubmit } = props;
   return (
     <React.Fragment>
       <Card>
@@ -27,9 +34,22 @@ const SummaryPage = (props) => {
           </Descriptions.Item>
         </Descriptions>
         <div className="content-padding">
-          <Button block type="primary">
-            Payment
-          </Button>
+          {userRole === USER_ROLE.CUSTOMER ? (
+            <Button type="primary" block onClick={onSubmit}>
+              Payment
+            </Button>
+          ) : (
+            <Button
+              type="primary"
+              onClick={() => {
+                doLogout();
+                navigate(PATH.SERVICE_ITR_FILING);
+              }}
+              block
+            >
+              Got to Services
+            </Button>
+          )}
         </div>
       </Card>
     </React.Fragment>

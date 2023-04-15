@@ -18,6 +18,10 @@ import useUserRole from "../../components/hooks/useUserRole";
 import "./FilingItrForm.css";
 import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
 import { getObjectFromList, openFile } from "../../shared/utils";
+import { PATH } from "../../shared/Route";
+import { useNavigate } from "react-router-dom";
+import { USER_ROLE } from "../../components/application/application-menu/constant";
+import { doLogout } from "../../store/authentication/AuthActions";
 
 const { Option } = Select;
 
@@ -48,6 +52,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const FilingItrForm = (props) => {
+  const navigate = useNavigate();
   const { onFinish, onProceed } = props;
   const { itr_filling } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
@@ -195,11 +200,25 @@ const FilingItrForm = (props) => {
         </Checkbox>
       </Form.Item>
 
-      <Form.Item label=" " colon={false}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
+      {userRole === USER_ROLE.CUSTOMER ? (
+        <Form.Item label=" " colon={false}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      ) : (
+        <Form.Item label=" " colon={false} block>
+          <Button
+            type="primary"
+            onClick={() => {
+              doLogout();
+              navigate(PATH.LOGIN);
+            }}
+          >
+            Register Or Login
+          </Button>
+        </Form.Item>
+      )}
     </Form>
   );
 };

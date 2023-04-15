@@ -116,7 +116,6 @@ const TaxAppealForm = (props) => {
     if (value) {
       // const sectionValue = getObjectFromList(tds_filing, value).fee;
       const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
-      debugger;
       const sectionObj = getObjectFromList(tax_appeal, sectionValue);
       const priceValue = getObjectFromList(sectionObj.subSections, value).fee;
 
