@@ -27,11 +27,13 @@ const ServiceDetails = (props) => {
             {" "}
             {orderDetails?.fixMyTaxService?.name}
           </Descriptions.Item>
-          <Descriptions.Item label="Selected Section" span={3}>
-            {orderDetails?.sectionValue}
+          <Descriptions.Item label="" span={3}>
+            {orderDetails?.sectionObj?.name}{" "}
+            {orderDetails?.sectionObj?.description}
           </Descriptions.Item>
-          <Descriptions.Item label="Selected Sub Section" span={3}>
-            {orderDetails?.subSectionValue}
+          <Descriptions.Item label="" span={3}>
+            {orderDetails?.subSectionObj?.name}{" "}
+            {orderDetails?.subSectionObj?.description}
           </Descriptions.Item>
         </Descriptions>
       </Card>

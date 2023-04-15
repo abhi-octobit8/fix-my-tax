@@ -48,7 +48,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const GstNoticeForm = (props) => {
-  const { onFinish } = props;
+  const { onFinish, onProceed } = props;
   const { gst_notice } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
@@ -67,15 +67,17 @@ const GstNoticeForm = (props) => {
     }));
   }, []);
 
-  const onSubmit = async (values) => {
+  const onSubmit = (values) => {
     try {
-      setIsLoading(true);
-      await onFinish(values);
-      form.resetFields();
+      const sectionObj = getObjectFromList(gst_notice, values.section);
+
+      const formData = {
+        ...values,
+        sectionObj,
+      };
+      onProceed(formData);
     } catch (e) {
       console.error(e);
-    } finally {
-      setIsLoading(false);
     }
   };
   const onHandleSection = (value) => {

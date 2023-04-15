@@ -48,7 +48,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const FilingItrForm = (props) => {
-  const { onFinish } = props;
+  const { onFinish, onProceed } = props;
   const { itr_filling } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
@@ -67,18 +67,6 @@ const FilingItrForm = (props) => {
     }));
   }, []);
 
-  const onSubmit = async (values) => {
-    try {
-      setIsLoading(true);
-      await onFinish(values);
-      form.resetFields();
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const onHandleSection = (value) => {
     console.log(value);
     if (value) {
@@ -92,8 +80,22 @@ const FilingItrForm = (props) => {
     }
   };
 
+  const onSubmit = (values) => {
+    try {
+      const sectionObj = getObjectFromList(itr_filling, values.section);
+
+      const formData = {
+        ...values,
+        sectionObj,
+      };
+      onProceed(formData);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
-    <Form onFinish={onFinish} {...formItemLayout} form={form} name="register">
+    <Form onFinish={onSubmit} {...formItemLayout} form={form} name="register">
       <Form.Item
         name={FIELD_NAME.SECTION}
         label="ITR Type"

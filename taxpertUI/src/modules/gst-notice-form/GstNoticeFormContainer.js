@@ -8,70 +8,82 @@ import { PATH } from "../../shared/Route";
 import { message } from "../../shared/utils";
 
 import GstNoticeForm from "./GstNoticeForm";
+import { FIX_MY_TAX_SERVICE_TYPES } from "../../shared/constant/TaxService";
+import { setOrderData } from "../../store/order/orderActions";
 
 const GstNoticeFormContainer = (props) => {
   const { selectedFixMyTaxService } = props;
   const navigate = useNavigate();
 
   const userRole = useUserRole();
-  const onFinish = async (values) => {
-    // check request created from new assessee or existing assessee
 
-    if (userRole) {
-      const registerFormData = {
-        fixMyTaxServiceType: selectedFixMyTaxService,
-        serviceType: 2, // notice reply always for time being
-        section: values.section,
-        subSection: "",
-        subject: values.subject,
-        question: values.question,
-        description: values.description,
-        // status: 0,
-        price: values.price,
-        // paymentStaus: 0,
-        // transactionNumber: "678678",
-      };
+  const onProceed = (values) => {
+    //update reducer for selected service.
+    console.log(values);
+    debugger;
 
-      const res = await createTicketService(
-        registerFormData,
-        values.uploadGSTNotice
-      );
-      if (res.id) {
-        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-        navigate(PATH.TICKET_REQUEST_LIST);
-      }
-    } else {
-      const registerFormData = {
-        name: values.name,
-        email: values.email,
-        phoneNumber: values.phoneNumber,
-        ticketDetails: {
-          fixMyTaxServiceType: selectedFixMyTaxService,
-          serviceType: 2, // notice reply always for time being
-          section: values.section,
-          subSection: "",
-          subject: values.subject,
-          question: values.question,
-          description: values.description,
-          // status: 0,
-          price: values.price,
-
-          // paymentStaus: 0,
-          // transactionNumber: "678678",
-        },
-      };
-
-      const res = await registerNotice(
-        registerFormData,
-        values.uploadGSTNotice
-      );
-      if (res.id) {
-        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-      }
-    }
+    const formData = {
+      ...values,
+      fixMyTaxService: FIX_MY_TAX_SERVICE_TYPES[4],
+    };
+    setOrderData(formData);
+    navigate(PATH.CHECKOUT);
   };
 
-  return <GstNoticeForm onFinish={onFinish} />;
+  const onFinish = async (values) => {
+    // check request created from new assessee or existing assessee
+    // if (userRole) {
+    //   const registerFormData = {
+    //     fixMyTaxServiceType: selectedFixMyTaxService,
+    //     serviceType: 2, // notice reply always for time being
+    //     section: values.section,
+    //     subSection: "",
+    //     subject: values.subject,
+    //     question: values.question,
+    //     description: values.description,
+    //     // status: 0,
+    //     price: values.price,
+    //     // paymentStaus: 0,
+    //     // transactionNumber: "678678",
+    //   };
+    //   const res = await createTicketService(
+    //     registerFormData,
+    //     values.uploadGSTNotice
+    //   );
+    //   if (res.id) {
+    //     message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+    //     navigate(PATH.TICKET_REQUEST_LIST);
+    //   }
+    // } else {
+    //   const registerFormData = {
+    //     name: values.name,
+    //     email: values.email,
+    //     phoneNumber: values.phoneNumber,
+    //     ticketDetails: {
+    //       fixMyTaxServiceType: selectedFixMyTaxService,
+    //       serviceType: 2, // notice reply always for time being
+    //       section: values.section,
+    //       subSection: "",
+    //       subject: values.subject,
+    //       question: values.question,
+    //       description: values.description,
+    //       // status: 0,
+    //       price: values.price,
+    //       // paymentStaus: 0,
+    //       // transactionNumber: "678678",
+    //     },
+    //   };
+    //   const res = await registerNotice(
+    //     registerFormData,
+    //     values.uploadGSTNotice
+    //   );
+    //   if (res.id) {
+    //     message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+    //   }
+    // }
+  };
+
+  return <GstNoticeForm onFinish={onFinish} onProceed={onProceed} />;
 };
 
 export default GstNoticeFormContainer;

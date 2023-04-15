@@ -62,7 +62,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const FilingTdsForm = (props) => {
-  const { onFinish } = props;
+  const { onFinish, onProceed } = props;
   const { tds_filing } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
@@ -81,15 +81,17 @@ const FilingTdsForm = (props) => {
     }));
   }, []);
 
-  const onSubmit = async (values) => {
+  const onSubmit = (values) => {
     try {
-      setIsLoading(true);
-      await onFinish(values);
-      form.resetFields();
+      const sectionObj = getObjectFromList(tds_filing, values.section);
+
+      const formData = {
+        ...values,
+        sectionObj,
+      };
+      onProceed(formData);
     } catch (e) {
       console.error(e);
-    } finally {
-      setIsLoading(false);
     }
   };
 

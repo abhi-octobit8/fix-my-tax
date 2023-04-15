@@ -48,7 +48,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const BusinessConsultationForm = (props) => {
-  const { onFinish } = props;
+  const { onFinish, onProceed } = props;
   const { business_consultation } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
@@ -67,15 +67,20 @@ const BusinessConsultationForm = (props) => {
     }));
   }, []);
 
-  const onSubmit = async (values) => {
+  const onSubmit = (values) => {
     try {
-      setIsLoading(true);
-      await onFinish(values);
-      form.resetFields();
+      const sectionObj = getObjectFromList(
+        business_consultation,
+        values.section
+      );
+
+      const formData = {
+        ...values,
+        sectionObj,
+      };
+      onProceed(formData);
     } catch (e) {
       console.error(e);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -93,7 +98,7 @@ const BusinessConsultationForm = (props) => {
   };
 
   return (
-    <Form onFinish={onFinish} {...formItemLayout} form={form} name="register">
+    <Form onFinish={onSubmit} {...formItemLayout} form={form} name="register">
       <Form.Item
         name={FIELD_NAME.SECTION}
         label="NATURE OF QUERY"

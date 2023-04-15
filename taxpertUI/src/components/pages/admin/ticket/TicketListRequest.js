@@ -180,18 +180,18 @@ const TicketListRequest = () => {
       <Card>
         <ListHeader
           leftContent={<h2>All Request </h2>}
-          rightContent={
-            <>
-              {userRole == USER_ROLE.CUSTOMER ? (
-                <Button
-                  onClick={onHandleCreate}
-                  type="primary"
-                  shape="circle"
-                  icon={<PlusOutlined />}
-                />
-              ) : null}
-            </>
-          }
+          // rightContent={
+          //   <>
+          //     {userRole == USER_ROLE.CUSTOMER ? (
+          //       <Button
+          //         onClick={onHandleCreate}
+          //         type="primary"
+          //         shape="circle"
+          //         icon={<PlusOutlined />}
+          //       />
+          //     ) : null}
+          //   </>
+          // }
         ></ListHeader>
         <Row>
           <Col sm={{ span: 10, offset: 0 }}></Col>

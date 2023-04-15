@@ -90,15 +90,15 @@ const ItrNoticeForm = (props) => {
       // setIsLoading(true);
       const sectionObj = getObjectFromList(notices, values.section);
 
-      const sectionValue = sectionObj.name;
-      const subSectionValue = getObjectFromList(
+      // const sectionValue = sectionObj.name;
+      const subSectionObj = getObjectFromList(
         sectionObj.subSections,
         values.subSection
-      ).name;
+      );
       const formData = {
         ...values,
-        sectionValue,
-        subSectionValue,
+        sectionObj,
+        subSectionObj,
       };
       onProceed(formData);
     } catch (e) {

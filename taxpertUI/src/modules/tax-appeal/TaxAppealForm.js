@@ -7,16 +7,11 @@ import {
   Input,
   Select,
   Upload,
-  Collapse,
-  DatePicker,
-  InputNumber,
   Checkbox,
   Tooltip,
   Space,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
-import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
-import { phoneNumberValidator } from "../../shared/validator";
 import { FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
 
@@ -44,18 +39,7 @@ const formItemLayout = {
     },
   },
 };
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+
 const normFile = (e) => {
   console.log("Upload event:", e);
   if (Array.isArray(e)) {
@@ -64,7 +48,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const TaxAppealForm = (props) => {
-  const { onFinish } = props;
+  const { onProceed } = props;
   const { tax_appeal } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
@@ -83,15 +67,26 @@ const TaxAppealForm = (props) => {
     }));
   }, []);
 
-  const onSubmit = async (values) => {
+  const onSubmit = (values) => {
     try {
-      setIsLoading(true);
-      await onFinish(values);
-      form.resetFields();
+      // setIsLoading(true);
+      const sectionObj = getObjectFromList(tax_appeal, values.section);
+
+      // const sectionValue = sectionObj.name;
+      const subSectionObj = getObjectFromList(
+        sectionObj.subSections,
+        values.subSection
+      );
+      const formData = {
+        ...values,
+        sectionObj,
+        subSectionObj,
+      };
+      onProceed(formData);
     } catch (e) {
       console.error(e);
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
