@@ -10,9 +10,11 @@ import { registerNotice } from "../../services/register.service";
 import { createTicketService } from "../../services/ticket.service";
 import { SUCCESS_MESSAGE_INFO } from "../../shared/constant/MessageInfo";
 import { PATH } from "../../shared/Route";
-import { message } from "../../shared/utils";
+import { getObjectFromList, message } from "../../shared/utils";
 
 import ItrNoticeForm from "./ItrNoticeForm";
+import { setOrderData } from "../../store/order/orderActions";
+import { FIX_MY_TAX_SERVICE_TYPES } from "../../shared/constant/TaxService";
 
 const ItrNoticeFormContainer = (props) => {
   const { selectedFixMyTaxService } = props;
@@ -20,9 +22,22 @@ const ItrNoticeFormContainer = (props) => {
   const navigate = useNavigate();
 
   const userRole = useUserRole();
+
+  const onProceed = (values) => {
+    //update reducer for selected service.
+    console.log(values);
+    debugger;
+
+    const formData = {
+      ...values,
+      fixMyTaxService: FIX_MY_TAX_SERVICE_TYPES[2],
+    };
+    setOrderData(formData);
+    navigate(PATH.CHECKOUT);
+  };
   const onFinish = async (values) => {
     // check request created from new assessee or existing assessee
-
+    debugger;
     if (userRole) {
       const registerFormData = {
         fixMyTaxServiceType: selectedFixMyTaxService,
@@ -70,7 +85,7 @@ const ItrNoticeFormContainer = (props) => {
     }
   };
 
-  return <ItrNoticeForm onFinish={onFinish} />;
+  return <ItrNoticeForm onProceed={onProceed} />;
 };
 
 export default ItrNoticeFormContainer;

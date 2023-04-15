@@ -10,7 +10,7 @@ import BusinessConsultationFormContainer from "../../../../modules/business-cons
 const { Panel } = Collapse;
 
 const BusinessConsultationPage = () => {
-  const titleHeader = "Busines Consultation";
+  const titleHeader = "Business Consultation";
 
   return (
     <React.Fragment>

@@ -64,7 +64,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const ItrNoticeForm = (props) => {
-  const { onFinish } = props;
+  const { onProceed } = props;
   const { notices } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
@@ -83,15 +83,28 @@ const ItrNoticeForm = (props) => {
     }));
   }, []);
 
-  const onSubmit = async (values) => {
+  React.useEffect(() => () => form.resetFields(), []);
+
+  const onSubmit = (values) => {
     try {
-      setIsLoading(true);
-      await onFinish(values);
-      form.resetFields();
+      // setIsLoading(true);
+      const sectionObj = getObjectFromList(notices, values.section);
+
+      const sectionValue = sectionObj.name;
+      const subSectionValue = getObjectFromList(
+        sectionObj.subSections,
+        values.subSection
+      ).name;
+      const formData = {
+        ...values,
+        sectionValue,
+        subSectionValue,
+      };
+      onProceed(formData);
     } catch (e) {
       console.error(e);
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 
@@ -288,12 +301,12 @@ const ItrNoticeForm = (props) => {
               style={{ fontSize: "16px", color: "#f47c01" }}
             />
           </Tooltip>
-          <a
+          {/* <a
             href="#"
             onClick={() => openFile("/documents/ITR_FILINING_DOCUMENT.pdf")}
           >
             Documents Click Here
-          </a>
+          </a> */}
         </Space>
       </Form.Item>
       <Form.Item
