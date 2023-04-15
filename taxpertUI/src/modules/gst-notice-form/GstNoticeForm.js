@@ -18,6 +18,8 @@ import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
 import { getObjectFromList, openFile } from "../../shared/utils";
 
 import "./GstNoticeForm.css";
+import { USER_ROLE } from "../../components/application/application-menu/constant";
+import RegisterButton from "../../common/register-button/RegisterButton";
 
 const { Option } = Select;
 
@@ -131,7 +133,6 @@ const GstNoticeForm = (props) => {
           })}
         </Select>
       </Form.Item>
-
       <Form.Item
         name={FIELD_NAME.PRICE}
         label="Fee"
@@ -205,9 +206,13 @@ const GstNoticeForm = (props) => {
         </Checkbox>
       </Form.Item>
       <Form.Item label=" " colon={false}>
-        <Button type="primary" htmlType="submit" loading={isLoading}>
-          Submit
-        </Button>
+        {userRole === USER_ROLE.CUSTOMER ? (
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        ) : (
+          <RegisterButton />
+        )}
       </Form.Item>
     </Form>
   );

@@ -22,6 +22,7 @@ import { PATH } from "../../shared/Route";
 import { useNavigate } from "react-router-dom";
 import { USER_ROLE } from "../../components/application/application-menu/constant";
 import { doLogout } from "../../store/authentication/AuthActions";
+import RegisterButton from "../../common/register-button/RegisterButton";
 
 const { Option } = Select;
 
@@ -200,25 +201,15 @@ const FilingItrForm = (props) => {
         </Checkbox>
       </Form.Item>
 
-      {userRole === USER_ROLE.CUSTOMER ? (
-        <Form.Item label=" " colon={false}>
+      <Form.Item label=" " colon={false}>
+        {userRole === USER_ROLE.CUSTOMER ? (
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
-        </Form.Item>
-      ) : (
-        <Form.Item label=" " colon={false} block>
-          <Button
-            type="primary"
-            onClick={() => {
-              doLogout();
-              navigate(PATH.LOGIN);
-            }}
-          >
-            Register Or Login
-          </Button>
-        </Form.Item>
-      )}
+        ) : (
+          <RegisterButton />
+        )}
+      </Form.Item>
     </Form>
   );
 };

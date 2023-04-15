@@ -18,6 +18,8 @@ import useUserRole from "../../components/hooks/useUserRole";
 import "./BusinessConsultationForm.css";
 import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
 import { getObjectFromList, openFile } from "../../shared/utils";
+import { USER_ROLE } from "../../components/application/application-menu/constant";
+import RegisterButton from "../../common/register-button/RegisterButton";
 
 const { Option } = Select;
 
@@ -156,10 +158,18 @@ const BusinessConsultationForm = (props) => {
         </Checkbox>
       </Form.Item>
 
-      <Form.Item label=" " colon={false}>
+      {/* <Form.Item label=" " colon={false}>
         <Button type="primary" htmlType="submit">
           Submit
-        </Button>
+        </Button> */}
+      <Form.Item label=" " colon={false}>
+        {userRole === USER_ROLE.CUSTOMER ? (
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        ) : (
+          <RegisterButton />
+        )}
       </Form.Item>
     </Form>
   );

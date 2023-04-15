@@ -23,6 +23,8 @@ import useUserRole from "../../components/hooks/useUserRole";
 import "./ItrNoticeForm.css";
 import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
 import { getObjectFromList, openFile } from "../../shared/utils";
+import { USER_ROLE } from "../../components/application/application-menu/constant";
+import RegisterButton from "../../common/register-button/RegisterButton";
 
 const { Option } = Select;
 
@@ -68,7 +70,6 @@ const ItrNoticeForm = (props) => {
   const { notices } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
-  const [isLoading, setIsLoading] = useState(false);
   const [optionData, setOptionData] = useState({
     sectionList: [],
     subSectionsList: [],
@@ -87,7 +88,6 @@ const ItrNoticeForm = (props) => {
 
   const onSubmit = (values) => {
     try {
-      // setIsLoading(true);
       const sectionObj = getObjectFromList(notices, values.section);
 
       // const sectionValue = sectionObj.name;
@@ -104,7 +104,6 @@ const ItrNoticeForm = (props) => {
     } catch (e) {
       console.error(e);
     } finally {
-      // setIsLoading(false);
     }
   };
 
@@ -332,10 +331,15 @@ const ItrNoticeForm = (props) => {
           </a>
         </Checkbox>
       </Form.Item>
+
       <Form.Item label=" " colon={false}>
-        <Button type="primary" htmlType="submit" loading={isLoading}>
-          Submit
-        </Button>
+        {userRole === USER_ROLE.CUSTOMER ? (
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        ) : (
+          <RegisterButton />
+        )}
       </Form.Item>
     </Form>
   );
