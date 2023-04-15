@@ -135,7 +135,7 @@ const GstNoticeForm = (props) => {
       <Form.Item
         name={FIELD_NAME.PRICE}
         label="Fee"
-        extra="FEE INCLUDING GST @ 18%"
+        // extra="FEE INCLUDING GST @ 18%"
       >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./RegisterPage.less";
 import {
@@ -16,6 +17,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import { phoneNumberValidator } from "../../../shared/validator";
 import { Header3 } from "../../../common/Headers";
 import { REGISTER_CATEGORIES } from "./constant";
+import { openFile } from "../../../shared/utils";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -296,9 +298,16 @@ const RegisterPage = (props) => {
           {...tailFormItemLayout}
         >
           <Checkbox>
-            I have read the <a href="">agreement</a>
+            I have read and I agree to the{" "}
+            <a
+              href="#"
+              onClick={() => openFile("/documents/TERMS_CONDITIONS_FMT.pdf")}
+            >
+              Terms & Condition.
+            </a>
           </Checkbox>
         </Form.Item>
+
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Register
