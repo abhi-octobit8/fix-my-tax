@@ -61,28 +61,28 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 output.Password = password;
 
                 //create ticket
-                if (input.TicketDetails != null)
-                {
-                    RequestTicket ticket = new RequestTicket();
-                    ticket.ServiceType = (FixMyTaxModels.ServiceType)input.TicketDetails.ServiceType;
-                    ticket.FixMyTaxServiceType = (FixMyTaxModels.FixMyTaxServiceType)input.TicketDetails.FixMyTaxServiceType;
-                    ticket.Section = input.TicketDetails.Section;
-                    ticket.SubSection = input.TicketDetails.SubSection;
-                    ticket.Question = input.TicketDetails.Question;
-                    ticket.Description = input.TicketDetails.Description;
-                    ticket.Price = input.TicketDetails?.Price;
-                    ticket.TransactionNumber = input.TicketDetails.TransactionNumber;
-                    ticket.PaymentInfo = input.TicketDetails.PaymentInfo;
-                    ticket.PaymentStaus = (FixMyTaxModels.PaymentStatus)input.TicketDetails.PaymentStaus;
-                    ticket.ExtensionData = input.TicketDetails.ExtensionData;
-                    ticket.Status = TicketStatus.New;
-                    ticket.CreatorUserId = user.Id;
-                    ticket.CreationTime = DateTime.Now;
-                    var id = _ticketRepository.InsertAndGetId(ticket);
-                    output.id = id;
+                //if (input.TicketDetails != null)
+                //{
+                //    RequestTicket ticket = new RequestTicket();
+                //    ticket.ServiceType = (FixMyTaxModels.ServiceType)input.TicketDetails.ServiceType;
+                //    ticket.FixMyTaxServiceType = (FixMyTaxModels.FixMyTaxServiceType)input.TicketDetails.FixMyTaxServiceType;
+                //    ticket.Section = input.TicketDetails.Section;
+                //    ticket.SubSection = input.TicketDetails.SubSection;
+                //    ticket.Question = input.TicketDetails.Question;
+                //    ticket.Description = input.TicketDetails.Description;
+                //    ticket.Price = input.TicketDetails?.Price;
+                //    ticket.TransactionNumber = input.TicketDetails.TransactionNumber;
+                //    ticket.PaymentInfo = input.TicketDetails.PaymentInfo;
+                //    ticket.PaymentStaus = (FixMyTaxModels.PaymentStatus)input.TicketDetails.PaymentStaus;
+                //    ticket.ExtensionData = input.TicketDetails.ExtensionData;
+                //    ticket.Status = TicketStatus.New;
+                //    ticket.CreatorUserId = user.Id;
+                //    ticket.CreationTime = DateTime.Now;
+                //    var id = _ticketRepository.InsertAndGetId(ticket);
+                //    output.id = id;
 
 
-                }
+                //}
 
                 output.Error = false;
 
@@ -101,12 +101,12 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                     isBodyHtml: true
                 );
 
-            _emailSender.Send(
-                to: "karsathi.ajit@gmail.com",
-                subject: "You have a new task!",
-                body: $"A new task is created on the portal  task link: <b>{output.id}</b>",
-                isBodyHtml: true
-            );
+            //_emailSender.Send(
+            //    to: "karsathi.ajit@gmail.com",
+            //    subject: "You have a new task!",
+            //    body: $"A new task is created on the portal  task link: <b>{output.id}</b>",
+            //    isBodyHtml: true
+            //);
             return output;
         }
 
