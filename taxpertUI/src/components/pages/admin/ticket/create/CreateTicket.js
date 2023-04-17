@@ -1,17 +1,16 @@
 import React from "react";
 import "./CreateTicket.less";
 import { Button, Form, Input, Select, Card, Row, Col } from "antd";
-import TextArea from "antd/lib/input/TextArea";
 // import { CreateTicket } from "../../../../../services/advocate.service";
 import { PATH } from "../../../../../shared/Route";
 import useRedirectPath from "../../../../hooks/useRedirectPath";
 import { useState } from "react";
 import { FIX_MY_TAX_SERVICE_TYPES } from "../../../../../shared/constant/TaxService";
-import ItrNoticeForm from "../../../../../common/itr-notice-form/ItrNoticeForm";
-import ItrNoticeFormContainer from "../../../../../common/itr-notice-form/ItrNoticeFormContainer";
-import GstNoticeFormContainer from "../../../../../common/gst-notice-form/GstNoticeFormContainer";
-import ConsultationNoticeFormContainer from "../../../../../common/constultation-notice-form/ConsultationNoticeFormContainer";
-import FillingNoticeFormContainer from "../../../../../common/filling-notice-form/FillingNoticeFormContainer";
+// import ItrNoticeForm from "../../../../../common/itr-notice-form/ItrNoticeForm";
+import ItrNoticeFormContainer from "../../../../../modules/itr-notice/ItrNoticeFormContainer";
+import GstNoticeFormContainer from "../../../../../modules/gst-notice-form/GstNoticeFormContainer";
+import FilingItrFormContainer from "../../../../../modules/filing-itr/FilingItrFormContainer";
+import BusinessConsultationFormContainer from "../../../../../modules/business-consultation/BusinessConsultationFormContainer";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -66,13 +65,11 @@ const CreateTicket = (props) => {
         );
       case 3:
         return (
-          <FillingNoticeFormContainer
-            selectedFixMyTaxService={selectedService}
-          />
+          <FilingItrFormContainer selectedFixMyTaxService={selectedService} />
         );
       case 4:
         return (
-          <ConsultationNoticeFormContainer
+          <BusinessConsultationFormContainer
             selectedFixMyTaxService={selectedService}
           />
         );

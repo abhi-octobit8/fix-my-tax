@@ -51,7 +51,7 @@
 
 .text-area {
   display: flex;
-  text-align: left;
+  text-align: justify;
   align-items: center;
 }
 .cards-in-place {

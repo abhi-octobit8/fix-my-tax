@@ -208,6 +208,7 @@ const TicketDetails = (props) => {
               return false;
             }}
             multiple={false}
+            maxCount={1}
           >
             <Button icon={<UploadOutlined />}>Click to upload</Button>
           </Upload>

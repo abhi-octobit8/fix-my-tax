@@ -36,13 +36,13 @@ export const MENU_ITEMS_SERVICE_FOOTER = [
   {
     label: "Terms & Condition",
     key: 3,
-    to: "/news/TERMS_CONDITIONS_FMT.pdf",
+    to: "/documents/TERMS_CONDITIONS_FMT.pdf",
     file: true,
   },
   {
     label: "Privacy Policy",
     key: 4,
-    to: "/news/TERMS_CONDITIONS_FMT.pdf",
+    to: "/documents/TERMS_CONDITIONS_FMT.pdf",
     file: true,
   },
 ];

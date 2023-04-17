@@ -22,3 +22,30 @@
 
 }
 
+
+
+/* all static sectin fagq page  */
+.section-fa-container {
+    padding: 20px;
+}
+
+
+/* for using header at any place */
+.section-header {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  .section-faq-items {
+    width: 100%;
+}
+
+.section-faq-items .ant-space-item {
+    background-color: #fff;
+    box-shadow: 0 3px 8px rgb(63 20 20 / 10%);
+
+}
+
+.section-faq-items .ant-space-item .ant-collapse-header {
+    font-size: 16px;
+    font-weight: 500;
+}

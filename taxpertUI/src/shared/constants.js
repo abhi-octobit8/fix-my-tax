@@ -6,13 +6,6 @@ export const API_STATUSES = Object.freeze({
   SUCCESS: "SUCCESS",
   ERROR: "ERROR",
 });
-// export const SERVICE_TYPE = {
-//   CONSULTATION: "consultation",
-//   GENERAL: "general",
-//   FILING: "filing",
-//   ITR_NOTICE: 1,
-//   GST_NOTICE: 2,
-// };
 
 export const VALIDATION_PATTERN = {
   EMAIL: new RegExp(

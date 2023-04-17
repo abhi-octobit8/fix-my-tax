@@ -51,20 +51,20 @@ const UserComponent = () => {
           <Tag color="red">{"No"}</Tag>
         ),
     },
-    {
-      title: "Actions",
-      dataIndex: "productId",
-      fixed: "right",
-      align: "center",
-      width: 60,
-      render: (productId) => {
-        return (
-          <Space>
-            <DeleteOutlined title="Delete" style={{ color: "red" }} />
-          </Space>
-        );
-      },
-    },
+    // {
+    //   title: "Actions",
+    //   dataIndex: "productId",
+    //   fixed: "right",
+    //   align: "center",
+    //   width: 60,
+    //   render: (productId) => {
+    //     return (
+    //       <Space>
+    //         <DeleteOutlined title="Delete" style={{ color: "red" }} />
+    //       </Space>
+    //     );
+    //   },
+    // },
   ];
   return (
     <Card>

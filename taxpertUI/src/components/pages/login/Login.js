@@ -112,6 +112,11 @@ const Login = (props) => {
               Forgot password?
             </a>
           </Form.Item> */}
+          <Form.Item>
+            <a href="#" onClick={() => navigate(PATH.REGISTER)}>
+              Register here
+            </a>
+          </Form.Item>
         </Col>
         <Col sm={{ span: 10, offset: 0 }}></Col>
       </Row>

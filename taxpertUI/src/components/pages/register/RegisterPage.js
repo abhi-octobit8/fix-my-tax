@@ -1,8 +1,28 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./RegisterPage.less";
-import { Button, Checkbox, Form, Input, Select, Card } from "antd";
+import {
+  Button,
+  Checkbox,
+  Form,
+  Input,
+  Select,
+  Card,
+  Row,
+  Col,
+  Upload,
+} from "antd";
 import API from "../../../shared/API";
+import { UploadOutlined } from "@ant-design/icons";
 import { phoneNumberValidator } from "../../../shared/validator";
+import { Header3 } from "../../../common/Headers";
+import { REGISTER_CATEGORIES } from "./constant";
+import { message, openFile } from "../../../shared/utils";
+import {
+  registerNotice,
+  registerUser,
+} from "../../../services/register.service";
+import { SUCCESS_MESSAGE_INFO } from "../../../shared/constant/MessageInfo";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -35,28 +55,43 @@ const tailFormItemLayout = {
     },
   },
 };
+const normFile = (e) => {
+  console.log("Upload event:", e);
+  if (Array.isArray(e)) {
+    return e;
+  }
+  return e?.fileList;
+};
 const RegisterPage = (props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
   const onFinish = async (values) => {
-    console.log("registration values:", values);
+    try {
+      console.log("registration values:", values);
+      setIsLoading(true);
+      const registerFormData = {
+        name: values.name,
+        email: values.email,
+        phoneNumber: values.phoneNumber,
+      };
 
-    const registerData = {
-      values,
-      isActive: true,
-      roleNames: ["string"],
-    };
-
-    const register = await API({
-      method: "post",
-      url: "/services/app/user/create",
-      body: registerData,
-    });
-    // doLogin({ ...loginResponse });
-    // await checkLogin(loginResponse.userId);
-
-    // setLoading(false);
-    // navigate("/request/newrequest");
+      const res = await registerUser(registerFormData);
+      if (res.userId) {
+        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  // doLogin({ ...loginResponse });
+  // await checkLogin(loginResponse.userId);
+
+  // setLoading(false);
+  // navigate("/request/newrequest");
+
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -71,6 +106,13 @@ const RegisterPage = (props) => {
 
   return (
     <Card className="card-container" bordered={true}>
+      <Row className="content-margin-tab">
+        {" "}
+        <Col span={8} offset={6}>
+          <Header3>Registration</Header3>
+        </Col>
+      </Row>
+      <div offset={8}></div>
       <Form
         {...formItemLayout}
         form={form}
@@ -89,23 +131,23 @@ const RegisterPage = (props) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           label="Surname"
           name="surname"
           rules={[{ required: true, message: "This field is required" }]}
         >
           <Input />
-        </Form.Item>
-        <Form.Item
+        </Form.Item> */}
+        {/* <Form.Item
           label="UserName"
           name="username"
           rules={[{ required: true, message: "This field is required" }]}
         >
           <Input />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
-          name="emailAddress"
+          name="email"
           label="E-mail"
           rules={[
             {
@@ -120,8 +162,15 @@ const RegisterPage = (props) => {
         >
           <Input />
         </Form.Item>
-
         <Form.Item
+          label="Pan Card No"
+          name="panNumber"
+          rules={[{ required: true, message: "This field is required" }]}
+        >
+          <Input />
+        </Form.Item>
+
+        {/* <Form.Item
           name="password"
           label="Password"
           rules={[
@@ -156,10 +205,81 @@ const RegisterPage = (props) => {
           ]}
         >
           <Input.Password />
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
-          name="phone"
+          name="category"
+          label="Category"
+          rules={[
+            {
+              required: true,
+              message: "Please select Category!",
+            },
+          ]}
+        >
+          <Select placeholder="Select Your Category" showSearch>
+            {REGISTER_CATEGORIES.map((x, i) => {
+              return (
+                <Option value={x.value} key={i}>
+                  {x.name}
+                </Option>
+              );
+            })}
+          </Select>
+        </Form.Item>
+        <Form.Item noStyle shouldUpdate>
+          {({ getFieldValue }) => {
+            const value = getFieldValue("category");
+            if (value && value !== 1) {
+              return (
+                <Form.Item
+                  name="uploadDocument"
+                  label="Upload Document"
+                  valuePropName="fileList"
+                  getValueFromEvent={normFile}
+                  extra="To verify the Category upload required Document"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please upload Document to verified document",
+                    },
+                  ]}
+                >
+                  <Upload
+                    beforeUpload={(file) => {
+                      return false;
+                    }}
+                    multiple={false}
+                    maxCount={1}
+                  >
+                    <Button icon={<UploadOutlined />}>Click to upload</Button>
+                  </Upload>
+                </Form.Item>
+              );
+            }
+            return null;
+          }}
+        </Form.Item>
+        {/* <React.Fragment>
+          <Form.Item
+            name="uploadDocument"
+            label="Upload Document"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+          >
+            <Upload
+              beforeUpload={(file) => {
+                return false;
+              }}
+              multiple={false}
+              maxCount={1}
+            >
+              <Button icon={<UploadOutlined />}>Click to upload</Button>
+            </Upload>
+          </Form.Item>
+        </React.Fragment> */}
+        <Form.Item
+          name="phoneNumber"
           label="Phone Number"
           rules={[
             {
@@ -191,11 +311,18 @@ const RegisterPage = (props) => {
           {...tailFormItemLayout}
         >
           <Checkbox>
-            I have read the <a href="">agreement</a>
+            I have read and I agree to the{" "}
+            <a
+              href="#"
+              onClick={() => openFile("/documents/TERMS_CONDITIONS_FMT.pdf")}
+            >
+              Terms & Condition.
+            </a>
           </Checkbox>
         </Form.Item>
+
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={isLoading}>
             Register
           </Button>
         </Form.Item>

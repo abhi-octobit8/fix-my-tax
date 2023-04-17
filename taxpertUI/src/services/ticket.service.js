@@ -4,7 +4,6 @@ import {
   setTicketDetailsData,
   setTicketListData,
 } from "../store/request/RequestActions";
-import { uploadRequestFile } from "./register.service";
 
 export const getAllTickets = async (id) => {
   const res = await API({
@@ -37,6 +36,14 @@ export const createTicketService = async (body, uploadfileData) => {
     await uploadRequestFile(uploadData);
   }
   return registerResponse;
+};
+export const uploadRequestFile = async (uploadData, id) => {
+  const res = await API({
+    url: `services/app/FileService/UploadRequestFile?id=${uploadData.id}`,
+    method: "post",
+    body: uploadData.formData,
+  });
+  return res;
 };
 
 export const getTicketDetails = async (id) => {

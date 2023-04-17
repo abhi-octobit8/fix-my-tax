@@ -12,12 +12,16 @@ import user, {
 import advocate, {
   initialState as advocateInitialState,
 } from "../store/advocate/advocate.reducer";
+import order, {
+  initialState as orderInitialState,
+} from "../store/order/order.reducer";
 
 export default combineReducers({
   authentication,
   request,
   user,
   advocate,
+  order,
 });
 
 const initialState = {
@@ -25,6 +29,7 @@ const initialState = {
   request: requestInitialState,
   user: userInitialState,
   advocate: advocateInitialState,
+  order: orderInitialState,
 };
 
 export { initialState };

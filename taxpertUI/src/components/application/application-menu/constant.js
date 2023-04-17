@@ -48,9 +48,14 @@ const MENU_ITEMS = [
     to: "",
     children: [
       {
-        label: "Filing ITR/TCS/TDS",
+        label: "ITR Filing",
         role: USER_ROLE.PUBLIC,
-        to: PATH.SERVICE_FILING,
+        to: PATH.SERVICE_ITR_FILING,
+      },
+      {
+        label: "TDS/TCS Filing",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_TDS_TCS_FILING,
       },
       {
         label: "ITR/TDS/TCS Notices",
@@ -58,14 +63,29 @@ const MENU_ITEMS = [
         to: PATH.ITR_NOTICE_PATH,
       },
       {
+        label: "GST Return",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_GST_RETURN,
+      },
+      {
         label: "GST Notice",
         role: USER_ROLE.PUBLIC,
         to: PATH.GST_NOTICE,
       },
       {
-        label: "Consultation",
+        label: "Income Tax / GST Appeals",
         role: USER_ROLE.PUBLIC,
-        to: PATH.SERVICE_COSULTATION,
+        to: PATH.SERVICE_TAX_APPEAL,
+      },
+      // {
+      //   label: "Consultation",
+      //   role: USER_ROLE.PUBLIC,
+      //   to: PATH.SERVICE_COSULTATION,
+      // },
+      {
+        label: "Business Consultation",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_BUSINESS_CONSULTATION,
       },
     ],
   },
@@ -78,6 +98,11 @@ const MENU_ITEMS = [
     label: "MemberShip",
     role: USER_ROLE.PUBLIC,
     to: PATH.MEMBERSHIP,
+  },
+  {
+    label: "Register",
+    role: USER_ROLE.NON_AUTHORIZED,
+    to: PATH.REGISTER,
   },
   // {
   //   label: "Latest News",
@@ -138,6 +163,8 @@ function getMenuItems(collection, userData) {
     let condition = false;
 
     if (role === USER_ROLE.PUBLIC) {
+      condition = true;
+    } else if (role === USER_ROLE.NON_AUTHORIZED && !userAuthRole) {
       condition = true;
     } else {
       const hasRole = CollectionUtilService.hasRole(role, userAuthRole);

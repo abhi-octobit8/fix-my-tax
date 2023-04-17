@@ -14,6 +14,16 @@ export const registerNotice = async (body, uploadfileData) => {
   return registerResponse;
 };
 
+export const registerUser = async (body, uploadfileData) => {
+  console.log(body);
+  const registerResponse = await API({
+    method: "post",
+    url: "services/app/RegisterService/Create",
+    body: body,
+  });
+
+  return registerResponse;
+};
 export const uploadRequestFile = async (uploadfileData, id) => {
   let formData = new FormData();
 
