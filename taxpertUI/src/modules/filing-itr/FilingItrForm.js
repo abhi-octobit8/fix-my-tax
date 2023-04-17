@@ -138,7 +138,7 @@ const FilingItrForm = (props) => {
       <Form.Item label="Upload Documents">
         <Space>
           <Form.Item
-            name={FIELD_NAME.UPLOAD_DOCUMENT}
+            name="uploadDocument"
             noStyle
             valuePropName="fileList"
             getValueFromEvent={normFile}

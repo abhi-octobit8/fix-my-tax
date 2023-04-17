@@ -14,59 +14,59 @@ const GstReturnFormContainer = (props) => {
   const navigate = useNavigate();
 
   const userRole = useUserRole();
-  const onFinish = async (values) => {
-    // check request created from new assessee or existing assessee
+  // const onFinish = async (values) => {
+  //   // check request created from new assessee or existing assessee
 
-    if (userRole) {
-      const registerFormData = {
-        fixMyTaxServiceType: selectedFixMyTaxService,
-        serviceType: 2, // notice reply always for time being
-        section: values.section,
-        subSection: "",
-        subject: values.subject,
-        question: values.question,
-        description: values.description,
-        // status: 0,
-        price: values.price,
-        // paymentStaus: 0,
-        // transactionNumber: "678678",
-      };
+  //   if (userRole) {
+  //     const registerFormData = {
+  //       fixMyTaxServiceType: selectedFixMyTaxService,
+  //       serviceType: 2, // notice reply always for time being
+  //       section: values.section,
+  //       subSection: "",
+  //       subject: values.subject,
+  //       question: values.question,
+  //       description: values.description,
+  //       // status: 0,
+  //       price: values.price,
+  //       // paymentStaus: 0,
+  //       // transactionNumber: "678678",
+  //     };
 
-      const res = await createTicketService(
-        registerFormData,
-        values.uploadDocument
-      );
-      if (res.id) {
-        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-        navigate(PATH.TICKET_REQUEST_LIST);
-      }
-    } else {
-      const registerFormData = {
-        name: values.name,
-        email: values.email,
-        phoneNumber: values.phoneNumber,
-        ticketDetails: {
-          fixMyTaxServiceType: selectedFixMyTaxService,
-          serviceType: 2, // notice reply always for time being
-          section: values.section,
-          subSection: "",
-          subject: values.subject,
-          question: values.question,
-          description: values.description,
-          // status: 0,
-          price: values.price,
+  //     const res = await createTicketService(
+  //       registerFormData,
+  //       values.uploadDocument
+  //     );
+  //     if (res.id) {
+  //       message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+  //       navigate(PATH.TICKET_REQUEST_LIST);
+  //     }
+  //   } else {
+  //     const registerFormData = {
+  //       name: values.name,
+  //       email: values.email,
+  //       phoneNumber: values.phoneNumber,
+  //       ticketDetails: {
+  //         fixMyTaxServiceType: selectedFixMyTaxService,
+  //         serviceType: 2, // notice reply always for time being
+  //         section: values.section,
+  //         subSection: "",
+  //         subject: values.subject,
+  //         question: values.question,
+  //         description: values.description,
+  //         // status: 0,
+  //         price: values.price,
 
-          // paymentStaus: 0,
-          // transactionNumber: "678678",
-        },
-      };
+  //         // paymentStaus: 0,
+  //         // transactionNumber: "678678",
+  //       },
+  //     };
 
-      const res = await registerNotice(registerFormData, values.uploadDocument);
-      if (res.id) {
-        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-      }
-    }
-  };
+  //     const res = await registerNotice(registerFormData, values.uploadDocument);
+  //     if (res.id) {
+  //       message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+  //     }
+  //   }
+  // };
 
   return <GstReturnForm onFinish={onFinish} />;
 };

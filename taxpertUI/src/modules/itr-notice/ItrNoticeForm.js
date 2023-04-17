@@ -269,7 +269,7 @@ const ItrNoticeForm = (props) => {
       <Form.Item label="Upload Copy of Notice & other supporting documents">
         <Space>
           <Form.Item
-            name={FIELD_NAME.UPLOAD_ITR}
+            name="uploadDocument"
             noStyle
             valuePropName="fileList"
             getValueFromEvent={normFile}

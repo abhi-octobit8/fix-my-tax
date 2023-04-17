@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Col, Collapse, Descriptions, Row, Space } from "antd";
 import { Header4 } from "../../common/Headers";
 import { toFixed } from "../../shared/utils";
@@ -14,7 +14,18 @@ const { Panel } = Collapse;
 const SummaryPage = (props) => {
   const navigate = useNavigate();
   const userRole = useUserRole();
+  const [isLoading, setIsLoading] = useState(false);
   const { orderDetails, userInfo, onSubmit } = props;
+
+  const OnPayment = async () => {
+    try {
+      setIsLoading(true);
+      await onSubmit();
+    } catch (e) {
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <React.Fragment>
       <Card>
@@ -35,7 +46,7 @@ const SummaryPage = (props) => {
         </Descriptions>
         <div className="content-padding">
           {userRole === USER_ROLE.CUSTOMER ? (
-            <Button type="primary" block onClick={onSubmit}>
+            <Button type="primary" block onClick={OnPayment}>
               Payment
             </Button>
           ) : (

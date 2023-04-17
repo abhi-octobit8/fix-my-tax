@@ -143,7 +143,7 @@ const GstNoticeForm = (props) => {
       <Form.Item label="UPLOAD COPY OF NOTICE & SUPPORTING DOCUMENTS">
         <Space>
           <Form.Item
-            name={FIELD_NAME.UPLOAD_GST}
+            name="uploadDocument"
             noStyle
             valuePropName="fileList"
             getValueFromEvent={normFile}

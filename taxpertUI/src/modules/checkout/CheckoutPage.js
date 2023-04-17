@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Col, Collapse, Descriptions, Row, Space } from "antd";
 import ServiceDetails from "./ServiceDetails";
 import SummaryPage from "./SummaryPage";
@@ -8,12 +8,16 @@ import { useSelector } from "react-redux";
 import { SUCCESS_MESSAGE_INFO } from "../../shared/constant/MessageInfo";
 import { PATH } from "../../shared/Route";
 import { message } from "../../shared/utils";
+import { createTicketService } from "../../services/ticket.service";
+import { useNavigate } from "react-router-dom";
 
 const { Panel } = Collapse;
 
 const CheckoutPage = (props) => {
+  const navigate = useNavigate();
   const titleHeader = "Checkout";
   const userInfo = useUserData();
+
   const orderDetails = useSelector((state) => state.order.orderInfo);
 
   const onSubmit = async () => {
@@ -22,27 +26,30 @@ const CheckoutPage = (props) => {
     console.log("orderDetails", orderDetails);
     console.log();
     debugger;
-    // if (userRole) {
-    // const registerFormData = {
-    //   fixMyTaxServiceType: values.fixMyTaxService,
-    //   serviceType: 2, // notice reply always for time being
-    //   section: values.section,
-    //   subSection: values.subSection,
-    //   subject: values.subject,
-    //   question: values.question,
-    //   description: values.description,
-    //   // status: 0,
-    //   price: values.price,
-    //   // paymentStaus: 0,
-    //   // transactionNumber: "678678",
-    // };
-    // console.log("registerFormData", registerFormData, values);
-    // const res = await createTicketService(registerFormData, values.uploadITR);
-    // if (res.id) {
-    //   message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-    //   navigate(PATH.TICKET_REQUEST_LIST);
-    // }
-    // }
+    const registerFormData = {
+      fixMyTaxServiceType: orderDetails.fixMyTaxService.value,
+      serviceType: 2, // notice reply always for time being
+      section: orderDetails.sectionObj.name,
+      subSection: orderDetails?.subSectionObj
+        ? orderDetails.subSectionObj.name
+        : "",
+      subject: "",
+      question: "",
+      description: "",
+      // status: 0,
+      price: orderDetails.price,
+      // paymentStaus: 0,
+      // transactionNumber: "678678",
+    };
+    console.log("registerFormData", registerFormData);
+    const res = await createTicketService(
+      registerFormData,
+      orderDetails.uploadDocument
+    );
+    if (res.id) {
+      message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+      navigate(PATH.TICKET_REQUEST_LIST);
+    }
   };
 
   return (

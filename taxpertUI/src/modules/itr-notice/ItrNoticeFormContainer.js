@@ -33,54 +33,54 @@ const ItrNoticeFormContainer = (props) => {
     setOrderData(formData);
     navigate(PATH.CHECKOUT);
   };
-  const onFinish = async (values) => {
-    // check request created from new assessee or existing assessee
-    if (userRole) {
-      const registerFormData = {
-        fixMyTaxServiceType: selectedFixMyTaxService,
-        serviceType: 2, // notice reply always for time being
-        section: values.section,
-        subSection: values.subSection,
-        subject: values.subject,
-        question: values.question,
-        description: values.description,
-        // status: 0,
-        price: values.price,
-        // paymentStaus: 0,
-        // transactionNumber: "678678",
-      };
+  // const onFinish = async (values) => {
+  //   // check request created from new assessee or existing assessee
+  //   if (userRole) {
+  //     const registerFormData = {
+  //       fixMyTaxServiceType: selectedFixMyTaxService,
+  //       serviceType: 2, // notice reply always for time being
+  //       section: values.section,
+  //       subSection: values.subSection,
+  //       subject: values.subject,
+  //       question: values.question,
+  //       description: values.description,
+  //       // status: 0,
+  //       price: values.price,
+  //       // paymentStaus: 0,
+  //       // transactionNumber: "678678",
+  //     };
 
-      const res = await createTicketService(registerFormData, values.uploadITR);
-      if (res.id) {
-        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-        navigate(PATH.TICKET_REQUEST_LIST);
-      }
-    } else {
-      const registerFormData = {
-        name: values.name,
-        email: values.email,
-        phoneNumber: values.phoneNumber,
-        ticketDetails: {
-          fixMyTaxServiceType: selectedFixMyTaxService,
-          serviceType: 2, // notice reply always for time being
-          section: values.section,
-          subSection: values.subSection,
-          subject: values.subject,
-          question: values.question,
-          description: values.description,
-          // status: 0,
-          price: values.price,
-          // paymentStaus: 0,
-          // transactionNumber: "678678",
-        },
-      };
+  //     const res = await createTicketService(registerFormData, values.uploadITR);
+  //     if (res.id) {
+  //       message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+  //       navigate(PATH.TICKET_REQUEST_LIST);
+  //     }
+  //   } else {
+  //     const registerFormData = {
+  //       name: values.name,
+  //       email: values.email,
+  //       phoneNumber: values.phoneNumber,
+  //       ticketDetails: {
+  //         fixMyTaxServiceType: selectedFixMyTaxService,
+  //         serviceType: 2, // notice reply always for time being
+  //         section: values.section,
+  //         subSection: values.subSection,
+  //         subject: values.subject,
+  //         question: values.question,
+  //         description: values.description,
+  //         // status: 0,
+  //         price: values.price,
+  //         // paymentStaus: 0,
+  //         // transactionNumber: "678678",
+  //       },
+  //     };
 
-      const res = await registerNotice(registerFormData, values.uploadITR);
-      if (res.id) {
-        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-      }
-    }
-  };
+  //     const res = await registerNotice(registerFormData, values.uploadITR);
+  //     if (res.id) {
+  //       message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+  //     }
+  //   }
+  // };
 
   return <ItrNoticeForm onProceed={onProceed} />;
 };

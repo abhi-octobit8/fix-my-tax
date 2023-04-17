@@ -33,44 +33,44 @@ const GstNoticePage = () => {
     }));
   }, []);
 
-  const onFinish = async (values) => {
-    console.log("registration values:", values);
-    setIsLoading(true);
-    try {
-      const registerFormData = {
-        name: values.name,
-        email: values.email,
-        phoneNumber: values.phoneNumber,
-        ticketDetails: {
-          fixMyTaxServiceType: FixMyTaxServiceType.GST_Notice,
-          serviceType: 2, // notice reply always for time being
-          section: values.section,
-          subSection: "",
-          subject: values.subject,
-          question: values.question,
-          description: values.description,
-          // status: 0,
-          price: values.price,
-          // paymentStaus: 0,
-          // transactionNumber: "678678",
-        },
-      };
-      console.log(registerFormData);
+  // const onFinish = async (values) => {
+  //   console.log("registration values:", values);
+  //   setIsLoading(true);
+  //   try {
+  //     const registerFormData = {
+  //       name: values.name,
+  //       email: values.email,
+  //       phoneNumber: values.phoneNumber,
+  //       ticketDetails: {
+  //         fixMyTaxServiceType: FixMyTaxServiceType.GST_Notice,
+  //         serviceType: 2, // notice reply always for time being
+  //         section: values.section,
+  //         subSection: "",
+  //         subject: values.subject,
+  //         question: values.question,
+  //         description: values.description,
+  //         // status: 0,
+  //         price: values.price,
+  //         // paymentStaus: 0,
+  //         // transactionNumber: "678678",
+  //       },
+  //     };
+  //     console.log(registerFormData);
 
-      const res = await registerNotice(
-        registerFormData,
-        values.uploadGSTNotice
-      );
+  //     const res = await registerNotice(
+  //       registerFormData,
+  //       values.uploadGSTNotice
+  //     );
 
-      if (res.id) {
-        message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-      }
-    } catch (e) {
-      console.error("error in creation", e);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  //     if (res.id) {
+  //       message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+  //     }
+  //   } catch (e) {
+  //     console.error("error in creation", e);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
   const onHandleSection = (value) => {
     console.log(value);
     if (value) {
