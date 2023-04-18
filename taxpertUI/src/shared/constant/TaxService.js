@@ -31,4 +31,9 @@ export const FIX_MY_TAX_SERVICE_TYPES = [
     name: "Business Consultation",
     value: 7,
   },
+  {
+    key: 8,
+    name: "Video Consultation",
+    value: 8,
+  },
 ];
