@@ -11,17 +11,20 @@ import {
   Tooltip,
   Space,
   DatePicker,
+  Spin,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
-import { FIELD_NAME } from "./constant";
+import { AVAILABLE_SLOT, FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
 
 import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
-import { getObjectFromList, openFile } from "../../shared/utils";
+import { getObjectFromList, openFile, sleep } from "../../shared/utils";
 import { USER_ROLE } from "../../components/application/application-menu/constant";
 import RegisterButton from "../../common/register-button/RegisterButton";
 import TextArea from "antd/lib/input/TextArea";
 import moment from "moment";
+import { requiredValidator } from "../../shared/validator";
+import { getLocalTime } from "../../shared/timeUtils";
 
 const { Option } = Select;
 
@@ -88,6 +91,13 @@ const VideoConsultationForm = (props) => {
     }
   };
 
+  const onHandleDateSelectionAPI = async (value) => {
+    debugger;
+    setIsLoading(true);
+    await sleep();
+    setIsLoading(false);
+  };
+
   const onHandleSection = (value) => {
     console.log(value);
     if (value) {
@@ -100,6 +110,12 @@ const VideoConsultationForm = (props) => {
       form.setFieldValue(FIELD_NAME.PRICE, "");
     }
   };
+  const onDateChange = (value) => {
+    // console.log(moment(value).format("YYYY-MM-DD"));
+    const date = moment(value).format("YYYY-MM-DD");
+    onHandleDateSelectionAPI(date);
+    // console.log(moment(value).startOf("day"));
+  };
 
   const disabledDate = (current) => {
     return (
@@ -111,7 +127,13 @@ const VideoConsultationForm = (props) => {
   };
 
   return (
-    <Form onFinish={onSubmit} {...formItemLayout} form={form} name="register">
+    <Form
+      onFinish={onSubmit}
+      {...formItemLayout}
+      form={form}
+      initialValues={{ price: 2000 }}
+      name="register"
+    >
       <Form.Item
         label="Topic"
         name="query"
@@ -125,18 +147,41 @@ const VideoConsultationForm = (props) => {
         label="Fee"
         // extra="FEE INCLUDING GST @ 18%"
       >
-        <Input disabled={true} addonAfter="INR" value="2000"></Input>
+        <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
       <Form.Item
         name={FIELD_NAME.DATE}
         label="Select Date"
+        rules={[{ required: true, message: "This field is required" }]}
         // extra="FEE INCLUDING GST @ 18%"
       >
         <DatePicker
           format="YYYY-MM-DD"
           disabledDate={disabledDate}
-          // showTime={{ defaultValue: moment("00:00:00", "HH:mm:ss") }}
+          onChange={onDateChange}
         />
+      </Form.Item>
+
+      <Form.Item
+        label="Select your Slot"
+        name="slot"
+        rules={[requiredValidator]}
+      >
+        <Spin spinning={isLoading}>
+          <Select placeholder="Select your Slot" allowClear>
+            {AVAILABLE_SLOT.map((x, i) => {
+              return (
+                <Option value={x.value} disabled={!x.available} key={i}>
+                  <Tooltip
+                    title={x.available ? "Available slot" : "Not Available"}
+                  >
+                    {x.value}
+                  </Tooltip>
+                </Option>
+              );
+            })}
+          </Select>
+        </Spin>
       </Form.Item>
 
       <Form.Item
