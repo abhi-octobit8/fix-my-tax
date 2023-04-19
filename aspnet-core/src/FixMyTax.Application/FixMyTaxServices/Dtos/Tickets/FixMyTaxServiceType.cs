@@ -8,9 +8,14 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
 {
     public enum FixMyTaxServiceType
     {
-        GST_Notice = 1,
-        ITR_TDS_TCS_Notice = 2,
-        ITR_TDS_TCS_Filing = 3,
-        Consultation = 4
+        ITR_FILING = 1,
+        TDS_TCS_FILING = 2,
+        ITR_TDS_TCS_Notice = 3,
+        GST_RETURN = 4,
+        GST_Notice = 5,
+        TAX_APPEAL = 6,
+        Consultation = 7,
+        Video_Consultation = 8
+
     }
 }

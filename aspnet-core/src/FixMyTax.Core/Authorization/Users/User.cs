@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Abp.Authorization.Users;
 using Abp.Extensions;
+using FixMyTax.FixMyTaxModels;
 
 namespace FixMyTax.Authorization.Users
 {
@@ -30,5 +31,10 @@ namespace FixMyTax.Authorization.Users
 
             return user;
         }
+
+        public FMTUserCategory FMTCategory { get; set; }
+
+        public int? CategoryProofId { get; set; }
+        public CategoryProofFiles CategoryProof { get; set; }
     }
 }

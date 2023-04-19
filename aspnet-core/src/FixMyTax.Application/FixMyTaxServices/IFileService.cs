@@ -15,6 +15,9 @@ namespace FixMyTax.FixMyTaxServices
 
         Task<string> UploadResponseFile(int id, IFormFile file);
 
+        Task<string> UploadCategoryProofFile(int userId, IFormFile file);
+        Task<FileContentResult> DownloadProofFile(int id);
+
         Task<FileContentResult> DownloadFile(int id);
     }
 }

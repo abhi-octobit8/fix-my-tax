@@ -4,6 +4,7 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using FixMyTax.Authorization.Users;
+using FixMyTax.FixMyTaxServices.Dtos.Tickets;
 
 namespace FixMyTax.Users.Dto
 {
@@ -36,5 +37,8 @@ namespace FixMyTax.Users.Dto
         public DateTime CreationTime { get; set; }
 
         public string[] RoleNames { get; set; }
+
+        public FMTUserCategory FMTCategory { get; set; }
+        public CategoryProofFilesDto CategoryProof { get; set; }
     }
 }

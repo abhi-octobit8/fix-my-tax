@@ -15,6 +15,7 @@ namespace FixMyTax.EntityFrameworkCore
         public DbSet<TicketResponse> Responses { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Attachment> Files { get; set; }
+        public DbSet<CategoryProofFiles> Proofs { get; set; }
         public DbSet<Event> Events { get; set; }
 
         public FixMyTaxDbContext(DbContextOptions<FixMyTaxDbContext> options)
