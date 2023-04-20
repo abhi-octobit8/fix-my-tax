@@ -26,6 +26,7 @@ import FilingItrPage from "../pages/services/filing-itr/FilingItrPage";
 import TaxAppealPage from "../pages/services/tax-appeal/TaxAppealPage";
 import BusinessConsultationPage from "../pages/services/business-consultation/BusinessConsultationPage";
 import CheckoutPage from "../../modules/checkout/CheckoutPage";
+import VideoConsultationPage from "../pages/services/video-consultation/videoConsultationPage";
 
 function AuthenticatedApplication() {
   const userSessionInfo = useSelector(
@@ -56,6 +57,10 @@ function AuthenticatedApplication() {
         <Route path={PATH.SERVICE_ITR_FILING} element={<FilingItrPage />} />
         <Route path={PATH.SERVICE_GST_RETURN} element={<GstReturnPage />} />
         <Route path={PATH.SERVICE_TDS_TCS_FILING} element={<FilingTdsPage />} />
+        <Route
+          path={PATH.SERVICE_VIDEO_CONSULTATION}
+          element={<VideoConsultationPage />}
+        />
         <Route path={PATH.CHECKOUT} element={<CheckoutPage />} />
         <Route path="latest-news" element={<LatestNewsPage />} />
 

@@ -109,6 +109,11 @@ const MENU_ITEMS = [
         role: USER_ROLE.PUBLIC,
         to: PATH.SERVICE_BUSINESS_CONSULTATION,
       },
+      {
+        label: "Video Consultation",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_VIDEO_CONSULTATION,
+      },
     ],
   },
   {

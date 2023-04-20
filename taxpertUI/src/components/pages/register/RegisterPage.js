@@ -23,6 +23,8 @@ import {
   registerUser,
 } from "../../../services/register.service";
 import { SUCCESS_MESSAGE_INFO } from "../../../shared/constant/MessageInfo";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "../../../shared/Route";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -63,6 +65,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const RegisterPage = (props) => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
   const onFinish = async (values) => {
@@ -78,6 +81,7 @@ const RegisterPage = (props) => {
       const res = await registerUser(registerFormData);
       if (res.userId) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+        navigate(PATH.LOGIN);
       }
     } catch (e) {
       console.error(e);
