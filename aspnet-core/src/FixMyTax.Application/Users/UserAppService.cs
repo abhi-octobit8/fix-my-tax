@@ -18,6 +18,7 @@ using FixMyTax.Authorization;
 using FixMyTax.Authorization.Accounts;
 using FixMyTax.Authorization.Roles;
 using FixMyTax.Authorization.Users;
+using FixMyTax.FixMyTaxModels;
 using FixMyTax.Roles.Dto;
 using FixMyTax.Users.Dto;
 using Microsoft.AspNetCore.Identity;
@@ -34,12 +35,14 @@ namespace FixMyTax.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+        private readonly IRepository<CategoryProofFiles> _proofRepository;
 
         public UserAppService(
             IRepository<User, long> repository,
             UserManager userManager,
             RoleManager roleManager,
             IRepository<Role> roleRepository,
+            IRepository<CategoryProofFiles> proofRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
             LogInManager logInManager)
@@ -51,6 +54,7 @@ namespace FixMyTax.Users
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
             _logInManager = logInManager;
+            _proofRepository = proofRepository;
         }
 
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
@@ -292,6 +296,10 @@ namespace FixMyTax.Users
             {
                 if (await _userManager.IsInRoleAsync(user, StaticRoleNames.Tenants.Customer))
                 {
+                    if(user.CategoryProofId != null)
+                    {
+                        user.CategoryProof = _proofRepository.FirstOrDefault(p => p.Id == user.CategoryProofId);
+                    }
                     customers.Add(user);
                 }
             }

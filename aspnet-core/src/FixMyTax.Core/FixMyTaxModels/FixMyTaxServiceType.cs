@@ -15,7 +15,8 @@ namespace FixMyTax.FixMyTaxModels
         GST_RETURN=4,
         GST_Notice = 5,
         TAX_APPEAL=6,
-        Consultation = 7
+        Consultation = 7,
+        Video_Consultation = 8
     }
 
     public enum ServiceType

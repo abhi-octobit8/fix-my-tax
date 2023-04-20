@@ -1,4 +1,6 @@
-﻿using FixMyTax.FixMyTaxServices.Dtos.Tickets;
+﻿using FixMyTax.Authorization.Users;
+using FixMyTax.FixMyTaxServices.Dtos.Tickets;
+using FixMyTax.Users.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,7 +26,11 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Registration
         [StringLength(10, MinimumLength = 10)]
         public string? PhoneNumber { get; set; }
 
-        public CreateTicketInput TicketDetails { get; set; }
+        public FMTUserCategory UserCategory { get; set; }
+
+        public string PanCardNumber { get; set; }
+        public string AdharNumber { get; set; }
+        public string GSTNumber { get; set; }
 
     }
 }

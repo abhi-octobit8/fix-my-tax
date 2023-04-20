@@ -3,6 +3,7 @@ using System;
 using FixMyTax.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FixMyTax.Migrations
 {
     [DbContext(typeof(FixMyTaxDbContext))]
-    partial class FixMyTaxDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230419181509_user-category")]
+    partial class usercategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1447,14 +1449,11 @@ namespace FixMyTax.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
-                    b.Property<string>("AdharNumber")
-                        .HasColumnType("text");
-
                     b.Property<string>("AuthenticationSource")
                         .HasMaxLength(64)
                         .HasColumnType("character varying(64)");
 
-                    b.Property<int?>("CategoryProofId")
+                    b.Property<int>("CategoryProofId")
                         .HasColumnType("integer");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -1485,9 +1484,6 @@ namespace FixMyTax.Migrations
 
                     b.Property<int>("FMTCategory")
                         .HasColumnType("integer");
-
-                    b.Property<string>("GSTNumber")
-                        .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
@@ -1530,9 +1526,6 @@ namespace FixMyTax.Migrations
                         .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
-
-                    b.Property<string>("PanCardNumber")
-                        .HasColumnType("text");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -1722,55 +1715,6 @@ namespace FixMyTax.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("FixMyTax.FixMyTaxModels.Pricing", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("numeric");
-
-                    b.Property<string>("PricingKey")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Service")
-                        .HasColumnType("text");
-
-                    b.Property<string>("SubService")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Ratecard");
                 });
 
             modelBuilder.Entity("FixMyTax.FixMyTaxModels.RequestTicket", b =>
@@ -2162,7 +2106,9 @@ namespace FixMyTax.Migrations
                 {
                     b.HasOne("FixMyTax.FixMyTaxModels.CategoryProofFiles", "CategoryProof")
                         .WithMany()
-                        .HasForeignKey("CategoryProofId");
+                        .HasForeignKey("CategoryProofId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FixMyTax.Authorization.Users.User", "CreatorUser")
                         .WithMany()

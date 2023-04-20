@@ -9,6 +9,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1100,
       price: 1298,
+      pricingKey: "itr_filling_ITR_1",
     },
     {
       key: 2,
@@ -19,6 +20,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1500,
       price: 1770,
+      pricingKey: "itr_filling_ITR_2",
     },
     {
       key: 3,
@@ -29,6 +31,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 4100,
       price: 2478,
+      pricingKey: "itr_filling_itr_3",
     },
     {
       key: 4,
@@ -39,6 +42,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1500,
       price: 1770,
+      pricingKey: "itr_filling_itr_4_1",
     },
     {
       key: 5,
@@ -49,6 +53,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "itr_filling_itr_4_2",
     },
     {
       key: 6,
@@ -59,6 +64,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 4500,
       price: 4838,
+      pricingKey: "itr_filling_itr_4_3",
     },
     {
       key: 7,
@@ -68,6 +74,7 @@ const fixMytaxServiceInfoData = {
         "NGOs / SOCIETIES / TRUST / CHARITABLE COMPANIES WITHOUT INCOME TAX EXEMPTION APPROVAL",
       documents: [],
       fee: 4100,
+      pricingKey: "itr_filling_itr_5",
     },
     {
       key: 8,
@@ -76,6 +83,7 @@ const fixMytaxServiceInfoData = {
       description: "Company Assessee",
       documents: [],
       fee: 5100,
+      pricingKey: "itr_filling_itr_6",
     },
     {
       key: 9,
@@ -93,6 +101,7 @@ const fixMytaxServiceInfoData = {
       description: "CAN BE FILED FOR LAST TWO ASSESSMENT YEARS",
       documents: [],
       fee: 2500,
+      pricingKey: "itr_filling_itr_7",
     },
   ],
   tds_filing: [
@@ -160,7 +169,7 @@ const fixMytaxServiceInfoData = {
       price: 6018,
     },
   ],
-  notices: [
+  itr_tds_tcs_notice: [
     {
       key: 1,
       name: "131-1A",
@@ -173,6 +182,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 5100,
           price: 6018,
+          pricingKey: "itr_tds_tcs_notice_131_1A_1",
         },
         {
           key: 2,
@@ -182,6 +192,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_131_1A_2",
         },
       ],
       description: "",
@@ -624,13 +635,14 @@ const fixMytaxServiceInfoData = {
   gst_notice: [
     {
       key: 1,
-      name: "GST REG-03",
+      name: "GST REG-03 ()",
       subSections: null,
       description:
         "Notice issued for further information / clarification in response to application for new registration or amendment of GST registration certificate.",
       documents: [],
       fee: 1100,
       price: 1298,
+      pricingKey: "gst_notice_REG_03_1",
     },
     {
       key: 2,
@@ -641,6 +653,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "gst_notice_REG_17_1",
     },
     {
       key: 3,
