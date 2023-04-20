@@ -9,7 +9,7 @@ import "./GstReturnPage.css";
 const { Panel } = Collapse;
 
 const GstReturnPage = () => {
-  const titleHeader = "Gst Return";
+  const titleHeader = "GST Return";
 
   return (
     <React.Fragment>
@@ -17,7 +17,7 @@ const GstReturnPage = () => {
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
             <div className="section-banner-info">
-              <div className="section-banner-title">Gst Return</div>
+              <div className="section-banner-title">GST Return</div>
               <p className="section-banner-data">
                 We understand the importance of timely and accurate GST filings,
                 which is why we offer our expertise to individuals, businesses,

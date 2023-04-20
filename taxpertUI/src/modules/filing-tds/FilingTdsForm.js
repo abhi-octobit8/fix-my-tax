@@ -186,11 +186,8 @@ const FilingTdsForm = (props) => {
               style={{ fontSize: "16px", color: "#f47c01" }}
             />
           </Tooltip>
-          <a
-            href="#"
-            onClick={() => openFile("/documents/ITR_FILINING_DOCUMENT.pdf")}
-          >
-            Documents Click Here
+          <a href="#" onClick={() => openFile("/documents/TDS_TCS_FILING.pdf")}>
+            For Required Documents To Be Uploaded, Kindly Click Here
           </a>
         </Space>
       </Form.Item>

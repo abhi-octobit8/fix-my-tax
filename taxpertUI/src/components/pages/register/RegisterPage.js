@@ -169,7 +169,16 @@ const RegisterPage = (props) => {
         >
           <Input />
         </Form.Item>
-
+        <Form.Item
+          label="Aadhar Card No"
+          name="aadharCardNumber"
+          rules={[{ required: true, message: "This field is required" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item label="GSTIN" name="gstin">
+          <Input />
+        </Form.Item>
         {/* <Form.Item
           name="password"
           label="Password"
@@ -209,13 +218,14 @@ const RegisterPage = (props) => {
 
         <Form.Item
           name="category"
-          label="Category"
+          label="Category (For Availing Discount)"
           rules={[
             {
               required: true,
               message: "Please select Category!",
             },
           ]}
+          extra="Except General; Rest Categories Are Eligible For Discount Of 10%"
         >
           <Select placeholder="Select Your Category" showSearch>
             {REGISTER_CATEGORIES.map((x, i) => {
@@ -237,7 +247,7 @@ const RegisterPage = (props) => {
                   label="Upload Document"
                   valuePropName="fileList"
                   getValueFromEvent={normFile}
-                  extra="To verify the Category upload required Document"
+                  extra="Upload Identity Card issued by the Government Authorities / Institutions"
                   rules={[
                     {
                       required: true,

@@ -118,11 +118,42 @@ function HomePage() {
             <Button
               className="button-style"
               type="primary"
-              onClick={() => navigator.goTo(PATH.ITR_NOTICE_PATH)}
+              onClick={() => navigator.goTo(PATH.SERVICE_ITR_FILING)}
             >
-              ITR Notice
+              ITR Filing
             </Button>
           </Col>
+          <Col xs={24} md={6} lg={6} sm={24}>
+            <Button
+              className="button-style"
+              type="primary"
+              onClick={() => navigator.goTo(PATH.SERVICE_TDS_TCS_FILING)}
+            >
+              TDS/TCS Filing
+            </Button>
+          </Col>
+          <Col xs={24} md={6} lg={6} sm={24}>
+            <Button
+              className="button-style"
+              type="primary"
+              onClick={() => navigator.goTo(PATH.ITR_NOTICE_PATH)}
+            >
+              ITR/TDS/TCS
+              <br />
+              Notices
+            </Button>
+          </Col>
+          <Col xs={24} md={6} lg={6} sm={24}>
+            <Button
+              className="button-style"
+              type="primary"
+              onClick={() => navigator.goTo(PATH.SERVICE_GST_RETURN)}
+            >
+              GST Return
+            </Button>
+          </Col>
+        </Row>
+        <Row className="button-container">
           <Col xs={24} md={6} lg={6} sm={24}>
             <Button
               className="button-style"
@@ -136,8 +167,21 @@ function HomePage() {
             <Button
               className="button-style"
               type="primary"
-              onClick={() => navigator.goTo(PATH.SERVICE_COSULTATION)}
+              onClick={() => navigator.goTo(PATH.SERVICE_TAX_APPEAL)}
             >
+              Income Tax/
+              <br />
+              GST Appeals
+            </Button>
+          </Col>
+          <Col xs={24} md={6} lg={6} sm={24}>
+            <Button
+              className="button-style"
+              type="primary"
+              onClick={() => navigator.goTo(PATH.SERVICE_BUSINESS_CONSULTATION)}
+            >
+              Business
+              <br />
               Consultation
             </Button>
           </Col>
@@ -145,11 +189,11 @@ function HomePage() {
             <Button
               className="button-style"
               type="primary"
-              onClick={() => navigator.goTo(PATH.SERVICE_ITR_FILING)}
+              onClick={() => navigator.goTo(PATH.SERVICE_BUSINESS_CONSULTATION)}
             >
-              Filing
+              Video
               <br />
-              ITR/TCS/TDS
+              Consultation
             </Button>
           </Col>
         </Row>
@@ -161,8 +205,8 @@ function HomePage() {
         <Col xs={24} md={8} lg={8} sm={24} className="about-company-container">
           <h1>About our Company</h1>
           <p className="about-company-content">
-            Our team comprises of CMA's, CA's, Taxation Lawyers and subject
-            experts available 24*7 to resolve taxation related queries.
+            Our team comprises of CMA's, CA's, CS's, Taxation Lawyers and
+            Subject Experts to resolve your taxation / business related queries.
           </p>
         </Col>
         <Col xs={24} md={16} lg={16} sm={24}>

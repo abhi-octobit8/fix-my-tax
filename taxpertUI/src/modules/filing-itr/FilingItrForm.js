@@ -121,7 +121,7 @@ const FilingItrForm = (props) => {
             return (
               <Option value={x.key} key={i}>
                 <Tooltip title={x.description}>
-                  {x.name} ({x.description}
+                  {x.name} ({x.description})
                 </Tooltip>
               </Option>
             );
@@ -172,7 +172,7 @@ const FilingItrForm = (props) => {
             href="#"
             onClick={() => openFile("/documents/ITR_FILINING_DOCUMENT.pdf")}
           >
-            Documents Click Here
+            For Required Documents To Be Uploaded, Kindly Click Here
           </a>
         </Space>
       </Form.Item>
