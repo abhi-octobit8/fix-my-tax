@@ -52,7 +52,10 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 input.Email,
                 password,
                 true,
-                input.UserCategory);
+                input.UserCategory, 
+                input.PanCardNumber,
+                input.AdharNumber, 
+                input.GSTNumber);
                 await _userManager.SetPhoneNumberAsync(user, input.PhoneNumber);
                 
                 output.UserId = user.Id;

@@ -37,7 +37,8 @@ namespace FixMyTax.Authorization.Users
             AbpSession = NullAbpSession.Instance;
         }
 
-        public async Task<User> RegisterAsync(string name, string surname, string emailAddress, string userName, string plainPassword, bool isEmailConfirmed, FMTUserCategory category)
+        public async Task<User> RegisterAsync(string name, string surname, string emailAddress, string userName, string plainPassword, bool isEmailConfirmed, FMTUserCategory category,
+            string pancardNumber = "", string adharCardNumber = "", string gstNumber = "")
         {
             CheckForTenant();
 
@@ -53,7 +54,10 @@ namespace FixMyTax.Authorization.Users
                 UserName = userName,
                 IsEmailConfirmed = isEmailConfirmed,
                 Roles = new List<UserRole>(),
-                FMTCategory = category
+                FMTCategory = category,
+                PanCardNumber = pancardNumber,
+                AdharNumber = adharCardNumber,
+                GSTNumber = gstNumber
             };
 
             user.SetNormalizedNames();

@@ -38,6 +38,9 @@ namespace FixMyTax.Users.Dto
 
         public string[] RoleNames { get; set; }
 
+        public string PanCardNumber { get; set; }
+        public string AdharNumber { get; set; }
+        public string GSTNumber { get; set; }
         public FMTUserCategory FMTCategory { get; set; }
         public CategoryProofFilesDto CategoryProof { get; set; }
     }

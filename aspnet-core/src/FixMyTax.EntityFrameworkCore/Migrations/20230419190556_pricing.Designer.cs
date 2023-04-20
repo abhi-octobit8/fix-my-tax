@@ -3,6 +3,7 @@ using System;
 using FixMyTax.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FixMyTax.Migrations
 {
     [DbContext(typeof(FixMyTaxDbContext))]
-    partial class FixMyTaxDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230419190556_pricing")]
+    partial class pricing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1447,9 +1449,6 @@ namespace FixMyTax.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
-                    b.Property<string>("AdharNumber")
-                        .HasColumnType("text");
-
                     b.Property<string>("AuthenticationSource")
                         .HasMaxLength(64)
                         .HasColumnType("character varying(64)");
@@ -1485,9 +1484,6 @@ namespace FixMyTax.Migrations
 
                     b.Property<int>("FMTCategory")
                         .HasColumnType("integer");
-
-                    b.Property<string>("GSTNumber")
-                        .HasColumnType("text");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
@@ -1530,9 +1526,6 @@ namespace FixMyTax.Migrations
                         .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
-
-                    b.Property<string>("PanCardNumber")
-                        .HasColumnType("text");
 
                     b.Property<string>("Password")
                         .IsRequired()

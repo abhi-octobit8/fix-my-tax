@@ -28,5 +28,9 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Registration
 
         public FMTUserCategory UserCategory { get; set; }
 
+        public string PanCardNumber { get; set; }
+        public string AdharNumber { get; set; }
+        public string GSTNumber { get; set; }
+
     }
 }

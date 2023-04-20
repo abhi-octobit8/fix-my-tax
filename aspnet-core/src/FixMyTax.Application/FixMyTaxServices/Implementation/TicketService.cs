@@ -110,37 +110,46 @@ namespace FixMyTax.FixMyTaxServices.Implementation
 
         public async Task<ListResultDto<TicketListDto>> GetAll()
         {
-            var user = _userManager.GetUserById(AbpSession.UserId.Value);
-            var roles = await _userManager.GetRolesAsync(user);
+            try
+            {
+                var user = _userManager.GetUserById(AbpSession.UserId.Value);
+                var roles = await _userManager.GetRolesAsync(user);
 
-            List<RequestTicket> tickets = new List<RequestTicket>();
-            if (roles.Contains(StaticRoleNames.Tenants.Customer))
-            {
-                tickets = await _ticketRepository
-                .GetAll().Include(x => x.Attachments)
-                .Where(t => t.CreatorUserId == AbpSession.UserId)
-                .OrderByDescending(t => t.CreationTime)
-                .ToListAsync();
-            }
-            else if (roles.Contains(StaticRoleNames.Tenants.Advocate))
-            {
-                tickets = await _ticketRepository
-                .GetAll().Include(x => x.Attachments)
-                .Where(t => t.AssignedUserId == AbpSession.UserId)
-                .OrderByDescending(t => t.CreationTime)
-                .ToListAsync();
-            }
-            else if (roles.Contains(StaticRoleNames.Tenants.Admin))
-            {
-                tickets = await _ticketRepository
-                .GetAll().Include(x => x.Attachments)
-                .OrderByDescending(t => t.CreationTime)
-                .ToListAsync();
-            }
+                List<RequestTicket> tickets = new List<RequestTicket>();
+                if (roles.Contains(StaticRoleNames.Tenants.Customer))
+                {
+                    tickets = await _ticketRepository
+                    .GetAll().Include(x => x.Attachments)
+                    .Where(t => t.CreatorUserId == AbpSession.UserId)
+                    .OrderByDescending(t => t.CreationTime)
+                    .ToListAsync();
+                }
+                else if (roles.Contains(StaticRoleNames.Tenants.Advocate))
+                {
+                    tickets = await _ticketRepository
+                    .GetAll().Include(x => x.Attachments)
+                    .Where(t => t.AssignedUserId == AbpSession.UserId)
+                    .OrderByDescending(t => t.CreationTime)
+                    .ToListAsync();
+                }
+                else if (roles.Contains(StaticRoleNames.Tenants.Admin))
+                {
+                    tickets = await _ticketRepository
+                    .GetAll().Include(x => x.Attachments)
+                    .OrderByDescending(t => t.CreationTime)
+                    .ToListAsync();
+                }
 
-            return new ListResultDto<TicketListDto>(
-                ObjectMapper.Map<List<TicketListDto>>(tickets)
-            );
+                return new ListResultDto<TicketListDto>(
+                    ObjectMapper.Map<List<TicketListDto>>(tickets)
+                );
+            }
+            catch(Exception ex)
+            {
+                Logger.Error(ex.Message, ex);
+                throw new Exception("Internal server error");
+            }
+            
         }
         
 
