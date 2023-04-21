@@ -66,6 +66,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                     case FMTUserCategory.Journalists:
                     case FMTUserCategory.Defence_Personnel:
                     case FMTUserCategory.Gender_Neutral:
+                    case FMTUserCategory.Ca_cma_tax_advocated:
                     case FMTUserCategory.Differently_Abled:
                     case FMTUserCategory.Startups:
                         discountRate = 10.0;

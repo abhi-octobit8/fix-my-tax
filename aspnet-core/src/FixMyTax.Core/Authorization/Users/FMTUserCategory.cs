@@ -17,5 +17,6 @@ namespace FixMyTax.Authorization.Users
         Defence_Personnel = 6,
         Journalists = 7,
         Gender_Neutral = 8,
+        Ca_cma_tax_advocated=9
     }
 }

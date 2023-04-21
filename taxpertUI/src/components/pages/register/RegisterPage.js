@@ -76,9 +76,16 @@ const RegisterPage = (props) => {
         name: values.name,
         email: values.email,
         phoneNumber: values.phoneNumber,
+        userCategory: values.userCategory,
+        panCardNumber: values.panCardNumber,
+        adharNumber: values.adharNumber,
+        gstNumber: values.gstNumber,
       };
 
-      const res = await registerUser(registerFormData);
+      const uploadFileData = values.uploadDocument;
+
+      debugger;
+      const res = await registerUser(registerFormData, uploadFileData);
       if (res.userId) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
         navigate(PATH.LOGIN);
@@ -123,7 +130,6 @@ const RegisterPage = (props) => {
         name="register"
         onFinish={onFinish}
         initialValues={{
-          residence: ["zhejiang", "hangzhou", "xihu"],
           prefix: "91",
         }}
         scrollToFirstError
@@ -135,20 +141,6 @@ const RegisterPage = (props) => {
         >
           <Input />
         </Form.Item>
-        {/* <Form.Item
-          label="Surname"
-          name="surname"
-          rules={[{ required: true, message: "This field is required" }]}
-        >
-          <Input />
-        </Form.Item> */}
-        {/* <Form.Item
-          label="UserName"
-          name="username"
-          rules={[{ required: true, message: "This field is required" }]}
-        >
-          <Input />
-        </Form.Item> */}
 
         <Form.Item
           name="email"
@@ -168,60 +160,24 @@ const RegisterPage = (props) => {
         </Form.Item>
         <Form.Item
           label="Pan Card No"
-          name="panNumber"
+          name="panCardNumber"
           rules={[{ required: true, message: "This field is required" }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
           label="Aadhar Card No"
-          name="aadharCardNumber"
+          name="adharNumber"
           rules={[{ required: true, message: "This field is required" }]}
         >
           <Input />
         </Form.Item>
-        <Form.Item label="GSTIN" name="gstin">
+        <Form.Item label="GSTIN" name="gstNumber">
           <Input />
         </Form.Item>
-        {/* <Form.Item
-          name="password"
-          label="Password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
 
         <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={["password"]}
-          rules={[
-            {
-              required: true,
-              message: "Please confirm your password!",
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue("password") === value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(
-                  new Error("The two passwords that you entered do not match!")
-                );
-              },
-            }),
-          ]}
-        >
-          <Input.Password />
-        </Form.Item> */}
-
-        <Form.Item
-          name="category"
+          name="userCategory"
           label="Category (For Availing Discount)"
           rules={[
             {
@@ -243,7 +199,7 @@ const RegisterPage = (props) => {
         </Form.Item>
         <Form.Item noStyle shouldUpdate>
           {({ getFieldValue }) => {
-            const value = getFieldValue("category");
+            const value = getFieldValue("userCategory");
             if (value && value !== 1) {
               return (
                 <Form.Item
@@ -255,7 +211,7 @@ const RegisterPage = (props) => {
                   rules={[
                     {
                       required: true,
-                      message: "Please upload Document to verified document",
+                      message: "Please Upload Document to Verified",
                     },
                   ]}
                 >
@@ -274,24 +230,7 @@ const RegisterPage = (props) => {
             return null;
           }}
         </Form.Item>
-        {/* <React.Fragment>
-          <Form.Item
-            name="uploadDocument"
-            label="Upload Document"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-          >
-            <Upload
-              beforeUpload={(file) => {
-                return false;
-              }}
-              multiple={false}
-              maxCount={1}
-            >
-              <Button icon={<UploadOutlined />}>Click to upload</Button>
-            </Upload>
-          </Form.Item>
-        </React.Fragment> */}
+
         <Form.Item
           name="phoneNumber"
           label="Phone Number"

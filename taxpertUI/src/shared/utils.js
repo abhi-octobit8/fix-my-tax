@@ -224,8 +224,8 @@ export const getResetToken = (path) => {
   return token;
 };
 
-export const downloaFile = async ({ id, name = "report" }) => {
-  const data = await downloadAPI(id);
+export const downloaFile = async ({ id, name = "report", url }) => {
+  const data = await downloadAPI(id, url);
   var blob = new Blob([data]);
   const url1 = window.URL.createObjectURL(blob);
   const link = document.createElement("a");

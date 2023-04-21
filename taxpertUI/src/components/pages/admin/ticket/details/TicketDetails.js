@@ -59,7 +59,11 @@ const TicketDetails = (props) => {
   }, [updateData]);
 
   const onHandleDownloadFile = React.useCallback(async (item) => {
-    await downloaFile({ id: item.id, name: item.filename });
+    await downloaFile({
+      id: item.id,
+      name: item.filename,
+      url: `services/app/FileService/DownloadFile?id=${item.id}`,
+    });
   }, []);
 
   const [updloadForm] = Form.useForm();
