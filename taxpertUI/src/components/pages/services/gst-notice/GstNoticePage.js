@@ -1,91 +1,14 @@
 import React from "react";
 
-import { Card, Col, Form, Row, Select } from "antd";
+import { Card } from "antd";
 import { Collapse, Space } from "antd";
-import { FIELD_NAME } from "./constant";
-import { fixMytaxServicesInfo, FixMyTaxServiceType } from "../constant";
-import { useState } from "react";
-import { message } from "../../../../shared/utils";
-import { registerNotice } from "../../../../services/register.service";
+import { FixMyTaxServiceType } from "../constant";
 import GstNoticeFormContainer from "../../../../modules/gst-notice-form/GstNoticeFormContainer";
-import { SUCCESS_MESSAGE_INFO } from "../../../../shared/constant/MessageInfo";
-
-import "./GstNoticePage.css";
 
 const { Panel } = Collapse;
-const { Option } = Select;
 
 const GstNoticePage = () => {
-  const { gst } = fixMytaxServicesInfo;
-  const [isLoading, setIsLoading] = useState(false);
   const titleHeader = "GST Notice";
-  const [form] = Form.useForm();
-
-  const [optionData, setOptionData] = useState({
-    sectionList: [],
-    subSectionsList: [],
-  });
-
-  React.useEffect(() => {
-    setOptionData((prevState) => ({
-      ...prevState,
-      sectionList: Object.keys(gst),
-    }));
-  }, []);
-
-  // const onFinish = async (values) => {
-  //   console.log("registration values:", values);
-  //   setIsLoading(true);
-  //   try {
-  //     const registerFormData = {
-  //       name: values.name,
-  //       email: values.email,
-  //       phoneNumber: values.phoneNumber,
-  //       ticketDetails: {
-  //         fixMyTaxServiceType: FixMyTaxServiceType.GST_Notice,
-  //         serviceType: 2, // notice reply always for time being
-  //         section: values.section,
-  //         subSection: "",
-  //         subject: values.subject,
-  //         question: values.question,
-  //         description: values.description,
-  //         // status: 0,
-  //         price: values.price,
-  //         // paymentStaus: 0,
-  //         // transactionNumber: "678678",
-  //       },
-  //     };
-  //     console.log(registerFormData);
-
-  //     const res = await registerNotice(
-  //       registerFormData,
-  //       values.uploadGSTNotice
-  //     );
-
-  //     if (res.id) {
-  //       message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-  //     }
-  //   } catch (e) {
-  //     console.error("error in creation", e);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-  const onHandleSection = (value) => {
-    console.log(value);
-    if (value) {
-      const priceValue = gst[value].price;
-      // setOptionData((prevState) => ({
-      //   ...prevState,
-      // }));
-      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
-    } else {
-      setOptionData((prevState) => ({
-        sectionList: [],
-      }));
-      form.setFieldValue(FIELD_NAME.PRICE, "");
-    }
-  };
 
   return (
     <>
@@ -121,72 +44,6 @@ const GstNoticePage = () => {
           />
         </Card>
       </section>
-      {/* <div className="gst-site-card-wrapper">
-        <div className="section-header">
-          <h1>Different Types of GST Notice</h1>
-          <hr className="taxpert-line" />
-          <h6>
-            Notices under GST are issue to the taxpayers, depending upon the
-            purpose or gravity of default or action require from these
-            taxpayers.
-          </h6>
-        </div>
-
-        <Row gutter={16}>
-          <Col span={8}>
-            <Card
-              id="cards"
-              className="gst-notice-card"
-              title="GSTR-3A"
-              bordered={false}
-            >
-              <p>
-                GSTR-3A notification for non-GST Returns files. This is the most
-                common notification of all notifications. Applies to GSTR-1,
-                GSTR-3B, GSTR-4, GSTR-8 (only for eCommerce Operators) Prepare &
-                EFile for GST refunds payable and late payments, interest on GST
-                obligation, if there is. for each notice or within 15 days from
-                the date of the notice. (Note that this can be up to 7 days and
-                in some cases.)
-              </p>
-            </Card>
-          </Col>
-          <Col span={8}>
-            <Card
-              id="cards"
-              className="gst-notice-card"
-              title="REG-03"
-              bordered={false}
-            >
-              <p>
-                REG-03 specification displayed to display or upload additional
-                documents to complete new GST registrations, or amendments to
-                GST registrations (key field updates, etc.) Provide
-                clarification of the REG-04 notification by specifying or
-                inserting additional details/documents requested 7 days of the
-                notification date.
-              </p>
-            </Card>
-          </Col>
-          <Col span={8}>
-            <Card
-              id="cards"
-              className="gst-notice-card"
-              title="CMP-05"
-              bordered={false}
-            >
-              <p>
-                It is an SCN which questions the taxpayer’s ability to be a
-                composition dealer under the GST norms. Indicate the reason for
-                the notice to question the taxpayer’s suitability as a
-                designated seller. Verify and the reasons why the taxpayer is
-                still eligible for the design structure in their field and the
-                amount they hold on each notice or within 15 days
-              </p>
-            </Card>
-          </Col>
-        </Row>
-      </div> */}
 
       <section className="section-faq-container">
         <div className="section-header">

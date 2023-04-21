@@ -55,7 +55,7 @@ const normFile = (e) => {
 };
 const FilingItrForm = (props) => {
   const navigate = useNavigate();
-  const { onFinish, onProceed } = props;
+  const { onProceed } = props;
   const { itr_filling } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 

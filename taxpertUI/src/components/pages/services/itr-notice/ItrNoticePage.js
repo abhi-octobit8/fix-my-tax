@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Collapse, Space } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 
-import "./ItrNoticePage.css";
 import ItrNoticeFormContainer from "../../../../modules/itr-notice/ItrNoticeFormContainer";
 
 const { Panel } = Collapse;
