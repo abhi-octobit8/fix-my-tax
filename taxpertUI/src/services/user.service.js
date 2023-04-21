@@ -8,3 +8,13 @@ export const getAllUsers = async (id) => {
   setUserListData(res.items);
   return res.items;
 };
+
+export const postUserActivate = async (body) => {
+  const res = await API({
+    method: "post",
+    url: `/services/app/User/Activate`,
+    body: body,
+    successMessage: "Assessee Activated Successfully",
+  });
+  return res;
+};

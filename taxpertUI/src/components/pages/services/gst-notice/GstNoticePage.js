@@ -121,7 +121,7 @@ const GstNoticePage = () => {
           />
         </Card>
       </section>
-      <div className="gst-site-card-wrapper">
+      {/* <div className="gst-site-card-wrapper">
         <div className="section-header">
           <h1>Different Types of GST Notice</h1>
           <hr className="taxpert-line" />
@@ -186,7 +186,7 @@ const GstNoticePage = () => {
             </Card>
           </Col>
         </Row>
-      </div>
+      </div> */}
 
       <section className="section-faq-container">
         <div className="section-header">

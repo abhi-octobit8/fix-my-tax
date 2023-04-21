@@ -20,16 +20,16 @@ const TaxAppealPage = (props) => {
                 Income Tax / GST Appeals
               </div>
               <p className="section-banner-data">
-                We understand that receiving a notice of appeal can be a
-                daunting task, which is why we offer our expertise to handle
-                them for you. Our team of experienced tax professionals will
-                represent you before the appropriate authorities, ensuring that
-                all necessary actions are taken to resolve the appeal in a
-                timely and favorable manner. With our in-depth knowledge of
-                income tax and GST laws and regulations, we aim to provide our
-                clients with effective representation in appeals. Trust us to
-                handle your income tax and GST appeals with the utmost
-                professionalism and expertise.
+                We understand that filing an appeal against the impugned order
+                can be a daunting task, which is why we offer our expertise to
+                handle them for you case. Our team of experienced tax
+                professionals will file, prepare & may represent you before the
+                appropriate authorities, ensuring that all necessary actions are
+                taken to resolve the appeal in a timely and favorable manner.
+                With our in-depth knowledge of income tax and GST laws and
+                regulations, we aim to provide our clients with effective
+                representation in appeals. Trust us to handle your income tax
+                and GST appeals with the utmost professionalism and expertise.
               </p>
             </div>
           </div>

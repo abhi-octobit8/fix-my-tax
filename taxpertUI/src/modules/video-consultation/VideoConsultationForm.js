@@ -7,22 +7,24 @@ import {
   Input,
   Select,
   Upload,
-  InputNumber,
   Checkbox,
-  Space,
   Tooltip,
+  Space,
+  DatePicker,
+  Spin,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
-import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
-import { phoneNumberValidator } from "../../shared/validator";
-import { FIELD_NAME } from "./constant";
+import { AVAILABLE_SLOT, FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
 
-import "./FilingTdsForm.css";
-import { getObjectFromList, openFile } from "../../shared/utils";
 import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
+import { getObjectFromList, openFile, sleep } from "../../shared/utils";
 import { USER_ROLE } from "../../components/application/application-menu/constant";
 import RegisterButton from "../../common/register-button/RegisterButton";
+import TextArea from "antd/lib/input/TextArea";
+import moment from "moment";
+import { requiredValidator } from "../../shared/validator";
+import { getLocalTime } from "../../shared/timeUtils";
 
 const { Option } = Select;
 
@@ -32,7 +34,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 10,
+      span: 8,
     },
   },
   wrapperCol: {
@@ -44,18 +46,7 @@ const formItemLayout = {
     },
   },
 };
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 14,
-      offset: 10,
-    },
-  },
-};
+
 const normFile = (e) => {
   console.log("Upload event:", e);
   if (Array.isArray(e)) {
@@ -63,9 +54,9 @@ const normFile = (e) => {
   }
   return e?.fileList;
 };
-const FilingTdsForm = (props) => {
+const VideoConsultationForm = (props) => {
   const { onFinish, onProceed } = props;
-  const { tds_filing } = fixMytaxServiceInfoData;
+  const { business_consultation } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -79,13 +70,16 @@ const FilingTdsForm = (props) => {
   React.useEffect(() => {
     setOptionData((prevState) => ({
       ...prevState,
-      sectionList: tds_filing,
+      sectionList: business_consultation,
     }));
   }, []);
 
   const onSubmit = (values) => {
     try {
-      const sectionObj = getObjectFromList(tds_filing, values.section);
+      const sectionObj = getObjectFromList(
+        business_consultation,
+        values.section
+      );
 
       const formData = {
         ...values,
@@ -97,10 +91,17 @@ const FilingTdsForm = (props) => {
     }
   };
 
+  const onHandleDateSelectionAPI = async (value) => {
+    debugger;
+    setIsLoading(true);
+    await sleep();
+    setIsLoading(false);
+  };
+
   const onHandleSection = (value) => {
     console.log(value);
     if (value) {
-      const priceValue = getObjectFromList(tds_filing, value).fee;
+      const priceValue = getObjectFromList(business_consultation, value).fee;
       form.setFieldValue(FIELD_NAME.PRICE, priceValue);
     } else {
       setOptionData((prevState) => ({
@@ -109,41 +110,36 @@ const FilingTdsForm = (props) => {
       form.setFieldValue(FIELD_NAME.PRICE, "");
     }
   };
+  const onDateChange = (value) => {
+    // console.log(moment(value).format("YYYY-MM-DD"));
+    const date = moment(value).format("YYYY-MM-DD");
+    onHandleDateSelectionAPI(date);
+    // console.log(moment(value).startOf("day"));
+  };
+
+  const disabledDate = (current) => {
+    return (
+      moment(current).day() === 0 ||
+      moment(current).day() === 6 ||
+      current < moment().add(1) ||
+      current > moment().day(21)
+    );
+  };
 
   return (
     <Form
+      onFinish={onSubmit}
       {...formItemLayout}
       form={form}
+      initialValues={{ price: 2000 }}
       name="register"
-      onFinish={onSubmit}
-      initialValues={{
-        prefix: "91",
-      }}
-      scrollToFirstError
     >
       <Form.Item
-        name={FIELD_NAME.SECTION}
-        label="Type of TDS/TCS Statement"
-        rules={[
-          {
-            required: true,
-            message: "Select your TDS/TCS Statement",
-          },
-        ]}
+        label="Topic"
+        name="query"
+        rules={[{ required: true, message: "This field is required" }]}
       >
-        <Select
-          placeholder="Select your TDS/TCS Statement"
-          onChange={onHandleSection}
-          showSearch
-        >
-          {optionData.sectionList.map((x, i) => {
-            return (
-              <Option value={x.key} key={i}>
-                <Tooltip title={x.name}>{x.name}</Tooltip>
-              </Option>
-            );
-          })}
-        </Select>
+        <TextArea showCount maxLength={140} />
       </Form.Item>
 
       <Form.Item
@@ -153,44 +149,41 @@ const FilingTdsForm = (props) => {
       >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
-      <Form.Item label="Upload Documents">
-        <Space>
-          <Form.Item
-            name="uploadDocument"
-            noStyle
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-            rules={[
-              {
-                required: true,
-                message: "Upload Required Document",
-              },
-            ]}
-          >
-            <Upload
-              beforeUpload={(file) => {
-                return false;
-              }}
-              multiple={false}
-              maxCount={1}
-              style={{
-                width: 160,
-              }}
-            >
-              <Button icon={<UploadOutlined />}>Click Upload File</Button>
-            </Upload>
-          </Form.Item>
-
-          <Tooltip title="Please merge file in single Pdf">
-            <InfoCircleOutlined
-              style={{ fontSize: "16px", color: "#f47c01" }}
-            />
-          </Tooltip>
-          <a href="#" onClick={() => openFile("/documents/TDS_TCS_FILING.pdf")}>
-            For Required Documents To Be Uploaded, Kindly Click Here
-          </a>
-        </Space>
+      <Form.Item
+        name={FIELD_NAME.DATE}
+        label="Select Date"
+        rules={[{ required: true, message: "This field is required" }]}
+        // extra="FEE INCLUDING GST @ 18%"
+      >
+        <DatePicker
+          format="YYYY-MM-DD"
+          disabledDate={disabledDate}
+          onChange={onDateChange}
+        />
       </Form.Item>
+
+      <Form.Item
+        label="Select your Slot"
+        name="slot"
+        rules={[requiredValidator]}
+      >
+        <Spin spinning={isLoading}>
+          <Select placeholder="Select your Slot" allowClear>
+            {AVAILABLE_SLOT.map((x, i) => {
+              return (
+                <Option value={x.value} disabled={!x.available} key={i}>
+                  <Tooltip
+                    title={x.available ? "Available slot" : "Not Available"}
+                  >
+                    {x.value}
+                  </Tooltip>
+                </Option>
+              );
+            })}
+          </Select>
+        </Spin>
+      </Form.Item>
+
       <Form.Item
         label=" "
         colon={false}
@@ -216,6 +209,10 @@ const FilingTdsForm = (props) => {
         </Checkbox>
       </Form.Item>
 
+      {/* <Form.Item label=" " colon={false}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button> */}
       <Form.Item label=" " colon={false}>
         {userRole === USER_ROLE.CUSTOMER ? (
           <Button type="primary" htmlType="submit">
@@ -229,4 +226,4 @@ const FilingTdsForm = (props) => {
   );
 };
 
-export default FilingTdsForm;
+export default VideoConsultationForm;

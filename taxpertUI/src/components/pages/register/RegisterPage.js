@@ -23,6 +23,8 @@ import {
   registerUser,
 } from "../../../services/register.service";
 import { SUCCESS_MESSAGE_INFO } from "../../../shared/constant/MessageInfo";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "../../../shared/Route";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -63,6 +65,7 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const RegisterPage = (props) => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
   const onFinish = async (values) => {
@@ -73,11 +76,19 @@ const RegisterPage = (props) => {
         name: values.name,
         email: values.email,
         phoneNumber: values.phoneNumber,
+        userCategory: values.userCategory,
+        panCardNumber: values.panCardNumber,
+        adharNumber: values.adharNumber,
+        gstNumber: values.gstNumber,
       };
 
-      const res = await registerUser(registerFormData);
+      const uploadFileData = values.uploadDocument;
+
+      debugger;
+      const res = await registerUser(registerFormData, uploadFileData);
       if (res.userId) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
+        navigate(PATH.LOGIN);
       }
     } catch (e) {
       console.error(e);
@@ -119,7 +130,6 @@ const RegisterPage = (props) => {
         name="register"
         onFinish={onFinish}
         initialValues={{
-          residence: ["zhejiang", "hangzhou", "xihu"],
           prefix: "91",
         }}
         scrollToFirstError
@@ -131,20 +141,6 @@ const RegisterPage = (props) => {
         >
           <Input />
         </Form.Item>
-        {/* <Form.Item
-          label="Surname"
-          name="surname"
-          rules={[{ required: true, message: "This field is required" }]}
-        >
-          <Input />
-        </Form.Item> */}
-        {/* <Form.Item
-          label="UserName"
-          name="username"
-          rules={[{ required: true, message: "This field is required" }]}
-        >
-          <Input />
-        </Form.Item> */}
 
         <Form.Item
           name="email"
@@ -164,58 +160,32 @@ const RegisterPage = (props) => {
         </Form.Item>
         <Form.Item
           label="Pan Card No"
-          name="panNumber"
+          name="panCardNumber"
           rules={[{ required: true, message: "This field is required" }]}
         >
           <Input />
         </Form.Item>
-
-        {/* <Form.Item
-          name="password"
-          label="Password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
+        <Form.Item
+          label="Aadhar Card No"
+          name="adharNumber"
+          rules={[{ required: true, message: "This field is required" }]}
         >
-          <Input.Password />
+          <Input />
+        </Form.Item>
+        <Form.Item label="GSTIN" name="gstNumber">
+          <Input />
         </Form.Item>
 
         <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={["password"]}
-          rules={[
-            {
-              required: true,
-              message: "Please confirm your password!",
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue("password") === value) {
-                  return Promise.resolve();
-                }
-                return Promise.reject(
-                  new Error("The two passwords that you entered do not match!")
-                );
-              },
-            }),
-          ]}
-        >
-          <Input.Password />
-        </Form.Item> */}
-
-        <Form.Item
-          name="category"
-          label="Category"
+          name="userCategory"
+          label="Category (For Availing Discount)"
           rules={[
             {
               required: true,
               message: "Please select Category!",
             },
           ]}
+          extra="Except General; Rest Categories Are Eligible For Discount Of 10%"
         >
           <Select placeholder="Select Your Category" showSearch>
             {REGISTER_CATEGORIES.map((x, i) => {
@@ -229,7 +199,7 @@ const RegisterPage = (props) => {
         </Form.Item>
         <Form.Item noStyle shouldUpdate>
           {({ getFieldValue }) => {
-            const value = getFieldValue("category");
+            const value = getFieldValue("userCategory");
             if (value && value !== 1) {
               return (
                 <Form.Item
@@ -237,11 +207,11 @@ const RegisterPage = (props) => {
                   label="Upload Document"
                   valuePropName="fileList"
                   getValueFromEvent={normFile}
-                  extra="To verify the Category upload required Document"
+                  extra="Upload Identity Card issued by the Government Authorities / Institutions"
                   rules={[
                     {
                       required: true,
-                      message: "Please upload Document to verified document",
+                      message: "Please Upload Document to Verified",
                     },
                   ]}
                 >
@@ -260,24 +230,7 @@ const RegisterPage = (props) => {
             return null;
           }}
         </Form.Item>
-        {/* <React.Fragment>
-          <Form.Item
-            name="uploadDocument"
-            label="Upload Document"
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-          >
-            <Upload
-              beforeUpload={(file) => {
-                return false;
-              }}
-              multiple={false}
-              maxCount={1}
-            >
-              <Button icon={<UploadOutlined />}>Click to upload</Button>
-            </Upload>
-          </Form.Item>
-        </React.Fragment> */}
+
         <Form.Item
           name="phoneNumber"
           label="Phone Number"

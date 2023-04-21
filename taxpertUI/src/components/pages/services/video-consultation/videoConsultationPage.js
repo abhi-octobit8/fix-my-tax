@@ -1,44 +1,37 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Collapse, Space, Card } from "antd";
-import { Header1, Header3 } from "../../../../common/Headers";
-import { openFile } from "../../../../shared/utils";
 
-import "./GstReturnPage.css";
+import { Collapse, Space, Card } from "antd";
+import { FixMyTaxServiceType } from "../constant";
+
+import VideoConsultationFormContainer from "../../../../modules/video-consultation/VideoConsultationFormContainer";
 
 const { Panel } = Collapse;
 
-const GstReturnPage = () => {
-  const titleHeader = "GST Return";
+const VideoConsultationPage = () => {
+  const titleHeader = "Video Consultation";
 
   return (
     <React.Fragment>
-      <section id="service-banner-tds" className="section-banner">
+      <section id="service-banner--consultation" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
             <div className="section-banner-info">
-              <div className="section-banner-title">GST Return</div>
+              <div className="section-banner-title">{titleHeader}</div>
               <p className="section-banner-data">
-                We understand the importance of timely and accurate GST filings,
-                which is why we offer our expertise to individuals, businesses,
-                and organizations of all sizes. Our team of experienced tax
-                professionals will guide you through the entire process,
-                ensuring that all your GST obligations are met while maximizing
-                your tax savings. With our thorough understanding of GST laws
-                and regulations, we strive to provide our clients with peace of
-                mind during GST filing season. Trust us to handle your GST
-                filings with efficiency and accuracy.
+                Introducing our innovative video consultation service for all
+                matters related to taxation and enterprise setup – the first of
+                its kind in the industry, provided by our tax consultancy firm.
+                With this service, we provide our clients with a virtual
+                consultation experience that is flexible, efficient, and
+                convenient. Our team of experienced tax professionals will
+                address all your queries and concerns, including tax planning,
+                compliance, and enterprise setup. With our advanced technology
+                and expertise, we aim to provide our clients with a seamless
+                video consultation experience that delivers personalized
+                solutions tailored to their unique needs. Trust us to provide
+                you with a modern and innovative approach to tax and enterprise
+                consultation services.
               </p>
-              <div className="section-header">
-                <Header3>
-                  <a
-                    href="#"
-                    onClick={() => openFile("/documents/FORMS_UNDER_GST.pdf")}
-                  >
-                    Forms under GST Act
-                  </a>
-                </Header3>
-              </div>
             </div>
           </div>
         </div>
@@ -48,7 +41,9 @@ const GstReturnPage = () => {
           <div className="section-header">
             <h2>{titleHeader}</h2>
           </div>
-          <Header1 className="section-header">Image come Here...</Header1>
+          <VideoConsultationFormContainer
+            selectedFixMyTaxService={FixMyTaxServiceType.ITR_TDS_TCS_Filing}
+          />
         </Card>
       </section>
       <section className="section-faq-container">
@@ -110,4 +105,4 @@ const GstReturnPage = () => {
   );
 };
 
-export default GstReturnPage;
+export default VideoConsultationPage;

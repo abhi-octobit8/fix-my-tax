@@ -9,7 +9,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1100,
       price: 1298,
-      pricingKey : "itr_filling_ITR_1",
+      pricingKey: "itr_filling_ITR_1",
     },
     {
       key: 2,
@@ -20,18 +20,18 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1500,
       price: 1770,
-      pricingKey : "itr_filling_ITR_2"
+      pricingKey: "itr_filling_ITR_2",
     },
     {
       key: 3,
       name: "ITR-3",
       subSections: null,
       description:
-        "Salaried Employee / Pensioner with Income from Other Sources, House Property Income & Capital Gain other than Shares",
+        "Salaried Employee / Pensioner with Income from Other Sources, House Property Income & Capital Gain with Shares",
       documents: [],
-      fee: 2100,
+      fee: 4100,
       price: 2478,
-      pricingKey : "itr_filling_itr_3",
+      pricingKey: "itr_filling_itr_3",
     },
     {
       key: 4,
@@ -42,7 +42,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1500,
       price: 1770,
-      pricingKey : "itr_filling_itr_4_1",
+      pricingKey: "itr_filling_itr_4_1",
     },
     {
       key: 5,
@@ -53,7 +53,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
-      pricingKey : "itr_filling_itr_4_2",
+      pricingKey: "itr_filling_itr_4_2",
     },
     {
       key: 6,
@@ -62,31 +62,28 @@ const fixMytaxServiceInfoData = {
       description:
         "Assessee with Professional Income as well as House Property, Capital Gain and Income from Other Sources",
       documents: [],
-      fee: 4100,
+      fee: 4500,
       price: 4838,
-      pricingKey : "itr_filling_itr_4_3",
+      pricingKey: "itr_filling_itr_4_3",
     },
     {
       key: 7,
       name: "ITR-5",
       subSections: null,
       description:
-        "Assessee with Professional Income as well as House Property and Income from Other SourcesAssessee with Professional Income as well as House Property and Income from Other Sources",
+        "NGOs / SOCIETIES / TRUST / CHARITABLE COMPANIES WITHOUT INCOME TAX EXEMPTION APPROVAL",
       documents: [],
-      fee: 2100,
-      price: 2478,
-      pricingKey : "itr_filling_itr_5",
+      fee: 4100,
+      pricingKey: "itr_filling_itr_5",
     },
     {
       key: 8,
       name: "ITR-6",
       subSections: null,
-      description:
-        "Assessee with Business Income as well as House Property and Income from Other Sources",
+      description: "Company Assessee",
       documents: [],
       fee: 5100,
-      price: 6018,
-      pricingKey : "itr_filling_itr_6",
+      pricingKey: "itr_filling_itr_6",
     },
     {
       key: 9,
@@ -96,8 +93,15 @@ const fixMytaxServiceInfoData = {
         "NGOs / SOCIETIES / TRUST / CHARITABLE COMPANIES WITH INCOME TAX EXEMPTION APPROVAL",
       documents: [],
       fee: 7100,
-      price: 8378,
-      pricingKey : "itr_filling_itr_7",
+    },
+    {
+      key: 10,
+      name: "ITR-U",
+      subSections: null,
+      description: "CAN BE FILED FOR LAST TWO ASSESSMENT YEARS",
+      documents: [],
+      fee: 2500,
+      pricingKey: "itr_filling_itr_7",
     },
   ],
   tds_filing: [
@@ -157,7 +161,7 @@ const fixMytaxServiceInfoData = {
     },
     {
       key: 7,
-      name: "Statement MATTERS FOR EXCESS TDS / TCS DEPOSIT",
+      name: "REFUND MATTERS FOR EXCESS TDS / TCS DEPOSIT",
       subSections: null,
       description: "",
       documents: [],
@@ -178,7 +182,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 5100,
           price: 6018,
-          pricingKey : "itr_tds_tcs_notice_131_1A_1",
+          pricingKey: "itr_tds_tcs_notice_131_1A_1",
         },
         {
           key: 2,
@@ -188,7 +192,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
-          pricingKey : "itr_tds_tcs_notice_131_1A_2",
+          pricingKey: "itr_tds_tcs_notice_131_1A_2",
         },
       ],
       description: "",
@@ -638,7 +642,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1100,
       price: 1298,
-      pricingKey : "gst_notice_REG_03_1",
+      pricingKey: "gst_notice_REG_03_1",
     },
     {
       key: 2,
@@ -649,7 +653,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
-      pricingKey : "gst_notice_REG_17_1",
+      pricingKey: "gst_notice_REG_17_1",
     },
     {
       key: 3,
@@ -888,7 +892,7 @@ const fixMytaxServiceInfoData = {
         },
         {
           key: 7,
-          name: "PERSONAL HEARING THROUGH AR",
+          name: "PERSONAL HEARING THROUGH AR - OTHER THAN FEE: EXPENSES TO BE REIMBURSED AT ACTUALS",
           subSections: null,
           description: "",
           documents: [],
@@ -959,7 +963,7 @@ const fixMytaxServiceInfoData = {
         },
         {
           key: 7,
-          name: "PERSONAL HEARING THROUGH AR",
+          name: "PERSONAL HEARING THROUGH AR-OTHER THAN FEE: EXPENSES TO BE REIMBURSED AT ACTUALS",
           subSections: null,
           description: "",
           documents: [],
@@ -975,16 +979,15 @@ const fixMytaxServiceInfoData = {
   business_consultation: [
     {
       key: 1,
-      name: "Knowledge about intricacies of taxation laws as per Statute",
+      name: "Enjoy knowledge about intricacies of taxation laws as per Statute",
       subSections: null,
       description: "",
       documents: [],
-      fee: 2500,
-      price: 2950,
+      fee: 2100,
     },
     {
       key: 2,
-      name: "legal opinion on any complex taxation matters from our Team of Qualified Professionals @ Legal Consultancy",
+      name: "Legal opinion on any complex taxation matters from our Team of Qualified Professionals @ Legal Consultancy",
       subSections: null,
       description: "",
       documents: [],
@@ -993,7 +996,7 @@ const fixMytaxServiceInfoData = {
     },
     {
       key: 3,
-      name: "Any business related consultancy  being proprietorship / partnership / llp or company",
+      name: "Any Business Related Consultancy  Being Proprietorship / Partnership / LLP Or Company",
       subSections: null,
       description: "",
       documents: [],
@@ -1002,7 +1005,7 @@ const fixMytaxServiceInfoData = {
     },
     {
       key: 4,
-      name: "Any ngo related consultancy being society / trust / charitable company",
+      name: "Any NGO Related Consultancy Being Society / Trust / Charitable Company",
       subSections: null,
       description: "",
       documents: [],
@@ -1011,7 +1014,7 @@ const fixMytaxServiceInfoData = {
     },
     {
       key: 5,
-      name: "Any ngo income related query",
+      name: "Any NGO Income Related Query",
       subSections: null,
       description: "",
       documents: [],

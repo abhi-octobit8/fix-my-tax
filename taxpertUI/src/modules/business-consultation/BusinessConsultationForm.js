@@ -103,7 +103,7 @@ const BusinessConsultationForm = (props) => {
     <Form onFinish={onSubmit} {...formItemLayout} form={form} name="register">
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="NATURE OF QUERY"
+        label="Nature of Query"
         rules={[
           {
             required: true,

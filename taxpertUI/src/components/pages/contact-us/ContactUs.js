@@ -76,7 +76,7 @@ const ContactUs = () => {
               scrollToFirstError
             >
               <Form.Item
-                label="Enter First Name"
+                label="First Name"
                 name="name"
                 rules={[{ required: true, message: "This field is required" }]}
               >
@@ -126,7 +126,7 @@ const ContactUs = () => {
                 />
               </Form.Item>
               <Form.Item
-                label="Query"
+                label="Feedback"
                 name="query"
                 rules={[{ required: true, message: "This field is required" }]}
               >
@@ -140,7 +140,7 @@ const ContactUs = () => {
             </Form>
           </Col>
           <Col className="content-padding" xs={24} md={12} lg={12} sm={24}>
-            <h6 style={{ fontSize: "20px" }}>We are here to help</h6>
+            <h6 style={{ fontSize: "20px" }}>Happy To Help</h6>
 
             <PhoneTwoTone />
             <span style={{ marginLeft: "8px" }}>+91 6387022844</span>

@@ -43,6 +43,28 @@ const MENU_ITEMS = [
     to: PATH.HOME,
   },
   {
+    label: "Register",
+    role: USER_ROLE.NON_AUTHORIZED,
+    to: PATH.REGISTER,
+  },
+  {
+    label: "Account",
+    role: [USER_ROLE.CUSTOMER, USER_ROLE.ADMIN, USER_ROLE.ADVOCATE],
+    to: PATH.TICKET_REQUEST_LIST,
+    // children: [
+    //   {
+    //     label: "DashBoard",
+    //     role: [USER_ROLE.CUSTOMER, USER_ROLE.ADMIN, USER_ROLE.ADVOCATE],
+    //     to: "/admin/dashboard",
+    //   },
+    //   // {
+    //   //   label: "Pending Request",
+    //   //   role: USER_ROLE.ADMIN,
+    //   //   to: "/admin/user",
+    //   // },
+    // ],
+  },
+  {
     label: "Services",
     role: USER_ROLE.PUBLIC,
     to: "",
@@ -87,6 +109,11 @@ const MENU_ITEMS = [
         role: USER_ROLE.PUBLIC,
         to: PATH.SERVICE_BUSINESS_CONSULTATION,
       },
+      {
+        label: "Video Consultation",
+        role: USER_ROLE.PUBLIC,
+        to: PATH.SERVICE_VIDEO_CONSULTATION,
+      },
     ],
   },
   {
@@ -95,15 +122,11 @@ const MENU_ITEMS = [
     to: PATH.ABOUT,
   },
   {
-    label: "MemberShip",
+    label: "Membership",
     role: USER_ROLE.PUBLIC,
     to: PATH.MEMBERSHIP,
   },
-  {
-    label: "Register",
-    role: USER_ROLE.NON_AUTHORIZED,
-    to: PATH.REGISTER,
-  },
+
   // {
   //   label: "Latest News",
   //   role: USER_ROLE.PUBLIC,
@@ -131,23 +154,6 @@ const MENU_ITEMS = [
   //     },
   //   ],
   // },
-  {
-    label: "Account",
-    role: [USER_ROLE.CUSTOMER, USER_ROLE.ADMIN, USER_ROLE.ADVOCATE],
-    to: PATH.TICKET_REQUEST_LIST,
-    // children: [
-    //   {
-    //     label: "DashBoard",
-    //     role: [USER_ROLE.CUSTOMER, USER_ROLE.ADMIN, USER_ROLE.ADVOCATE],
-    //     to: "/admin/dashboard",
-    //   },
-    //   // {
-    //   //   label: "Pending Request",
-    //   //   role: USER_ROLE.ADMIN,
-    //   //   to: "/admin/user",
-    //   // },
-    // ],
-  },
 ];
 function getMenuItems(collection, userData) {
   let isAuthorized = false;

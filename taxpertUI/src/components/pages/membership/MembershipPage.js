@@ -12,14 +12,14 @@ const MembershipPage = () => (
             <p className="section-banner-data">
               We are delighted to offer you our membership plans. Our membership
               plans are designed to cater to the varying needs of our clients,
-              whether you are an individual or a business owner and come with a
-              range of benefits, including access to our team of experienced tax
-              professionals who can assist you with tax planning, preparation,
-              and filing. We provide personalized service to ensure that you
-              receive the attention you deserve, and we work diligently to help
-              you achieve your financial goals. Services of the membership plans
-              are currently available via email and the same will soon be made
-              available over the portal.
+              whether you are an individual or a business owner; Our plans come
+              with a range of benefits, including access to our team of
+              experienced tax professionals who can assist you with tax
+              planning, preparation, and filing. We provide personalized service
+              to ensure that you receive the attention you deserve, and we work
+              diligently to help you achieve your financial goals. Services of
+              the membership plans are currently available via email and the
+              same will soon be made available over the portal.
             </p>
             {/* <div>Content here...</div> */}
           </div>

@@ -109,7 +109,7 @@ const GstNoticeForm = (props) => {
     >
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="NOTICE TYPE IN PRESCRIBED FORM"
+        label="Notice Type in Prescribed Form"
         rules={[
           {
             required: true,
@@ -126,7 +126,7 @@ const GstNoticeForm = (props) => {
             return (
               <Option value={x.key} key={i}>
                 <Tooltip title={x.description}>
-                  {x.name} ({x.description}
+                  {x.name} ({x.description})
                 </Tooltip>
               </Option>
             );
@@ -140,7 +140,7 @@ const GstNoticeForm = (props) => {
       >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
-      <Form.Item label="UPLOAD COPY OF NOTICE & SUPPORTING DOCUMENTS">
+      <Form.Item label="Upload Copy of Notice & Supporting Documents">
         <Space>
           <Form.Item
             name="uploadDocument"

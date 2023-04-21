@@ -171,7 +171,7 @@ const ItrNoticeForm = (props) => {
     >
       <Form.Item
         name={FIELD_NAME.SECTION}
-        label="UNDER SECTION"
+        label="Under Section"
         rules={[
           {
             required: true,

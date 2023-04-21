@@ -287,9 +287,11 @@ const TaxAppealForm = (props) => {
           </Tooltip>
           <a
             href="#"
-            onClick={() => openFile("/documents/ITR_FILINING_DOCUMENT.pdf")}
+            onClick={() =>
+              openFile("/documents/DOCUMENTS_REQUIRED_FOR_APPEALS.pdf")
+            }
           >
-            Documents Click Here
+            For Required Documents To Be Uploaded, Kindly Click Here
           </a>
         </Space>
       </Form.Item>

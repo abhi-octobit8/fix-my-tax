@@ -64,9 +64,12 @@ export const updateAssignment = async (formData) => {
   return res;
 };
 
-export const downloadAPI = async (id) => {
+export const downloadAPI = async (
+  id,
+  url = `services/app/FileService/DownloadFile?id=${id}`
+) => {
   const res = await API({
-    url: `services/app/FileService/DownloadFile?id=${id}`,
+    url: url,
     method: "POST",
     responseTypeData: "blob",
   });
