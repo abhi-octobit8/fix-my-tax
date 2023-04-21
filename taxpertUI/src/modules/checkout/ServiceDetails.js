@@ -15,10 +15,14 @@ const ServiceDetails = (props) => {
           </Descriptions.Item>
           <Descriptions.Item label="Pan Number" span={1}>
             {" "}
-            ABCD1239D
+            {userInfo?.panCardNumber}
           </Descriptions.Item>
-          <Descriptions.Item label="Category" span={3}>
-            1
+          <Descriptions.Item label="Category" span={2}>
+            {userInfo.fmtCategory}
+          </Descriptions.Item>
+          <Descriptions.Item label="Aadhar Number" span={1}>
+            {" "}
+            {userInfo?.adharNumber}
           </Descriptions.Item>
         </Descriptions>
         <Header4>Service Details</Header4>

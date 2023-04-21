@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 import { USER_ROLE } from "../../components/application/application-menu/constant";
 import { doLogout } from "../../store/authentication/AuthActions";
 import RegisterButton from "../../common/register-button/RegisterButton";
+import { GetServicePrice } from "../../services/ticket.service";
 
 const { Option } = Select;
 
@@ -73,16 +74,32 @@ const FilingItrForm = (props) => {
     }));
   }, []);
 
-  const onHandleSection = (value) => {
-    console.log(value);
-    if (value) {
-      const priceValue = getObjectFromList(itr_filling, value).fee;
-      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
-    } else {
-      setOptionData((prevState) => ({
-        sectionList: [],
-      }));
-      form.setFieldValue(FIELD_NAME.PRICE, "");
+  const onHandleSection = async (value) => {
+    try {
+      console.log(value);
+      if (value) {
+        // call get api to get price
+        const pricingKeyValue = getObjectFromList(
+          itr_filling,
+          value
+        ).pricingKey;
+        const res = await GetServicePrice(pricingKeyValue);
+        console.log(res);
+        debugger;
+        // const priceValue = getObjectFromList(itr_filling, value).fee;
+        if (res && res.price) {
+          form.setFieldValue(FIELD_NAME.PRICE, res.price);
+        } else {
+          form.setFieldValue(FIELD_NAME.PRICE, "");
+        }
+      } else {
+        setOptionData((prevState) => ({
+          sectionList: [],
+        }));
+        form.setFieldValue(FIELD_NAME.PRICE, "");
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -93,6 +110,7 @@ const FilingItrForm = (props) => {
       const formData = {
         ...values,
         sectionObj,
+        pricingKey: sectionObj.pricingKey,
       };
       onProceed(formData);
     } catch (e) {
@@ -132,6 +150,12 @@ const FilingItrForm = (props) => {
         name={FIELD_NAME.PRICE}
         label="Fee"
         // extra="FEE INCLUDING GST @ 18%"
+        rules={[
+          {
+            required: true,
+            message: "Please select service again",
+          },
+        ]}
       >
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
