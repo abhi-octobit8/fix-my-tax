@@ -9,7 +9,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1100,
       price: 1298,
-      pricingKey: "itr_filling_ITR_1",
+      pricingKey: "itr_filling_itr_1",
     },
     {
       key: 2,
@@ -20,7 +20,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1500,
       price: 1770,
-      pricingKey: "itr_filling_ITR_2",
+      pricingKey: "itr_filling_itr_2",
     },
     {
       key: 3,
@@ -113,6 +113,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "tds_tcs_filing_24_Q1_Q3_1",
     },
     {
       key: 2,
@@ -122,6 +123,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 4000,
       price: 4720,
+      pricingKey: "tds_tcs_filing_24_Q4_2",
     },
     {
       key: 3,
@@ -131,6 +133,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "tds_tcs_filing_26_Q1_Q4_3",
     },
     {
       key: 4,
@@ -140,6 +143,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "tds_tcs_filing_quarterly_4",
     },
     {
       key: 5,
@@ -149,6 +153,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 1100,
       price: 1298,
+      pricingKey: "tds_tcs_filing_correction_5",
     },
     {
       key: 6,
@@ -158,6 +163,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 5100,
       price: 6018,
+      pricingKey: "tds_tcs_filing_property_sale_challan_6",
     },
     {
       key: 7,
@@ -167,6 +173,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 5100,
       price: 6018,
+      pricingKey: "tds_tcs_filing_refund_excess_7",
     },
   ],
   itr_tds_tcs_notice: [
@@ -182,7 +189,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 5100,
           price: 6018,
-          pricingKey: "itr_tds_tcs_notice_131_1A_1",
+          pricingKey: "itr_tds_tcs_notice_131_1A_1_1",
         },
         {
           key: 2,
@@ -192,7 +199,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
-          pricingKey: "itr_tds_tcs_notice_131_1A_2",
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
       ],
       description: "",
@@ -210,6 +217,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 3100,
           price: 3658,
+          pricingKey: "itr_tds_tcs_notice_133-6_2_1",
         },
         {
           key: 2,
@@ -219,6 +227,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 2100,
           price: 2478,
+          pricingKey: "itr_tds_tcs_notice_133-6_2_2",
         },
         {
           key: 3,
@@ -228,6 +237,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 7100,
           price: 8378,
+          pricingKey: "itr_tds_tcs_notice_133-6_2_3",
         },
         {
           key: 4,
@@ -237,6 +247,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
       ],
       description: "",
@@ -254,6 +265,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 2100,
           price: 2478,
+          pricingKey: "itr_tds_tcs_notice_142-1_3_1",
         },
         {
           key: 2,
@@ -263,6 +275,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 5100,
           price: 6018,
+          pricingKey: "itr_tds_tcs_notice_142-1_3_2",
         },
         {
           key: 3,
@@ -272,6 +285,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 7100,
           price: 8378,
+          pricingKey: "itr_tds_tcs_notice_142-1_3_3",
         },
         {
           key: 4,
@@ -281,6 +295,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 11000,
           price: 12980,
+          pricingKey: "itr_tds_tcs_notice_142-1_3_4",
         },
         {
           key: 5,
@@ -290,6 +305,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
         {
           key: 6,
@@ -299,6 +315,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 11000,
           price: 12980,
+          pricingKey: "itr_tds_tcs_notice_other_3_5",
         },
       ],
       description: "",
@@ -316,6 +333,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 3100,
           price: 3658,
+          pricingKey: "itr_tds_tcs_notice_143(2)_4_1",
         },
 
         {
@@ -326,6 +344,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
       ],
       description: "",
@@ -343,6 +362,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 2100,
           price: 2478,
+          pricingKey: "itr_tds_tcs_notice_143-1_5_1",
         },
 
         {
@@ -353,6 +373,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
       ],
       description: "",
@@ -370,6 +391,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 11000,
           price: 12980,
+          pricingKey: "itr_tds_tcs_notice_144_6_1",
         },
         {
           key: 2,
@@ -379,6 +401,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 7100,
           price: 8378,
+          pricingKey: "itr_tds_tcs_notice_144_6_2",
         },
         {
           key: 3,
@@ -388,6 +411,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
         {
           key: 4,
@@ -397,6 +421,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 11000,
           price: 12980,
+          pricingKey: "itr_tds_tcs_notice_144_6_3",
         },
       ],
       description: "",
@@ -414,6 +439,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 21000,
           price: 24780,
+          pricingKey: "itr_tds_tcs_notice_148A_7_1",
         },
 
         {
@@ -424,6 +450,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
       ],
       description: "",
@@ -441,6 +468,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1100,
           price: 1298,
+          pricingKey: "itr_tds_tcs_notice_156_8_1",
         },
 
         {
@@ -451,6 +479,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
       ],
       description: "",
@@ -468,6 +497,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 5100,
           price: 6018,
+          pricingKey: "itr_tds_tcs_notice_176-3_9_1",
         },
 
         {
@@ -478,6 +508,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
       ],
       description: "",
@@ -495,6 +526,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 2100,
           price: 2478,
+          pricingKey: "itr_tds_tcs_notice_210-3_10_1",
         },
         {
           key: 2,
@@ -504,6 +536,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
       ],
       description: "",
@@ -521,6 +554,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 5100,
           price: 6018,
+          pricingKey: "itr_tds_tcs_notice_221_11_1",
         },
         {
           key: 2,
@@ -530,6 +564,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
       ],
       description: "",
@@ -547,6 +582,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 2100,
           price: 2478,
+          pricingKey: "itr_tds_tcs_notice_245_12_1",
         },
         {
           key: 2,
@@ -556,6 +592,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 5100,
           price: 6018,
+          pricingKey: "itr_tds_tcs_notice_245_12_2",
         },
         {
           key: 3,
@@ -565,6 +602,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
         {
           key: 4,
@@ -574,6 +612,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 7100,
           price: 8378,
+          pricingKey: "itr_tds_tcs_notice_245_12_3",
         },
       ],
       description: "",
@@ -591,6 +630,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 11000,
           price: 12980,
+          pricingKey: "itr_tds_tcs_notice_271-1-c_13_1",
         },
         {
           key: 2,
@@ -600,6 +640,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 8100,
           price: 9558,
+          pricingKey: "itr_tds_tcs_notice_271-1-c_13_2",
         },
         {
           key: 3,
@@ -609,6 +650,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 11000,
           price: 12980,
+          pricingKey: "itr_tds_tcs_notice_271-1-c_13_3",
         },
       ],
       description: "",
@@ -626,6 +668,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 5100,
           price: 6018,
+          pricingKey: "itr_tds_tcs_notice_other_sections_14_1",
         },
       ],
       description: "",
@@ -635,7 +678,7 @@ const fixMytaxServiceInfoData = {
   gst_notice: [
     {
       key: 1,
-      name: "GST REG-03 ()",
+      name: "GST REG-03 (Notice issued for further information / clarification in response to application for new registration or amendment of GST registration certificate.)",
       subSections: null,
       description:
         "Notice issued for further information / clarification in response to application for new registration or amendment of GST registration certificate.",
@@ -646,180 +689,197 @@ const fixMytaxServiceInfoData = {
     },
     {
       key: 2,
-      name: "GST REG-17",
+      name: "GST REG-17 (Show Cause Notice as to why GST registration be not be cancelled.)",
       subSections: null,
       description:
         "Show Cause Notice as to why GST registration be not be cancelled.",
       documents: [],
       fee: 2100,
       price: 2478,
-      pricingKey: "gst_notice_REG_17_1",
+      pricingKey: "gst_notice_REG_17_2",
     },
     {
       key: 3,
-      name: "GST REG-23",
+      name: "GST REG-23 (Show Cause Notice as to why registration of GST cancellation be revoked.)",
       subSections: null,
       description:
         "Show Cause Notice as to why registration of GST cancellation be revoked.",
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "gst_notice_REG_23_3",
     },
     {
       key: 4,
-      name: "GST REG-27",
+      name: "GST REG-27 (Notice where application for provisional registration has not been made for migration into GST from VAT regime or incomplete details have been provided.)",
       subSections: null,
       description:
         "Notice where application for provisional registration has not been made for migration into GST from VAT regime or incomplete details have been provided.",
       documents: [],
       fee: 1100,
       price: 1298,
+      pricingKey: "gst_notice_REG_27_4",
     },
     {
       key: 5,
-      name: "GST GSTR-3A",
+      name: "GST GSTR-3A (Notice to assessee who are default for not filing GST Returns in GSTR-1 or GSTR-3B or GSTR-4 or GSTR-8.)",
       subSections: null,
       description:
         "Notice to assessee who are default for not filing GST Returns in GSTR-1 or GSTR-3B or GSTR-4 or GSTR-8.",
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "gst_notice_GSTR_3A_5",
     },
     {
       key: 6,
-      name: "GST CMP-05",
+      name: "GST CMP-05 (Show Cause Notice for eligibility to be a composition dealer.)",
       subSections: null,
       description:
         "Show Cause Notice for eligibility to be a composition dealer.",
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "gst_notice_CMP_05_6",
     },
     {
       key: 7,
-      name: "GST PCT-03",
+      name: "GST PCT-03 (Show Cause Notice for misconduct by GST practitioner.)",
       subSections: null,
       description:
         "Assessee with Professional Income as well as House Property and Income from Other SourcesAssessee with Professional Income as well as House Property and Income from Other SourcesShow Cause Notice for misconduct by GST practitioner.",
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "gst_notice_PCT_03_7",
     },
     {
       key: 8,
-      name: "GST RFD-08",
+      name: "GST RFD-08 (Show Cause Notice on rejection of GST refund made.)",
       subSections: null,
       description: "Show Cause Notice on rejection of GST refund made.",
       documents: [],
       fee: 5100,
       price: 6018,
+      pricingKey: "gst_notice_RFD_08_8",
     },
     {
       key: 9,
-      name: "GST ASMT-02",
+      name: "GST ASMT-02 (Clarification / Additional documents required for provisional assessment.)",
       subSections: null,
       description:
         "Clarification / Additional documents required for provisional assessment.",
       documents: [],
       fee: 5100,
       price: 6018,
+      pricingKey: "gst_notice_ASMT_02_9",
     },
     {
       key: 10,
-      name: "GST ASMT-06",
+      name: "GST ASMT-06 (Clarification / Additional documents required for final assessment.)",
       subSections: null,
       description:
         "Clarification / Additional documents required for final assessment.",
       documents: [],
       fee: 11000,
       price: 12980,
+      pricingKey: "gst_notice_ASMT_06_10",
     },
     {
       key: 11,
-      name: "GST ASMT-10",
+      name: "GST ASMT-10 (For intimation of discrepancies in the GST Return after scrutiny.)",
       subSections: null,
       description:
         "For intimation of discrepancies in the GST Return after scrutiny.",
       documents: [],
       fee: 21000,
       price: 24780,
+      pricingKey: "gst_notice_ASMT_10_11",
     },
     {
       key: 12,
-      name: "GST ASMT-14",
+      name: "GST ASMT-14 (Show Cause Notice under Section 63 for Best Judgment Assessment.)",
       subSections: null,
       description:
         "Show Cause Notice under Section 63 for Best Judgment Assessment.",
       documents: [],
       fee: 7100,
       price: 8378,
+      pricingKey: "gst_notice_ASMT_14_12",
     },
     {
       key: 13,
-      name: "GST ADT-01",
+      name: "GST ADT-01 (Notice from the Authorities for conducting Audit under Section 65.)",
       subSections: null,
       description:
         "Notice from the Authorities for conducting Audit under Section 65.",
       documents: [],
       fee: 7100,
       price: 8378,
+      pricingKey: "gst_notice_ADT_01_13",
     },
     {
       key: 14,
-      name: "GST RVN-01",
+      name: "GST RVN-01 (Notice under Section 108 issued by the Revisional Authority in case of Revision.)",
       subSections: null,
       description:
         "Notice under Section 108 issued by the Revisional Authority in case of Revision.",
       documents: [],
       fee: 5100,
       price: 6018,
+      pricingKey: "gst_notice_RVN_01_14",
     },
     {
       key: 15,
-      name: "GST DRC-01",
+      name: "GST DRC-01 (Show Cause Notice for tax demanded in GST DRC-02.)",
       subSections: null,
       description: "Show Cause Notice for tax demanded in GST DRC-02.",
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "gst_notice_DRC_01_15",
     },
     {
       key: 16,
-      name: "GST DRC-10",
+      name: "GST DRC-10 (Notice for auction of Goods under Section 79(1)(b).)",
       subSections: null,
       description: "Notice for auction of Goods under Section 79(1)(b).",
       documents: [],
       fee: 21000,
       price: 24780,
+      pricingKey: "gst_notice_DRC_10_16",
     },
     {
       key: 17,
-      name: "GST DRC-11",
+      name: "GST DRC-11 (Notice to the successful bidder.)",
       subSections: null,
       description: "Notice to the successful bidder.",
       documents: [],
       fee: 5100,
       price: 6018,
+      pricingKey: "gst_notice_DRC_11_17",
     },
     {
       key: 18,
-      name: "GST DRC-13",
+      name: "GST DRC-13 (Notice under Section 79(1)(c) to the third person directing to deposit the amount specified.)",
       subSections: null,
       description:
         "Notice under Section 79(1)(c) to the third person directing to deposit the amount specified.",
       documents: [],
       fee: 5100,
       price: 6018,
+      pricingKey: "gst_notice_DRC_13_18",
     },
     {
       key: 19,
-      name: "GST DRC-16",
+      name: "GST DRC-16 (Notice under Section 79 for attachment and sale of movable / immovable goods & shares.)",
       subSections: null,
       description:
         "Notice under Section 79 for attachment and sale of movable / immovable goods & shares.",
       documents: [],
       fee: 21000,
       price: 24780,
+      pricingKey: "gst_notice_DRC_16_19",
     },
     {
       key: 20,
@@ -829,6 +889,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 5100,
       price: 6018,
+      pricingKey: "gst_notice_any_20",
     },
   ],
   tax_appeal: [
@@ -844,6 +905,8 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 7100,
           price: 8378,
+          pricingKey: "appeal_income_tax_35_filling_1_1",
+
         },
         {
           key: 2,
@@ -853,6 +916,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 15000,
           price: 17700,
+          pricingKey: "appeal_income_tax_35_subsequent_written_1_2",
         },
         {
           key: 3,
@@ -862,6 +926,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 21000,
           price: 24780,
+          pricingKey: "appeal_income_tax_35_filling_written_1_3",
         },
         {
           key: 4,
@@ -871,6 +936,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 11000,
           price: 12980,
+          pricingKey: "appeal_income_tax_36_filling_1_4",
         },
         {
           key: 5,
@@ -880,6 +946,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 25000,
           price: 29500,
+          pricingKey: "appeal_income_tax_36_subsequent_written_1_5",
         },
         {
           key: 6,
@@ -889,6 +956,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 31000,
           price: 36580,
+          pricingKey: "appeal_income_tax_36_filling_written_1_6",
         },
         {
           key: 7,
@@ -898,6 +966,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 21000,
           price: 24780,
+          pricingKey: "appeal_income_tax_personal_actuals_1_7",
         },
       ],
       description: "",
@@ -915,6 +984,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 1500,
           price: 1770,
+          pricingKey: "appeal_gst_01_filling_2_1",
         },
         {
           key: 2,
@@ -924,6 +994,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 7100,
           price: 8378,
+          pricingKey: "appeal_gst_01_subsequent_written_2_2",
         },
         {
           key: 3,
@@ -933,6 +1004,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 15000,
           price: 17700,
+          pricingKey: "appeal_gst_01_filling_written_2_3",
         },
         {
           key: 4,
@@ -942,6 +1014,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 21000,
           price: 24780,
+          pricingKey: "appeal_gst_05_filling_2_4",
         },
         {
           key: 5,
@@ -951,6 +1024,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 11000,
           price: 12980,
+          pricingKey: "appeal_gst_05_subsequent_written_2_5",
         },
         {
           key: 6,
@@ -960,6 +1034,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 25000,
           price: 29500,
+          pricingKey: "appeal_gst_05_filling_written_2_6",
         },
         {
           key: 7,
@@ -969,6 +1044,7 @@ const fixMytaxServiceInfoData = {
           documents: [],
           fee: 21000,
           price: 24780,
+          pricingKey: "appeal_gst_personal_ITAT_actuals_2_7",
         },
       ],
       description: "",
@@ -984,6 +1060,7 @@ const fixMytaxServiceInfoData = {
       description: "",
       documents: [],
       fee: 2100,
+      pricingKey: "business_consultation_taxation_laws_1",
     },
     {
       key: 2,
@@ -993,6 +1070,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 5100,
       price: 6018,
+      pricingKey: "business_consultation_taxation_complex_2",
     },
     {
       key: 3,
@@ -1002,6 +1080,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "business_consultation_related_llp_3",
     },
     {
       key: 4,
@@ -1011,6 +1090,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "business_consultation_ngo_consultancy_4",
     },
     {
       key: 5,
@@ -1020,6 +1100,7 @@ const fixMytaxServiceInfoData = {
       documents: [],
       fee: 2100,
       price: 2478,
+      pricingKey: "business_consultation_ngo_income_5",
     },
   ],
 };
