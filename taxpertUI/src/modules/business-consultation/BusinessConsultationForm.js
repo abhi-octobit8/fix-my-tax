@@ -125,11 +125,7 @@ const BusinessConsultationForm = (props) => {
           })}
         </Select>
       </Form.Item>
-      <Form.Item
-        name={FIELD_NAME.PRICE}
-        label="Fee"
-        // extra="FEE INCLUDING GST @ 18%"
-      >
+      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
 

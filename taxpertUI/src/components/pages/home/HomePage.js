@@ -4,8 +4,14 @@ import {
   StarFilled,
   CheckCircleFilled,
   CheckCircleTwoTone,
+  YoutubeOutlined,
+  YoutubeFilled,
+  FacebookOutlined,
+  InstagramOutlined,
+  FacebookFilled,
+  LinkedinOutlined,
 } from "@ant-design/icons";
-import { Button, Card, Col, Row } from "antd";
+import { AutoComplete, Button, Card, Col, Row } from "antd";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
 import card3 from "../../../assets/img/card3.svg";
@@ -100,10 +106,30 @@ function HomePage() {
                 height={400}
                 width={400}
               />
-              <h6>
-                {" "}
-                A Creative Genius of Tax Wizard CMA Vr. Dr. Pawan Jaiswal
-              </h6>
+              <div>
+                <h6>
+                  {" "}
+                  A Creative Genius of Tax Wizard CMA Vr. Dr. Pawan Jaiswal
+                </h6>
+                {/* <div style={{ textAlign: "right" }}>
+                  <YoutubeFilled
+                    className="brand-icon"
+                    onClick={() => console.log("click")}
+                  />
+                  <FacebookFilled
+                    className="brand-icon"
+                    onClick={() => console.log("click")}
+                  />
+                  <InstagramOutlined
+                    className="brand-icon"
+                    onClick={() => console.log("click")}
+                  />
+                  <LinkedinOutlined
+                    className="brand-icon"
+                    onClick={() => console.log("click")}
+                  />
+                </div> */}
+              </div>
             </div>
           </div>
         </div>

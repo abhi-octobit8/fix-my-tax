@@ -35,7 +35,7 @@ const SummaryPage = (props) => {
             {toFixed(priceInfo?.price)}
           </Descriptions.Item>
           <Descriptions.Item
-            label={`Discount (${priceInfo.discountRate} %)`}
+            label={`Discount (${priceInfo?.discountRate} %)`}
             span={3}
           >
             {toFixed(priceInfo?.discountAmount)}

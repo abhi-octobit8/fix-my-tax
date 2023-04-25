@@ -339,3 +339,10 @@ justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
 }
+
+.brand-icon{
+  margin-right: 25px;
+  font-size: 20px;
+  color:rgb(244, 124, 1)
+  
+}
