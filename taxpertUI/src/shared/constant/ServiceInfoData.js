@@ -7,7 +7,7 @@ const fixMytaxServiceInfoData = {
       description:
         "Salaried Employee / Pensioner with Income from Other Sources",
       documents: [],
-      fee: 1100,
+      fee: 110780,
       price: 1298,
       pricingKey: "itr_filling_ITR_1",
     },

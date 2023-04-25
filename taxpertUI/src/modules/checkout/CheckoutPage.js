@@ -10,6 +10,7 @@ import { PATH } from "../../shared/Route";
 import { message } from "../../shared/utils";
 import { createTicketService } from "../../services/ticket.service";
 import { useNavigate } from "react-router-dom";
+import { GetServiceTotalPrice } from "../../services/checkout.service";
 
 const { Panel } = Collapse;
 
@@ -17,8 +18,20 @@ const CheckoutPage = (props) => {
   const navigate = useNavigate();
   const titleHeader = "Checkout";
   const userInfo = useUserData();
+  const [priceInfo, setPriceInfo] = useState();
 
   const orderDetails = useSelector((state) => state.order.orderInfo);
+  console.log(orderDetails);
+
+  React.useEffect(() => {
+    (async () => {
+      if (orderDetails.pricingKey) {
+        const res = await GetServiceTotalPrice(orderDetails.pricingKey);
+        debugger;
+        setPriceInfo(res);
+      }
+    })();
+  }, [orderDetails]);
 
   const onSubmit = async () => {
     // check request created from new assessee or existing assessee
@@ -70,10 +83,15 @@ const CheckoutPage = (props) => {
           </div>
           <Row gutter={20}>
             <Col xs={24} xl={16}>
-              <ServiceDetails userInfo={userInfo} orderDetails={orderDetails} />
+              <ServiceDetails
+                priceInfo={priceInfo}
+                userInfo={userInfo}
+                orderDetails={orderDetails}
+              />
             </Col>
             <Col xs={24} xl={8}>
               <SummaryPage
+                priceInfo={priceInfo}
                 userInfo={userInfo}
                 orderDetails={orderDetails}
                 onSubmit={onSubmit}

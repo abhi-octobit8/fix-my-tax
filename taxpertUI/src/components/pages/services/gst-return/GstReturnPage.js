@@ -4,8 +4,6 @@ import { Collapse, Space, Card } from "antd";
 import { Header1, Header3 } from "../../../../common/Headers";
 import { openFile } from "../../../../shared/utils";
 
-import "./GstReturnPage.css";
-
 const { Panel } = Collapse;
 
 const GstReturnPage = () => {

@@ -7,14 +7,11 @@ import {
   Input,
   Select,
   Upload,
-  InputNumber,
   Checkbox,
   Space,
   Tooltip,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
-import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
-import { phoneNumberValidator } from "../../shared/validator";
 import { FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
 
@@ -64,11 +61,10 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const FilingTdsForm = (props) => {
-  const { onFinish, onProceed } = props;
+  const { onProceed } = props;
   const { tds_filing } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
-  const [isLoading, setIsLoading] = useState(false);
   const [optionData, setOptionData] = useState({
     sectionList: [],
     subSectionsList: [],
@@ -146,11 +142,7 @@ const FilingTdsForm = (props) => {
         </Select>
       </Form.Item>
 
-      <Form.Item
-        name={FIELD_NAME.PRICE}
-        label="Fee"
-        // extra="FEE INCLUDING GST @ 18%"
-      >
+      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
       <Form.Item label="Upload Documents">

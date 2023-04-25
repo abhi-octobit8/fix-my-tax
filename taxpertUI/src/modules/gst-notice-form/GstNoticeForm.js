@@ -50,11 +50,10 @@ const normFile = (e) => {
   return e?.fileList;
 };
 const GstNoticeForm = (props) => {
-  const { onFinish, onProceed } = props;
+  const { onProceed } = props;
   const { gst_notice } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
-  const [isLoading, setIsLoading] = useState(false);
   const [optionData, setOptionData] = useState({
     sectionList: [],
     subSectionsList: [],
@@ -133,11 +132,7 @@ const GstNoticeForm = (props) => {
           })}
         </Select>
       </Form.Item>
-      <Form.Item
-        name={FIELD_NAME.PRICE}
-        label="Fee"
-        // extra="FEE INCLUDING GST @ 18%"
-      >
+      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
       <Form.Item label="Upload Copy of Notice & Supporting Documents">
