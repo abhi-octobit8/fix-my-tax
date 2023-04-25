@@ -7,6 +7,7 @@ import {
   MENU_ITEMS_SERVICE_FOOTER,
 } from "./constant";
 import "./ApplicationFooter.css";
+import logo from "../../../assets/img/footer_logo.png";
 
 const displayName = "ApplicationFooter";
 
@@ -20,9 +21,13 @@ function ApplicationFooter() {
         <div className="container">
           <div className="row gy-4">
             <div className="col-lg-4 col-md-12 footer-info">
-              <a href="index.html" className="logo d-flex align-items-center">
-                <span>fixmytax</span>
-              </a>
+              <div style={{ display: "flex" }}>
+                <img src={logo} alt="text" height={80} width={100} />
+                <a href="index.html" className="logo d-flex align-items-center">
+                  <span>fixmytax</span>
+                </a>
+              </div>
+
               <p>
                 We are here to solve all your tax related queries so that you
                 may enjoy peace of mind.

@@ -10,6 +10,7 @@ import {
   Checkbox,
   Tooltip,
   Space,
+  Spin,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { FIELD_NAME } from "./constant";
@@ -77,12 +78,14 @@ const FilingItrForm = (props) => {
   const onHandleSection = async (value) => {
     try {
       console.log(value);
+      setIsLoading(true);
       if (value) {
         // call get api to get price
         const pricingKeyValue = getObjectFromList(
           itr_filling,
           value
         ).pricingKey;
+
         const res = await GetServicePrice(pricingKeyValue);
         console.log(res);
         debugger;
@@ -100,6 +103,8 @@ const FilingItrForm = (props) => {
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -146,19 +151,23 @@ const FilingItrForm = (props) => {
           })}
         </Select>
       </Form.Item>
-      <Form.Item
-        name={FIELD_NAME.PRICE}
-        label="Fee"
-        // extra="FEE INCLUDING GST @ 18%"
-        rules={[
-          {
-            required: true,
-            message: "Please select service again",
-          },
-        ]}
-      >
-        <Input disabled={true} addonAfter="INR"></Input>
-      </Form.Item>
+      <Spin spinning={isLoading}>
+        {" "}
+        <Form.Item
+          shouldUpdate
+          name={FIELD_NAME.PRICE}
+          label="Fee"
+          // rules={[
+          //   {
+          //     required: true,
+          //     message: "Please select service again",
+          //   },
+          // ]}
+        >
+          <Input disabled={true} addonAfter="INR"></Input>
+        </Form.Item>
+      </Spin>
+
       <Form.Item label="Upload Documents">
         <Space>
           <Form.Item
