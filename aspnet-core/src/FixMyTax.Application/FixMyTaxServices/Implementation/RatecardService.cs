@@ -27,7 +27,8 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             _userManager = userManager;
         }
 
-        [AbpAuthorize(PermissionNames.Pages_Pricing)]
+        //[AbpAuthorize(PermissionNames.Pages_Pricing)]
+        [AbpAllowAnonymous]
         public async Task<RatecardListDto> Create(CreateRatecardInput input)
         {
             var ratecard = ObjectMapper.Map<Pricing>(input);
