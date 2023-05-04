@@ -91,7 +91,7 @@ const UserComponent = () => {
               onClick={() => onHandleDownloadCategoryProofFile(item)}
               type="link"
             >
-              {item.filename}
+              {item?.filename}
             </Button>
           </>
         );

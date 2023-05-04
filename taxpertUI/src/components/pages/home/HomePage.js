@@ -8,6 +8,7 @@ import {
   YoutubeFilled,
   FacebookOutlined,
   InstagramOutlined,
+  TwitterOutlined,
   FacebookFilled,
   LinkedinOutlined,
 } from "@ant-design/icons";
@@ -73,6 +74,10 @@ const items = [
 function HomePage() {
   const navigator = useRedirectPath();
 
+  const handleClick = (path) => {
+    window.open(path, "_blank");
+  };
+
   return (
     <React.Fragment>
       <section id="banner-to-action" className="banner-to-action">
@@ -111,24 +116,36 @@ function HomePage() {
                   {" "}
                   A Creative Genius of Tax Wizard CMA Vr. Dr. Pawan Jaiswal
                 </h6>
-                {/* <div style={{ textAlign: "right" }}>
+                <div style={{ textAlign: "right" }}>
                   <YoutubeFilled
                     className="brand-icon"
-                    onClick={() => console.log("click")}
+                    onClick={() =>
+                      handleClick("https://youtube.com/@DrPawanJaiswal")
+                    }
                   />
                   <FacebookFilled
                     className="brand-icon"
-                    onClick={() => console.log("click")}
+                    onClick={() =>
+                      handleClick(
+                        "https://www.facebook.com/urtaxguide?mibextid=ZbWKwL"
+                      )
+                    }
                   />
-                  <InstagramOutlined
+                  <TwitterOutlined
                     className="brand-icon"
-                    onClick={() => console.log("click")}
+                    onClick={() =>
+                      handleClick(
+                        "https://twitter.com/drpawanjaiswal?t=nXu3RRQD-B0IDUQJtN-z4g&s=08"
+                      )
+                    }
                   />
                   <LinkedinOutlined
                     className="brand-icon"
-                    onClick={() => console.log("click")}
+                    onClick={() =>
+                      handleClick("https://www.linkedin.com/in/drpawanjaiswal")
+                    }
                   />
-                </div> */}
+                </div>
               </div>
             </div>
           </div>

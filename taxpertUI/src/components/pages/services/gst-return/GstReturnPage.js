@@ -2,7 +2,10 @@
 import React from "react";
 import { Collapse, Space, Card } from "antd";
 import { Header1, Header3 } from "../../../../common/Headers";
+import gstReturn from "../../../../assets/img/gst_return.png";
 import { openFile } from "../../../../shared/utils";
+
+import "./GstReturnPage.css";
 
 const { Panel } = Collapse;
 
@@ -46,7 +49,15 @@ const GstReturnPage = () => {
           <div className="section-header">
             <h2>{titleHeader}</h2>
           </div>
-          <Header1 className="section-header">Image come Here...</Header1>
+          {/* <Header1 className="section-header">Image come Here...</Header1> */}
+
+          <div className="section-return-img">
+            <img
+              className="section-return-img-place"
+              src={gstReturn}
+              alt="text"
+            />
+          </div>
         </Card>
       </section>
       <section className="section-faq-container">

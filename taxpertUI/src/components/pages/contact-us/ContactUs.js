@@ -84,7 +84,7 @@ const ContactUs = () => {
               </Form.Item>
 
               <Form.Item
-                label="Enter Last Name"
+                label="Last Name"
                 name="lastName"
                 rules={[{ required: true, message: "This field is required" }]}
               >
