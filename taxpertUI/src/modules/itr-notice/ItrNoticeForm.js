@@ -67,7 +67,7 @@ const normFile = (e) => {
 };
 const ItrNoticeForm = (props) => {
   const { onProceed } = props;
-  const { notices } = fixMytaxServiceInfoData;
+  const { itr_tds_tcs_notice } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
   const [optionData, setOptionData] = useState({
@@ -80,7 +80,7 @@ const ItrNoticeForm = (props) => {
   React.useEffect(() => {
     setOptionData((prevState) => ({
       ...prevState,
-      sectionList: notices,
+      sectionList: itr_tds_tcs_notice,
     }));
   }, []);
 
@@ -88,7 +88,7 @@ const ItrNoticeForm = (props) => {
 
   const onSubmit = (values) => {
     try {
-      const sectionObj = getObjectFromList(notices, values.section);
+      const sectionObj = getObjectFromList(itr_tds_tcs_notice, values.section);
 
       // const sectionValue = sectionObj.name;
       const subSectionObj = getObjectFromList(
@@ -112,7 +112,7 @@ const ItrNoticeForm = (props) => {
   };
   const onHandleSection = (value) => {
     if (value) {
-      const { subSections } = getObjectFromList(notices, value);
+      const { subSections } = getObjectFromList(itr_tds_tcs_notice, value);
       // const item = Object.keys(notice[value].subSections);
       setOptionData((prevState) => ({
         ...prevState,
@@ -133,7 +133,7 @@ const ItrNoticeForm = (props) => {
     if (value) {
       // const sectionValue = getObjectFromList(tds_filing, value).fee;
       const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
-      const sectionObj = getObjectFromList(notices, sectionValue);
+      const sectionObj = getObjectFromList(itr_tds_tcs_notice, sectionValue);
       const priceValue = getObjectFromList(sectionObj.subSections, value).fee;
 
       form.setFieldValue(FIELD_NAME.PRICE, priceValue);
@@ -217,11 +217,7 @@ const ItrNoticeForm = (props) => {
           })}
         </Select>
       </Form.Item>
-      <Form.Item
-        name={FIELD_NAME.PRICE}
-        label="Fee"
-        // extra="FEE INCLUDING GST @ 18%"
-      >
+      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
 

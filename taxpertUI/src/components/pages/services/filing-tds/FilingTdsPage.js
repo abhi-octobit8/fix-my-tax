@@ -1,10 +1,8 @@
 import React from "react";
-import "./FilingTdsPage.css";
 import { Collapse, Space, Card } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 import {} from "../../../../services/register.service";
 import FilingTdsFormContainer from "../../../../modules/filing-tds/FilingTdsFormContainer";
-// import FilingTdsFormContainer from "../../../../common/filing-tds-form/FilingTdsFormContainer";
 const { Panel } = Collapse;
 
 const FilingTdsPage = () => {

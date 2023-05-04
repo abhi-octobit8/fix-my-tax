@@ -15,7 +15,7 @@ const SummaryPage = (props) => {
   const navigate = useNavigate();
   const userRole = useUserRole();
   const [isLoading, setIsLoading] = useState(false);
-  const { orderDetails, userInfo, onSubmit } = props;
+  const { orderDetails, userInfo, onSubmit, priceInfo } = props;
 
   const OnPayment = async () => {
     try {
@@ -32,16 +32,19 @@ const SummaryPage = (props) => {
         <Header4>Summary</Header4>
         <Descriptions bordered>
           <Descriptions.Item label="Fees" span={3}>
-            {toFixed(orderDetails?.price)}
+            {toFixed(priceInfo?.price)}
           </Descriptions.Item>
-          <Descriptions.Item label="Discount" span={3}>
-            {calculateTotalPayment({ category: 1, price: orderDetails?.price })}
+          <Descriptions.Item
+            label={`Discount (${priceInfo?.discountRate} %)`}
+            span={3}
+          >
+            {toFixed(priceInfo?.discountAmount)}
           </Descriptions.Item>
           <Descriptions.Item label="GST 18%" span={3}>
-            Cloud Database
+            {toFixed(priceInfo?.taxAmount)}
           </Descriptions.Item>
           <Descriptions.Item label="Total Amount" span={3}>
-            Cloud Database
+            {toFixed(priceInfo?.totalAmount)}
           </Descriptions.Item>
         </Descriptions>
         <div className="content-padding">

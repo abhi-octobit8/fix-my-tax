@@ -2,9 +2,7 @@ import React from "react";
 
 import { Collapse, Space, Card } from "antd";
 import { FixMyTaxServiceType } from "../constant";
-import FilingItrFormContainer from "../../../../modules/filing-itr/FilingItrFormContainer";
 
-import "./BusinessConsultationPage.css";
 import BusinessConsultationFormContainer from "../../../../modules/business-consultation/BusinessConsultationFormContainer";
 
 const { Panel } = Collapse;

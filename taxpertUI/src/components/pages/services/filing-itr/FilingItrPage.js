@@ -4,8 +4,6 @@ import { Collapse, Space, Card } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 import FilingItrFormContainer from "../../../../modules/filing-itr/FilingItrFormContainer";
 
-import "./FilingItrPage.css";
-
 const { Panel } = Collapse;
 
 const FilingItrPage = () => {

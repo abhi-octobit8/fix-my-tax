@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Collapse, Space } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 
-import "./TaxAppealPage.css";
 import TaxAppealFormContainer from "../../../../modules/tax-appeal/TaxAppealFormContainer";
 
 const { Panel } = Collapse;

@@ -142,18 +142,13 @@ const VideoConsultationForm = (props) => {
         <TextArea showCount maxLength={140} />
       </Form.Item>
 
-      <Form.Item
-        name={FIELD_NAME.PRICE}
-        label="Fee"
-        // extra="FEE INCLUDING GST @ 18%"
-      >
+      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
       <Form.Item
         name={FIELD_NAME.DATE}
         label="Select Date"
         rules={[{ required: true, message: "This field is required" }]}
-        // extra="FEE INCLUDING GST @ 18%"
       >
         <DatePicker
           format="YYYY-MM-DD"

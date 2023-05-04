@@ -109,3 +109,10 @@ export const updateTicketStatus = async (data, id) => {
 
   return res;
 };
+
+export const GetServicePrice = async (pricingKey) => {
+  const res = await API({
+    url: `/services/app/RatecardService/Get?pricingKey=${pricingKey}`,
+  });
+  return res;
+};
