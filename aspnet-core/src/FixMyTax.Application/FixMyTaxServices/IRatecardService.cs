@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using FixMyTax.FixMyTaxServices.Dtos.Ratecard;
 using FixMyTax.FixMyTaxServices.Dtos.Tickets;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,8 @@ namespace FixMyTax.FixMyTaxServices
 
         Task<RatecardDto> GetTotalPrice(string pricingKey);
 
-        Task<RatecardListDto> GetAll();
+        Task<string> ImportRateCard(IFormFile file);
+
+        Task<ListResultDto<RatecardListDto>> GetAll();
     }
 }

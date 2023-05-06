@@ -13,6 +13,8 @@ using FixMyTax.Authentication.JwtBearer;
 using FixMyTax.Configuration;
 using FixMyTax.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Abp.Threading.BackgroundWorkers;
+using FixMyTax.Jobs;
 
 namespace FixMyTax
 {
@@ -71,6 +73,9 @@ namespace FixMyTax
         {
             IocManager.Resolve<ApplicationPartManager>()
                 .AddApplicationPartsIfNotAddedBefore(typeof(FixMyTaxWebCoreModule).Assembly);
+            var workManager = IocManager.Resolve<IBackgroundWorkerManager>();
+            workManager.Add(IocManager.Resolve<BackgroundTicketStateChecker>());
+            workManager.Add(IocManager.Resolve<BackgroundSlotGenerator>());
         }
     }
 }

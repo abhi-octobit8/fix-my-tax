@@ -25,5 +25,7 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
         public string TransactionNumber { get; set; }
         public string PaymentInfo { get; set; }
         public string ExtensionData { get; set; }
+
+        public int SlotId { get; set; }
     }
 }
