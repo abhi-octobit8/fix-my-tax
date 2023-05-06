@@ -30,6 +30,8 @@ namespace FixMyTax.FixMyTaxModels
         
         public int AssignmentByUserId { get; set; }
         public DateTime AssignmentDatetime { get; set; }
+
+        public int? SlotId { get; set; }
         public string ExtensionData { get; set; }
     }
 }

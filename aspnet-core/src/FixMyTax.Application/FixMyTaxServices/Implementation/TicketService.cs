@@ -26,19 +26,21 @@ namespace FixMyTax.FixMyTaxServices.Implementation
     {
         private readonly IRepository<RequestTicket> _ticketRepository;
         private readonly IRepository<TicketResponse> _responseRepository;
+        private readonly IRepository<Slot> _slotRepository;
         private readonly IRepository<Attachment> _fileRepository;
         private readonly UserManager _userManager;
         private readonly IEmailSender _emailSender;
 
 
         public TicketService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository,
-            IRepository<Attachment> fileRepository, UserManager userManager, IEmailSender emailSender)
+            IRepository<Attachment> fileRepository, UserManager userManager, IEmailSender emailSender, IRepository<Slot> slotRepository)
         {
             _ticketRepository = ticketRepository;
             _responseRepository = responseRepository;
             _fileRepository = fileRepository;
             _userManager = userManager;
             _emailSender = emailSender;
+            _slotRepository = slotRepository;
         }
 
         public async Task<TicketListDto> Create(CreateTicketInput input)
@@ -52,6 +54,17 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             var ticket = ObjectMapper.Map<RequestTicket>(input);
             ticket.Status = TicketStatus.New;
             var tickeEntity = await _ticketRepository.InsertAsync(ticket);
+            if(tickeEntity.SlotId != null)
+            {
+                var slot = _slotRepository.FirstOrDefault(x => x.Id == tickeEntity.SlotId);
+                if (slot == null)
+                {
+                    throw new UserFriendlyException("slot not found");
+                }
+                slot.RequestTicketId = tickeEntity.Id;
+                slot.Status = SlotStatus.Booked;
+                slot = await _slotRepository.UpdateAsync(slot);
+            }
             CurrentUnitOfWork.SaveChanges();
             return ObjectMapper.Map<TicketListDto>(tickeEntity);
         }

@@ -22,6 +22,7 @@ namespace FixMyTax.Web.Host.Startup
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(FixMyTaxWebHostModule).GetAssembly());
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
     }
 }

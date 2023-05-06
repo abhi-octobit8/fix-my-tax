@@ -20,6 +20,8 @@ namespace FixMyTax.EntityFrameworkCore
         public DbSet<Pricing> Ratecards { get; set; }
         public DbSet<Event> Events { get; set; }
 
+        public DbSet<Slot> Slots { get; set; }
+
         public FixMyTaxDbContext(DbContextOptions<FixMyTaxDbContext> options)
             : base(options)
         {

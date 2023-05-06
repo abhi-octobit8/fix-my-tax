@@ -1,14 +1,21 @@
-﻿using Abp.Authorization;
+﻿using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.UI;
+using ExcelDataReader;
 using FixMyTax.Authorization;
 using FixMyTax.Authorization.Users;
 using FixMyTax.FixMyTaxModels;
 using FixMyTax.FixMyTaxServices.Dtos.Ratecard;
 using FixMyTax.FixMyTaxServices.Dtos.Tickets;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Org.BouncyCastle.Asn1.Ocsp;
+using Org.BouncyCastle.Asn1.Pkcs;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -21,10 +28,12 @@ namespace FixMyTax.FixMyTaxServices.Implementation
     {
         private readonly IRepository<Pricing> _ratecardRepository;
         private readonly UserManager _userManager;
-        public RatecardService(IRepository<Pricing> ratecardRepository, UserManager userManager)
+        private readonly ILogger<RatecardService> logger;
+        public RatecardService(IRepository<Pricing> ratecardRepository, UserManager userManager, ILogger<RatecardService> logger)
         {
             _ratecardRepository = ratecardRepository;
             _userManager = userManager;
+            this.logger = logger;
         }
 
         //[AbpAuthorize(PermissionNames.Pages_Pricing)]
@@ -97,9 +106,109 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             throw new UserFriendlyException("Pricing key not found");
         }
 
-        public Task<RatecardListDto> GetAll()
+        [AbpAllowAnonymous]
+        public async Task<ListResultDto<RatecardListDto>> GetAll()
         {
-            throw new NotImplementedException();
+            var ratecards = await _ratecardRepository.GetAllListAsync();
+
+            return new ListResultDto<RatecardListDto>(
+                    ObjectMapper.Map<List<RatecardListDto>>(ratecards));
+        }
+
+        [AbpAllowAnonymous]
+        public async Task<string> ImportRateCard(IFormFile file)
+        {
+            var uploads = Path.Combine(AppContext.BaseDirectory, "Uploads", DateTime.UtcNow.ToString("ddMMyyhhmmssdd"));
+
+            List<CreateRatecardInput> ratecards = new List<CreateRatecardInput>();
+            DataSet excelData = new DataSet();
+
+            IExcelDataReader reader = null;
+            string output = string.Empty;
+            try
+            {
+                Directory.CreateDirectory(uploads);
+                if (file.Length > 0)
+                {
+                    var filePath = Path.Combine(uploads, file.FileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                        if (file.FileName.EndsWith(".xls"))
+                        {
+                            reader = ExcelReaderFactory.CreateBinaryReader(fileStream);
+                        }
+                        else if (file.FileName.EndsWith(".xlsx"))
+                        {
+                            reader = ExcelReaderFactory.CreateOpenXmlReader(fileStream);
+                        }
+                        else
+                        {
+                            output = string.Format("The file format {} is not supported.", file.FileName);
+                            logger.LogError(output);
+                        }
+
+                        if(reader == null)
+                        {
+                            return output;
+                        }
+
+                        excelData = reader.AsDataSet();
+                        reader.Close();
+
+                        if (excelData != null && excelData.Tables.Count > 0)
+                        {
+                            foreach (DataTable rcData in excelData.Tables)
+                            {
+                                for (int i = 1; i < rcData.Rows.Count; i++)
+                                {
+                                    CreateRatecardInput rc = new CreateRatecardInput();
+                                    rc.PricingKey = Convert.ToString(rcData.Rows[i][0]).Trim();
+                                    rc.Service = Convert.ToString(rcData.Rows[i][1]).Trim();
+                                    rc.SubService = Convert.ToString(rcData.Rows[i][3]).Trim();
+                                    rc.Description = Convert.ToString(rcData.Rows[i][4]).Trim();
+                                    rc.Price = Convert.ToDecimal(rcData.Rows[i][5]);
+                                    ratecards.Add(rc);
+                                }
+
+                            }
+                        }
+
+                        //insert records
+                        int count = 0;
+                        if(ratecards.Count > 0)
+                        {
+                            foreach (var item in ratecards)
+                            {
+                                var rcEntity = _ratecardRepository.FirstOrDefault( x => x.PricingKey == item.PricingKey );
+                                if (rcEntity != null)
+                                {
+                                    rcEntity.Price = item.Price;
+                                    rcEntity.Service = item.Service;
+                                    rcEntity.SubService = item.SubService;
+                                    rcEntity.Description = item.Description;
+
+                                    await _ratecardRepository.UpdateAsync(rcEntity);
+                                }
+                                else
+                                {
+                                    var ratecard = ObjectMapper.Map<Pricing>(item);
+                                    var ratecardEntity = await _ratecardRepository.InsertAsync(ratecard);
+                                }
+                                CurrentUnitOfWork.SaveChanges();
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                output = ex.Message;
+                logger.LogError(ex.Message, ex);
+            }
+
+            return output;
         }
     }
 }
