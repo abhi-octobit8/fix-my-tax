@@ -92,7 +92,6 @@ const VideoConsultationForm = (props) => {
   };
 
   const onHandleDateSelectionAPI = async (value) => {
-    debugger;
     setIsLoading(true);
     await sleep();
     setIsLoading(false);

@@ -1,4 +1,5 @@
 import API from "../shared/API";
+import { showNotification } from "../shared/utils";
 import { setNewRequestData } from "../store/request/RequestActions";
 
 export const registerNotice = async (body, uploadfileData) => {
@@ -44,7 +45,14 @@ export const registerUser = async (body, uploadfileData) => {
     url: "services/app/RegisterService/Create",
     body: body,
   });
-  debugger;
+  if (registerResponse.error) {
+    showNotification({
+      message: registerResponse.errorMsg,
+      // description: exceptionResponse.data.error.details,
+      type: "error",
+    });
+  }
+
   if (registerResponse.userId && uploadfileData) {
     await uploadRegisterRequestFile(uploadfileData, registerResponse.userId);
   }

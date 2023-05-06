@@ -87,8 +87,6 @@ const FilingItrForm = (props) => {
         ).pricingKey;
 
         const res = await GetServicePrice(pricingKeyValue);
-        console.log(res);
-        debugger;
         // const priceValue = getObjectFromList(itr_filling, value).fee;
         if (res && res.price) {
           form.setFieldValue(FIELD_NAME.PRICE, res.price);
@@ -154,13 +152,12 @@ const FilingItrForm = (props) => {
       <Spin spinning={isLoading}>
         {" "}
         <Form.Item
-          shouldUpdate
           name={FIELD_NAME.PRICE}
           label="Fee"
           // rules={[
           //   {
           //     required: true,
-          //     message: "Please select service again",
+          //     message: "Please select ITR Type again",
           //   },
           // ]}
         >

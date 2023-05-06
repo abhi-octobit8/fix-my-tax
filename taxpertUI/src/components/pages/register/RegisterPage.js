@@ -84,7 +84,6 @@ const RegisterPage = (props) => {
 
       const uploadFileData = values.uploadDocument;
 
-      debugger;
       const res = await registerUser(registerFormData, uploadFileData);
       if (res.userId) {
         message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);

@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, Descriptions } from "antd";
 import { Header4 } from "../../common/Headers";
+import { getObjectFromList } from "../../shared/utils";
+import { REGISTER_CATEGORIES } from "../../components/pages/register/constant";
 
 const ServiceDetails = (props) => {
   const { userInfo, orderDetails } = props;
@@ -18,7 +20,10 @@ const ServiceDetails = (props) => {
             {userInfo?.panCardNumber}
           </Descriptions.Item>
           <Descriptions.Item label="Category" span={2}>
-            {userInfo.fmtCategory}
+            {
+              getObjectFromList(REGISTER_CATEGORIES, userInfo?.fmtCategory)
+                ?.name
+            }
           </Descriptions.Item>
           <Descriptions.Item label="Aadhar Number" span={1}>
             {" "}

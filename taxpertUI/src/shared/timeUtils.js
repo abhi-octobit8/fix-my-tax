@@ -20,7 +20,8 @@ export const getLocalTime = (
   // let convertedTime = moment.utc(time).clone().local();
 
   //direct local
-  let convertedTime = moment(time).clone().local();
+  // let convertedTime = moment(time).clone().local();
+  let convertedTime = moment(time);
   if (!isMoment) {
     return convertedTime.format(format);
   }
