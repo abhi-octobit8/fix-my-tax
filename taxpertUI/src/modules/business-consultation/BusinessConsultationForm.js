@@ -128,7 +128,41 @@ const BusinessConsultationForm = (props) => {
       <Form.Item name={FIELD_NAME.PRICE} label="Fee">
         <Input disabled={true} addonAfter="INR"></Input>
       </Form.Item>
+      <Form.Item label="Upload Documents for Query/Opinion">
+        <Space>
+          <Form.Item
+            name="uploadDocument"
+            noStyle
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
+            rules={[
+              {
+                required: true,
+                message: "Upload Required Document",
+              },
+            ]}
+          >
+            <Upload
+              beforeUpload={(file) => {
+                return false;
+              }}
+              multiple={false}
+              maxCount={1}
+              style={{
+                width: 160,
+              }}
+            >
+              <Button icon={<UploadOutlined />}>Click Upload File</Button>
+            </Upload>
+          </Form.Item>
 
+          <Tooltip title="Please merge file in single Pdf">
+            <InfoCircleOutlined
+              style={{ fontSize: "16px", color: "#f47c01" }}
+            />
+          </Tooltip>
+        </Space>
+      </Form.Item>
       <Form.Item
         label=" "
         colon={false}

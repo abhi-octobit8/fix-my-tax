@@ -37,7 +37,6 @@ const UserComponent = () => {
 
   const onHandleActivate = React.useCallback(async (record) => {
     // setModelInfoOpen({ open: true, record });
-    debugger;
     const body = {
       id: record.id,
     };
@@ -91,7 +90,7 @@ const UserComponent = () => {
               onClick={() => onHandleDownloadCategoryProofFile(item)}
               type="link"
             >
-              {item.filename}
+              {item?.filename}
             </Button>
           </>
         );

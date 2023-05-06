@@ -27,7 +27,6 @@ const CheckoutPage = (props) => {
     (async () => {
       if (orderDetails.pricingKey) {
         const res = await GetServiceTotalPrice(orderDetails.pricingKey);
-        debugger;
         setPriceInfo(res);
       }
     })();
@@ -35,10 +34,7 @@ const CheckoutPage = (props) => {
 
   const onSubmit = async () => {
     // check request created from new assessee or existing assessee
-    console.log("userInfo", userInfo);
-    console.log("orderDetails", orderDetails);
-    console.log();
-    debugger;
+
     const registerFormData = {
       fixMyTaxServiceType: orderDetails.fixMyTaxService.value,
       serviceType: 2, // notice reply always for time being

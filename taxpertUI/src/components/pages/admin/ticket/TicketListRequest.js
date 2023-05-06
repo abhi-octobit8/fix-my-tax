@@ -98,8 +98,6 @@ const TicketListRequest = () => {
       key: "status",
       width: 100,
       render: (value) => {
-        debugger;
-        console.log(getKeyFromObject(TicketStatus, value));
         return (
           <>
             {value === true ? (
