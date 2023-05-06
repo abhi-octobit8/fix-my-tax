@@ -180,8 +180,21 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                         {
                             foreach (var item in ratecards)
                             {
-                                var ratecard = ObjectMapper.Map<Pricing>(item);
-                                var ratecardEntity = await _ratecardRepository.InsertOrUpdateAsync(ratecard);
+                                var rcEntity = _ratecardRepository.FirstOrDefault( x => x.PricingKey == item.PricingKey );
+                                if (rcEntity != null)
+                                {
+                                    rcEntity.Price = item.Price;
+                                    rcEntity.Service = item.Service;
+                                    rcEntity.SubService = item.SubService;
+                                    rcEntity.Description = item.Description;
+
+                                    await _ratecardRepository.UpdateAsync(rcEntity);
+                                }
+                                else
+                                {
+                                    var ratecard = ObjectMapper.Map<Pricing>(item);
+                                    var ratecardEntity = await _ratecardRepository.InsertAsync(ratecard);
+                                }
                                 CurrentUnitOfWork.SaveChanges();
                                 count++;
                             }
