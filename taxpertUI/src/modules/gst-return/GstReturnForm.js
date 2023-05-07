@@ -89,7 +89,6 @@ const FilingTdsForm = (props) => {
   };
 
   const onHandleSection = (value) => {
-    console.log(value);
     if (value) {
       const priceValue = filing[value].price;
       form.setFieldValue(FIELD_NAME.PRICE, priceValue);

@@ -99,7 +99,6 @@ const FilingTdsForm = (props) => {
 
   const onHandleSection = async (value) => {
     try {
-      console.log(value);
       setIsLoading(true);
 
       if (value) {

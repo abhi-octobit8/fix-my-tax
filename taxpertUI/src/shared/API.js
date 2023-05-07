@@ -200,7 +200,8 @@ const handleError = async ({ exception, url, apiData, hideErrorMessage }) => {
         errMessage = get(exception, "response.data.message");
       }
       showMessage({
-        message: errMessage || exception.message || "Something went wrong.",
+        // message: errMessage || exception.message || "Something went wrong.",
+        message: "Something went wrong.",
         type: "error",
       });
     }

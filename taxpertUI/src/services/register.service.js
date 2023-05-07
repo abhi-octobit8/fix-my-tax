@@ -3,7 +3,6 @@ import { showNotification } from "../shared/utils";
 import { setNewRequestData } from "../store/request/RequestActions";
 
 export const registerNotice = async (body, uploadfileData) => {
-  console.log(body);
   const registerResponse = await API({
     method: "post",
     url: "services/app/RegisterService/Create",
@@ -39,7 +38,6 @@ export const uploadRequestFile = async (uploadfileData, id) => {
 
 // for registration of asseessee
 export const registerUser = async (body, uploadfileData) => {
-  console.log(body);
   const registerResponse = await API({
     method: "post",
     url: "services/app/RegisterService/Create",

@@ -25,7 +25,6 @@ const AssignTicket = (props) => {
   const onFormSubmit = React.useCallback(
     async (formValues) => {
       try {
-        console.log(formValues);
         setIsLoading(true);
         const formData = {
           ticketIds: [record.id],

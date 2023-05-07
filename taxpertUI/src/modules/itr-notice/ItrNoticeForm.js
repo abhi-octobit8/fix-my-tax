@@ -13,6 +13,7 @@ import {
   Checkbox,
   Tooltip,
   Space,
+  Spin,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
@@ -25,6 +26,7 @@ import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
 import { getObjectFromList, openFile } from "../../shared/utils";
 import { USER_ROLE } from "../../components/application/application-menu/constant";
 import RegisterButton from "../../common/register-button/RegisterButton";
+import { GetServicePrice } from "../../services/ticket.service";
 
 const { Option } = Select;
 
@@ -67,6 +69,7 @@ const normFile = (e) => {
 };
 const ItrNoticeForm = (props) => {
   const { onProceed } = props;
+  const [isLoading, setIsLoading] = useState(false);
   const { itr_tds_tcs_notice } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
@@ -99,6 +102,7 @@ const ItrNoticeForm = (props) => {
         ...values,
         sectionObj,
         subSectionObj,
+        pricingKey: subSectionObj.pricingKey,
       };
       onProceed(formData);
     } catch (e) {
@@ -128,21 +132,35 @@ const ItrNoticeForm = (props) => {
     form.setFieldValue(FIELD_NAME.PRICE, "");
   };
 
-  const onHandleSubSection = (value) => {
-    console.log(value);
-    if (value) {
-      // const sectionValue = getObjectFromList(tds_filing, value).fee;
-      const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
-      const sectionObj = getObjectFromList(itr_tds_tcs_notice, sectionValue);
-      const priceValue = getObjectFromList(sectionObj.subSections, value).fee;
-
-      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
-    } else {
-      setOptionData((prevState) => ({
-        sectionList: [],
-        subSectionsList: [],
-      }));
-      form.setFieldValue(FIELD_NAME.PRICE, "");
+  const onHandleSubSection = async (value) => {
+    try {
+      if (value) {
+        // const sectionValue = getObjectFromList(tds_filing, value).fee;
+        const sectionValue = form.getFieldValue(FIELD_NAME.SECTION);
+        const sectionObj = getObjectFromList(itr_tds_tcs_notice, sectionValue);
+        // const priceValue = getObjectFromList(sectionObj.subSections, value).fee;
+        // call get api to get price
+        const pricingKeyValue = getObjectFromList(
+          sectionObj.subSections,
+          value
+        ).pricingKey;
+        const res = await GetServicePrice(pricingKeyValue);
+        if (res && res.price) {
+          form.setFieldValue(FIELD_NAME.PRICE, res.price);
+        } else {
+          form.setFieldValue(FIELD_NAME.PRICE, "");
+        }
+      } else {
+        setOptionData((prevState) => ({
+          sectionList: [],
+          subSectionsList: [],
+        }));
+        form.setFieldValue(FIELD_NAME.PRICE, "");
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
     }
   };
   const prefixSelector = (
@@ -217,9 +235,25 @@ const ItrNoticeForm = (props) => {
           })}
         </Select>
       </Form.Item>
-      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
+      {/* <Form.Item name={FIELD_NAME.PRICE} label="Fee">
         <Input disabled={true} addonAfter="INR"></Input>
-      </Form.Item>
+      </Form.Item> */}
+
+      <Spin spinning={isLoading}>
+        {" "}
+        <Form.Item
+          name={FIELD_NAME.PRICE}
+          label="Fee"
+          // rules={[
+          //   {
+          //     required: true,
+          //     message: "Please select ITR Type again",
+          //   },
+          // ]}
+        >
+          <Input disabled={true} addonAfter="INR"></Input>
+        </Form.Item>
+      </Spin>
 
       {/* <Form.Item label="Upload Copy of Notice & other supporting documents">
         <Space>

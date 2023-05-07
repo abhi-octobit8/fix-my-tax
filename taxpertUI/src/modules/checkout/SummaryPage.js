@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Collapse, Descriptions, Row, Space } from "antd";
 import { Header4 } from "../../common/Headers";
-import { toFixed } from "../../shared/utils";
+import { message, toFixed } from "../../shared/utils";
 import { calculateTotalPayment } from "./CheckoutMethod";
 import { doLogout } from "../../store/authentication/AuthActions";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -19,8 +19,12 @@ const SummaryPage = (props) => {
 
   const OnPayment = async () => {
     try {
-      setIsLoading(true);
-      await onSubmit();
+      if (toFixed(priceInfo?.price)) {
+        setIsLoading(true);
+        await onSubmit();
+      } else {
+        message.error("Please select service request again");
+      }
     } catch (e) {
     } finally {
       setIsLoading(false);

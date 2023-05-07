@@ -44,9 +44,7 @@ const normFile = (e) => {
 };
 const ContactUs = () => {
   const [form] = Form.useForm();
-  const onFinish = async (values) => {
-    console.log("registration values:", values);
-  };
+  const onFinish = async (values) => {};
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select

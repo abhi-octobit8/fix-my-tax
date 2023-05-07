@@ -48,7 +48,6 @@ const CreateTicket = (props) => {
 
   const onHandleServiceSection = React.useCallback(
     async (value) => {
-      console.log(value);
       setSelectedServices(value);
     },
     [selectedService]

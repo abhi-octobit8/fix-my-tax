@@ -10,6 +10,7 @@ import {
   Checkbox,
   Space,
   Tooltip,
+  Spin,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { FIELD_NAME } from "./constant";
@@ -20,6 +21,7 @@ import { getObjectFromList, openFile } from "../../shared/utils";
 import "./GstNoticeForm.css";
 import { USER_ROLE } from "../../components/application/application-menu/constant";
 import RegisterButton from "../../common/register-button/RegisterButton";
+import { GetServicePrice } from "../../services/ticket.service";
 
 const { Option } = Select;
 
@@ -52,6 +54,7 @@ const normFile = (e) => {
 const GstNoticeForm = (props) => {
   const { onProceed } = props;
   const { gst_notice } = fixMytaxServiceInfoData;
+  const [isLoading, setIsLoading] = useState(false);
   const userRole = useUserRole();
 
   const [optionData, setOptionData] = useState({
@@ -75,23 +78,38 @@ const GstNoticeForm = (props) => {
       const formData = {
         ...values,
         sectionObj,
+        pricingKey: sectionObj.pricingKey,
       };
       onProceed(formData);
     } catch (e) {
       console.error(e);
     }
   };
-  const onHandleSection = (value) => {
-    console.log(value);
-    console.log(value);
-    if (value) {
-      const priceValue = getObjectFromList(gst_notice, value).fee;
-      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
-    } else {
-      setOptionData((prevState) => ({
-        sectionList: [],
-      }));
-      form.setFieldValue(FIELD_NAME.PRICE, "");
+
+  const onHandleSection = async (value) => {
+    try {
+      setIsLoading(true);
+      if (value) {
+        // call get api to get price
+        const pricingKeyValue = getObjectFromList(gst_notice, value).pricingKey;
+
+        const res = await GetServicePrice(pricingKeyValue);
+        // const priceValue = getObjectFromList(itr_filling, value).fee;
+        if (res && res.price) {
+          form.setFieldValue(FIELD_NAME.PRICE, res.price);
+        } else {
+          form.setFieldValue(FIELD_NAME.PRICE, "");
+        }
+      } else {
+        setOptionData((prevState) => ({
+          sectionList: [],
+        }));
+        form.setFieldValue(FIELD_NAME.PRICE, "");
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -132,9 +150,24 @@ const GstNoticeForm = (props) => {
           })}
         </Select>
       </Form.Item>
-      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
+      {/* <Form.Item name={FIELD_NAME.PRICE} label="Fee">
         <Input disabled={true} addonAfter="INR"></Input>
-      </Form.Item>
+      </Form.Item> */}
+      <Spin spinning={isLoading}>
+        {" "}
+        <Form.Item
+          name={FIELD_NAME.PRICE}
+          label="Fee"
+          // rules={[
+          //   {
+          //     required: true,
+          //     message: "Please select ITR Type again",
+          //   },
+          // ]}
+        >
+          <Input disabled={true} addonAfter="INR"></Input>
+        </Form.Item>
+      </Spin>
       <Form.Item label="Upload Copy of Notice & Supporting Documents">
         <Space>
           <Form.Item

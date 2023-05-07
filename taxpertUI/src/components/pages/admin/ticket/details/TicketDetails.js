@@ -100,10 +100,6 @@ const TicketDetails = (props) => {
     },
   ];
 
-  const onFinish = async (values) => {
-    console.log("registration values:", values);
-  };
-
   const onUploadSubmit = async (values) => {
     try {
       setIsUploading(true);

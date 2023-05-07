@@ -758,7 +758,6 @@ const fixMytaxServiceInfoData = {
           description: "",
           documents: [],
           pricingKey: "appeal_income_tax_35_filling_1_1",
-
         },
         {
           key: 2,
