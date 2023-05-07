@@ -293,7 +293,6 @@ export const getMenuActionItems = (collection, userRole) => {
         acc.push(formattedItem);
       }
     }
-    console.log("acc", acc);
     return acc;
   }, []);
   return entitledMenuItems;

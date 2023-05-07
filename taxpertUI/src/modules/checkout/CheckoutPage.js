@@ -33,20 +33,25 @@ const CheckoutPage = (props) => {
   }, [orderDetails]);
 
   const onSubmit = async () => {
+    debugger;
     // check request created from new assessee or existing assessee
 
     const registerFormData = {
       fixMyTaxServiceType: orderDetails.fixMyTaxService.value,
-      serviceType: 2, // notice reply always for time being
+      serviceType: orderDetails.fixMyTaxService.value === 8 ? 1 : 2, // notice reply or video consultation
       section: orderDetails.sectionObj.name,
       subSection: orderDetails?.subSectionObj
         ? orderDetails.subSectionObj.name
         : "",
       subject: "",
       question: "",
-      description: "",
+      description:
+        orderDetails.fixMyTaxService.value === 8 ? orderDetails.query : "",
       // status: 0,
       price: orderDetails.price,
+      slotId:
+        orderDetails.fixMyTaxService.value === 8 ? orderDetails.slotId : 0,
+      // slotId
       // paymentStaus: 0,
       // transactionNumber: "678678",
     };

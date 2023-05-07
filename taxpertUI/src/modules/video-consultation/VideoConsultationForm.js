@@ -25,6 +25,7 @@ import TextArea from "antd/lib/input/TextArea";
 import moment from "moment";
 import { requiredValidator } from "../../shared/validator";
 import { getLocalTime } from "../../shared/timeUtils";
+import { GetVCAvailableSlots } from "../../services/ticket.service";
 
 const { Option } = Select;
 
@@ -56,7 +57,8 @@ const normFile = (e) => {
 };
 const VideoConsultationForm = (props) => {
   const { onFinish, onProceed } = props;
-  const { business_consultation } = fixMytaxServiceInfoData;
+  const [availableSlot, setAvailableSlot] = useState([]);
+  const { video_consultation } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -70,20 +72,19 @@ const VideoConsultationForm = (props) => {
   React.useEffect(() => {
     setOptionData((prevState) => ({
       ...prevState,
-      sectionList: business_consultation,
+      sectionList: video_consultation,
     }));
   }, []);
 
   const onSubmit = (values) => {
     try {
-      const sectionObj = getObjectFromList(
-        business_consultation,
-        values.section
-      );
+      debugger;
+      const sectionObj = getObjectFromList(video_consultation, 1);
 
       const formData = {
         ...values,
         sectionObj,
+        pricingKey: sectionObj.pricingKey,
       };
       onProceed(formData);
     } catch (e) {
@@ -92,26 +93,35 @@ const VideoConsultationForm = (props) => {
   };
 
   const onHandleDateSelectionAPI = async (value) => {
-    setIsLoading(true);
-    await sleep();
-    setIsLoading(false);
-  };
-
-  const onHandleSection = (value) => {
-    console.log(value);
-    if (value) {
-      const priceValue = getObjectFromList(business_consultation, value).fee;
-      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
-    } else {
-      setOptionData((prevState) => ({
-        sectionList: [],
-      }));
-      form.setFieldValue(FIELD_NAME.PRICE, "");
+    debugger;
+    try {
+      setIsLoading(true);
+      await sleep();
+      const res = await GetVCAvailableSlots(value);
+      if (res.items) {
+        setAvailableSlot(res.items);
+      }
+    } catch (e) {
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  // const onHandleSection = (value) => {
+  //   console.log(value);
+  //   if (value) {
+  //     const priceValue = getObjectFromList(video_consultation, value).fee;
+  //     form.setFieldValue(FIELD_NAME.PRICE, priceValue);
+  //   } else {
+  //     setOptionData((prevState) => ({
+  //       sectionList: [],
+  //     }));
+  //     form.setFieldValue(FIELD_NAME.PRICE, "");
+  //   }
+  // };
   const onDateChange = (value) => {
     // console.log(moment(value).format("YYYY-MM-DD"));
-    const date = moment(value).format("YYYY-MM-DD");
+    const date = moment(value).format("DD/MM/YYYY");
     onHandleDateSelectionAPI(date);
     // console.log(moment(value).startOf("day"));
   };
@@ -121,7 +131,7 @@ const VideoConsultationForm = (props) => {
       moment(current).day() === 0 ||
       moment(current).day() === 6 ||
       current < moment().add(1) ||
-      current > moment().day(21)
+      current > moment().day(15)
     );
   };
 
@@ -130,7 +140,7 @@ const VideoConsultationForm = (props) => {
       onFinish={onSubmit}
       {...formItemLayout}
       form={form}
-      initialValues={{ price: 2000 }}
+      initialValues={{ price: 5100 }}
       name="register"
     >
       <Form.Item
@@ -156,27 +166,37 @@ const VideoConsultationForm = (props) => {
         />
       </Form.Item>
 
-      <Form.Item
-        label="Select your Slot"
-        name="slot"
-        rules={[requiredValidator]}
-      >
-        <Spin spinning={isLoading}>
-          <Select placeholder="Select your Slot" allowClear>
-            {AVAILABLE_SLOT.map((x, i) => {
+      {isLoading ? (
+        <Form.Item label="Select Available Slot" name="slot1">
+          <Spin spinning={isLoading}>
+            <Select placeholder="Select Available Slot" allowClear>
+              {availableSlot.map((x, i) => {
+                return (
+                  <Option value={x.id} key={i}>
+                    {x.slotName}
+                  </Option>
+                );
+              })}
+            </Select>
+          </Spin>
+        </Form.Item>
+      ) : (
+        <Form.Item
+          label="Select Available Slot"
+          name="slotId"
+          rules={[requiredValidator]}
+        >
+          <Select placeholder="Select Available Slot" allowClear>
+            {availableSlot.map((x, i) => {
               return (
-                <Option value={x.value} disabled={!x.available} key={i}>
-                  <Tooltip
-                    title={x.available ? "Available slot" : "Not Available"}
-                  >
-                    {x.value}
-                  </Tooltip>
+                <Option value={x.id} key={i}>
+                  {x.slotName}
                 </Option>
               );
             })}
           </Select>
-        </Spin>
-      </Form.Item>
+        </Form.Item>
+      )}
 
       <Form.Item
         label=" "
