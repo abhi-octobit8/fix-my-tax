@@ -1,8 +1,8 @@
 import API from "../shared/API";
+import { showNotification } from "../shared/utils";
 import { setNewRequestData } from "../store/request/RequestActions";
 
 export const registerNotice = async (body, uploadfileData) => {
-  console.log(body);
   const registerResponse = await API({
     method: "post",
     url: "services/app/RegisterService/Create",
@@ -38,13 +38,19 @@ export const uploadRequestFile = async (uploadfileData, id) => {
 
 // for registration of asseessee
 export const registerUser = async (body, uploadfileData) => {
-  console.log(body);
   const registerResponse = await API({
     method: "post",
     url: "services/app/RegisterService/Create",
     body: body,
   });
-  debugger;
+  if (registerResponse.error) {
+    showNotification({
+      message: registerResponse.errorMsg,
+      // description: exceptionResponse.data.error.details,
+      type: "error",
+    });
+  }
+
   if (registerResponse.userId && uploadfileData) {
     await uploadRegisterRequestFile(uploadfileData, registerResponse.userId);
   }

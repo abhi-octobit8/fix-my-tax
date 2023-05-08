@@ -17,9 +17,9 @@ export const MENU_ITEMS_FOOTER_USEFUL_LINKS = [
     to: "https://finmin.nic.in/",
   },
   {
-    label: "Department of Financial Services",
+    label: "Ministry of Corporate Affairs",
     key: 4,
-    to: "https://financialservices.gov.in/ ",
+    to: "https://www.mca.gov.in/ ",
   },
 ];
 export const MENU_ITEMS_SERVICE_FOOTER = [

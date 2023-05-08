@@ -7,7 +7,7 @@ const fixMytaxServiceInfoData = {
       description:
         "Salaried Employee / Pensioner with Income from Other Sources",
       documents: [],
-      pricingKey: "itr_filling_itr_1",
+      pricingKey: "itr_filling_itr_1_1",
     },
     {
       key: 2,
@@ -16,7 +16,7 @@ const fixMytaxServiceInfoData = {
       description:
         "Salaried Employee / Pensioner with Income from Other Sources and House Property Income",
       documents: [],
-      pricingKey: "itr_filling_itr_2",
+      pricingKey: "itr_filling_itr_2_2",
     },
     {
       key: 3,
@@ -25,7 +25,7 @@ const fixMytaxServiceInfoData = {
       description:
         "Salaried Employee / Pensioner with Income from Other Sources, House Property Income & Capital Gain with Shares",
       documents: [],
-      pricingKey: "itr_filling_itr_3",
+      pricingKey: "itr_filling_itr_3_3",
     },
     {
       key: 4,
@@ -34,7 +34,7 @@ const fixMytaxServiceInfoData = {
       description:
         "Assessee with Professional Income and Income from Other Sources",
       documents: [],
-      pricingKey: "itr_filling_itr_4_1",
+      pricingKey: "itr_filling_itr_4_4",
     },
     {
       key: 5,
@@ -43,7 +43,7 @@ const fixMytaxServiceInfoData = {
       description:
         "Assessee with Professional Income as well as House Property and Income from Other Sources",
       documents: [],
-      pricingKey: "itr_filling_itr_4_2",
+      pricingKey: "itr_filling_itr_4_5",
     },
     {
       key: 6,
@@ -52,7 +52,7 @@ const fixMytaxServiceInfoData = {
       description:
         "Assessee with Professional Income as well as House Property, Capital Gain and Income from Other Sources",
       documents: [],
-      pricingKey: "itr_filling_itr_4_3",
+      pricingKey: "itr_filling_itr_4_6",
     },
     {
       key: 7,
@@ -61,7 +61,7 @@ const fixMytaxServiceInfoData = {
       description:
         "NGOs / SOCIETIES / TRUST / CHARITABLE COMPANIES WITHOUT INCOME TAX EXEMPTION APPROVAL",
       documents: [],
-      pricingKey: "itr_filling_itr_5",
+      pricingKey: "itr_filling_itr_5_7",
     },
     {
       key: 8,
@@ -69,7 +69,7 @@ const fixMytaxServiceInfoData = {
       subSections: null,
       description: "Company Assessee",
       documents: [],
-      pricingKey: "itr_filling_itr_6",
+      pricingKey: "itr_filling_itr_6_8",
     },
     {
       key: 9,
@@ -78,6 +78,7 @@ const fixMytaxServiceInfoData = {
       description:
         "NGOs / SOCIETIES / TRUST / CHARITABLE COMPANIES WITH INCOME TAX EXEMPTION APPROVAL",
       documents: [],
+      pricingKey: "itr_filling_itr_7_9",
     },
     {
       key: 10,
@@ -85,7 +86,7 @@ const fixMytaxServiceInfoData = {
       subSections: null,
       description: "CAN BE FILED FOR LAST TWO ASSESSMENT YEARS",
       documents: [],
-      pricingKey: "itr_filling_itr_7",
+      pricingKey: "itr_filling_itr_u_10",
     },
   ],
   tds_filing: [
@@ -338,7 +339,7 @@ const fixMytaxServiceInfoData = {
           pricingKey: "itr_tds_tcs_notice_144_6_2",
         },
         {
-          key: 3,
+          key: 4,
           name: "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE",
           subSections: null,
           description: "",
@@ -346,7 +347,7 @@ const fixMytaxServiceInfoData = {
           pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
         {
-          key: 4,
+          key: 3,
           name: "OTHERS NOTICES",
           subSections: null,
           description: "",
@@ -501,7 +502,7 @@ const fixMytaxServiceInfoData = {
           pricingKey: "itr_tds_tcs_notice_245_12_2",
         },
         {
-          key: 3,
+          key: 4,
           name: "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE",
           subSections: null,
           description: "",
@@ -509,7 +510,7 @@ const fixMytaxServiceInfoData = {
           pricingKey: "itr_tds_tcs_notice_any_1_2",
         },
         {
-          key: 4,
+          key: 3,
           name: "OTHERS NOTICES",
           subSections: null,
           description: "",
@@ -758,7 +759,6 @@ const fixMytaxServiceInfoData = {
           description: "",
           documents: [],
           pricingKey: "appeal_income_tax_35_filling_1_1",
-
         },
         {
           key: 2,
@@ -918,6 +918,16 @@ const fixMytaxServiceInfoData = {
       description: "",
       documents: [],
       pricingKey: "business_consultation_ngo_income_5",
+    },
+  ],
+  video_consultation: [
+    {
+      key: 1,
+      name: "Video Consultation",
+      subSections: null,
+      description: "",
+      documents: [],
+      pricingKey: "video_consultation_1",
     },
   ],
 };

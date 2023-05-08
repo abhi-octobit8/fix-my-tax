@@ -10,6 +10,7 @@ import {
   Checkbox,
   Space,
   Tooltip,
+  Spin,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { FIELD_NAME } from "./constant";
@@ -20,6 +21,7 @@ import { getObjectFromList, openFile } from "../../shared/utils";
 import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
 import { USER_ROLE } from "../../components/application/application-menu/constant";
 import RegisterButton from "../../common/register-button/RegisterButton";
+import { GetServicePrice } from "../../services/ticket.service";
 
 const { Option } = Select;
 
@@ -62,6 +64,7 @@ const normFile = (e) => {
 };
 const FilingTdsForm = (props) => {
   const { onProceed } = props;
+  const [isLoading, setIsLoading] = useState(false);
   const { tds_filing } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
@@ -86,6 +89,7 @@ const FilingTdsForm = (props) => {
       const formData = {
         ...values,
         sectionObj,
+        pricingKey: sectionObj.pricingKey,
       };
       onProceed(formData);
     } catch (e) {
@@ -93,16 +97,33 @@ const FilingTdsForm = (props) => {
     }
   };
 
-  const onHandleSection = (value) => {
-    console.log(value);
-    if (value) {
-      const priceValue = getObjectFromList(tds_filing, value).fee;
-      form.setFieldValue(FIELD_NAME.PRICE, priceValue);
-    } else {
-      setOptionData((prevState) => ({
-        sectionList: [],
-      }));
-      form.setFieldValue(FIELD_NAME.PRICE, "");
+  const onHandleSection = async (value) => {
+    try {
+      setIsLoading(true);
+
+      if (value) {
+        // const priceValue = getObjectFromList(tds_filing, value).fee;
+        // form.setFieldValue(FIELD_NAME.PRICE, priceValue);
+        // call get api to get price
+        const pricingKeyValue = getObjectFromList(tds_filing, value).pricingKey;
+
+        const res = await GetServicePrice(pricingKeyValue);
+        // const priceValue = getObjectFromList(itr_filling, value).fee;
+        if (res && res.price) {
+          form.setFieldValue(FIELD_NAME.PRICE, res.price);
+        } else {
+          form.setFieldValue(FIELD_NAME.PRICE, "");
+        }
+      } else {
+        setOptionData((prevState) => ({
+          sectionList: [],
+        }));
+        form.setFieldValue(FIELD_NAME.PRICE, "");
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -120,12 +141,12 @@ const FilingTdsForm = (props) => {
       <Form.Item
         name={FIELD_NAME.SECTION}
         label="Type of TDS/TCS Statement"
-        rules={[
-          {
-            required: true,
-            message: "Select your TDS/TCS Statement",
-          },
-        ]}
+        // rules={[
+        //   {
+        //     required: true,
+        //     message: "Select your TDS/TCS Statement",
+        //   },
+        // ]}
       >
         <Select
           placeholder="Select your TDS/TCS Statement"
@@ -141,10 +162,21 @@ const FilingTdsForm = (props) => {
           })}
         </Select>
       </Form.Item>
-
-      <Form.Item name={FIELD_NAME.PRICE} label="Fee">
-        <Input disabled={true} addonAfter="INR"></Input>
-      </Form.Item>
+      <Spin spinning={isLoading}>
+        {" "}
+        <Form.Item
+          name={FIELD_NAME.PRICE}
+          label="Fee"
+          rules={[
+            {
+              required: true,
+              message: "Please select TDS/TCS Statement again",
+            },
+          ]}
+        >
+          <Input disabled={true} addonAfter="INR"></Input>
+        </Form.Item>
+      </Spin>
       <Form.Item label="Upload Documents">
         <Space>
           <Form.Item

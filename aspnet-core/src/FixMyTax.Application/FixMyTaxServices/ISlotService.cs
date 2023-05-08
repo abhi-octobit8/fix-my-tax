@@ -12,7 +12,7 @@ namespace FixMyTax.FixMyTaxServices
     public interface ISlotService : IApplicationService
     {
         Task<ListResultDto<SlotDto>> GetAll();
-        Task<ListResultDto<SlotListDto>> GetAvaiableSlots(DateTime input);
+        Task<ListResultDto<SlotListDto>> GetAvailableSlots(DateTime input);
 
         Task<SlotDto> CancelSlot(int slotId);
         Task<SlotDto> BookSlot(int ticketId, int slotId);

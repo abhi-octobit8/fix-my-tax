@@ -116,3 +116,10 @@ export const GetServicePrice = async (pricingKey) => {
   });
   return res;
 };
+
+export const GetVCAvailableSlots = async (input) => {
+  const res = await API({
+    url: `/services/app/SlotService/GetAvailableSlots?input=${input}`,
+  });
+  return res;
+};

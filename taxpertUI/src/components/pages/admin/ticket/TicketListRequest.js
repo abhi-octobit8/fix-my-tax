@@ -98,8 +98,6 @@ const TicketListRequest = () => {
       key: "status",
       width: 100,
       render: (value) => {
-        debugger;
-        console.log(getKeyFromObject(TicketStatus, value));
         return (
           <>
             {value === true ? (
@@ -119,6 +117,13 @@ const TicketListRequest = () => {
       dataIndex: "assignedUserName",
       key: "assignedUserName",
       width: 150,
+      condition: (params) => {
+        const { userRole } = params;
+        const allowedRoles = [USER_ROLE.ADMIN];
+        const isAllowed = allowedRoles.includes(userRole);
+
+        return isAllowed;
+      },
     },
     // {
     //   title: "Assigned By",
@@ -176,6 +181,22 @@ const TicketListRequest = () => {
     },
   ];
 
+  const displayColumns = React.useMemo(() => {
+    const allowedColumns = columns.filter((column) => {
+      let isAllowed = true;
+
+      if (typeof column.condition === "function") {
+        isAllowed = column.condition({
+          userRole,
+        });
+      }
+
+      return isAllowed;
+    }, []);
+
+    return allowedColumns;
+  }, [userRole]);
+
   const onRowClick = (record) => {
     return {
       onClick: (e) => {
@@ -216,10 +237,11 @@ const TicketListRequest = () => {
           >
             <FixMyTaxTable
               size="small"
-              columns={columns}
+              columns={displayColumns}
               dataSource={responseInfo.data}
               onRow={(record) => onRowClick(record)}
               loading={responseInfo.loading}
+              rowKey={"id"}
             />
           </Col>
         </Row>

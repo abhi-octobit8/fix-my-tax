@@ -36,7 +36,6 @@ export default function UpdateTicketStatus({
     if (res) {
       message.success("Status Updated successfully.");
     }
-    console.log("shamsher", key);
     setLoading(true);
     setEditState(false);
     setLoading(false);

@@ -23,7 +23,7 @@ const VideoConsultationFormContainer = (props) => {
 
     const formData = {
       ...values,
-      fixMyTaxService: FIX_MY_TAX_SERVICE_TYPES[0],
+      fixMyTaxService: FIX_MY_TAX_SERVICE_TYPES[7],
     };
     setOrderData(formData);
     navigate(PATH.CHECKOUT);

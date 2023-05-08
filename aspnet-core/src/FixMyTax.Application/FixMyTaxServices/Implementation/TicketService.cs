@@ -55,7 +55,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             var ticket = ObjectMapper.Map<RequestTicket>(input);
             ticket.Status = TicketStatus.New;
             var tickeEntity = await _ticketRepository.InsertAsync(ticket);
-            if(tickeEntity.SlotId != null)
+            if(tickeEntity.SlotId != null && tickeEntity.SlotId>0)
             {
                 var slot = _slotRepository.FirstOrDefault(x => x.Id == tickeEntity.SlotId);
                 if (slot == null)

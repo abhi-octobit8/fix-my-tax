@@ -41,7 +41,6 @@ const CreateAdvocate = (props) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
-    console.log("registration values:", values);
     const formData = {
       ...values,
       isActive: true,

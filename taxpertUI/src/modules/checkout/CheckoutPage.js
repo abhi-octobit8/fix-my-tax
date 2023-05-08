@@ -27,30 +27,31 @@ const CheckoutPage = (props) => {
     (async () => {
       if (orderDetails.pricingKey) {
         const res = await GetServiceTotalPrice(orderDetails.pricingKey);
-        debugger;
         setPriceInfo(res);
       }
     })();
   }, [orderDetails]);
 
   const onSubmit = async () => {
-    // check request created from new assessee or existing assessee
-    console.log("userInfo", userInfo);
-    console.log("orderDetails", orderDetails);
-    console.log();
     debugger;
+    // check request created from new assessee or existing assessee
+
     const registerFormData = {
       fixMyTaxServiceType: orderDetails.fixMyTaxService.value,
-      serviceType: 2, // notice reply always for time being
+      serviceType: orderDetails.fixMyTaxService.value === 8 ? 1 : 2, // notice reply or video consultation
       section: orderDetails.sectionObj.name,
       subSection: orderDetails?.subSectionObj
         ? orderDetails.subSectionObj.name
         : "",
       subject: "",
       question: "",
-      description: "",
+      description:
+        orderDetails.fixMyTaxService.value === 8 ? orderDetails.query : "",
       // status: 0,
       price: orderDetails.price,
+      slotId:
+        orderDetails.fixMyTaxService.value === 8 ? orderDetails.slotId : 0,
+      // slotId
       // paymentStaus: 0,
       // transactionNumber: "678678",
     };

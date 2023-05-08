@@ -67,42 +67,6 @@ const TicketDetails = (props) => {
   }, []);
 
   const [updloadForm] = Form.useForm();
-  const testData = [
-    {
-      author: "Han Solo",
-      content: (
-        <p>
-          We supply a series of design principles, practical patterns and high
-          quality design resources (Sketch and Axure), to help people create
-          their product prototypes beautifully and efficiently.
-        </p>
-      ),
-      datetime: (
-        <Tooltip title="2016-11-22 11:22:33">
-          <span>8 hours ago</span>
-        </Tooltip>
-      ),
-    },
-    {
-      author: "Han Solo",
-      content: (
-        <p>
-          We supply a series of design principles, practical patterns and high
-          quality design resources (Sketch and Axure), to help people create
-          their product prototypes beautifully and efficiently.
-        </p>
-      ),
-      datetime: (
-        <Tooltip title="2016-11-22 10:22:33">
-          <span>9 hours ago</span>
-        </Tooltip>
-      ),
-    },
-  ];
-
-  const onFinish = async (values) => {
-    console.log("registration values:", values);
-  };
 
   const onUploadSubmit = async (values) => {
     try {
@@ -121,23 +85,23 @@ const TicketDetails = (props) => {
     }
   };
 
-  const Editor = ({ onChange, onSubmit, submitting, value }) => (
-    <>
-      <Form.Item>
-        <TextArea rows={4} onChange={onChange} value={value} />
-      </Form.Item>
-      <Form.Item>
-        <Button
-          htmlType="submit"
-          // loading={isUplaoding}
-          onClick={onSubmit}
-          type="primary"
-        >
-          Add Comment
-        </Button>
-      </Form.Item>
-    </>
-  );
+  // const Editor = ({ onChange, onSubmit, submitting, value }) => (
+  //   <>
+  //     <Form.Item>
+  //       <TextArea rows={4} onChange={onChange} value={value} />
+  //     </Form.Item>
+  //     <Form.Item>
+  //       <Button
+  //         htmlType="submit"
+  //         // loading={isUplaoding}
+  //         onClick={onSubmit}
+  //         type="primary"
+  //       >
+  //         Add Comment
+  //       </Button>
+  //     </Form.Item>
+  //   </>
+  // );
 
   return (
     <Card title="Ticket Details" bordered={false}>
@@ -155,9 +119,11 @@ const TicketDetails = (props) => {
             <Descriptions.Item label="Section" span={3}>
               {ticketdetailsData?.section}
             </Descriptions.Item>
-            <Descriptions.Item label="Sub Section" span={3}>
-              {ticketdetailsData?.subSection}
-            </Descriptions.Item>
+            {ticketdetailsData?.serviceType === 2 ? (
+              <Descriptions.Item label="Sub Section" span={3}>
+                {ticketdetailsData?.subSection}
+              </Descriptions.Item>
+            ) : null}
             <Descriptions.Item
               contentStyle={{
                 display: "inline",
@@ -166,9 +132,9 @@ const TicketDetails = (props) => {
               className="description-item-label"
               span={3}
             >
-              {ticketdetailsData?.attachments?.map((item) => {
+              {ticketdetailsData?.attachments?.map((item, index) => {
                 return (
-                  <>
+                  <span key={index}>
                     <Button
                       loading={isUplaoding}
                       onClick={() => onHandleDownloadFile(item)}
@@ -176,7 +142,7 @@ const TicketDetails = (props) => {
                     >
                       {item.filename}
                     </Button>
-                  </>
+                  </span>
                 );
               })}
             </Descriptions.Item>
@@ -190,7 +156,11 @@ const TicketDetails = (props) => {
       <Title level={5}>Description</Title>
       <Typography>
         <Paragraph>
-          <pre>{ticketdetailsData?.subSection}</pre>
+          <pre>
+            {ticketdetailsData?.subSection
+              ? ticketdetailsData?.subSection
+              : ticketdetailsData?.description}
+          </pre>
         </Paragraph>
       </Typography>
 
