@@ -78,7 +78,6 @@ const VideoConsultationForm = (props) => {
 
   const onSubmit = (values) => {
     try {
-      debugger;
       const sectionObj = getObjectFromList(video_consultation, 1);
 
       const formData = {
@@ -93,7 +92,6 @@ const VideoConsultationForm = (props) => {
   };
 
   const onHandleDateSelectionAPI = async (value) => {
-    debugger;
     try {
       setIsLoading(true);
       await sleep();
@@ -121,7 +119,7 @@ const VideoConsultationForm = (props) => {
   // };
   const onDateChange = (value) => {
     // console.log(moment(value).format("YYYY-MM-DD"));
-    const date = moment(value).format("DD/MM/YYYY");
+    const date = moment(value).format("MM/DD/YYYY");
     onHandleDateSelectionAPI(date);
     // console.log(moment(value).startOf("day"));
   };

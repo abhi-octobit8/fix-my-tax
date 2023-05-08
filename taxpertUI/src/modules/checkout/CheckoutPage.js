@@ -32,8 +32,7 @@ const CheckoutPage = (props) => {
     })();
   }, [orderDetails]);
 
-  const onSubmit = async () => {
-    debugger;
+  const onSubmit = async (value) => {
     // check request created from new assessee or existing assessee
 
     const registerFormData = {
@@ -53,7 +52,7 @@ const CheckoutPage = (props) => {
         orderDetails.fixMyTaxService.value === 8 ? orderDetails.slotId : 0,
       // slotId
       // paymentStaus: 0,
-      // transactionNumber: "678678",
+      transactionNumber: value,
     };
     console.log("registerFormData", registerFormData);
     const res = await createTicketService(

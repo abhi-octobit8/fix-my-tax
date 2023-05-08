@@ -34,6 +34,7 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
         public string CreatorUserName { get; set; }
         public PaymentStatus PaymentStaus { get; set; }
         public ICollection<AttachmentDto> Attachments { get; set; }
+        public string TransactionNumber { get; set; }
         public int? SlotId { get; set; }
         public SlotDto Slot { get; set; }
 

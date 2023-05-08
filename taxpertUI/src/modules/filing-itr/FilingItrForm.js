@@ -141,9 +141,7 @@ const FilingItrForm = (props) => {
           {optionData.sectionList.map((x, i) => {
             return (
               <Option value={x.key} key={i}>
-                <Tooltip title={x.description}>
-                  {x.name} ({x.description})
-                </Tooltip>
+                <Tooltip title={x.description}>{x.name}</Tooltip>
               </Option>
             );
           })}

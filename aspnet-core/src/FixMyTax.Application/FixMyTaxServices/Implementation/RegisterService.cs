@@ -64,13 +64,14 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 //need to remove
                 output.Password = password;
                 output.Error = false;
+                _fixMyTaxEmail.SendRegistrationUserEmail(input.Email, output.UserName, output.Password);
             }
             catch (Exception ex)
             {
                 output.Error = true;
                 output.ErrorMsg = ex.Message;
             }
-            _fixMyTaxEmail.SendRegistrationUserEmail(input.Email, output.UserName, output.Password);
+            
 
             return output;
         }

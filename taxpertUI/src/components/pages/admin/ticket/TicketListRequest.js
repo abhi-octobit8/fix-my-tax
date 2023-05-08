@@ -93,6 +93,12 @@ const TicketListRequest = () => {
         getLocalTime(value, DATE_FORMATS.LIST_DATE_TIME_FORMAT),
     },
     {
+      title: "Transaction Number",
+      dataIndex: "transactionNumber",
+      key: "transactionNumber",
+      width: 150,
+    },
+    {
       title: "Status",
       dataIndex: "status",
       key: "status",
