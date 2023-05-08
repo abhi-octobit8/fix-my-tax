@@ -8,6 +8,7 @@ using FixMyTax.Authorization;
 using FixMyTax.Authorization.Roles;
 using FixMyTax.Authorization.Users;
 using FixMyTax.FixMyTaxModels;
+using FixMyTax.FixMyTaxServices.Dtos.Slots;
 using FixMyTax.FixMyTaxServices.Dtos.Tickets;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -118,7 +119,17 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 ticket = _ticketRepository.GetAll().Include(x => x.Attachments).Where(x => x.Id == id).FirstOrDefault();
             }
 
-            return ObjectMapper.Map<TicketDto>(ticket);
+            var ticketDto = ObjectMapper.Map<TicketDto>(ticket);
+            if(ticketDto.SlotId != null)
+            {
+                var slot = _slotRepository.FirstOrDefault(x => x.Id == ticketDto.SlotId);
+                if (slot != null)
+                {
+                    ticketDto.Slot = ObjectMapper.Map<SlotDto>(slot);
+                }
+            }
+
+            return ticketDto;
         }
 
         public async Task<ListResultDto<TicketListDto>> GetAll()
@@ -153,9 +164,23 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                     .ToListAsync();
                 }
 
-                return new ListResultDto<TicketListDto>(
+                var ticketList = new ListResultDto<TicketListDto>(
                     ObjectMapper.Map<List<TicketListDto>>(tickets)
                 );
+
+                foreach(var ticket in ticketList.Items)
+                {
+                    if (ticket.SlotId != null)
+                    {
+                        var slot = _slotRepository.FirstOrDefault(x => x.Id == ticket.SlotId);
+                        if (slot != null)
+                        {
+                            ticket.Slot = ObjectMapper.Map<SlotDto>(slot);
+                        }
+                    }
+                }
+
+                return ticketList;
             }
             catch(Exception ex)
             {

@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using FixMyTax.FixMyTaxModels;
+using FixMyTax.FixMyTaxServices.Dtos.Slots;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,5 +37,8 @@ namespace FixMyTax.FixMyTaxServices.Dtos.Tickets
         public string CreatorUserName { get; set; }
 
         public ICollection<AttachmentDto> Attachments { get; set; }
+
+        public int? SlotId { get; set; }
+        public SlotDto Slot { get; set; }
     }
 }

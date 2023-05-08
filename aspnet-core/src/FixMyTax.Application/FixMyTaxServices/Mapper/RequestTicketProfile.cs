@@ -1,7 +1,10 @@
-﻿using AutoMapper;
+﻿using Abp.AutoMapper;
+using Abp.Domain.Repositories;
+using AutoMapper;
 using FixMyTax.Authorization.Users;
 using FixMyTax.FixMyTaxModels;
 using FixMyTax.FixMyTaxServices.Dtos.Comments;
+using FixMyTax.FixMyTaxServices.Dtos.Slots;
 using FixMyTax.FixMyTaxServices.Dtos.Tickets;
 using System;
 using System.Collections.Generic;

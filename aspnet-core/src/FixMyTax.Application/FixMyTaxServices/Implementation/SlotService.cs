@@ -78,7 +78,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
 
         public async Task<ListResultDto<SlotListDto>> GetAvaiableSlots(DateTime input)
         {
-            var slots = await _slotRepository.GetAllListAsync(x => x.Date == DateTime.Today && x.Status == SlotStatus.Available);
+            var slots = await _slotRepository.GetAllListAsync(x => x.Date == input && x.Status == SlotStatus.Available);
             return new ListResultDto<SlotListDto>(
                     ObjectMapper.Map<List<SlotListDto>>(slots));
         }
