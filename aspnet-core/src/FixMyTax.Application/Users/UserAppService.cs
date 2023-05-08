@@ -12,6 +12,7 @@ using Abp.Extensions;
 using Abp.IdentityFramework;
 using Abp.Linq.Extensions;
 using Abp.Localization;
+using Abp.Net.Mail;
 using Abp.Runtime.Session;
 using Abp.UI;
 using FixMyTax.Authorization;
@@ -36,6 +37,8 @@ namespace FixMyTax.Users
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
         private readonly IRepository<CategoryProofFiles> _proofRepository;
+        private readonly IEmailSender _emailSender;
+        private readonly FixMyTaxEmailSender _fixMyTaxEmail;
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -45,7 +48,8 @@ namespace FixMyTax.Users
             IRepository<CategoryProofFiles> proofRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager)
+            LogInManager logInManager,
+            IEmailSender emailSender)
             : base(repository)
         {
             _userManager = userManager;
@@ -55,6 +59,8 @@ namespace FixMyTax.Users
             _abpSession = abpSession;
             _logInManager = logInManager;
             _proofRepository = proofRepository;
+            _emailSender = emailSender;
+            _fixMyTaxEmail = new FixMyTaxEmailSender(_emailSender);
         }
 
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
@@ -264,6 +270,8 @@ namespace FixMyTax.Users
             CheckErrors(await _userManager.SetRolesAsync(user, new string[] {StaticRoleNames.Tenants.Advocate}));
 
             CurrentUnitOfWork.SaveChanges();
+
+            _fixMyTaxEmail.SendPSPCreationEmail(input.EmailAddress, input.UserName, input.Password);
 
             return MapToEntityDto(user);
         }

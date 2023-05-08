@@ -19,4 +19,24 @@
   <ItemGroup>
     <ProjectReference Include="..\FixMyTax.Core\FixMyTax.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="EmailTemplates\AssesseeCreation.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="EmailTemplates\PendingTicketAlert.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="EmailTemplates\PSPCreation.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="EmailTemplates\TicketAssigned.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="EmailTemplates\TicketStatusChange.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="EmailTemplates\UnassignedTicketAlert.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

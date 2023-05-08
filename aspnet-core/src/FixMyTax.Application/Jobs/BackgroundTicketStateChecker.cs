@@ -14,7 +14,7 @@ namespace FixMyTax.Jobs
     {
         private readonly IRepository<RequestTicket> _ticketRepository;
         private readonly IEmailSender _emailSender;
-        //private readonly IConfigurationRoot _appConfiguration;
+        private readonly FixMyTaxEmailSender _fixMyTaxEmail;
 
         public BackgroundTicketStateChecker(AbpTimer timer, IRepository<RequestTicket> ticketRepository, IEmailSender emailSender)
         : base(timer)
@@ -22,9 +22,8 @@ namespace FixMyTax.Jobs
             _ticketRepository = ticketRepository;
             Timer.Period = 3600000;
             _emailSender = emailSender;
-            //_appConfiguration = AppConfigurations.Get(
-            //    typeof(FixMyTaxEmailSettings).GetAssembly().GetDirectoryPathOrNull()
-            //);
+            _fixMyTaxEmail = new FixMyTaxEmailSender(_emailSender);
+
         }
 
         [UnitOfWork]

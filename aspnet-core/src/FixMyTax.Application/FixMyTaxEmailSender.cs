@@ -1,0 +1,105 @@
+﻿using Abp.Net.Mail;
+using Abp.Reflection.Extensions;
+using FixMyTax.Configuration;
+using FixMyTax.FixMyTaxModels;
+using FixMyTax.FixMyTaxServices.Implementation;
+using Microsoft.Extensions.Configuration;
+using Org.BouncyCastle.Bcpg;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Mail;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FixMyTax
+{
+    public class FixMyTaxEmailSender
+    {
+        private readonly IConfigurationRoot _appConfiguration;
+        private readonly IEmailSender _emailSender;
+        private string _alertEmail;
+        private string _eventEmail;
+        private string _bccEventEmail;
+        private string _templateLocation;
+        private string _fromEmail;
+        public FixMyTaxEmailSender(IEmailSender emailSender)
+        {
+            _appConfiguration = AppConfigurations.Get(
+                typeof(FixMyTaxEmailSender).GetAssembly().GetDirectoryPathOrNull()
+            );
+
+            _emailSender = emailSender;
+
+            _alertEmail = _appConfiguration["FixmyTax:AlertNotification"];
+            _eventEmail = _appConfiguration["FixmyTax:EventNotification"];
+            _bccEventEmail = _appConfiguration["FixmyTax:BccEventNotification"];
+            _fromEmail = _appConfiguration["FixmyTax:FromEmail"];
+            _templateLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            
+        }
+
+        public void SendRegistrationUserEmail(string email, string username, string password)
+        {
+            string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "AssesseeCreation.html");
+
+            StreamReader str = new StreamReader(templatePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
+
+            mailText = mailText.Replace("{{username}}", username.Trim());
+            mailText = mailText.Replace("{{password}}", password);
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(_fromEmail, "FixmyTax"),
+                Subject = "FixMyTax Account Created",
+                Body = mailText,
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add(email);
+            _emailSender.Send(mailMessage);
+        }
+
+
+        public void SendPSPCreationEmail(string email, string username, string password)
+        {
+            string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "PSPCreation.html");
+
+            StreamReader str = new StreamReader(templatePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
+
+            mailText = mailText.Replace("{{username}}", username.Trim());
+            mailText = mailText.Replace("{{password}}", password);
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(_fromEmail, "FixmyTax"),
+                Subject = "FixMyTax Account Created",
+                Body = mailText,
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add(email);
+            _emailSender.Send(mailMessage);
+        }
+
+
+        public void SendTicketOverdueEmail(RequestTicket ticket)
+        {
+
+        }
+
+        public void SendAssignmentEventEmail(string pspEmail, RequestTicket ticket)
+        {
+
+        }
+
+        //public static SendAlertEmail()
+        //{
+
+        //}
+    }
+}

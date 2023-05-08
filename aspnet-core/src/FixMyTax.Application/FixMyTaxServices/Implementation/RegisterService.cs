@@ -25,6 +25,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         private readonly UserRegistrationManager _userRegistrationManager;
         private readonly UserManager _userManager;
         private readonly IEmailSender _emailSender;
+        private readonly FixMyTaxEmailSender _fixMyTaxEmail;
 
         public RegisterService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository,
             IRepository<Attachment> fileRepository, UserRegistrationManager userRegistrationManager, UserManager userManager, IEmailSender emailSender)
@@ -34,14 +35,14 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             _fileRepository = fileRepository;
             _userRegistrationManager = userRegistrationManager;
             _userManager = userManager;
-           _emailSender = emailSender;
+            _emailSender = emailSender;
+            _fixMyTaxEmail = new FixMyTaxEmailSender(_emailSender); 
         }
 
         public async Task<RegistrationOutput> Create(InputRegistration input)
         {
             var password = RandomString(10, true);
             RegistrationOutput output = new RegistrationOutput();
-            
             try
             {
                 var result = await _userManager.CheckDuplicateUsernameOrEmailAddressAsync(1, input.Email, input.Email);
@@ -52,43 +53,25 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 input.Email,
                 password,
                 true,
-                input.UserCategory, 
+                input.UserCategory,
                 input.PanCardNumber,
-                input.AdharNumber, 
+                input.AdharNumber,
                 input.GSTNumber);
                 await _userManager.SetPhoneNumberAsync(user, input.PhoneNumber);
-                
+
                 output.UserId = user.Id;
                 output.UserName = input.Email;
                 //need to remove
                 output.Password = password;
                 output.Error = false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 output.Error = true;
                 output.ErrorMsg = ex.Message;
             }
+            _fixMyTaxEmail.SendRegistrationUserEmail(input.Email, output.UserName, output.Password);
 
-            _emailSender.Send(
-                    to: input.Email,
-                    subject: "FixMyTax Account Created",
-                    body: $"<b>Hi {input.Email} </b> <br/>A new acount created for you with following details. <br/> username: <b>{output.UserName}</b> <br/> password : <b>{output.Password}</b>",
-                    isBodyHtml: true
-                );
-
-            //_emailSender.Send(
-            //    to: "karsathi.ajit@gmail.com",
-            //    subject: "You have a new task!",
-            //    body: $"A new task is created on the portal  task link: <b>{output.id}</b>",
-            //    isBodyHtml: true
-            //);
-            _emailSender.Send(
-                to: "contact@xoqovo.com",
-                subject: "You have a new task!",
-                body: $"A new task is created on the portal  task link: <b>{output.id}</b>",
-                isBodyHtml: true
-            );
             return output;
         }
 
