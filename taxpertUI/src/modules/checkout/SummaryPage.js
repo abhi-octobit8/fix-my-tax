@@ -77,6 +77,7 @@ const SummaryPage = (props) => {
       <PaymentConfirmation
         open={isPaymentConfirmationOpen}
         onSubmit={onSubmit}
+        priceInfo={priceInfo}
       />
     </React.Fragment>
   );

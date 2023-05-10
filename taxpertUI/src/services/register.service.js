@@ -80,3 +80,15 @@ export const uploadRegisterRequestFile = async (uploadfileData, userId) => {
   });
   return res;
 };
+
+export const contactUsService = async (body) => {
+  const registerResponse = await API({
+    method: "post",
+    url: "services/app/RegisterService/ContactUs",
+    body: body,
+    successMessage:
+      "Thank you for contacting us. fixmytax Team will revert you.",
+  });
+
+  return registerResponse;
+};

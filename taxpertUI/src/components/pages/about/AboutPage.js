@@ -118,7 +118,7 @@ const AboutPage = () => (
     </section>
     <div className="section-1">
       <h6 className="sec-1-head">
-        Your Tax Prep Comes with Built-in Reassurance
+        Your tax preparation comes with built in assurance
       </h6>
       <div className="cards-place">
         <div className="cards-in-place">

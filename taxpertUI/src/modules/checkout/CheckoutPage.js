@@ -47,12 +47,12 @@ const CheckoutPage = (props) => {
       description:
         orderDetails.fixMyTaxService.value === 8 ? orderDetails.query : "",
       // status: 0,
-      price: orderDetails.price,
+      price: value.totalPrice,
       slotId:
         orderDetails.fixMyTaxService.value === 8 ? orderDetails.slotId : 0,
       // slotId
       // paymentStaus: 0,
-      transactionNumber: value,
+      transactionNumber: value.transactionNumber,
     };
     console.log("registerFormData", registerFormData);
     const res = await createTicketService(
