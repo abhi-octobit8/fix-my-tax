@@ -12,5 +12,7 @@ namespace FixMyTax.FixMyTaxServices
     public interface IRegisterServices  : IApplicationService
     {
         Task<RegistrationOutput> Create(InputRegistration input);
+
+        Task<string> ContactUs(InputContactUs input);
     }
 }

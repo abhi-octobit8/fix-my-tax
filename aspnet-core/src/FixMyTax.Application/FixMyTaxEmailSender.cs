@@ -2,6 +2,7 @@
 using Abp.Reflection.Extensions;
 using FixMyTax.Configuration;
 using FixMyTax.FixMyTaxModels;
+using FixMyTax.FixMyTaxServices.Dtos.Registration;
 using FixMyTax.FixMyTaxServices.Dtos.Tickets;
 using FixMyTax.FixMyTaxServices.Implementation;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -124,6 +126,24 @@ namespace FixMyTax
             str.Close();
 
             string status = "None";
+            switch (ticket.Status)
+            {
+                case TicketStatus.Closed:
+                    status = "CLOSED";
+                    break;
+                case TicketStatus.Assigned:
+                    status = "ASSIGNED";
+                    break;
+                case TicketStatus.Reopen:
+                    status = "REOPEN";
+                    break;
+                case TicketStatus.Resolved:
+                    status = "RESOLVED";
+                    break;
+                case TicketStatus.Responded:
+                    status = "RESPONDED";
+                    break;
+            }
             mailText = mailText.Replace("{{status}}", status);
             mailText = mailText.Replace("{{ticketId}}", ticket.Id.ToString());
             mailText = mailText.Replace("{{section}}", ticket.Section);
@@ -139,9 +159,40 @@ namespace FixMyTax
             _emailSender.Send(mailMessage);
         }
 
-        public void SendContactUsEmail(string pspEmail, RequestTicket ticket)
+        public void SendContactUsEmail(InputContactUs input)
         {
+            string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "ContactUs.html");
 
+            StreamReader str = new StreamReader(templatePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
+
+            mailText = mailText.Replace("{{firstname}}", input.FirstName);
+            mailText = mailText.Replace("{{lastname}}", input.LastName);
+            mailText = mailText.Replace("{{email}}", input.Email);
+            mailText = mailText.Replace("{{phone}}", input.Phone);
+            mailText = mailText.Replace("{{feedback}}", input.Feedback);
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(_fromEmail, "FixmyTax"),
+                Subject = "Visitor Feedback",
+                Body = mailText,
+                IsBodyHtml = true,
+            };
+            var alertemails = _alertEmail.Split(",");
+            var bccAlerts = _bccEventEmail.Split(",");
+            foreach(var e in alertemails)
+            {
+                mailMessage.To.Add(e);
+            }
+
+            foreach (var e in bccAlerts)
+            {
+                mailMessage.Bcc.Add(e);
+            }
+
+            _emailSender.Send(mailMessage);
         }
 
         //public static SendAlertEmail()

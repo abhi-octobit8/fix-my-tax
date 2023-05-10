@@ -39,6 +39,12 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             _fixMyTaxEmail = new FixMyTaxEmailSender(_emailSender); 
         }
 
+        public async Task<string> ContactUs(InputContactUs input)
+        {
+            _fixMyTaxEmail.SendContactUsEmail(input);
+            return "Email Sent";
+        }
+
         public async Task<RegistrationOutput> Create(InputRegistration input)
         {
             var password = RandomString(10, true);

@@ -23,6 +23,9 @@
     <None Update="EmailTemplates\AssesseeCreation.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="EmailTemplates\ContactUs.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="EmailTemplates\PendingTicketAlert.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
