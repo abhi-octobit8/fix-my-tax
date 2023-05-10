@@ -2,6 +2,7 @@
 using Abp.Reflection.Extensions;
 using FixMyTax.Configuration;
 using FixMyTax.FixMyTaxModels;
+using FixMyTax.FixMyTaxServices.Dtos.Tickets;
 using FixMyTax.FixMyTaxServices.Implementation;
 using Microsoft.Extensions.Configuration;
 using Org.BouncyCastle.Bcpg;
@@ -87,12 +88,58 @@ namespace FixMyTax
         }
 
 
-        public void SendTicketOverdueEmail(RequestTicket ticket)
+        public void SendTicketOverdueEmail(TicketDto ticket)
         {
 
         }
 
-        public void SendAssignmentEventEmail(string pspEmail, RequestTicket ticket)
+        public void SendAssignmentEventEmail(string pspEmail, TicketDto ticket)
+        {
+            string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "TicketAssigned.html");
+
+            StreamReader str = new StreamReader(templatePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
+
+            mailText = mailText.Replace("{{subject}}", ticket.Section);
+            mailText = mailText.Replace("{{description}}", ticket.SubSection);
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(_fromEmail, "FixmyTax"),
+                Subject = "Ticket Assigned",
+                Body = mailText,
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add(pspEmail);
+            _emailSender.Send(mailMessage);
+        }
+
+        public void SendTicketStatusUpdateEventEmail(string email, TicketDto ticket)
+        {
+            string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "TicketStatusChange.html");
+
+            StreamReader str = new StreamReader(templatePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
+
+            string status = "None";
+            mailText = mailText.Replace("{{status}}", status);
+            mailText = mailText.Replace("{{ticketId}}", ticket.Id.ToString());
+            mailText = mailText.Replace("{{section}}", ticket.Section);
+            
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(_fromEmail, "FixmyTax"),
+                Subject = "Ticket Status Updated",
+                Body = mailText,
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add(email);
+            _emailSender.Send(mailMessage);
+        }
+
+        public void SendContactUsEmail(string pspEmail, RequestTicket ticket)
         {
 
         }

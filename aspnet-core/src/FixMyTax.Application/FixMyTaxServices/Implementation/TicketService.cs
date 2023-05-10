@@ -31,6 +31,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         private readonly IRepository<Attachment> _fileRepository;
         private readonly UserManager _userManager;
         private readonly IEmailSender _emailSender;
+        private readonly FixMyTaxEmailSender _fixMyTaxEmail;
 
 
         public TicketService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository,
@@ -42,6 +43,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             _userManager = userManager;
             _emailSender = emailSender;
             _slotRepository = slotRepository;
+            _fixMyTaxEmail = new FixMyTaxEmailSender(_emailSender);
         }
 
         public async Task<TicketListDto> Create(CreateTicketInput input)
@@ -218,12 +220,8 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 }
 
                 var assignedUser = _userManager.GetUserById(assignments.AssignUserId);
-                await _emailSender.SendAsync(
-                    to: assignedUser.EmailAddress,
-                    subject: "Ticket Assigned",
-                    body: $"<b>Hi {assignedUser.Name} </b> <br/>A new ticket has been assigned to you. Please ensure timely response for the ticket.",
-                    isBodyHtml: true
-                );
+
+                _fixMyTaxEmail.SendAssignmentEventEmail(assignedUser.EmailAddress, ObjectMapper.Map<TicketDto>(entity));
             }
 
             return true;
@@ -234,10 +232,13 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             var user = _userManager.GetUserById(AbpSession.UserId.Value);
             var roles = await _userManager.GetRolesAsync(user);
 
-            //if (!roles.Contains(StaticRoleNames.Tenants.Admin) && !roles.Contains(StaticRoleNames.Tenants.Advocate))
-            //{
-            //    throw new UserFriendlyException("Not Authorised");
-            //}
+            var isAuthorised = false;
+
+            if (roles.Contains(StaticRoleNames.Tenants.Admin) || roles.Contains(StaticRoleNames.Tenants.Advocate))
+                isAuthorised = true;
+            
+            if(!isAuthorised)
+                throw new UserFriendlyException("Not Authorised");
 
             var entity = _ticketRepository.FirstOrDefault(x => x.Id == requestTicketId);
             if (entity != null)
@@ -250,6 +251,13 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 throw new UserFriendlyException("Ticket not found");
             }
             CurrentUnitOfWork.SaveChanges();
+
+            var creator = _userManager.GetUserById(entity.CreatorUserId.Value);
+            if (creator != null)
+            {
+                _fixMyTaxEmail.SendTicketStatusUpdateEventEmail(creator.EmailAddress, ObjectMapper.Map<TicketDto>(entity));
+            }
+            
             return true;
         }
     }

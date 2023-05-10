@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Abp.Application.Services;
@@ -39,6 +40,7 @@ namespace FixMyTax.Users
         private readonly IRepository<CategoryProofFiles> _proofRepository;
         private readonly IEmailSender _emailSender;
         private readonly FixMyTaxEmailSender _fixMyTaxEmail;
+        private readonly IRepository<RequestTicket> _ticketRepository;
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -49,7 +51,8 @@ namespace FixMyTax.Users
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
             LogInManager logInManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IRepository<RequestTicket> ticketRepository)
             : base(repository)
         {
             _userManager = userManager;
@@ -61,6 +64,7 @@ namespace FixMyTax.Users
             _proofRepository = proofRepository;
             _emailSender = emailSender;
             _fixMyTaxEmail = new FixMyTaxEmailSender(_emailSender);
+            _ticketRepository = ticketRepository;
         }
 
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
@@ -104,6 +108,10 @@ namespace FixMyTax.Users
         public override async Task DeleteAsync(EntityDto<long> input)
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
+
+            var tickets = _ticketRepository.GetAll().Where(x => x.AssignedUserId == input.Id).ToList();
+            if (tickets.Any())
+                throw new UserFriendlyException("Tickets are assigned to this User. Please ensure no tickets are assigned to user.");
             await _userManager.DeleteAsync(user);
         }
 
