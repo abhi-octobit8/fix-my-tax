@@ -36,6 +36,7 @@ import { useState } from "react";
 import CheckableTag from "antd/lib/tag/CheckableTag";
 import SidePanel from "./side-panel/SidePanel";
 import CommentDetails from "./CommentDetails";
+import { DATE_FORMATS, getLocalTime } from "../../../../../shared/timeUtils";
 
 const { Title, Paragraph } = Typography;
 
@@ -122,6 +123,19 @@ const TicketDetails = (props) => {
             {ticketdetailsData?.serviceType === 2 ? (
               <Descriptions.Item label="Sub Section" span={3}>
                 {ticketdetailsData?.subSection}
+              </Descriptions.Item>
+            ) : null}
+            {ticketdetailsData?.serviceType === 1 ? (
+              <Descriptions.Item label="Video Conferencing Date" span={3}>
+                {getLocalTime(
+                  ticketdetailsData?.slot?.date,
+                  DATE_FORMATS.DEFAULT_DATE_FORMAT2
+                )}
+              </Descriptions.Item>
+            ) : null}
+            {ticketdetailsData?.serviceType === 1 ? (
+              <Descriptions.Item label="Video Conferencing Time" span={3}>
+                {ticketdetailsData?.slot?.slotName}
               </Descriptions.Item>
             ) : null}
             <Descriptions.Item

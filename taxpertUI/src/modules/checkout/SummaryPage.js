@@ -8,26 +8,30 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { PATH } from "../../shared/Route";
 import useUserRole from "../../components/hooks/useUserRole";
 import { USER_ROLE } from "../../components/application/application-menu/constant";
+import PaymentConfirmation from "./PaymentConfirmation";
 
 const { Panel } = Collapse;
 
 const SummaryPage = (props) => {
   const navigate = useNavigate();
   const userRole = useUserRole();
+  const [isPaymentConfirmationOpen, setIsPaymentConfirmationOpen] =
+    useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { orderDetails, userInfo, onSubmit, priceInfo } = props;
 
   const OnPayment = async () => {
     try {
       if (toFixed(priceInfo?.price)) {
-        setIsLoading(true);
-        await onSubmit();
+        setIsPaymentConfirmationOpen(true);
+        // setIsLoading(true);
+        // await onSubmit();
       } else {
         message.error("Please select service request again");
       }
     } catch (e) {
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
   return (
@@ -70,6 +74,10 @@ const SummaryPage = (props) => {
           )}
         </div>
       </Card>
+      <PaymentConfirmation
+        open={isPaymentConfirmationOpen}
+        onSubmit={onSubmit}
+      />
     </React.Fragment>
   );
 };

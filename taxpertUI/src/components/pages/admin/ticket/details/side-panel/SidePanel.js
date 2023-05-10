@@ -6,11 +6,18 @@ import { getKeyFromObject } from "../../../../../../shared/utils";
 import { useState } from "react";
 
 const SidePanel = ({ ticketdetailsData }) => {
-  const { status, id, assignedUserName } = ticketdetailsData;
+  const { status, id, assignedUserName, transactionNumber } = ticketdetailsData;
   const [editState, setEditState] = useState(false);
   const statusValue = getKeyFromObject(TicketStatus, status);
   return (
     <Space direction={"vertical"} style={{ width: "100%" }}>
+      <div>
+        <span>
+          <strong>Transaction Number </strong>
+          <br />
+          {transactionNumber}
+        </span>
+      </div>
       <UpdateTicketStatus
         statusValue={statusValue}
         editState={editState}
