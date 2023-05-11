@@ -364,14 +364,14 @@ function HomePage() {
                   <SafeSecureIcon className="icon" />
                   Secure and safe
                 </li>
-                <li>
+                {/* <li>
                   <RatingIcon className={"icon"} />
                   4.5 Star Service Rating{" "}
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <TrustedUserIcon className={"icon"} />
                   Trusted by 5000+ users
-                </li>
+                </li> */}
                 <li>
                   <AuthorizedIcon className={"icon"} />
                   Registered with DPIIT & Start in UP
@@ -382,7 +382,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="promoters-section">
+      {/* <section className="promoters-section">
         <div className="section-header">
           <h1>Our Founder And Promoters</h1>
           <hr className="taxpert-line" />
@@ -423,19 +423,6 @@ function HomePage() {
               upliftment of poor and needy strata of the society.
             </p>
             <br />
-            {/* <div className="content">
-              <div className="info">
-                <div className="name">Subhas Chandra Dubey</div>
-                <div className="job">IPS</div>
-                <div className="stars">
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarOutlined />
-                </div>
-              </div>
-            </div> */}
           </div>
           <div className="box">
             <img
@@ -469,7 +456,7 @@ function HomePage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <section className="testimonial-value-section">
         <div className="section-header">

@@ -105,7 +105,10 @@ const TicketDetails = (props) => {
   // );
 
   return (
-    <Card title="Ticket Details" bordered={false}>
+    <Card
+      title="Ticket Details (N.B. - Dear Assessee kindly check the comment box and respond promptly till resolution of your case.)"
+      bordered={false}
+    >
       <Row gutter={20}>
         <Col xs={24} xl={18}>
           <Descriptions>

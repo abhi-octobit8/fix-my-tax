@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { Button, Form, Input, Select, Upload, Row, Col } from "antd";
-import { UploadOutlined, PhoneTwoTone, MailTwoTone } from "@ant-design/icons";
+import {
+  UploadOutlined,
+  ArrowRightOutlined,
+  PhoneTwoTone,
+  MailTwoTone,
+} from "@ant-design/icons";
 import "./ContactUs.css";
 import TextArea from "antd/lib/input/TextArea";
 import { phoneNumberValidator } from "../../../shared/validator";
@@ -158,6 +163,11 @@ const ContactUs = () => {
 
             <MailTwoTone />
             <span style={{ marginLeft: "11px" }}>contact@fixmytax.in</span>
+            <br />
+            <ArrowRightOutlined />
+            <span style={{ marginLeft: "11px" }}>
+              (Available: Monday to Friday: 10:00 am to 6:00 pm)
+            </span>
             <br />
           </Col>
         </Row>
