@@ -55,8 +55,8 @@ function ApplicationUserMenu() {
           <div className="application-user-menu-trigger">{userData.name}</div>
         </Dropdown>
       ) : (
-        <Menu size="large">
-          <Menu.Item>
+        <Menu>
+          <Menu.Item style={{ blockSize: "64px", marginTop: "-1px" }}>
             <NavLink to="/login">
               <span className="application-user-menu-trigger">Login</span>
             </NavLink>

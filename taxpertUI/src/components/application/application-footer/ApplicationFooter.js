@@ -7,7 +7,7 @@ import {
   MENU_ITEMS_SERVICE_FOOTER,
 } from "./constant";
 import "./ApplicationFooter.css";
-import logo from "../../../assets/img/footer_logo.png";
+import logo from "../../../assets/img/footer_logo2.png";
 
 const displayName = "ApplicationFooter";
 
@@ -22,16 +22,18 @@ function ApplicationFooter() {
           <div className="row gy-4">
             <div className="col-lg-4 col-md-12 footer-info">
               <div style={{ display: "flex" }}>
-                <img src={logo} alt="text" height={80} width={100} />
-                <a href="index.html" className="logo d-flex align-items-center">
+                <img src={logo} alt="text" height={100} width={400} />
+                {/* <a href="index.html" className="logo d-flex align-items-center">
                   <span>fixmytax</span>
-                </a>
+                </a> */}
               </div>
 
               <p>
                 We are here to solve all your tax related queries so that you
                 may enjoy peace of mind.
               </p>
+              <br />
+              <p>Developed by XoQoVo Pvt. Ltd.</p>
               <div className="social-links d-flex  mt-3">
                 <a href="#" className="twitter">
                   <i className="bi bi-twitter"></i>
@@ -106,6 +108,7 @@ function ApplicationFooter() {
                 <br />
                 U.P. - 211001
                 <br />
+                <strong>Available</strong> Monday to Friday: 10:00 am to 6:00 pm
                 <br />
                 <strong>Phone</strong> +91 6387022844
                 <br />

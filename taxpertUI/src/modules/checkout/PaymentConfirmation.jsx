@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Alert, Button, Form, Input, Modal } from "antd";
+import { toFixed } from "../../shared/utils";
 // import { changePasswordService } from "../../../../services/auth.service";
 
 const formItemLayout = {
@@ -34,7 +35,7 @@ const tailFormItemLayout = {
   },
 };
 const PaymentConfirmation = (props) => {
-  const { open, onClose, onSubmit } = props;
+  const { open, onClose, onSubmit, priceInfo } = props;
 
   const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
@@ -42,9 +43,12 @@ const PaymentConfirmation = (props) => {
   const onFinish = async (values) => {
     try {
       setIsLoading(true);
-
+      const data = {
+        transactionNumber: values.transactionNumber,
+        totalPrice: toFixed(priceInfo?.totalAmount),
+      };
       // await changePasswordService(values);
-      await onSubmit(values.transactionNumber);
+      await onSubmit(data);
 
       // form.resetFields();
       onClose();

@@ -60,7 +60,7 @@ const GstReturnPage = () => {
           </div>
         </Card>
       </section>
-      <section className="section-faq-container">
+      {/* <section className="section-faq-container">
         <div className="section-header">
           <h4>FAQ’s on Income Tax Notice</h4>
           <hr className="taxpert-line" />
@@ -114,7 +114,7 @@ const GstReturnPage = () => {
             </Space>
           </Card>
         </div>
-      </section>
+      </section> */}
     </React.Fragment>
   );
 };

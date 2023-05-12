@@ -99,6 +99,12 @@ const TicketListRequest = () => {
       width: 150,
     },
     {
+      title: "Total Amount",
+      dataIndex: "price",
+      key: "price",
+      width: 100,
+    },
+    {
       title: "Status",
       dataIndex: "status",
       key: "status",

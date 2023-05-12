@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form, Input, Select, Upload, Row, Col } from "antd";
-import { UploadOutlined, PhoneTwoTone, MailTwoTone } from "@ant-design/icons";
+import {
+  UploadOutlined,
+  ArrowRightOutlined,
+  PhoneTwoTone,
+  MailTwoTone,
+} from "@ant-design/icons";
 import "./ContactUs.css";
 import TextArea from "antd/lib/input/TextArea";
 import { phoneNumberValidator } from "../../../shared/validator";
+import { contactUsService } from "../../../services/register.service";
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -44,7 +50,18 @@ const normFile = (e) => {
 };
 const ContactUs = () => {
   const [form] = Form.useForm();
-  const onFinish = async (values) => {};
+  const [isLoading, setIsLoading] = useState(false);
+  const onFinish = async (values) => {
+    try {
+      debugger;
+      setIsLoading(true);
+      const res = await contactUsService(values);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
@@ -75,7 +92,7 @@ const ContactUs = () => {
             >
               <Form.Item
                 label="First Name"
-                name="name"
+                name="firstName"
                 rules={[{ required: true, message: "This field is required" }]}
               >
                 <Input />
@@ -89,7 +106,7 @@ const ContactUs = () => {
                 <Input />
               </Form.Item>
               <Form.Item
-                name="emailAddress"
+                name="email"
                 label="E-mail"
                 rules={[
                   {
@@ -125,13 +142,13 @@ const ContactUs = () => {
               </Form.Item>
               <Form.Item
                 label="Feedback"
-                name="query"
+                name="feedback"
                 rules={[{ required: true, message: "This field is required" }]}
               >
                 <TextArea showCount maxLength={100} />
               </Form.Item>
               <Form.Item {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" loading={isLoading}>
                   Submit
                 </Button>
               </Form.Item>
@@ -146,6 +163,11 @@ const ContactUs = () => {
 
             <MailTwoTone />
             <span style={{ marginLeft: "11px" }}>contact@fixmytax.in</span>
+            <br />
+            <ArrowRightOutlined />
+            <span style={{ marginLeft: "11px" }}>
+              (Available: Monday to Friday: 10:00 am to 6:00 pm)
+            </span>
             <br />
           </Col>
         </Row>

@@ -2,6 +2,7 @@ import { Col, Row } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ApplicationMenu from "../application-menu/ApplicationMenu";
+// import logo1 from "../../../assets/img/footer_logo2.png";
 import logo1 from "../../../assets/img/new_updated_logo.PNG";
 import "./ApplicationHeader.css";
 import ApplicationUserMenu from "../application-user-menu/ApplicationUserMenu";
