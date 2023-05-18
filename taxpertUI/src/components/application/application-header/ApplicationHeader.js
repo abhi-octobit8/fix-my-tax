@@ -3,7 +3,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import ApplicationMenu from "../application-menu/ApplicationMenu";
 // import logo1 from "../../../assets/img/footer_logo2.png";
-import logo1 from "../../../assets/img/new_updated_logo.PNG";
+import logo1 from "../../../assets/img/logo_header.png";
+// import logo1 from "../../../assets/img/new_updated_logo.PNG";
 import "./ApplicationHeader.css";
 import ApplicationUserMenu from "../application-user-menu/ApplicationUserMenu";
 import { Header } from "antd/lib/layout/layout";
@@ -18,7 +19,13 @@ function ApplicationHeader() {
           <Header className="header-fixed">
             <Row>
               <Col xl={3} lg={3} md={3} sm={20} xs={20}>
-                <img src={logo1} alt="text" height={80} width={100} />
+                <img
+                  src={logo1}
+                  alt="text"
+                  height={80}
+                  width={160}
+                  style={{ objectFit: "cover" }}
+                />
               </Col>
               <Col xl={19} lg={19} md={19} sm={4} xs={4}>
                 <ApplicationMenu />

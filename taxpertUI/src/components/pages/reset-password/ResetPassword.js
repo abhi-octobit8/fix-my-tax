@@ -5,6 +5,7 @@ import "./ResetPassword.less";
 import { PATH } from "../../../shared/Route";
 import { resetUserPasswordService } from "../../../services/auth.service";
 import { getResetToken } from "../../../shared/utils";
+import { passwordValidator } from "../../../shared/validator";
 
 const ResetPassword = (props) => {
   const location = useLocation(); // React Hook
@@ -91,6 +92,7 @@ const ResetPassword = (props) => {
                   required: true,
                   message: "Please input your password!",
                 },
+                passwordValidator,
               ]}
             >
               <Input.Password size="large" />

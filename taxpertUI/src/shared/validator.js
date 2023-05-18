@@ -66,7 +66,8 @@ export const emailValidator = {
 };
 export const passwordValidator = {
   pattern: VALIDATION_PATTERN.PASSWORD,
-  message: "Password Should Contain special,lowecase and uppercase letter",
+  message:
+    "Password Should Contain  min 8 char length,special,lowecase and uppercase letter",
 };
 
 export const phoneNumberValidator = {
