@@ -344,7 +344,7 @@ function HomePage() {
                 <span>fixmytax</span>
               </div>
               {/* <h3>Best Tax expert website in India</h3> */}
-              <p>
+              <p style={{ textAlign: "justify" }}>
                 We are a strong team of experts with vide experience in the
                 field of taxation and consulting. Armed with latest technology
                 we have established “fixmytax.in” a portal where our expert
