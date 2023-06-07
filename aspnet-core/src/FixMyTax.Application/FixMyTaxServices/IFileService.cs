@@ -19,5 +19,7 @@ namespace FixMyTax.FixMyTaxServices
         Task<FileContentResult> DownloadProofFile(int id);
 
         Task<FileContentResult> DownloadFile(int id);
+
+        Task<FileContentResult> GetFileMobile(int id);
     }
 }

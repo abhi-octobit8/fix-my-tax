@@ -156,5 +156,19 @@ namespace FixMyTax.FixMyTaxServices.Implementation
 
             return $"File successfully uploaded to user ";
         }
+
+        public async Task<FileContentResult> GetFileMobile(int id)
+        {
+            var file = await _fileRepository.FirstOrDefaultAsync(id);
+            if (file == null)
+            {
+                throw new FileNotFoundException();
+            }
+
+            return new FileContentResult(file.FileData, "application/pdf")
+            {
+                FileDownloadName = file.Filename
+            };
+        }
     }
 }

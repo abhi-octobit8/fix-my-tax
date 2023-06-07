@@ -278,8 +278,14 @@ namespace FixMyTax.Users
             CheckErrors(await _userManager.SetRolesAsync(user, new string[] {StaticRoleNames.Tenants.Advocate}));
 
             CurrentUnitOfWork.SaveChanges();
-
-            _fixMyTaxEmail.SendPSPCreationEmail(input.EmailAddress, input.UserName, input.Password);
+            try
+            {
+                _fixMyTaxEmail.SendPSPCreationEmail(input.EmailAddress, input.UserName, input.Password);
+            }
+            catch(Exception ex)
+            {
+                Logger.Error(ex.Message, ex);
+            }
 
             return MapToEntityDto(user);
         }

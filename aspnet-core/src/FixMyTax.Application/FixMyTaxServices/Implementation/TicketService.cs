@@ -221,7 +221,14 @@ namespace FixMyTax.FixMyTaxServices.Implementation
 
                 var assignedUser = _userManager.GetUserById(assignments.AssignUserId);
 
-                _fixMyTaxEmail.SendAssignmentEventEmail(assignedUser.EmailAddress, ObjectMapper.Map<TicketDto>(entity));
+                try
+                {
+                    _fixMyTaxEmail.SendAssignmentEventEmail(assignedUser.EmailAddress, ObjectMapper.Map<TicketDto>(entity));
+                }
+                catch(Exception ex)
+                {
+                    Logger.Error(ex.Message, ex);
+                }
             }
 
             return true;
@@ -255,7 +262,14 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             var creator = _userManager.GetUserById(entity.CreatorUserId.Value);
             if (creator != null)
             {
-                _fixMyTaxEmail.SendTicketStatusUpdateEventEmail(creator.EmailAddress, ObjectMapper.Map<TicketDto>(entity));
+                try
+                {
+                    _fixMyTaxEmail.SendTicketStatusUpdateEventEmail(creator.EmailAddress, ObjectMapper.Map<TicketDto>(entity));
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message, ex);
+                }
             }
             
             return true;
