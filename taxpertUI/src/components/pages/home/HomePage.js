@@ -232,8 +232,7 @@ function HomePage() {
             <Button
               className="button-style"
               type="primary"
-              onClick={() => navigator.goTo(PATH.SERVICE_
-                                            O_CONSULTATION)}
+              onClick={() => navigator.goTo(PATH.SERVICE_VIDEO_CONSULTATION)}
             >
               Video
               <br />
