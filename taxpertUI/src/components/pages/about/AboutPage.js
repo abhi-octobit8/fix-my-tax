@@ -7,6 +7,7 @@ import user from "../../../assets/img/user.jpg";
 import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
 import promoter2 from "../../../assets/img/nidhi_singh.PNG";
 import "./AboutPage.css";
+import { Col, Row } from "antd";
 
 const AboutPage = () => (
   <>
@@ -120,57 +121,61 @@ const AboutPage = () => (
       <h6 className="sec-1-head">
         Your tax preparation comes with built in assurance
       </h6>
-      <div className="cards-place">
-        <div className="cards-in-place">
-          <img
-            className="img-place"
-            src={max_benefit}
-            alt="text"
-            width="80px"
-            height="80px"
-          />
 
-          <br />
-          <h6 className="headings">Maximum Benefits</h6>
-          <p className="text-area">
-            Our experts ensure that your tax filing is hassale free for availing
-            maximum tax benefits on your income and also you enjoy spotless
-            assessments
-          </p>
-        </div>
-        <div className="cards-in-place">
-          <img
-            className="img-place"
-            src={upfront}
-            alt="text"
-            width="80px"
-            height="80px"
-          />
-          <br />
-          <h6 className="headings">Upfront Transparency</h6>
-          <p className="text-area">
-            Our transparent approach means that we keep our clients informed and
-            involved throughout the entire process, ensuring they have a clear
-            understanding of their tax situation and the steps needed to achieve
-            their financial goals. Trust us to provide you with expert advice
-            and guidance in a straightforward and understandable manner.
-          </p>
-        </div>
-        <div className="cards-in-place">
-          <img
-            className="img-place"
-            src={team}
-            alt="text"
-            width="80px"
-            height="80px"
-          />
-          <br />
-          <h6 className="headings">Experienced tax pros</h6>
-          <p className="text-area">
-            Our team of professionals holds the business insight and technical
-            expertise for providing best solutions.
-          </p>
-        </div>
+      <div>
+        <Row>
+          <Col lg={8} md={6} sm={24} xs={24} className="section-1-content">
+            <img
+              className="img-place"
+              src={max_benefit}
+              alt="text"
+              width="80px"
+              height="80px"
+            />
+
+            <br />
+            <h6 className="headings">Maximum Benefits</h6>
+            <p className="text-area">
+              Our experts ensure that your tax filing is hassale free for
+              availing maximum tax benefits on your income and also you enjoy
+              spotless assessments
+            </p>
+          </Col>
+          <Col lg={8} md={6} sm={24} xs={24} className="section-1-content">
+            <img
+              className="img-place"
+              src={upfront}
+              alt="text"
+              width="80px"
+              height="80px"
+            />
+            <br />
+            <h6 className="headings">Upfront Transparency</h6>
+            <p className="text-area">
+              Our transparent approach means that we keep our clients informed
+              and involved throughout the entire process, ensuring they have a
+              clear understanding of their tax situation and the steps needed to
+              achieve their financial goals. Trust us to provide you with expert
+              advice and guidance in a straightforward and understandable
+              manner.
+            </p>
+          </Col>
+          <Col lg={8} md={6} sm={24} xs={24} className="section-1-content">
+            <img
+              className="img-place"
+              src={team}
+              alt="text"
+              width="80px"
+              height="80px"
+            />
+            <br />
+            <h6 className="headings">Experienced tax pros</h6>
+            <p className="text-area">
+              Our team of professionals holds the business insight and technical
+              expertise for providing best solutions.
+            </p>
+          </Col>
+        </Row>
       </div>
     </div>
   </>

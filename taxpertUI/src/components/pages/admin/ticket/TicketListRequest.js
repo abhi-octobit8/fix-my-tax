@@ -7,12 +7,17 @@ import AssignTicket from "./AssignTicket";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { getAllTickets } from "../../../../services/ticket.service";
 import { DATE_FORMATS, getLocalTime } from "../../../../shared/timeUtils";
-import { getKeyFromObject, getMenuActionItems } from "../../../../shared/utils";
+import {
+  getKeyFromObject,
+  getMenuActionItems,
+  getObjectFromList,
+} from "../../../../shared/utils";
 import { ServiceType } from "../../services/constant";
 import useUserRole from "../../../hooks/useUserRole";
 import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
 import { USER_ROLE } from "../../../application/application-menu/constant";
 import { TicketStatus } from "../../../../shared/constants";
+import { FIX_MY_TAX_SERVICE_TYPES } from "../../../../shared/constant/TaxService";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
@@ -77,11 +82,13 @@ const TicketListRequest = () => {
     },
     {
       title: "Service",
-      dataIndex: "serviceType",
-      key: "serviceType",
+      dataIndex: "fixMyTaxServiceType",
+      key: "fixMyTaxServiceType",
       width: 100,
       render: (text, value) => {
-        return <span>{getKeyFromObject(ServiceType, text)}</span>;
+        return (
+          <span>{getObjectFromList(FIX_MY_TAX_SERVICE_TYPES, text)?.name}</span>
+        );
       },
     },
     {
