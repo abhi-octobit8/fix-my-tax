@@ -232,7 +232,8 @@ function HomePage() {
             <Button
               className="button-style"
               type="primary"
-              onClick={() => navigator.goTo(PATH.SERVICE_VIDEO_CONSULTATION)}
+              onClick={() => navigator.goTo(PATH.SERVICE_
+                                            O_CONSULTATION)}
             >
               Video
               <br />
@@ -345,7 +346,7 @@ function HomePage() {
               </div>
               {/* <h3>Best Tax expert website in India</h3> */}
               <p style={{ textAlign: "justify" }}>
-                We are a strong team of experts with vide experience in the
+                We are a strong team of experts with wide experience in the
                 field of taxation and consulting. Armed with latest technology
                 we have established “fixmytax.in” a portal where our expert
                 services are available round the clock for our clients. We aim
