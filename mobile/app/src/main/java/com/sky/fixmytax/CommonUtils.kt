@@ -101,16 +101,16 @@ object CommonUtils {
     }
     * */
 
-    fun getServiceStatus(string: Int):String {
-          when(string){
+    fun getServiceStatus(type: Int):String {
+          when(type){
 
               1 -> return "ITR FILING"
               2 -> return "TDS TCS FILING"
               3 -> return "ITR TDS TCS Notice"
               4 -> return "GST RETURN"
               5 -> return "GST Notice"
-              6 -> return "TAX APPEAL"
-              7 -> return "Consultation"
+              6 -> return "Income Tax Gst Appeal"
+              7 -> return "Business Consultation"
               8 -> return "Video Consultation"
 
           }
@@ -124,11 +124,11 @@ object CommonUtils {
 
              "Filling ITR" -> return 1
             "TDS TCS FILING" -> return 2
-             "ITR Notice" -> return 3
+             "ITR TDS TCS Notice" -> return 3
              "GST RETURN"-> return 4
              "GST Notice"-> return 5
             "Income Tax Gst Appeal"-> return 6
-            "Consultation"-> return 7
+            "Business Consultation"-> return 7
             "Video Consultation"-> return 8
 
         }
@@ -139,9 +139,15 @@ object CommonUtils {
     fun getServiceType(fill: String):Int{
         when(fill){
             "Video Consultation"-> return 1
-
         }
         return 2
+    }
+
+    fun getServiceType(type: Int):String{
+        when(type){
+            1 -> return "Video Consultation"
+        }
+        return "Notice Reply"
     }
 
 

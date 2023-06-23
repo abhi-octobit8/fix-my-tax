@@ -178,7 +178,7 @@ class ITRNoticeActivity : AppCompatActivity() {
                 if(itemSubSelected != "") {
                     if(selectedImageUri != null) {
                         val intent = Intent(this, CheckOutActivity::class.java)
-                        intent.putExtra("ServiceName", "ITR Notice")
+                        intent.putExtra("ServiceName", "ITR/TDS/TCS Notice")
                         intent.putExtra("ServiceType", itemSelected)
                         intent.putExtra("SubServiceType", itemSubSelected)
                         intent.putExtra(

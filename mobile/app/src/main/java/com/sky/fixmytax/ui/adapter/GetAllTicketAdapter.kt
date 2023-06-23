@@ -28,7 +28,7 @@ class GetAllTicketAdapter(
         holder.items.tvTxnNumber.text = "#"+concern.transactionNumber
         holder.items.tvTitle.text = concern.section
         holder.items.tvTime.text ="Time: "+CommonUtils.convertToDateFormatT("dd/MM/yy",concern.creationTime)
-        holder.items.tvService.text = CommonUtils.getServiceStatus(concern.serviceType)
+        holder.items.tvService.text = CommonUtils.getServiceStatus(concern.fixMyTaxServiceType)
         holder.items.tvStatus.text = CommonUtils.getStatus(concern.status)
 
         holder.items.itemlYt.setOnClickListener {

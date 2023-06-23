@@ -80,7 +80,7 @@ class TDSTCSFilingActivity : AppCompatActivity() {
             if(price.text.toString().isNotEmpty()) {
                 if(selectedImageUri != null) {
                     val intent = Intent(this, CheckOutActivity::class.java)
-                    intent.putExtra("ServiceName", "Income Tax Gst Appeal")
+                    intent.putExtra("ServiceName", "TDS TCS FILING")
                     intent.putExtra("ServiceType", itemSelected)
                     intent.putExtra("SubServiceType", "")
                     intent.putExtra("uri", selectedImageUri.toString())
