@@ -1,0 +1,268 @@
+<resources>
+    <string name="app_name">FixMyTax</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">User </string>
+    <string name="nav_header_subtitle">user@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="upload_document_1mb"><![CDATA[Upload document < 1mb]]></string>
+
+    <string-array name="notice">
+        <item>Select Selection Type</item>
+        <item>131-1A</item>
+        <item>133-6</item>
+        <item>142-1</item>
+        <item>143(2)</item>
+        <item>143-1</item>
+        <item>144</item>
+        <item>148A</item>
+        <item>156</item>
+        <item>176-3</item>
+        <item>210-3</item>
+        <item>221</item>
+        <item>245</item>
+        <item>271-1-c</item>
+        <item>NOTICE UNDER OTHER SECTIONS</item>
+    </string-array>
+    <string-array name="one">
+        <item>Select SubSection</item>
+        <item>REPLY IN RESPONSE TO SUMMON NOTICE</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+    <string-array name="two">
+        <item>Select SubSection</item>
+        <item>REPLY IN RESPONSE TO NOTICE (DIRECT RELATED TO ASSESSEE BY A.O.)</item>
+        <item>REPLY IN RESPONSE TO NOTICE (RELATED TO THIRD PARTY INFORMATION / CONFIRMATION)</item>
+        <item>REPLY IN RESPONSE TO NOTICE (RAISED BY ADI OR DI OFFICE)</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+    <string-array name="three">
+        <item>Select SubSection</item>
+        <item>BUSINESS CLOSED INFORMATION</item>
+        <item>FOR FILING RETURN OF INCOME - RETURN FILED</item>
+        <item>FOR FILING RETURN OF INCOME - RETURN NOT FILED</item>
+        <item>FOR FURNISHING OF DETAILS AS PROVIDED I.E. ACCOUNTS AND DOCUMENTS FOR ASSESSMENT</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+        <item>OTHERS NOTICES</item>
+    </string-array>
+    <string-array name="four">
+        <item>Select SubSection</item>
+        <item>REPLY FOR COMPLIANCE</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+    <string-array name="five">
+        <item>Select SubSection</item>
+        <item>FOR RECTIFICATION OF DEMAND RAISED VIDE INTIMATION 143-1</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+    <string-array name="six">
+        <item>Select SubSection</item>
+        <item>REPLY IN RESPONSE TO NOTICE - NOT RESPONDED</item>
+        <item>REPLY IN RESPONSE TO NOTICE - RESPONDED</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+        <item>OTHERS NOTICES</item>
+    </string-array>
+    <string-array name="seven">
+        <item>Select SubSection</item>
+        <item>REPLY IN RESPONSE TO NOTICE</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+    <string-array name="eight">
+        <item>Select SubSection</item>
+        <item>REPLY IN RESPONSE TO NOTICE</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+    //156
+    <string-array name="nine">
+        <item>Select SubSection</item>
+        <item>INTIMATION FOR DISCONTINUATION OF BUSINESS</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+    //176 - 3
+    <!-- <string-array name="ten">
+        <item>Select SubSection</item>
+        <item>INTIMATION FOR DISCONTINUATION OF BUSINESS</item>
+    </string-array>-->
+    //210 - 3
+    <string-array name="ten">
+        <item>Select SubSection</item>
+        <item>REPLY FOR DEPOSIT OF ADVANCE TAX</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+    //221
+    <string-array name="eleven">
+        <item>Select SubSection</item>
+        <item>REPLY IN RESPONSE TO NOTICE</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+    //245
+    <string-array name="therteen">
+        <item>Select SubSection</item>
+        <item>REPLY IN RESPONSE TO NOTICE - SIMPLE REPLY</item>
+        <item>REPLY IN RESPONSE TO NOTICE - EARLIER DEMAND ADJUSTED WITH REFUND</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+        <item>OTHERS NOTICES</item>
+    </string-array>
+    //"271-1-c"
+    <string-array name="fourteen">
+        <item>Select SubSection</item>
+        <item>REPLY IN RESPONSE TO NOTICE - APPEAL NOT FILED</item>
+        <item>REPLY IN RESPONSE TO NOTICE - APPEAL FILED</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+        <item>OTHERS NOTICES</item>
+
+    </string-array>
+
+    <string-array name="fifteen">
+        <item>Select SubSection</item>
+        <item>NOTICE UNDER OTHER SECTIONS</item>
+        <item>ADJOURNMENT APPLICATION FOR ANY GENUINE CASE</item>
+    </string-array>
+
+    <string-array name="gstlist">
+        <item>Select Section Type</item>
+        <item>GST REG-03</item>
+        <item>GST REG-17</item>
+        <item>GST REG-23</item>
+        <item>GST REG-27</item>
+        <item>GST GSTR-3A</item>
+        <item>GST CMP-05</item>
+        <item>GST PCT-03</item>
+        <item>GST RFD-08</item>
+        <item>GST ASMT-02</item>
+        <item>GST ASMT-06</item>
+        <item>GST ASMT-10</item>
+        <item>GST ASMT-14</item>
+        <item>GST ADT-01</item>
+        <item>GST RVN-01</item>
+        <item>GST DRC-01</item>
+        <item>GST DRC-10</item>
+        <item>GST DRC-11</item>
+        <item>GST DRC-13</item>
+        <item>GST DRC-16</item>
+    </string-array>
+
+    <string-array name="signupCate">
+        <item>Select Category Type</item>
+        <item>CA / CMA / CS / TAX ADVOCATES</item>
+        <item>DEFENCE PERSONNELS</item>
+        <item>DIFFERENTALY ABLED</item>
+        <item>GENERAL</item>
+        <item>INTERNATIONAL SPORTS PERSONNELS</item>
+        <item>MEDIA / NEWSPAPER JOURNALISTS</item>
+        <item>START-UPS</item>
+        <item>WORKING WOMEN</item>
+        <item>THIRD GENDER</item>
+
+
+    </string-array>
+
+    <string-array name="itrlist">
+        <item>Select Section Type</item>
+        <item>ITR-1(Salaried Employee / Pensioner with Income from Other Sources)</item>
+        <item>ITR-2(Salaried Employee / Pensioner with Income from Other Sources and House Property Income)</item>
+        <item>ITR-3(Salaried Employee / Pensioner with Income from Other Sources, House Property Income &amp; Capital Gain with Shares)</item>
+        <item>ITR-4(Assessee with Professional Income and Income from Other Sources)</item>
+        <item>ITR-4(Assessee with Professional Income as well as House Property and Income from Other Sources)</item>
+        <item>ITR-4(Assessee with Professional Income as well as House Property, Capital Gain and Income from Other Sources)</item>
+        <item>ITR-5(NGOs / SOCIETIES / TRUST / CHARITABLE COMPANIES WITHOUT INCOME TAX EXEMPTION APPROVAL)</item>
+        <item>ITR-6(Company Assessee)</item>
+        <item>ITR-7(NGOs / SOCIETIES / TRUST / CHARITABLE COMPANIES WITH INCOME TAX EXEMPTION APPROVAL)</item>
+        <item>ITR-U(CAN BE FILED FOR LAST TWO ASSESSMENT YEARS)</item>
+    </string-array>
+
+    <string-array name="gstNoticelist">
+        <item>Select Section Type</item>
+        <item>GST REG-03 (Notice issued for further information / clarification in response to application for new registration or amendment of GST registration certificate.)</item>
+        <item>GST REG-17 (Show Cause Notice as to why GST registration be not be cancelled.)</item>
+        <item>GST REG-23 (Show Cause Notice as to why registration of GST cancellation be revoked.)</item>
+        <item>GST REG-27 (Notice where application for provisional registration has not been made for migration into GST from VAT regime or incomplete details have been provided.)</item>
+        <item>GST GSTR-3A (Notice to assessee who are default for not filing GST Returns in GSTR-1 or GSTR-3B or GSTR-4 or GSTR-8.)</item>
+        <item>GST CMP-05 (Show Cause Notice for eligibility to be a composition dealer.)</item>
+        <item>GST PCT-03 (Show Cause Notice for misconduct by GST practitioner.)</item>
+        <item>GST RFD-08 (Show Cause Notice on rejection of GST refund made.)</item>
+        <item>GST ASMT-02 (Clarification / Additional documents required for provisional assessment.)</item>
+        <item>GST ASMT-10 (For intimation of discrepancies in the GST Return after scrutiny.)</item>
+        <item>GST ASMT-14 (Show Cause Notice under Section 63 for Best Judgment Assessment.)</item>
+        <item>GST ADT-01 (Notice from the Authorities for conducting Audit under Section 65.)</item>
+        <item>GST RVN-01 (Notice under Section 108 issued by the Revisional Authority in case of Revision.)</item>
+        <item>GST DRC-01 (Show Cause Notice for tax demanded in GST DRC-02.)</item>
+        <item>GST DRC-10 (Notice for auction of Goods under Section 79(1)(b).)</item>
+        <item>GST DRC-11 (Notice to the successful bidder.)</item>
+        <item>GST DRC-13 (Notice under Section 79(1)(c) to the third person directing to deposit the amount specified.)</item>
+        <item>GST DRC-16 (Notice under Section 79 for attachment and sale of movable / immovable goods &amp; shares.)</item>
+        <item>ANY OTHER NOTICE</item>
+    </string-array>
+
+
+    <string-array name="tdstcsFilinglist">
+        <item>Select Section Type</item>
+        <item>TDS QUARTERLY Statement - 24 - Q1, Q2 &amp; Q3</item>
+        <item>TDS QUARTERLY Statement - 24 - Q4</item>
+        <item>TDS QUARTERLY Statement - 26 - Q1, Q2, Q3 &amp; Q4</item>
+        <item>TCS QUARTERLY Statement</item>
+        <item>CORRECTION IN TDS / TCS STATEMENTS</item>
+        <item>TDS ON SALE OF PROPERTY -CHALLAN CUM Statement</item>
+        <item>REFUND MATTERS FOR EXCESS TDS / TCS DEPOSIT</item>
+    </string-array>
+
+    <string-array name="consulatancy">
+        <item>Select Section Type</item>
+        <item>CONSULTANCY RELATED TO PROPERTY OR BUSINESS SITUATED IN INDIA</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="incomeTaxAppeal">
+        <item>Select Section Type</item>
+        <item>Income Tax Appeal</item>
+        <item>GST Appeal</item>
+    </string-array>
+
+    <string-array name="subIncomeTaxAppeal">
+        <item>Select Section Type</item>
+        <item>FORM - 35 - FILING</item>
+        <item>FORM - 35 - SUBSEQUENT WRITTEN SUBMISSIONS</item>
+        <item>FORM - 35 - FILING WITH WRITTEN SUBMISSIONS</item>
+        <item>FORM - 36 - FILING</item>
+        <item>FORM - 36 - SUBSEQUENT WRITTEN SUBMISSIONS</item>
+        <item>FORM - 36 - FILING WITH WRITTEN SUBMISSIONS</item>
+        <item>PERSONAL HEARING THROUGH AR - OTHER THAN FEE: EXPENSES TO BE REIMBURSED AT ACTUALS</item>
+    </string-array>
+
+    <string-array name="subgstAppeal">
+        <item>Select Section Type</item>
+        <item>FORM - APL-01 - FILING</item>
+        <item>FORM - APL-01 - SUBSEQUENT WRITTEN SUBMISSIONS</item>
+        <item>FORM - APL-01 - FILING WITH WRITTEN SUBMISSIONS</item>
+        <item>FORM - APL-05 - FILING</item>
+        <item>FORM - APL-05 - SUBSEQUENT WRITTEN SUBMISSIONS</item>
+        <item>FORM - APL-05 - FILING WITH WRITTEN SUBMISSIONS</item>
+        <item>PERSONAL HEARING THROUGH AR-OTHER THAN FEE: EXPENSES TO BE REIMBURSED AT ACTUALS</item>
+    </string-array>
+
+
+    <string-array name="businessConsult">
+        <item>Select Section Type</item>
+        <item>Enjoy knowledge about intricacies of taxation laws as per Statute</item>
+        <item>Legal opinion on any complex taxation matters from our Team of Qualified Professionals @ Legal Consultancy</item>
+        <item>Any Business Related Consultancy  Being Proprietorship / Partnership / LLP Or Company</item>
+        <item>Any NGO Related Consultancy Being Society / Trust / Charitable Company</item>
+        <item>Any NGO Income Related Query</item>
+    </string-array>
+
+
+</resources>

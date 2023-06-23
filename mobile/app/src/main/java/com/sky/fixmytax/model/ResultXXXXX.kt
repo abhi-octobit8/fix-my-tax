@@ -1,0 +1,32 @@
+package com.sky.fixmytax.model
+
+data class ResultXXXXX(
+    val assignedUserId: Int,
+    val assignedUserName: String,
+    val assignmentByUserId: Int,
+    val assignmentByUserName: String,
+    val assignmentDatetime: String,
+    val attachments: List<Any>,
+    val creationTime: String,
+    val creatorUserId: Int,
+    val creatorUserName: String,
+    val deleterUserId: Any,
+    val deletionTime: Any,
+    val description: String,
+    val fixMyTaxServiceType: Int,
+    val id: Int,
+    val isDeleted: Boolean,
+    val lastModificationTime: Any,
+    val lastModifierUserId: Any,
+    val paymentStaus: Int,
+    val price: String,
+    val question: String,
+    val section: String,
+    val serviceType: Int,
+    val slot: Any,
+    val slotId: Int,
+    val status: Int,
+    val subSection: String,
+    val subject: String,
+    val transactionNumber: String
+)

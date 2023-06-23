@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.TicketDetailsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mainCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="0dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:contentPadding="2dp"
+        app:cardUseCompatPadding="true"
+
+        >
+
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            >
+
+
+            <TextView
+                android:id="@+id/tv_txnNu"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Ticket Details"
+                android:textSize="16dp"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+
+                android:gravity="left"
+                />
+
+            <TextView
+                android:id="@+id/tv_txNu"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Ticket Details (N.B. - Dear Assessee kindly check the comment box and respond promptly till resolution of your case.)"
+                android:textSize="10dp"
+                android:textColor="@android:color/black"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:gravity="left"
+                />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:id="@+id/tv_txnNumber"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="#iiii"
+                    android:textSize="14dp"
+                    android:textColor="@android:color/black"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    />
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status"
+                    android:textSize="14dp"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:padding="6dp"
+                    android:background="@color/design_default_color_primary_variant"
+                    android:gravity="right"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="14dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/black"
+                android:textAllCaps="false"
+                android:textStyle="normal"
+                android:gravity="left"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                >
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Service: "
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="normal"
+                        android:gravity="left"
+                        />
+                    <TextView
+                        android:id="@+id/tv_service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:gravity="right"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="0dp"
+                    android:layout_gravity="left"
+                    android:gravity="left">
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Paid: "
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="normal"
+                        android:gravity="left"
+                        />
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="500"
+                        android:textSize="14dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:gravity="right"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/black"
+                    android:textAllCaps="false"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="normal"
+                    android:gravity="left"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="0dp"
+                android:layout_gravity="left"
+                android:gravity="left">
+                <TextView
+                    android:id="@+id/psp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PSP: "
+                    android:textSize="12dp"
+                    android:textColor="@android:color/black"
+                    android:textAllCaps="false"
+                    android:textStyle="normal"
+                    android:gravity="left"
+                    />
+                <TextView
+                    android:id="@+id/tv_psp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="14dp"
+                    android:textColor="@android:color/black"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:gravity="right"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/lytVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical"
+                >
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="0dp"
+                    android:layout_gravity="left"
+                    android:gravity="left">
+                    <TextView
+                        android:id="@+id/video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Video Conferencing Date: "
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="normal"
+                        android:gravity="left"
+                        />
+                    <TextView
+                        android:id="@+id/tv_videoDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="14dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:gravity="right"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="0dp"
+                    android:layout_gravity="left"
+                    android:gravity="left">
+                    <TextView
+                        android:id="@+id/videoTm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Video Conferencing Time: "
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="normal"
+                        android:gravity="left"
+                        />
+                    <TextView
+                        android:id="@+id/tv_videoTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="14dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:gravity="right"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="0dp"
+                    android:layout_gravity="left"
+                    android:gravity="left">
+                    <TextView
+                        android:id="@+id/videoTopic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Video Conferencing Topic: "
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="normal"
+                        android:gravity="left"
+                        />
+                    <TextView
+                        android:id="@+id/tv_videoTopic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="14dp"
+                        android:textColor="@android:color/black"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:gravity="right"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/attachemntLyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            app:contentPadding="2dp"
+            android:visibility="visible"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/sendonCard"
+            app:cardUseCompatPadding="true">
+
+<androidx.appcompat.widget.LinearLayoutCompat
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="visible"
+    android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_xu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Attachments"
+                android:textSize="14dp"
+                android:visibility="visible"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:gravity="left"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/attachmentRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/white"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                >
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_menu_camera"
+                    android:text="@string/upload_document_1mb"
+                    android:textAllCaps="false"
+                    />
+                <TextView
+                    android:id="@+id/fileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginStart="10dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSubmitPDF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="0dp"
+                    android:visibility="gone"
+                    android:layout_marginBottom="10dp"
+                    android:background="#FFA500"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    tools:ignore="TextContrastCheck"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+        </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sendonCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:contentPadding="2dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/mainCard"
+        app:cardUseCompatPadding="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+
+        <TextView
+            android:id="@+id/tv_txu"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:text="Comments"
+            android:textSize="14dp"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:gravity="left"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_edittext_background">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_text_topic"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:autofillHints="name"
+                android:gravity="left|top"
+                android:hint="Comment here..."
+                android:inputType="text"
+                android:padding="10dp"
+                android:textSize="14dp"
+                android:background="@drawable/custom_edittext_background"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </RelativeLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFA500"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mainfilterRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="#D3D3D3"
+                android:visibility="visible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

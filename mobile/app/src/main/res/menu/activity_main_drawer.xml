@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/icons8_home_page"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="About" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/icons8_contact_us"
+            android:title="ContactUS" />
+        <item
+            android:id="@+id/nav_slidepwd"
+            android:icon="@android:drawable/ic_partial_secure"
+            android:title="Change Password" />
+        <item
+            android:id="@+id/nav_slideLogOut"
+            android:icon="@android:drawable/ic_lock_power_off"
+            android:title="LogOut" />
+
+</menu>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/fix_my_tax"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/fix_my_tax"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FixMyTax">
+        <activity
+            android:name=".ui.GSTrETURNActivity"
+            android:exported="false"
+            android:label="GST Return"
+            android:parentActivityName=".MainActivity"
+            >
+
+        </activity>
+        <activity
+            android:name=".ui.ChangePasswordActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.TicketDetailsActivity"
+            android:exported="false"
+            android:label="Ticket Details"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".ui.HomeDouplicateActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.AboutActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ui.ContactUsActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ui.VideoConsulatationActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity
+            android:name=".BusinessConsultActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.IncomeTaxGstAppealActivit"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.CheckOutActivity"
+            android:label="Checkout"
+            android:parentActivityName=".MainActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.TDSTCSFilingActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.FixMyTax.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.ui.login.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.FixMyTax.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.ITRNoticeActivity"
+            android:exported="false"
+            android:label="Notice"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.ITRTDSTCSNoticesActivity"
+            android:exported="false"
+            android:label="GST Notice"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.GSTNoticeActivity"
+            android:exported="false"
+            android:label="GST Notice"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.ConsultationActivity"
+            android:exported="false"
+            android:label="Consultation"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.FilingITRActivity"
+            android:exported="false"
+            android:label="ITR Filing"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.MainActivity" />
+        </activity>
+        <activity android:name=".ui.SignUPActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sky.fixmytax.ui.SplashActivity" />
+        </activity>
+    </application>
+
+</manifest>
