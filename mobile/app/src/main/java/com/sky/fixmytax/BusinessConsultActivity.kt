@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -30,6 +31,10 @@ class BusinessConsultActivity : AppCompatActivity() {
     var itemSelectedKey : String? = null
     private var selectedImageUri: Uri? = null
     var fileName: TextView? = null
+
+    companion object {
+        const val REQUEST_CODE_PICK_IMAGE = 101
+    }
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,10 +98,10 @@ class BusinessConsultActivity : AppCompatActivity() {
     }
 
     fun uploadPDF(){
-        val pdfIntent = Intent(Intent.ACTION_GET_CONTENT)
+        val pdfIntent = Intent(Intent.ACTION_OPEN_DOCUMENT)
         pdfIntent.type = "application/pdf"
         pdfIntent.addCategory(Intent.CATEGORY_OPENABLE)
-        startActivityForResult(pdfIntent, SignUPActivity.REQUEST_CODE_PICK_IMAGE)
+        startActivityForResult(pdfIntent, BusinessConsultActivity.REQUEST_CODE_PICK_IMAGE)
     }
 
 
@@ -104,15 +109,28 @@ class BusinessConsultActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
-                SignUPActivity.REQUEST_CODE_PICK_IMAGE -> {
+                BusinessConsultActivity.REQUEST_CODE_PICK_IMAGE -> {
+
                     selectedImageUri = data?.data
                     val file = File(cacheDir, contentResolver.getFileName(selectedImageUri!!))
                     Log.d("data",file.name)
-                    fileName?.text = file.name
-                    // image_view.setImageURI(selectedImageUri)
-                    if(CommonUtils.getFolderSizeLabel(file).toString().endsWith("MB")){
-                        Toast(this).showCustomToast("Upload Required Document\nless then 1 MB",this)
+
+                    var size: Long = 0
+                    data?.let { returnUri  ->
+                        contentResolver.query(returnUri?.data!!.normalizeScheme() , null, null, null, null)
+                    }?.use { cursor ->
+                        val sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE)
+                        cursor.moveToFirst()
+                        size = cursor.getLong(sizeIndex)
+                    }
+
+                    var sizeinKb = size/1024;
+                    if(sizeinKb >= 1024){
+                        Toast(this).showCustomToast("please upload document having size less than 1 mb",this)
                         selectedImageUri = null
+                        fileName?.text = ""
+                    }else{
+                        fileName?.text = file.name
                     }
                 }
             }

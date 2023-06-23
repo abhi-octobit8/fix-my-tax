@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.OpenableColumns
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -100,13 +101,26 @@ class TicketDetailsActivity : AppCompatActivity() , BluePrint.OnAttachmentPDF{
                     val file = File(cacheDir, contentResolver.getFileName(selectedImageUri!!))
                     Log.d("data",file.name)
                     binding.fileName?.text = file.name
-                    if(CommonUtils.getFolderSizeLabel(file).toString().endsWith("MB")){
-                        Toast(this).showCustomToast("Upload Required Document\nless then 1 MB",this)
+
+                    var size: Long = 0
+                    data?.let { returnUri  ->
+                        contentResolver.query(returnUri?.data!!.normalizeScheme() , null, null, null, null)
+                    }?.use { cursor ->
+                        val sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE)
+                        cursor.moveToFirst()
+                        size = cursor.getLong(sizeIndex)
+                    }
+
+                    var sizeinKb = size/1024;
+
+
+                    if(sizeinKb >= 1024){
+                        Toast(this).showCustomToast("please upload document having size less than 1 mb",this)
                         selectedImageUri = null
+                        binding.fileName?.text  = ""
                     }else {
                         uploadImage()
                     }
-                    // image_view.setImageURI(selectedImageUri)
                 }
             }
         }

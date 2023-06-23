@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -118,11 +119,23 @@ class TDSTCSFilingActivity : AppCompatActivity() {
                     selectedImageUri = data?.data
                     val file = File(cacheDir, contentResolver.getFileName(selectedImageUri!!))
                     Log.d("data",file.name)
-                    fileName?.text = file.name
-                    // image_view.setImageURI(selectedImageUri)
-                    if(CommonUtils.getFolderSizeLabel(file).toString().endsWith("MB")){
-                        Toast(this).showCustomToast("Upload Required Document\nless then 1 MB",this)
+
+                    var size: Long = 0
+                    data?.let { returnUri  ->
+                        contentResolver.query(returnUri?.data!!.normalizeScheme() , null, null, null, null)
+                    }?.use { cursor ->
+                        val sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE)
+                        cursor.moveToFirst()
+                        size = cursor.getLong(sizeIndex)
+                    }
+
+                    var sizeinKb = size/1024;
+                    if(sizeinKb >= 1024){
+                        Toast(this).showCustomToast("please upload document having size less than 1 mb",this)
                         selectedImageUri = null
+                        fileName?.text = ""
+                    }else{
+                        fileName?.text = file.name
                     }
                 }
             }
