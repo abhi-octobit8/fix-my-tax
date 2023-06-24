@@ -72,7 +72,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 output.Error = false;
                 try
                 {
-                    _fixMyTaxEmail.SendRegistrationUserEmail(input.Email, output.UserName, output.Password);
+                    _fixMyTaxEmail.SendRegistrationUserEmail(input.Name, input.Email, output.UserName, output.Password);
                 }
                 catch(Exception ex)
                 {

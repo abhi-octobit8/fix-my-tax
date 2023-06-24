@@ -1,10 +1,13 @@
-﻿using Abp.Dependency;
+﻿using Abp.AutoMapper;
+using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
 using Abp.Net.Mail;
+using Abp.ObjectMapping;
 using Abp.Threading.BackgroundWorkers;
 using Abp.Threading.Timers;
 using FixMyTax.FixMyTaxModels;
+using FixMyTax.FixMyTaxServices.Dtos.Tickets;
 using System;
 using System.Linq;
 
@@ -39,7 +42,7 @@ namespace FixMyTax.Jobs
                     if (ticket.LastModificationTime != null)
                     {
                         var days = (DateTime.Now - ticket.LastModificationTime.Value).TotalDays;
-                        if(days > 2)
+                        if (days > 2)
                         {
                             sendMail = true;
                         }
@@ -55,12 +58,15 @@ namespace FixMyTax.Jobs
 
                     if (sendMail)
                     {
-                        _emailSender.SendAsync(
-                            to: "karsathi.ajit@gmail.com",
-                            subject: "Ticket Overdue",
-                            body: $"<b>Hi admin </b> <br/>No action has benn taken on this ticket from last 3 days. ticket details <br/> {ticket.Id}",
-                            isBodyHtml: true
-                    );
+                        var ticketDto = NullObjectMapper.Instance.Map<TicketDto>(ticket);
+                        try
+                        {
+                            _fixMyTaxEmail.SendTicketOverdueEmail(ticketDto);
+                        }
+                        catch(Exception ex)
+                        {
+                            Logger.Error(ex.Message, ex);
+                        }
                     }
                 }
             }

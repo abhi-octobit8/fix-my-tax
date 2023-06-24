@@ -44,14 +44,14 @@ namespace FixMyTax
             
         }
 
-        public void SendRegistrationUserEmail(string email, string username, string password)
+        public void SendRegistrationUserEmail(string name, string email, string username, string password)
         {
             string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "AssesseeCreation.html");
 
             StreamReader str = new StreamReader(templatePath);
             string mailText = str.ReadToEnd();
             str.Close();
-
+            mailText = mailText.Replace("{{name}}", name);
             mailText = mailText.Replace("{{username}}", username.Trim());
             mailText = mailText.Replace("{{password}}", password);
 
@@ -92,7 +92,35 @@ namespace FixMyTax
 
         public void SendTicketOverdueEmail(TicketDto ticket)
         {
+            string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "PendingTicketAlert.html");
+            StreamReader str = new StreamReader(templatePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
 
+            mailText = mailText.Replace("{{ticketId}}", ticket.Id.ToString());
+            mailText = mailText.Replace("{{section}}", ticket.Section);
+            mailText = mailText.Replace("{{assigned}}", ticket.AssignedUserName);
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(_fromEmail, "FixmyTax"),
+                Subject = "Ticket Overdue",
+                Body = mailText,
+                IsBodyHtml = true,
+            };
+            var alertemails = _alertEmail.Split(",");
+            var bccAlerts = _bccEventEmail.Split(",");
+            foreach (var e in alertemails)
+            {
+                mailMessage.To.Add(e);
+            }
+
+            foreach (var e in bccAlerts)
+            {
+                mailMessage.Bcc.Add(e);
+            }
+
+            _emailSender.Send(mailMessage);
         }
 
         public void SendAssignmentEventEmail(string pspEmail, TicketDto ticket)
