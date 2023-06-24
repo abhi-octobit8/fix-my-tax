@@ -38,9 +38,11 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.net.URL
 
 class TicketDetailsActivity : AppCompatActivity() , BluePrint.OnAttachmentPDF{
     var ticketResponse: GetAllTicketResponse? = null
@@ -230,7 +232,6 @@ class TicketDetailsActivity : AppCompatActivity() , BluePrint.OnAttachmentPDF{
                 this@TicketDetailsActivity,
                 ticketItem?.attachments!!,
                 this
-
             )
             binding?.attachmentRecyclerView?.adapter = attachementAdapter
         }else {
@@ -316,9 +317,6 @@ class TicketDetailsActivity : AppCompatActivity() , BluePrint.OnAttachmentPDF{
                     Log.d("res",response.body().toString())
 
                     val chatListResponse: TicketDewtailsResponseUpdated? = response.body()
-
-
-
                      if(chatListResponse?.result?.attachments?.size !! >0){
                     if(chatListResponse?.result?.attachments.size!!>0) {
                         binding.attachmentRecyclerView.visibility = View.VISIBLE
@@ -376,12 +374,9 @@ class TicketDetailsActivity : AppCompatActivity() , BluePrint.OnAttachmentPDF{
 
                     } else {
 
-
                     }
                 }
-
             })
-
     }
 
     private fun initRecyclerView() {
@@ -396,31 +391,44 @@ class TicketDetailsActivity : AppCompatActivity() , BluePrint.OnAttachmentPDF{
 
 
 
+
     fun download(id: Int, fileName: String)  {
-        val urlString = "https://fixmytaxapi.zupiers.com/api/services/app/FileService/DownloadFile?id=${ticketItem?.id}"
+
+        val urlString = "https://fixmytaxapi.zupiers.com/api/services/app/FileService/GetFileMobile?id=${id}"
+//        var url = URL(urlString)
+//        downloadFile(url, fileName)
         val quotesApi = RetrofitHelper.getInstance().create(GetAPIInterface::class.java)
-
         quotesApi.download(urlString).enqueue(object :
-            retrofit2.Callback<ResponseBody> {
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Log.d("res",t.message.toString())
-            }
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if (response.code() == 200) {
-
-                    Log.d("res",response.body().toString())
-
-                  //  val chatListResponse: String? = response.body()
-
-
-
-                } else {
-
-
+                retrofit2.Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    Log.d("res",t.message.toString())
                 }
-            }
-            })
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    if (response.code() == 200) {
+                        Log.d("res",response.body().toString())
+//                        response.body()?.byteStream().apply {
+//                            file.outputStream().use { fileOut ->
+//                                copyTo(fileOut, BUFFER_LENGTH_BYTES)
+//                            }
+//                        }
+                    } else {
+                    } }
+                })
     }
+
+//    fun downloadFile(url: URL, fileName: String) {
+//        url.openStream().use { inp ->
+//            BufferedInputStream(inp).use { bis ->
+//                FileOutputStream(fileName).use { fos ->
+//                    val data = ByteArray(1024)
+//                    var count: Int
+//                    while (bis.read(data, 0, 1024).also { count = it } != -1) {
+//                        fos.write(data, 0, count)
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 
     override fun onItemClick(id: Int, fileName: String) {

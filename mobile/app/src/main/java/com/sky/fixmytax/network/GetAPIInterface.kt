@@ -60,7 +60,7 @@ interface GetAPIInterface {
     @GET("services/app/TicketService/GetAll")
     fun getAllTicket() : retrofit2.Call<GetAllTicketResponse>
 
-    @POST
+    @GET
     fun download(@Url url: String): Call<ResponseBody>
 
 
