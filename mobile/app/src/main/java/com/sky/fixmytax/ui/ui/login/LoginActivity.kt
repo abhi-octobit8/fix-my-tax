@@ -76,7 +76,6 @@ class LoginActivity : AppCompatActivity() {
                             ).show()
                             Log.d("response", t.message.toString());
                             binding.loading.visibility = View.GONE
-                            //  Toast.makeText(this@SignUPActivity, "Registration failed!", Toast.LENGTH_SHORT).show()
                             errorDialogBox("Invalid username or Password, Or User is inactive")
                         }
 
@@ -85,9 +84,6 @@ class LoginActivity : AppCompatActivity() {
                             response: Response<LoginResponse>
                         ) {
                             if (response.code() == 200) {
-                                //     Toast.makeText(this@SignUPActivity, "Registration success!", Toast.LENGTH_SHORT).show()
-
-                                //   SignResponse = response.body()
                                 Log.d("response", response.toString());
                                 Log.d("response", response.body().toString());
                                 val student: LoginResponse? = response.body()
@@ -102,16 +98,14 @@ class LoginActivity : AppCompatActivity() {
                                 callData(student?.result!!.userId, student?.result!!.accessToken)
                                 // Gson().fromJson<SignResponse>(response, SignResponse::class.java)
                                 binding.loading.visibility = View.GONE
-                                // Log.d("response",student);
 
                             } else {
                                 Log.d("response", "" + response.message().toString());
                                 Log.d("response", "" + response.body().toString());
                                 Log.d("response", "" + response.code());
                                 Log.d("response", "" + response.errorBody());
-                                //  Toast.makeText(this@SignUPActivity, "Registration failed!", Toast.LENGTH_SHORT).show()
                                 binding.loading.visibility = View.GONE
-                                errorDialogBox("Some thing went wrong, Try again")
+                                errorDialogBox("Invalid username or Password, Or User is inactive")
                             }
                         }
                     })

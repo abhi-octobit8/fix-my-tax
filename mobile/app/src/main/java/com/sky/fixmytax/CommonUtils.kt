@@ -106,7 +106,7 @@ object CommonUtils {
 
               1 -> return "ITR FILING"
               2 -> return "TDS TCS FILING"
-              3 -> return "ITR TDS TCS Notice"
+              3 -> return "ITR/TDS/TCS Notice"
               4 -> return "GST RETURN"
               5 -> return "GST Notice"
               6 -> return "Income Tax Gst Appeal"
@@ -123,7 +123,7 @@ object CommonUtils {
         when(fill){
             "Filling ITR" -> return 1
             "TDS TCS FILING" -> return 2
-            "ITR TDS TCS Notice" -> return 3
+            "ITR/TDS/TCS Notice" -> return 3
             "GST RETURN"-> return 4
             "GST Notice"-> return 5
             "Income Tax Gst Appeal"-> return 6
