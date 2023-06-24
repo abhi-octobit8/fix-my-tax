@@ -6,7 +6,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.OpenableColumns
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -65,6 +64,8 @@ class IncomeTaxGstAppealActivit : AppCompatActivity() {
                  //   val item = Price.getPriceITR(parent.getItemAtPosition(position).toString())
                     item = parent.getItemAtPosition(position).toString()
                     itemSelected = noticeSelectionType[position]
+                    itemSubSelected = null
+                    price.text = null
                     when(position) {
                         1 -> {
                            // resources.getStringArray(R.array.one)
@@ -101,6 +102,7 @@ class IncomeTaxGstAppealActivit : AppCompatActivity() {
                         val intent = Intent(this, CheckOutActivity::class.java)
                         intent.putExtra("ServiceName", "Income Tax Gst Appeal")
                         intent.putExtra("ServiceType", itemSelected)
+                        intent.putExtra("uri", selectedImageUri.toString())
                         intent.putExtra("SubServiceType", itemSubSelected)
                         intent.putExtra("SubServiceKey",
                             itemSelected?.let { it1 ->
@@ -134,6 +136,7 @@ class IncomeTaxGstAppealActivit : AppCompatActivity() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
@@ -142,24 +145,12 @@ class IncomeTaxGstAppealActivit : AppCompatActivity() {
                     selectedImageUri = data?.data
                     val file = File(cacheDir, contentResolver.getFileName(selectedImageUri!!))
                     Log.d("data",file.name)
-
-                    var size: Long = 0
-                    data?.let { returnUri  ->
-                        contentResolver.query(returnUri?.data!!.normalizeScheme() , null, null, null, null)
-                    }?.use { cursor ->
-                        val sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE)
-                        cursor.moveToFirst()
-                        size = cursor.getLong(sizeIndex)
-                    }
-
-                    var sizeinKb = size/1024;
-                    if(sizeinKb >= 1024){
-                        Toast(this).showCustomToast("please upload document having size less than 1 mb",this)
+                    fileName?.text = file.name
+                    if(CommonUtils.getFolderSizeLabel(file).toString().endsWith("MB")){
+                        Toast(this).showCustomToast("Upload Required Document\nless then 1 MB",this)
                         selectedImageUri = null
-                        fileName?.text = ""
-                    }else{
-                        fileName?.text = file.name
                     }
+                    // image_view.setImageURI(selectedImageUri)
                 }
             }
         }
@@ -179,7 +170,7 @@ class IncomeTaxGstAppealActivit : AppCompatActivity() {
                     Log.d("position",""+position)
                     Log.d("position",""+position.toString())
                     Log.d("position",""+parent.getItemAtPosition(position).toString())
-                    var priceTxt: String =
+                    val priceTxt: String =
                         Price.getPriceGstIncomeTaxAppeal(item, parent.getItemAtPosition(position).toString())
                     itemSubSelected = parent.getItemAtPosition(position).toString()
                     getPrice(priceTxt)

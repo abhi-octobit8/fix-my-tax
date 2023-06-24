@@ -171,8 +171,8 @@ class CheckOutActivity : AppCompatActivity() {
             disc = intent.getStringExtra("disc")!!
         }
         val chatRequest = TicketCreateRequest(
-            description = disc,
-             extensionData ="",
+         description = disc,
+         extensionData ="",
          fixMyTaxServiceType =CommonUtils.getFixMyServiceTypeForTicket(intent.getStringExtra("ServiceName").toString()),
          paymentInfo ="",
          paymentStaus =0,
@@ -204,6 +204,10 @@ class CheckOutActivity : AppCompatActivity() {
                         Toast.makeText(this@CheckOutActivity,"Successfully Created",Toast.LENGTH_LONG).show()
                         if(intent.getStringExtra("ServiceName") != "Video Consultation") {
                             response.body()?.result?.let { uploadImage(it.id) }
+                        }else {
+                            val intent = Intent (this@CheckOutActivity, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         }
 
 
@@ -219,7 +223,7 @@ class CheckOutActivity : AppCompatActivity() {
     }
 
 
-    @SuppressLint("Recycle")
+
     private fun uploadImage(id: Int) {
         if (selectedImageUri == null) {
             // layout_root.snackbar("Select an Image First")

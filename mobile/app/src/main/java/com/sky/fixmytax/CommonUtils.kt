@@ -121,18 +121,15 @@ object CommonUtils {
 
     fun getFixMyServiceTypeForTicket(fill: String):Int{
         when(fill){
-
-             "Filling ITR" -> return 1
+            "Filling ITR" -> return 1
             "TDS TCS FILING" -> return 2
-             "ITR TDS TCS Notice" -> return 3
-             "GST RETURN"-> return 4
-             "GST Notice"-> return 5
+            "ITR TDS TCS Notice" -> return 3
+            "GST RETURN"-> return 4
+            "GST Notice"-> return 5
             "Income Tax Gst Appeal"-> return 6
             "Business Consultation"-> return 7
             "Video Consultation"-> return 8
-
         }
-
         return 0
     }
 

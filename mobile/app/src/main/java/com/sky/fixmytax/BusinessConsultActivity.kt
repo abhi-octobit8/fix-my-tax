@@ -78,6 +78,7 @@ class BusinessConsultActivity : AppCompatActivity() {
                     intent.putExtra("ServiceName", "Business Consultation")
                     intent.putExtra("ServiceType", itemSelected)
                     intent.putExtra("SubServiceType", "")
+                    intent.putExtra("uri", selectedImageUri.toString())
                     intent.putExtra(
                         "SubServiceKey",
                         Price.getPriceBusinessConsult(itemSelected.toString())
@@ -98,7 +99,7 @@ class BusinessConsultActivity : AppCompatActivity() {
     }
 
     fun uploadPDF(){
-        val pdfIntent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+        val pdfIntent = Intent(Intent.ACTION_GET_CONTENT)
         pdfIntent.type = "application/pdf"
         pdfIntent.addCategory(Intent.CATEGORY_OPENABLE)
         startActivityForResult(pdfIntent, BusinessConsultActivity.REQUEST_CODE_PICK_IMAGE)

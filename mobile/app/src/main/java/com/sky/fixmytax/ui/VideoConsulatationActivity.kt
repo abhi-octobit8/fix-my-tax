@@ -128,6 +128,9 @@ class VideoConsulatationActivity : AppCompatActivity() {
 
                  Log.d("response", response.body().toString())
 
+                    if(categories.size>0){
+                        categories.clear()
+                    }
                    videroCslotList = response.body()
 
                     Log.d("response", videroCslotList?.result?.items?.size.toString())

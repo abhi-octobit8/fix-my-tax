@@ -247,7 +247,7 @@ class TicketDetailsActivity : AppCompatActivity() , BluePrint.OnAttachmentPDF{
         binding.tvTitle.text = ticketItem?.section
         binding.tvTime.text = "Time: "+CommonUtils.convertToDateFormatT("dd/MM/yy",ticketItem?.creationTime!!)
         binding.tvService.text = CommonUtils.getServiceType(ticketItem?.serviceType!!)
-            binding.tvStatus.text = CommonUtils.getStatus(ticketItem?.status!!)
+        binding.tvStatus.text = CommonUtils.getStatus(ticketItem?.status!!)
         getChatResponse(ticketItem?.id!!)
     }
 
