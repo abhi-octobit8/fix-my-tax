@@ -77,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
                             Log.d("response", t.message.toString());
                             binding.loading.visibility = View.GONE
                             //  Toast.makeText(this@SignUPActivity, "Registration failed!", Toast.LENGTH_SHORT).show()
-                            errorDialogBox("Some thing went wrong, Try again")
+                            errorDialogBox("Invalid username or Password, Or User is inactive")
                         }
 
                         override fun onResponse(

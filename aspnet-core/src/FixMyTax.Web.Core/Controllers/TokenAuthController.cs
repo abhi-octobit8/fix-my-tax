@@ -17,6 +17,7 @@ using FixMyTax.Authorization;
 using FixMyTax.Authorization.Users;
 using FixMyTax.Models.TokenAuth;
 using FixMyTax.MultiTenancy;
+using FixMyTax.Authorization.Roles;
 
 namespace FixMyTax.Controllers
 {
@@ -30,6 +31,7 @@ namespace FixMyTax.Controllers
         private readonly IExternalAuthConfiguration _externalAuthConfiguration;
         private readonly IExternalAuthManager _externalAuthManager;
         private readonly UserRegistrationManager _userRegistrationManager;
+        private readonly UserManager _userManager;
 
         public TokenAuthController(
             LogInManager logInManager,
@@ -38,7 +40,8 @@ namespace FixMyTax.Controllers
             TokenAuthConfiguration configuration,
             IExternalAuthConfiguration externalAuthConfiguration,
             IExternalAuthManager externalAuthManager,
-            UserRegistrationManager userRegistrationManager)
+            UserRegistrationManager userRegistrationManager,
+            UserManager userManager)
         {
             _logInManager = logInManager;
             _tenantCache = tenantCache;
@@ -47,6 +50,7 @@ namespace FixMyTax.Controllers
             _externalAuthConfiguration = externalAuthConfiguration;
             _externalAuthManager = externalAuthManager;
             _userRegistrationManager = userRegistrationManager;
+            _userManager = userManager;
         }
 
         [HttpPost]
@@ -186,6 +190,13 @@ namespace FixMyTax.Controllers
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
+            var roles = await _userManager.GetRolesAsync(loginResult.User);
+
+            var isMobile  = Request.Headers["isMobile"];
+            if ((isMobile == "true")  && (roles.Contains(StaticRoleNames.Tenants.Advocate) || roles.Contains(StaticRoleNames.Tenants.Admin)))
+            {
+                throw new UserFriendlyException(L("LoginFailed"), L("InvalidUserNameOrPassword"));
+            }
 
             switch (loginResult.Result)
             {

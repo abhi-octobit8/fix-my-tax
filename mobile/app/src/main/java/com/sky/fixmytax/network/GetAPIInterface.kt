@@ -21,6 +21,7 @@ interface GetAPIInterface {
     fun getQuotes(@Body login: SignUPRequest) :retrofit2.Call<SignResponse>
 
 
+    @Headers("isMobile:true")
     @POST("TokenAuth/Authenticate")
      fun getLogin(@Body login: LoginRequest) : retrofit2.Call<LoginResponse>
 
