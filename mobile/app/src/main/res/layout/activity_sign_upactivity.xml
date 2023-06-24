@@ -44,7 +44,8 @@
         android:layout_height="120dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/fix_my_tax"
+        android:src="@drawable/splash_fix"
+        android:scaleType="fitCenter"
         />
 
 

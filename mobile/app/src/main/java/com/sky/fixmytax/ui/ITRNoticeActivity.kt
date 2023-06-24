@@ -75,6 +75,9 @@ class ITRNoticeActivity : AppCompatActivity() {
                //     Toast.makeText(this@ITRNoticeActivity, "item " + "" + noticeSelectionType[position], Toast.LENGTH_SHORT).show()
                       item = parent.getItemAtPosition(position).toString()
                     itemSelected = noticeSelectionType[position]
+                    itemSubSelected = ""
+                    price.text = null
+
                     when(position){
                         1 ->{
                         //    val adaptersub = ArrayAdapter(view.context, android.R.layout.simple_spinner_item, oneSelectionType)
@@ -181,6 +184,7 @@ class ITRNoticeActivity : AppCompatActivity() {
                         intent.putExtra("ServiceName", "ITR/TDS/TCS Notice")
                         intent.putExtra("ServiceType", itemSelected)
                         intent.putExtra("SubServiceType", itemSubSelected)
+                        intent.putExtra("uri", selectedImageUri.toString())
                         intent.putExtra(
                             "SubServiceKey",
                             itemSelected?.let { it1 -> getPriceNotice(it1, itemSubSelected) })

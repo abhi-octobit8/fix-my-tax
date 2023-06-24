@@ -130,6 +130,8 @@ object Price {
                      "OTHERS NOTICES" -> {return  "itr_tds_tcs_notice_271-1-c_13_3"}
                      "ADJOURNMENT APPLICATION FOR ANY GENUINE CASE" ->
                      { return  "itr_tds_tcs_notice_any_1_2" }
+                     "REPLY IN RESPONSE TO NOTICE - EARLIER DEMAND ADJUSTED WITH REFUND" ->
+                     {return "itr_tds_tcs_notice_245_12_2"}
                  }
              }
              "NOTICE UNDER OTHER SECTIONS"-> {
