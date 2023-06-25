@@ -388,47 +388,15 @@ class TicketDetailsActivity : AppCompatActivity() , BluePrint.OnAttachmentPDF{
         val layoutManager = LinearLayoutManager(this@TicketDetailsActivity,LinearLayoutManager.VERTICAL,true)
       binding.attachmentRecyclerView?.layoutManager = layoutManager
     }
-
-
-
-
     fun download(id: Int, fileName: String)  {
-
-        val urlString = "https://fixmytaxapi.zupiers.com/api/services/app/FileService/GetFileMobile?id=${id}"
-//        var url = URL(urlString)
-//        downloadFile(url, fileName)
-        val quotesApi = RetrofitHelper.getInstance().create(GetAPIInterface::class.java)
-        quotesApi.download(urlString).enqueue(object :
-                retrofit2.Callback<ResponseBody> {
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    Log.d("res",t.message.toString())
-                }
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                    if (response.code() == 200) {
-                        Log.d("res",response.body().toString())
-//                        response.body()?.byteStream().apply {
-//                            file.outputStream().use { fileOut ->
-//                                copyTo(fileOut, BUFFER_LENGTH_BYTES)
-//                            }
-//                        }
-                    } else {
-                    } }
-                })
+        var urlString = "https://fixmytaxapi.zupiers.com/api/services/app/FileService/GetFileMobile?id=${id}"
+        Log.d("UrlP",urlString)
+        if (!urlString.startsWith("http://") && !urlString.startsWith("https://")) {
+            urlString = "http://$urlString"
+        }
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://docs.google.com/viewer?url=$urlString"))
+        startActivity(browserIntent)
     }
-
-//    fun downloadFile(url: URL, fileName: String) {
-//        url.openStream().use { inp ->
-//            BufferedInputStream(inp).use { bis ->
-//                FileOutputStream(fileName).use { fos ->
-//                    val data = ByteArray(1024)
-//                    var count: Int
-//                    while (bis.read(data, 0, 1024).also { count = it } != -1) {
-//                        fos.write(data, 0, count)
-//                    }
-//                }
-//            }
-//        }
-//    }
 
 
     override fun onItemClick(id: Int, fileName: String) {

@@ -6,8 +6,11 @@ using Abp.Net.Mail;
 using Abp.ObjectMapping;
 using Abp.Threading.BackgroundWorkers;
 using Abp.Threading.Timers;
+using FixMyTax.Authorization.Users;
 using FixMyTax.FixMyTaxModels;
+using FixMyTax.FixMyTaxServices;
 using FixMyTax.FixMyTaxServices.Dtos.Tickets;
+using FixMyTax.FixMyTaxServices.Implementation;
 using System;
 using System.Linq;
 
@@ -18,13 +21,15 @@ namespace FixMyTax.Jobs
         private readonly IRepository<RequestTicket> _ticketRepository;
         private readonly IEmailSender _emailSender;
         private readonly FixMyTaxEmailSender _fixMyTaxEmail;
+        private readonly UserManager _userManager;
 
-        public BackgroundTicketStateChecker(AbpTimer timer, IRepository<RequestTicket> ticketRepository, IEmailSender emailSender)
+        public BackgroundTicketStateChecker(AbpTimer timer, IRepository<RequestTicket> ticketRepository, IEmailSender emailSender, UserManager userManager)
         : base(timer)
         {
             _ticketRepository = ticketRepository;
-            Timer.Period = 3600000;
+            Timer.Period = 86400000;
             _emailSender = emailSender;
+            _userManager = userManager;
             _fixMyTaxEmail = new FixMyTaxEmailSender(_emailSender);
 
         }
@@ -58,10 +63,11 @@ namespace FixMyTax.Jobs
 
                     if (sendMail)
                     {
-                        var ticketDto = NullObjectMapper.Instance.Map<TicketDto>(ticket);
+                       
                         try
                         {
-                            _fixMyTaxEmail.SendTicketOverdueEmail(ticketDto);
+                            var assignedName = ticket.AssignedUserId > 0 ? _userManager.GetUserById(ticket.AssignedUserId).Name : "Unassigned";
+                            _fixMyTaxEmail.SendTicketOverdueEmail(ticket.Id.ToString(), ticket.Section, assignedName);
                         }
                         catch(Exception ex)
                         {

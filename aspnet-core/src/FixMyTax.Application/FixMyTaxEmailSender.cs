@@ -16,6 +16,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Collections.Specialized.BitVector32;
 
 namespace FixMyTax
 {
@@ -90,16 +91,16 @@ namespace FixMyTax
         }
 
 
-        public void SendTicketOverdueEmail(TicketDto ticket)
+        public void SendTicketOverdueEmail(string ticketId, string section, string assignedName)
         {
             string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "PendingTicketAlert.html");
             StreamReader str = new StreamReader(templatePath);
             string mailText = str.ReadToEnd();
             str.Close();
 
-            mailText = mailText.Replace("{{ticketId}}", ticket.Id.ToString());
-            mailText = mailText.Replace("{{section}}", ticket.Section);
-            mailText = mailText.Replace("{{assigned}}", ticket.AssignedUserName);
+            mailText = mailText.Replace("{{ticketId}}", ticketId);
+            mailText = mailText.Replace("{{section}}", section);
+            mailText = mailText.Replace("{{assigned}}", assignedName);
 
             var mailMessage = new MailMessage
             {
