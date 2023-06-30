@@ -11,6 +11,7 @@ import android.webkit.ValueCallback
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.webkit.WebViewCompat
 import androidx.webkit.WebViewFeature
 import com.sky.fixmytax.MyWebViewClient
@@ -21,7 +22,8 @@ class AboutActivity : AppCompatActivity() {
     private lateinit var superSafeWebView: WebView
     private var safeBrowsingIsInitialized: Boolean = false
     lateinit var pBar: ProgressBar
-   val PDF_VIEW = "https://drive.google.com/viewerng/viewer?embedded=true&url="
+    lateinit var lytAbout: LinearLayoutCompat
+    val PDF_VIEW = "https://drive.google.com/viewerng/viewer?embedded=true&url="
     val TERM_COND= "https://fixmytax.zupiers.com/documents/TERMS_CONDITIONS_FMT.pdf"
     val ITR_Filing= "https://fixmytax.zupiers.com/documents/ITR_FILINING_DOCUMENT.pdf"
     val TDS_Filing= "https://fixmytax.zupiers.com/documents/TDS_TCS_FILING.pdf"
@@ -33,24 +35,28 @@ class AboutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_about)
         webView = findViewById(R.id.webview)
         pBar = findViewById<ProgressBar>(R.id.loading)
-
-        Handler().postDelayed({
-            //doSomethingHere()
-                              pBar.visibility = View.GONE
-            webView.visibility = View.VISIBLE
-        }, 10000)
+        lytAbout = findViewById<LinearLayoutCompat>(R.id.aboutUs)
 
 
-        webView.settings.javaScriptEnabled = true
+        if(intent.getIntExtra("type",0)!=0) {
+            lytAbout.visibility = View.GONE
+            pBar.visibility = View.VISIBLE
+            Handler().postDelayed({
+                //doSomethingHere()
+                pBar.visibility = View.GONE
+                webView.visibility = View.VISIBLE
+            }, 10000)
+
+
+            webView.settings.javaScriptEnabled = true
+        }
 
 
 
 
         when(intent.getIntExtra("type",0)){
             0 -> {
-                superSafeWebView = WebView(this)
-                webView.settings.domStorageEnabled = true
-                webView.loadUrl("https://fixmytax.zupiers.com/about")
+                lytAbout.visibility = View.VISIBLE
             }
             1 -> {
                 webView.loadUrl(PDF_VIEW+TERM_COND)
