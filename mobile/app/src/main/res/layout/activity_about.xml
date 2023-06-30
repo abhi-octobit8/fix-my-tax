@@ -6,16 +6,231 @@
     android:layout_height="match_parent"
     tools:context=".ui.AboutActivity">
 
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                >
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="Message"
+                android:textColor="@android:color/holo_orange_dark"
+                />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:text="@string/about_msg"
+            app:fontFamily="sans-serif-medium"
+            android:layout_marginTop="4dp"
+            android:textFontWeight="400"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp"
+            android:layout_marginTop="10dp"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                >
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:text="About"
+                    android:textColor="@android:color/holo_orange_dark"
+                    />
+                 <androidx.appcompat.widget.LinearLayoutCompat
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     >
+                     <androidx.appcompat.widget.LinearLayoutCompat
+                         android:layout_width="match_parent"
+                         android:layout_height="120dp"
+                         android:orientation="horizontal"
+                         android:layout_marginTop="4dp"
+                         >
+                         <androidx.appcompat.widget.AppCompatTextView
+                             android:layout_width="0dp"
+                             android:layout_weight="1"
+                             android:layout_height="match_parent"
+                             android:textSize="12sp"
+                             android:gravity="center"
+                             android:textColor="@color/black"
+                             android:text="@string/about_sir"
+                             app:fontFamily="sans-serif-medium"
+                             android:layout_marginTop="4dp"
+                             android:textFontWeight="400"/>
+                         <androidx.appcompat.widget.AppCompatImageView
+                             android:layout_width="0dp"
+                             android:layout_weight="1"
+                             android:layout_height="120dp"
+                             android:src="@drawable/sir"
+
+                             />
+                     </androidx.appcompat.widget.LinearLayoutCompat>
+                     <androidx.appcompat.widget.LinearLayoutCompat
+                         android:layout_width="match_parent"
+                         android:layout_height="120dp"
+                         android:orientation="horizontal"
+                         android:layout_marginTop="4dp"
+                         >
+                         <androidx.appcompat.widget.AppCompatTextView
+                             android:layout_width="0dp"
+                             android:layout_weight="1"
+                             android:layout_height="match_parent"
+                             android:textSize="12sp"
+                             android:gravity="center"
+                             android:textColor="@color/black"
+                             android:text="@string/about_madam"
+                             app:fontFamily="sans-serif-medium"
+                             android:layout_marginTop="4dp"
+                             android:textFontWeight="400"/>
+                         <androidx.appcompat.widget.AppCompatImageView
+                             android:layout_width="0dp"
+                             android:layout_weight="1"
+                             android:layout_height="120dp"
+                             android:src="@drawable/madam"
+
+                             />
+                     </androidx.appcompat.widget.LinearLayoutCompat>
+                 </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp"
+            android:layout_marginTop="10dp"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                >
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:text="Address"
+                    android:textColor="@android:color/holo_orange_dark"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/about_addrress"
+                    app:fontFamily="sans-serif-medium"
+                    android:layout_marginTop="4dp"
+                    android:textFontWeight="400"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp"
+            android:layout_marginTop="10dp"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                >
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:text="Time and email details"
+                    android:textColor="@android:color/holo_orange_dark"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:text="@string/timing"
+                    app:fontFamily="sans-serif-medium"
+                    android:layout_marginTop="4dp"
+                    android:textFontWeight="400"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <ProgressBar
         android:id="@+id/loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
         app:layout_constraintVertical_bias="0.5" />
 
     <WebView

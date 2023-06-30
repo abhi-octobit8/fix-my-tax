@@ -21,7 +21,7 @@ class AboutActivity : AppCompatActivity() {
     private lateinit var superSafeWebView: WebView
     private var safeBrowsingIsInitialized: Boolean = false
     lateinit var pBar: ProgressBar
-   val PDF_VIEW = "https://drive.google.com/viewerng/viewer?embedded=true&url="
+    val PDF_VIEW = "https://drive.google.com/viewerng/viewer?embedded=true&url="
     val TERM_COND= "https://fixmytax.zupiers.com/documents/TERMS_CONDITIONS_FMT.pdf"
     val ITR_Filing= "https://fixmytax.zupiers.com/documents/ITR_FILINING_DOCUMENT.pdf"
     val TDS_Filing= "https://fixmytax.zupiers.com/documents/TDS_TCS_FILING.pdf"
@@ -34,24 +34,28 @@ class AboutActivity : AppCompatActivity() {
         webView = findViewById(R.id.webview)
         pBar = findViewById<ProgressBar>(R.id.loading)
 
-        Handler().postDelayed({
-            //doSomethingHere()
-                              pBar.visibility = View.GONE
-            webView.visibility = View.VISIBLE
-        }, 10000)
+
+        if(intent.getIntExtra("type",0)!=0) {
+            pBar.visibility = View.VISIBLE
+            Handler().postDelayed({
+                //doSomethingHere()
+                pBar.visibility = View.GONE
+                webView.visibility = View.VISIBLE
+            }, 10000)
 
 
-        webView.settings.javaScriptEnabled = true
+            webView.settings.javaScriptEnabled = true
+        }
 
 
 
 
         when(intent.getIntExtra("type",0)){
-            0 -> {
+            /*0 -> {
                 superSafeWebView = WebView(this)
                 webView.settings.domStorageEnabled = true
                 webView.loadUrl("https://fixmytax.zupiers.com/about")
-            }
+            }*/
             1 -> {
                 webView.loadUrl(PDF_VIEW+TERM_COND)
             }
