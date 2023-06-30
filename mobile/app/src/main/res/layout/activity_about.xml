@@ -8,12 +8,14 @@
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/aboutUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="10dp"
         android:orientation="vertical"
+        android:visibility="gone"
         >
 
         <com.google.android.material.card.MaterialCardView
