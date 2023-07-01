@@ -91,6 +91,7 @@ class HomeFragment : Fragment(), BluePrint.OnAdapterItemTypeClick {
         _binding?.lytIncomeTaxGstAppeal?.setOnClickListener {
 
             val intent = Intent(context, IncomeTaxGstAppealActivit::class.java)
+            intent.putExtra(ConstVariable.IS_LOGIN,true)
             context?.startActivity(intent)
         }
         /*_binding?.lytIncomeTaxGstAppeal?.setOnClickListener {
@@ -99,33 +100,40 @@ class HomeFragment : Fragment(), BluePrint.OnAdapterItemTypeClick {
         _binding?.lytBusinessConsult?.setOnClickListener {
           // Toast.makeText(context,"under Development",Toast.LENGTH_LONG).show()
             val intent = Intent(context, BusinessConsultActivity::class.java)
+            intent.putExtra(ConstVariable.IS_LOGIN,true)
             context?.startActivity(intent)
         }
         _binding?.lytVideoConsultationFiling?.setOnClickListener {
            // Toast.makeText(context,"under Development",Toast.LENGTH_LONG).show()
             val intent = Intent(context, VideoConsulatationActivity::class.java)
+            intent.putExtra(ConstVariable.IS_LOGIN,true)
             context?.startActivity(intent)
         }
 
         _binding?.lytGstReturn?.setOnClickListener {
             val intent = Intent(context, GSTrETURNActivity::class.java)
+            intent.putExtra(ConstVariable.IS_LOGIN,true)
             context?.startActivity(intent)
         }
         _binding?.gstNotice?.setOnClickListener {
             val intent = Intent(context, GSTNoticeActivity::class.java)
+            intent.putExtra(ConstVariable.IS_LOGIN,true)
             context?.startActivity(intent)
         }
         _binding?.lytItrTdsTcsNotices?.setOnClickListener {
             val intent = Intent(context, ITRNoticeActivity::class.java)
+            intent.putExtra(ConstVariable.IS_LOGIN,true)
             context?.startActivity(intent)
         }
 
         _binding?.lytTdsTcsFiling?.setOnClickListener {
             val intent = Intent(context, TDSTCSFilingActivity::class.java)
+            intent.putExtra(ConstVariable.IS_LOGIN,true)
             context?.startActivity(intent)
         }
         _binding?.lytItrFiling?.setOnClickListener {
             val intent = Intent (context, FilingITRActivity::class.java)
+            intent.putExtra(ConstVariable.IS_LOGIN,true)
             context?.startActivity(intent)
         }
     }
