@@ -3,6 +3,7 @@ package com.sky.fixmytax.ui
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,11 +19,13 @@ import androidx.lifecycle.lifecycleScope
 import com.sky.fixmytax.CommonUtils
 import com.sky.fixmytax.CommonUtils.getFileName
 import com.sky.fixmytax.CommonUtils.showCustomToast
+import com.sky.fixmytax.ConstVariable
 import com.sky.fixmytax.R
 import com.sky.fixmytax.Utils
 import com.sky.fixmytax.model.GetPriceFromServerResponse
 import com.sky.fixmytax.network.GetAPIInterface
 import com.sky.fixmytax.network.RetrofitHelper
+import com.sky.fixmytax.ui.ui.login.LoginActivity
 import java.io.File
 
 class TDSTCSFilingActivity : AppCompatActivity() {
@@ -76,25 +79,35 @@ class TDSTCSFilingActivity : AppCompatActivity() {
 
         val btn_click_me = findViewById<AppCompatButton>(R.id.submit_create)
         val btnUpload = findViewById<AppCompatButton>(R.id.btnUpload)
+        if(!intent.getBooleanExtra(ConstVariable.IS_LOGIN,false)){
+            btn_click_me.text = "Login to create ticket"
+            btn_click_me.setBackgroundColor(Color.GRAY)
+        }
         btn_click_me.setOnClickListener {
-            if(price.text.toString().isNotEmpty()) {
-                if(selectedImageUri != null) {
-                    val intent = Intent(this, CheckOutActivity::class.java)
-                    intent.putExtra("ServiceName", "TDS TCS FILING")
-                    intent.putExtra("ServiceType", itemSelected)
-                    intent.putExtra("SubServiceType", "")
-                    intent.putExtra("uri", selectedImageUri.toString())
-                    intent.putExtra(
-                        "SubServiceKey",
-                        Utils.getTDSTCSFilingKet(itemSelected.toString())
-                    )
-                    startActivity(intent)
-                }else {
-                    Toast(this).showCustomToast ("Upload Required Document", this)
-                }
+            if(btn_click_me.text != "Login to create ticket") {
+                if (price.text.toString().isNotEmpty()) {
+                    if (selectedImageUri != null) {
+                        val intent = Intent(this, CheckOutActivity::class.java)
+                        intent.putExtra("ServiceName", "TDS TCS FILING")
+                        intent.putExtra("ServiceType", itemSelected)
+                        intent.putExtra("SubServiceType", "")
+                        intent.putExtra("uri", selectedImageUri.toString())
+                        intent.putExtra(
+                            "SubServiceKey",
+                            Utils.getTDSTCSFilingKet(itemSelected.toString())
+                        )
+                        startActivity(intent)
+                    } else {
+                        Toast(this).showCustomToast("Upload Required Document", this)
+                    }
 
+                } else {
+                    Toast(this).showCustomToast("Select Selection type!", this)
+                }
             }else {
-                Toast(this).showCustomToast ("Select Selection type!", this)
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intent)
             }
         }
         btnUpload.setOnClickListener {

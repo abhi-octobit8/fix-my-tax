@@ -3,6 +3,7 @@ package com.sky.fixmytax.ui
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -16,12 +17,14 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.sky.fixmytax.CommonUtils.showCustomToast
+import com.sky.fixmytax.ConstVariable
 import com.sky.fixmytax.R
 import com.sky.fixmytax.Utils
 import com.sky.fixmytax.databinding.ActivityVideoConsulatationBinding
 import com.sky.fixmytax.model.VideoCSlotListResponse
 import com.sky.fixmytax.network.GetAPIInterface
 import com.sky.fixmytax.network.RetrofitHelper
+import com.sky.fixmytax.ui.ui.login.LoginActivity
 import retrofit2.Call
 import retrofit2.Response
 import java.util.*
@@ -48,23 +51,33 @@ class VideoConsulatationActivity : AppCompatActivity() {
 
         val btn_click_me = findViewById<AppCompatButton>(R.id.submit_create)
         val btnUpload = findViewById<AppCompatButton>(R.id.btnUpload)
+        if(!intent.getBooleanExtra(ConstVariable.IS_LOGIN,false)){
+            btn_click_me.text = "Login to create ticket"
+            btn_click_me.setBackgroundColor(Color.GRAY)
+        }
         btn_click_me.setOnClickListener {
-            if(binding.editTextTopic.text.toString().isNotEmpty()) {
-                if(slot !=null) {
-                    val intent = Intent(this, CheckOutActivity::class.java)
-                    intent.putExtra("ServiceName", "Video Consultation")
-                    intent.putExtra("ServiceType", "Video Consultation")
-                    intent.putExtra("SubServiceType", "")
-                    intent.putExtra("SubServiceKey", "5100")
-                    intent.putExtra("slotId", slot)
-                    intent.putExtra("disc", binding.editTextTopic.text?.trim().toString())
-                    startActivity(intent)
-                }else {
-                    Toast(this).showCustomToast ("Select Date for slot booking", this)
+            if(btn_click_me.text != "Login to create ticket") {
+                if (binding.editTextTopic.text.toString().isNotEmpty()) {
+                    if (slot != null) {
+                        val intent = Intent(this, CheckOutActivity::class.java)
+                        intent.putExtra("ServiceName", "Video Consultation")
+                        intent.putExtra("ServiceType", "Video Consultation")
+                        intent.putExtra("SubServiceType", "")
+                        intent.putExtra("SubServiceKey", "5100")
+                        intent.putExtra("slotId", slot)
+                        intent.putExtra("disc", binding.editTextTopic.text?.trim().toString())
+                        startActivity(intent)
+                    } else {
+                        Toast(this).showCustomToast("Select Date for slot booking", this)
+                    }
+                } else {
+                    binding.editTextTopic.error = "Enter topic here..."
+                    binding.editTextTopic.requestFocus()
                 }
             }else {
-                binding.editTextTopic.error = "Enter topic here..."
-                binding.editTextTopic.requestFocus()
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intent)
             }
         }
 
