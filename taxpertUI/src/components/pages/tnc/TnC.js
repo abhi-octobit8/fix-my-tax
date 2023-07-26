@@ -1,176 +1,334 @@
 import React from "react";
 import "./TnC.css";
+import { Card } from "antd";
+import { openFile } from "../../../shared/utils";
 const TnC = () => (
   <>
-    <div className="first">
-      <img
-        className="img-edit"
-        src="https://bloximages.newyork1.vip.townnews.com/news-journal.com/content/tncms/assets/v3/editorial/a/12/a123be8d-b64c-5256-81d6-7fcc1201b4bf/635c4e007eb0a.image.jpg?resize=400%2C267"
-        alt="back"
-      />
-      <h4 className="head-1">Terms and Conditions</h4>
-      <br />
-      <hr className="underline" />
+    <section id="service-banner--filing-itr" className="section-banner">
+      <div className="container" data-aos="fade-up">
+        <div className="row justify-content-center">
+          <div className="section-banner-info">
+            <div className="section-banner-title">
+              TERMS & CONDITIONS INCLUDING PRIVACY POLICY
+            </div>
 
-      <h6 className="head-2">Last Updated On : / / </h6>
+            <p className="section-banner-data">
+              It is to be appreciated that the agreement between “fixmytax” /
+              KARSATHI CONSULTNATS PRIVATE LIMITED [KCPL] is governed by Section
+              2(a) of the Indian Contract Act, 1872 where in the user signifies
+              his willingness to obtain services from “fixmytax” / KCPL with a
+              view to obtain assent from “fixmytax” / KCPL as if he is making
+              proposal whose approval is sole discretion of “fixmytax” / KCPL.
+              This online Agreement for Services (the “Agreement”) is a legally
+              binding contract between you (i.e. user) and KARSATHI CONSULTANATS
+              PRIVATE LIMITED (KCPL) marketed through its product “fixmytax”.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div className="container content-margin-top content-header2">
+      <p>
+        By clicking the acceptance “I agree” you are agreeing to accept the term
+        and conditions as laid down hereunder. “fixmytax” is an IPR of Dr. Pawan
+        Jaiswal; Promoter & Founder Karsathi Consultants Private Limited a
+        web-based / appbased portal for providing a one stop platform for all
+        intricacies related to taxation.
+      </p>
+
+      <p>
+        It is specifically transliterated in this Agreement that if you (i.e.
+        user) provides his PAN and Password of the Income Tax Department or GST
+        Login & Password or any other Statutory Logins & Passwords to “fixmytax”
+        / KCPL at the time of registering himself for availing the services
+        provided by “fixmytax” / KCPL; he / she / it; thereby authorises the
+        Karsathis’ of “fixmytax” / KCPL to file any applications, petitions or
+        pleadings, to file, produce or receive back any documents, to withdraw
+        or compromise the proceedings, to refer any matter to arbitration, to
+        deposit or withdraw any moneys, to execute any decree or order, to
+        certify payment, and / or receive any moneys due under such decree or
+        order on behalf of the user and the user undertakes to ratify any act of
+        Karsathis’ of “fixmytax” / KCPL.
+      </p>
+      <p>
+        It is specifically stated that “Karsathis’” means any person /
+        professional who is empanelled by “fixmytax” / KCPL to prepare / submit
+        replies, answer or return to the Tax Returns / Reply to Notices or other
+        queries as raised by the user.
+      </p>
+      <p>
+        Your usage of this Agreement governs any of the following services:{" "}
+        <br />
+        1. “fixmytax” Income Tax / GST Return Filing Service;
+        <br />
+        2. “fixmytax” Tax Related Query; <br />
+        3. “fixmytax” Tax Related Assessments / Appeals / Tribunal; <br />
+        4. “fixmytax” Any Other Services related to afore-said at 1 to 3 and any
+        other related “fixmytax” service or other service that you select, pay
+        for or use in connection with “fixmytax” tax preparation products and
+        services, or other related services provided by “fixmytax”.
+      </p>
+      <p>
+        If you do not agree to the terms and conditions of this agreement,
+        please do not access, download, or use any part of the products and
+        services
+      </p>
     </div>
-    <p className="data-first">
-      This Terms and Conditions Agreement is a contract between you and Taxpert
-      and you should carefully read this before using our website. We are
-      willing to provide you with access to our Website only on the condition
-      that you accept all of the terms and conditions contained in this
-      Agreement. By accessing or using our Website, you agree to be bound by
-      this Agreement and all of its terms without change. If you are using our
-      Website on behalf of a company or organization, such company or
-      organization will also be considered a party to this Agreement.
-    </p>
-    <ol className="point">
-      <li>User Responsibilities</li>
+
+    <ol className="point container">
+      <li className="point-title"> License and Permitted Use:</li>
       <p className="data">
-        In order to use the Website, you must obtain access to the Internet and
-        pay any service fees associated with such access. System availability
-        and access to the services and information available on the Website may
-        be limited or unavailable for reasons which may include, without
-        limitation, system performance, telecommunications failure, hardware
-        failure or software failure. You are responsible for your use of your
-        Internet browser, the Website, and the services and information provided
-        on the Website. We are not responsible for deletion of data, timeliness
-        of services, or the failure to store any of your data or personalization
-        settings.
+        According to the terms and conditions of this Agreement and the payment
+        of all the requisite fees; KCPL grants to you a restricted, personal,
+        non-transferable right to use the services for preparation of replies to
+        your Notices of Income Tax / GST; preparation of First Appeal,
+        preparation of Second Appeal and use the portal “fixmytax” to prepare
+        and electronically file (“e-file”) your tax returns. It is to be
+        appreciated that your usage for services of “fixmytax” may require
+        payment of additional fee if needed as per your further requirement of
+        service. This Agreement permits you to access and use of the services
+        only in the manner set forth herein for which you have paid requisite
+        fees. You may avail the services through KCPLs’ online service available
+        at https://www.fixmytax.in or any other approved thirdparty website as
+        KCPL may direct. By entering into this Agreement, you hereby agree that
+        you will not use the services in connection with providing tax advice or
+        Page 3 of 14 to provide any other services to any other party [except
+        only in case of Platinum Membership of the Portal]. It is to be
+        appreciated that you agree to provide bonafide and genuine details for
+        preparation of replies against Income Tax / GST Notices and before
+        filing your tax returns you shall be solely responsible for reviewing
+        all of your Forms under Income Tax / GST that result in calculating your
+        tax liability. 2. Eligibility to use the web
       </p>
-      <li>Refund Policy</li>
+      <li className="point-title">
+        {" "}
+        Eligibility to use the web-site / app (iOS & Android & Others)
+        “fixmytax”:
+      </li>
       <p className="data">
-        In the event that you (being the merchant/receiver of the payment)
-        receive any payments from your customers by sending payment requests
-        through the Platform, then you and your customers acknowledge and
-        undertake that you have provided to your customers, and your customers
-        have received the goods, products or services, and the payments are made
-        by your customers to you in lieu of the same. The Company or its
-        Strategic Partners will not be responsible for the goods, products or
-        services received or any disputes between you (being the
-        merchant/receiver of the payment) and your customers. The
-        merchant/receiver of the payment will be solely responsible for such
-        claims and refunds, and the Company will not be responsible for
-        providing any refunds in relation to the goods, products or services.
+        You should have attained 18 (eighteen) years of age or above [or under
+        guardianship in case of minor] and in case of you are availing services
+        on behalf of a minor; then your authorisation is mandatory for the same;
+        You are of legal age to form a binding contract and has not been barred
+        from receiving the platform services under the applicable laws and are
+        competent to enter into a binding contract. In the event the company has
+        to face over-burdened server issues, it reserves the right to restrict
+        access to the “fixmytax” to new users and if any user has been suspended
+        or removed by the KCPL for any reason whatsoever shall not been entitled
+        to avail the services of “fixmytax”; and By making payment at the
+        web-site / app “fixmytax”; you hereby approve that payment made at the
+        web-site / app is the money owned by you from your own Bank Account /
+        Wallet Payments and the same has been earned through legitimate means
+        involving no amount in violation of National Security Act.
       </p>
-      <li>Security</li>
+      <li className="point-title">Intellectual Property Rights [IPR]:</li>
       <p className="data">
-        The platform, the services are provided on an “as is” and “as available”
-        basis. Except as otherwise expressly provided in these terms, the
-        company, its strategic partners, and their respective officers,
-        directors, employees, agents and other representatives, expressly
-        disclaim all warranties of any kind, whether express or implied,
-        including, but not limited to the implied warranties of merchantability,
-        fitness for a particular purpose and non-infringement. Without limiting
-        the generality of the foregoing, the company makes no warranty that the
-        platform or the services will meet your requirements, the platform or
-        the services will be uninterrupted, timely, secure, or error-free,
-        information that may be obtained via the platform or the services will
-        be accurate or reliable, the quality of any and all products, services,
-        information or other material, including all merchandise, goods and
-        services, obtained or purchased by you directly or indirectly through
-        the platform or the websites will meet your expectations or needs, and
-        any errors in the platform or the websites will be corrected.
+        “fixmytax” the product of KCPL is Intellectual Property Right of Dr.
+        Pawan Jaiswal; the Founder & Promoter of Karsathi Consultants Private
+        Limited [KCPL]. Ownership of the services and all associated
+        intellectual property rights are vested exclusively by KCPL and its
+        Promoter & Founder. While using the services of “fixmytax” / KCPL you do
+        not acquire any ownership interest in the services or component of the
+        services. Under this Agreement you are not granted any right to title or
+        interest in or to any trademark, logo, or trade name of “fixmytax” /
+        KCPL or its Associates. “fixmytax” / KCPL and its Promoter & Founder is
+        the exclusive owner of the copyright for the services and KCPL and
+        reserves all rights related to such ownership, including the right to
+        make imitative works of the services. Any upgradation, enhancement,
+        modifications, and intellectual property rights shall remain the sole
+        proprietary of “fixmytax” / KCPL / Dr. Pawan Jaiswal.
       </p>
-      <li>Charges</li>
+      <li className="point-title">Privacy Policy:</li>
       <p className="data">
-        This Website reserves the right to charge subscription and/or membership
-        fees in respect of any part, aspect of this Site & Service/s and/or
-        Product/s offered by Taxpert. You shall be made aware of the charges
-        upon registration and Your willingness to buy the Product/Services
-        offered in the Website. You agree that all activities that occur under
-        your account for payment towards the Products/Services shall be your
-        sole responsibility and Taxpert shall not be liable for any claims which
-        may arise directly or incidentally due to the discharge of your
-        obligations under this clause. The same will apply for any Service/s or
-        Products being offered without any charges whenever made chargeable.
+        “fixmytax” / KCPL’s privacy policy shall dictate the use of the services
+        offered by it to the person accepting this agreement; the same is as
+        under:
       </p>
-      <li>Communication Policy</li>
+      <ul>
+        <li className="sub-point">
+          <p>
+            This Privacy Policy is applicable to all the users, net-surfers and
+            registered users of “fixmytax” / KCPL and all other beneficiaries
+            whether directly or indirectly related to the services offered by
+            our web-site / app.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            It is to be appreciated that “fixmytax” / KCPL collects your
+            financial & nonfinancial information in order to provide and
+            continually improve its services as per your desire
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            For obtaining the basic idea of web / app “fixmytax” / KCPL at a
+            particular period of time our Privacy Policy is subject to change
+            without Notice perse. To safe-guard your interest; it is suggested
+            that to keep aware of any changes, please review this policy
+            periodically.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            Particulars of your visit to portal “fixmytax” / KCPL may be
+            gathered through cookies and other tracker technologies which
+            includes your IP address, location, web-version etc.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            The information collected by web-site / app may include your name,
+            address, e-mail address, contact number and other Government Issued
+            Identities to verify your credentials. For preparation of replies to
+            Notices or filing of Appeal / Tax Returns [Income Tax & GST] you may
+            have to provide us your PAN, Notice, Bank Details and other
+            necessary documents to prepare replies and Appeal / Tax Returns
+            [Income Tax & GST] as in case of off-line mode.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            The aforesaid information is collected to prevent online fraud,
+            facilitate preparation of replies, Tax Returns [Income Tax & GST]
+            for precise and smooth response to Notices, Tax Returns [Income Tax
+            & GST] and other query raised by the user at web-site / app of
+            “fixmytax” / KCPL.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            The personal information provided by the user may be used by
+            “fixmytax” / KCPL to accomplish proper Video Conferencing / replies
+            / Appeal / Tax Returns [Income Tax & GST] as requested, to maintain
+            quality of service, to communicate about any changes to the terms &
+            condition of our service. “fixmytax” / KCPL will never exploit your
+            personal & financial data where fulfilling of these overrides your
+            interest.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            The purpose of the Privacy Policy is to comply with the Information
+            Technology Act, 2000 as amended on date alongwith other allied laws
+            as applicable for time being force. It is specifically stated that
+            by visiting the web-site / app you have given consent to honour the
+            Privacy Policy of “fixmytax” / KCPL.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            “fixmytax” / KCPL will share your data inclusive of documents with
+            the parties to whom we have agreements to execute your work.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            “fixmytax” / KCPL is committed with all due care and diligence and
+            technological advancement to protect your personal data from
+            intrusion. We maintain commercially reasonable physical, electronic
+            and procedural safeguards to protect your personal information in
+            accordance with the Information Technology Act, 2000 as amended up
+            till date and other relevant laws time being in force in India. All
+            information within our control is stored on our secure servers,
+            accessed and used subject to our security policies and standards.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            “fixmytax” / KCPL has implemented generally accepted standards of
+            technology and operational security in order to protect personally
+            identifiable information from loss, misuse, alteration or
+            destruction. All the personal information as may be provided by the
+            user on the website / app is transmitted using secured encryption.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            “fixmytax” / KCPL will maintain your informations and data until
+            completion of your work / matters; thereafter will follow strictly
+            purging policy as decided from time to time
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            “fixmytax” / KCPL gives you right to the written outcome available
+            on the site of Income Tax / GST Department and preparation of
+            matters in your case done by “fixmytax” Experts till it is purged
+            after completion of our work.
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            “fixmytax” / KCPL gives you right to raise genuine precise grievance
+            alongwith testimonial evidence to Smt. Nidhi Pawan Singh (Advocate
+            Allahabad High Court); karsathi.nidhi@gmail.com; Mobile - +91-
+            6387022844 [Mon – Fri: 11:00 AM to 5:00 PM].
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            Read the above Privacy Policy with due care. It provides information
+            about how we use personal information / data and the rights
+            available to you under the Information Technology Act 2000 as
+            amended till date. This website / app contains links to other third
+            party websites including essential web-sites / app of Central &
+            Different State Governments of India. If you click a link to any of
+            these websites / apps, please note that they have their own privacy
+            policies and that “fixmytax” / KCPL do not accept any responsibility
+            or liability for their policies or processing of your personal
+            information. “fixmytax” / KCPL want you to be informed about what
+            information we collect and how we use it to render you our services,
+            as per your proposal through selecting the service / Membership
+            plan. “fixmytax” / KCPL do not sell or share your personal &
+            financial information with unauthorized third parties for their own
+            commercial uses subject to sharing of information for national
+            interest or as directed by the Government Statutory Agencies /
+            Judicial Authorities.
+          </p>
+        </li>
+      </ul>
       <p className="data">
-        You agree to receive communications from the Company regarding
-        information relating to use of the Platform or Services, information
-        about the Company and the Services, promotional offers and services from
-        the Company and its Strategic Partners and third party partners, and any
-        other matter in relation to the Services. In case you access the
-        Platform on behalf of a third party you acknowledge and agree that we
-        are permitted to send any or all of the above communications to your
-        customers or other third parties whose information you have made
-        available on the Platform. We may send alerts to the mobile phone
-        numbers provided by you, either of yourself or your customers or any
-        third parties, via e-mail, SMS, WhatsApp messages or push notifications
-        or any other means. If your mobile number is registered in the Do Not
-        Disturb (DND) list of Telecom Regulatory Authority of India, you may not
-        receive SMS from us. In such case, you will be responsible for taking
-        all steps to deregister from the DND list and will not hold us liable
-        for non-receipt of SMS.
+        It is the sole discretion of KCPL to change the Privacy Policy at any
+        time in consonance with the applicable laws. If there is any material
+        change in the Privacy Policy; then the “fixmytax” / KCPL shall inform
+        you by any one or more than one of the following methods:
       </p>
-      <li>Third Party Services on the Platform</li>
-      <p className="data">
-        Certain links on the Website lead to resources located on servers
-        maintained by third parties over whom Taxsmile has no control. Taxsmile
-        has not reviewed, nor approved these sites and is not responsible for
-        the contents or omissions of any linked site or any links contained in a
-        linked site. The inclusion of any linked site does not imply endorsement
-        by Taxsmile of the site. Third party links to Taxsmile shall be governed
-        by a separate agreement. Any transactions relating to services not
-        directly offered by Taxsmile are to be settled inter-se between the
-        parties and all warranties express or implied of any kind, regarding any
-        matter pertaining thereto, including without limitation the implied
-        warranties of merchantability, fitness for a particular purpose, and
-        non-infringement are disclaimed by this Website. The advertisements that
-        You see displayed on this Websites are delivered by third parties and
-        Taxsmile will not be responsible for any promises, representations made
-        in the advertisments.
-      </p>
-      <p className="data">
-        This Website may contain hyperlinks to websites operated by parties
-        other than Taxpert or its affiliates. Such hyperlinks are provided for
-        your reference only. We do not control such websites and are not
-        responsible for their content. If we post hyperlinks to other websites,
-        this does not mean that we endorse the material on such websites or
-        associate ourselves with their operators. Your access to and use of such
-        websites, including information, material, products and services on such
-        websites, is solely at your own risk. Furthermore, because our privacy
-        policy is applicable only when you are on our Website, once linked to
-        another website, you should read that site’s privacy policy before
-        disclosing any personal information. The advertisements that You see
-        displayed on this Websites are delivered by third parties and Taxpert
-        will not be responsible for any promises, representations made in the
-        advertisments.
-      </p>
-      <li>Exclusion of Damages</li>
-      <p className="data">
-        We are a technology Platform service provider. We are not and will not
-        be responsible for any claim or for any damages suffered, whether by
-        you, the third parties of the Users whose information is recorded on the
-        Platform, or any other person or party, that are related, directly or
-        indirectly, to or arise out of the same including any payments made by
-        you or by any third parties of the User using the payment link generated
-        using the Platform. Your use of the Platform and the Services is at you
-        sole risk. We shall not be responsible for any non-delivery, delayed
-        delivery or distortion of the alert in any way whatsoever. You
-        understand that the Company cannot and does not guarantee or warrant
-        that filesavailable for download through the Platform will be free of
-        viruses, worms or other code that may be damaging. You are responsible
-        for implementing procedures to satisfy your particular requirements of
-        internet security and for accuracy of data input and output.
-      </p>
-      <li>Miscellanous</li>
-      <p className="data">
-        You acknowledge and agree that certain Services provided on the Platform
-        are further dependent on the functioning of the technology
-        infrastructure of various third parties including that of the government
-        agencies and, or statutory authorities. You agree that the Company shall
-        not be liable or responsible for any discrepancy in the Services owing
-        to delay or failure of any activity by any such third parties including
-        but not limited to delay or failure by government agencies and, or
-        statutory authorities such as Goods and Services Tax Network, National
-        Informatics Centre. The delay or failure may be as a result of, network
-        or connectivity failure, device or application failure, GST’s System’s
-        failure, possible down time at GST System’s end or any other technical
-        or non-technical error of any nature, whether foreseen or unforeseen.
-      </p>
+      <ul>
+        <li className="sub-point">
+          <p>
+            We will inform the users about such changes by posting the same on
+            its web-site / app; or
+          </p>
+        </li>
+        <li className="sub-point">
+          <p>
+            An e-mail will be sent informing / updating about the changes. By
+            using / availing the services from “fixmytax” / KCPL you are
+            required to furnish certain information / details for preparation of
+            your Tax Returns / Reply to Notices or other queries and personal
+            information. If you are using the “fixmytax” portal for filing your
+            Tax Returns then the “fixmytax” / KCPL will collect and transmit
+            your Data as supplied to the referred Tax Portal (Income Tax & GST)
+            and you shall be solely responsible for the information shared by
+            you at the portal of “fixmytax” and its authenticity and genuity.
+            Further; “fixmytax” / KCPL shall retain a copy of the such documents
+            uploaded at Tax Portal (Income Tax & GST)s to the level as permitted
+            under law.
+          </p>
+        </li>
+      </ul>
     </ol>
+    <Card className="more-details-link">
+      For More Details Please{" "}
+      <a
+        href="#"
+        onClick={() => openFile("/documents/TERMS_CONDITIONS_FMT.pdf")}
+      >
+        Click Here
+      </a>
+    </Card>
   </>
 );
 export default TnC;

@@ -42,7 +42,6 @@ export const MENU_ITEMS_SERVICE_FOOTER = [
   {
     label: "Privacy Policy",
     key: 4,
-    to: "/documents/TERMS_CONDITIONS_FMT.pdf",
-    file: true,
+    to: PATH.PRIVACY_POLICY,
   },
 ];

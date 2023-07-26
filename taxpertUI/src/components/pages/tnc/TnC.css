@@ -1,67 +1,27 @@
 
-.point li{
+.content-header2{
     font-size: 16px;
-    font-weight: 500;
-    margin-left: 300px;
-    margin-top: 60px;
 }
-.head-1{
-    position: absolute;
-    font-size: 28px;
-    margin-left: 0;
-    margin-right: 0;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-.head-2{
-    position: absolute;
-    font-size: 19px;
-    margin-left: 0;
-    margin-right: 0;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-.first{
-    position: relative;
-    text-align: center;
-    /* color: white; */
-}
-.img-edit{
-    width: 100%;
-    height:150px;
-    opacity: 0.5;
-    font-weight: 600;
-    margin-top: 20px;
-    align-items: left;
-}
-
 .data{
     margin-top: 4px;
-    margin-left: 300px;
-    margin-right: 300px;
     font-size: 15px;
-    line-height: 19px;
     display: block;
     text-align: justify;
     
 }
-.data-first{
-    margin-top: 18px;
-    margin-left: 300px;
-    margin-right: 300px;
+.point .point-title{
     font-size: 16px;
-    line-height: 20px;
-    display: block;
-    text-align: justify;
-    
+    font-weight: 500;
 }
-.underline{
-    position: absolute;
-    width: 240px;
-    top: 45%;
-    left: 43%;
-    right:55%
+.sub-point{
+    list-style-type:disc;
+    padding-left: 10px;
+    font-size: 15px;
+}
+.more-details-link{
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
 
-}
+

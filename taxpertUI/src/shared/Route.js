@@ -22,6 +22,7 @@ const PATH = {
   ADVOCATE_LIST: "/admin/psp",
   TICKET_REQUEST_LIST: "/admin/requests",
   LOGIN: "/login",
+  PRIVACY_POLICY: "/privacypolicy",
 };
 
 export { PATH };

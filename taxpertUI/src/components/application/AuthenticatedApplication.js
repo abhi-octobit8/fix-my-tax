@@ -66,7 +66,7 @@ function AuthenticatedApplication() {
 
         <Route path="home" element={<HomePage />} />
         <Route path="contact" element={<ContactUs />} />
-        <Route path="tnc" element={<TnC />} />
+        <Route path="privacypolicy" element={<TnC />} />
         <Route path="register" element={<RegisterPage />} />
 
         <Route element={<AdminLayout />} path="admin">
