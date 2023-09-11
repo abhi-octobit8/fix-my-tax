@@ -35,6 +35,9 @@
     <None Update="EmailTemplates\TicketAssigned.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="EmailTemplates\ZoomMeetingEmail.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="EmailTemplates\TicketStatusChange.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

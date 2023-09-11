@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Configuration;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.Net.Mail;
@@ -10,7 +11,9 @@ using FixMyTax.Authorization.Users;
 using FixMyTax.FixMyTaxModels;
 using FixMyTax.FixMyTaxServices.Dtos.Slots;
 using FixMyTax.FixMyTaxServices.Dtos.Tickets;
+using FixMyTax.FixMyTaxServices.Dtos.zoom;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,8 +59,10 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             }
             var ticket = ObjectMapper.Map<RequestTicket>(input);
             ticket.Status = TicketStatus.New;
+            ticket.Subject = ticket.Description;
             var tickeEntity = await _ticketRepository.InsertAsync(ticket);
-            if(tickeEntity.SlotId != null && tickeEntity.SlotId>0)
+            ZoomMeeting meeting = null;
+            if (tickeEntity.SlotId != null && tickeEntity.SlotId>0)
             {
                 var slot = _slotRepository.FirstOrDefault(x => x.Id == tickeEntity.SlotId);
                 if (slot == null)
@@ -67,8 +72,41 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 slot.RequestTicketId = tickeEntity.Id;
                 slot.Status = SlotStatus.Booked;
                 slot = await _slotRepository.UpdateAsync(slot);
+
+                //schedule zoom meeting
+                try
+                {
+                    ZoomMeetingRequest meet = new ZoomMeetingRequest();
+                    meet.topic = input.Description;
+                    meet.start_time = slot.StartTime.ToString("yyyy-MM-ddTHH:mm:ss");
+
+                    ZoomService service = new ZoomService();
+                    meeting = await service.CreateMeeting(meet);
+                }
+                catch(Exception ex)
+                {
+                    Logger.Error(ex.Message, ex);
+                }
+                
             }
             CurrentUnitOfWork.SaveChanges();
+            if(meeting != null)
+            {
+                tickeEntity.Description = meeting.JoinUrl;
+                tickeEntity = await _ticketRepository.UpdateAsync(tickeEntity);
+                CurrentUnitOfWork.SaveChanges();
+            }
+            if(meeting != null)
+            {
+                try
+                {
+                    _fixMyTaxEmail.SendZoomMeetingEmail(user.EmailAddress, meeting.JoinUrl, meeting.Topic, meeting.Time, meeting.MeetingId, meeting.Passcode);
+                }
+                catch(Exception e)
+                {
+                    Logger.Error(e.Message, e);
+                }
+            }
             return ObjectMapper.Map<TicketListDto>(tickeEntity);
         }
 

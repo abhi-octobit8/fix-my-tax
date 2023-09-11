@@ -224,9 +224,29 @@ namespace FixMyTax
             _emailSender.Send(mailMessage);
         }
 
-        //public static SendAlertEmail()
-        //{
+        public async void SendZoomMeetingEmail(string email, string zoomJoinUrl, string topic, string time, string meetingid, string passcode)
+        {
+            string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "ZoomMeetingEmail.html");
 
-        //}
+            StreamReader str = new StreamReader(templatePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
+
+            mailText = mailText.Replace("{{topic}}", topic);
+            mailText = mailText.Replace("{{time}}", time);
+            mailText = mailText.Replace("{{joinlink}}", zoomJoinUrl);
+            mailText = mailText.Replace("{{meetingid}}", meetingid);
+            mailText = mailText.Replace("{{passcode}}", passcode);
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(_fromEmail, "FixmyTax"),
+                Subject = "FixmyTax Meeting Invite",
+                Body = mailText,
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add(email);
+            _emailSender.Send(mailMessage);
+        }
     }
 }
