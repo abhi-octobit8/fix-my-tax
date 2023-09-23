@@ -29,6 +29,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
     public class TicketService : FixMyTaxAppServiceBase, ITicketService
     {
         private readonly IRepository<RequestTicket> _ticketRepository;
+        private readonly IRepository<UnpaidRequestTicktes> _orderTicketRepository;
         private readonly IRepository<TicketResponse> _responseRepository;
         private readonly IRepository<Slot> _slotRepository;
         private readonly IRepository<Attachment> _fileRepository;
@@ -37,9 +38,10 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         private readonly FixMyTaxEmailSender _fixMyTaxEmail;
 
 
-        public TicketService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository,
-            IRepository<Attachment> fileRepository, UserManager userManager, IEmailSender emailSender, IRepository<Slot> slotRepository)
+        public TicketService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository, IRepository<UnpaidRequestTicktes> orderTicketRepository,
+        IRepository<Attachment> fileRepository, UserManager userManager, IEmailSender emailSender, IRepository<Slot> slotRepository)
         {
+            _orderTicketRepository = orderTicketRepository;
             _ticketRepository = ticketRepository;
             _responseRepository = responseRepository;
             _fileRepository = fileRepository;
@@ -108,6 +110,33 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 }
             }
             return ObjectMapper.Map<TicketListDto>(tickeEntity);
+        }
+
+        public async Task<OrderDto> CreateOrder(CreateTicketInput input)
+        {
+            var user = _userManager.GetUserById(AbpSession.UserId.Value);
+            var roles = await _userManager.GetRolesAsync(user);
+            if (roles.Contains(StaticRoleNames.Tenants.Admin) || roles.Contains(StaticRoleNames.Tenants.Advocate))
+            {
+                throw new UserFriendlyException("Only customers can create order");
+            }
+
+            if (input.SlotId > 0)
+            {
+                var slot = _slotRepository.FirstOrDefault(x => x.Id == input.SlotId);
+                if (slot == null)
+                {
+                    throw new UserFriendlyException("slot not found");
+                }
+            }
+            var order = ObjectMapper.Map<UnpaidRequestTicktes>(input);
+            order.Status = TicketStatus.New;
+            order.Subject = order.Description;
+            order.OrderId = Guid.NewGuid().ToString();
+            order.PaymentStaus = FixMyTaxModels.PaymentStatus.Pending;
+            var tickeEntity = await _orderTicketRepository.InsertAsync(order);
+            CurrentUnitOfWork.SaveChanges();
+            return ObjectMapper.Map<OrderDto>(tickeEntity);
         }
 
         public async Task<ResponseDto> CreateResponse(CreateResponseInput input)

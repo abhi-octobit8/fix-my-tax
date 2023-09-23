@@ -33,5 +33,7 @@ namespace FixMyTax.FixMyTaxModels
 
         public int? SlotId { get; set; }
         public string ExtensionData { get; set; }
+
+        public string OrderId { get; set; }
     }
 }

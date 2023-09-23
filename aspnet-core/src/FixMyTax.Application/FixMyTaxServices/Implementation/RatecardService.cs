@@ -210,5 +210,49 @@ namespace FixMyTax.FixMyTaxServices.Implementation
 
             return output;
         }
+
+        [AbpAuthorize]
+        public async Task<string> GetPaymentParams(string orderId, string amount)
+        {
+            if (!AbpSession.UserId.HasValue)
+                throw new UserFriendlyException("Not Authorised");
+
+            var user = _userManager.GetUserById(AbpSession.UserId.Value);
+
+            string merchant_id = "";
+            string order_id = "";
+            string currency = "INR";
+            string tamount = amount.Trim();
+            string redirectUrl = "https://fixmytax.in/checkout";
+            string cancel_url = "https://fixmytax.in/checkout?res=cancel";
+            string language = "en";
+            string billing_address = "";
+            string billing_name = "";
+            return "";
+
+        }
+
+        //public async Task<string> GetPaymentResponseParams(string response)
+        //{
+        //    if (!AbpSession.UserId.HasValue)
+        //        throw new UserFriendlyException("Not Authorised");
+
+        //    var user = _userManager.GetUserById(AbpSession.UserId.Value);
+
+        //    string merchant_id = "";
+        //    string order_id = "";
+        //    string currency = "INR";
+        //    string tamount = amount.Trim();
+        //    string redirectUrl = "payment/?resp";
+        //    string cancel_url = "payment/cancel";
+        //    string language = "en";
+        //    string billing_address = "";
+        //    string billing_name = "";
+
+
+        //Http://secure.
+        //    return "";
+
+        //}
     }
 }
