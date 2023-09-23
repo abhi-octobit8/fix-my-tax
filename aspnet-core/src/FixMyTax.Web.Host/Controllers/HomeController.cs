@@ -6,6 +6,7 @@ using Abp.Notifications;
 using Abp.Timing;
 using Abp.Web.Security.AntiForgery;
 using FixMyTax.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FixMyTax.Web.Host.Controllers
 {
@@ -21,6 +22,13 @@ namespace FixMyTax.Web.Host.Controllers
         public IActionResult Index()
         {
             return Redirect("/swagger");
+        }
+
+   
+        public IActionResult Checkout()
+        {
+            //Request.
+            return View();
         }
 
         /// <summary>
