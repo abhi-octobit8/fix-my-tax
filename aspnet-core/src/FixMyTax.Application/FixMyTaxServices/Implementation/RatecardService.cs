@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
+using Abp.Net.Mail;
 using Abp.UI;
 using ExcelDataReader;
 using FixMyTax.Authorization;
@@ -29,11 +30,13 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         private readonly IRepository<Pricing> _ratecardRepository;
         private readonly UserManager _userManager;
         private readonly ILogger<RatecardService> logger;
+        private readonly CCAvenueService ccAvenueService;
         public RatecardService(IRepository<Pricing> ratecardRepository, UserManager userManager, ILogger<RatecardService> logger)
         {
             _ratecardRepository = ratecardRepository;
             _userManager = userManager;
             this.logger = logger;
+            ccAvenueService = new CCAvenueService();
         }
 
         //[AbpAuthorize(PermissionNames.Pages_Pricing)]
@@ -219,40 +222,19 @@ namespace FixMyTax.FixMyTaxServices.Implementation
 
             var user = _userManager.GetUserById(AbpSession.UserId.Value);
 
-            string merchant_id = "";
-            string order_id = "";
-            string currency = "INR";
-            string tamount = amount.Trim();
-            string redirectUrl = "https://fixmytax.in/checkout";
-            string cancel_url = "https://fixmytax.in/checkout?res=cancel";
-            string language = "en";
-            string billing_address = "";
-            string billing_name = "";
-            return "";
+            ccAvenueService.GetEncryptedUrl(orderId, amount, user.Name, user.EmailAddress, "1");
+            
+            return ccAvenueService.GetEncryptedUrl(orderId, amount, user.Name, user.EmailAddress, "1"); ;
 
         }
 
-        //public async Task<string> GetPaymentResponseParams(string response)
-        //{
-        //    if (!AbpSession.UserId.HasValue)
-        //        throw new UserFriendlyException("Not Authorised");
+        public async Task<string> GetProcessedResponse(string data)
+        {
+            if (!AbpSession.UserId.HasValue)
+                throw new UserFriendlyException("Not Authorised");
 
-        //    var user = _userManager.GetUserById(AbpSession.UserId.Value);
+            return ccAvenueService.DecryptResponse(data);
 
-        //    string merchant_id = "";
-        //    string order_id = "";
-        //    string currency = "INR";
-        //    string tamount = amount.Trim();
-        //    string redirectUrl = "payment/?resp";
-        //    string cancel_url = "payment/cancel";
-        //    string language = "en";
-        //    string billing_address = "";
-        //    string billing_name = "";
-
-
-        //Http://secure.
-        //    return "";
-
-        //}
+        }
     }
 }

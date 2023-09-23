@@ -24,5 +24,7 @@ namespace FixMyTax.FixMyTaxServices
         Task<string> ImportRateCard(IFormFile file);
 
         Task<ListResultDto<RatecardListDto>> GetAll();
+
+        Task<string> GetProcessedResponse(string data);
     }
 }
