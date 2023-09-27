@@ -6,3 +6,11 @@ export const GetServiceTotalPrice = async (pricingKey) => {
   });
   return res;
 };
+
+export const GetPaymentPrice = async (orderId, amount) => {
+  const res = await API({
+    url: `/services/app/RatecardService/GetPaymentParams?orderId=${orderId}&amount=${amount}`,
+  });
+  debugger;
+  return res;
+};

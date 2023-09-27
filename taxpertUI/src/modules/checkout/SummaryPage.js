@@ -57,7 +57,7 @@ const SummaryPage = (props) => {
         </Descriptions>
         <div className="content-padding">
           {userRole === USER_ROLE.CUSTOMER ? (
-            <Button type="primary" block onClick={OnPayment}>
+            <Button type="primary" block onClick={onSubmit}>
               Payment
             </Button>
           ) : (
