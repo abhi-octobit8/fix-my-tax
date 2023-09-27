@@ -17,7 +17,10 @@ import useUserRole from "../../../hooks/useUserRole";
 import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
 import { USER_ROLE } from "../../../application/application-menu/constant";
 import { TicketStatus } from "../../../../shared/constants";
-import { FIX_MY_TAX_SERVICE_TYPES } from "../../../../shared/constant/TaxService";
+import {
+  FIX_MY_TAX_SERVICE_TYPES,
+  PAYMENT_STATUS,
+} from "../../../../shared/constant/TaxService";
 
 const TicketListRequest = () => {
   const navigator = useRedirectPath();
@@ -98,6 +101,17 @@ const TicketListRequest = () => {
       width: 150,
       render: (value) =>
         getLocalTime(value, DATE_FORMATS.LIST_DATE_TIME_FORMAT),
+    },
+    {
+      title: "Payment status",
+      dataIndex: "paymentStatus",
+      key: "paymentStatus",
+      render: (text, value) => {
+        debugger;
+        console.log(text);
+        return <span>{getObjectFromList(PAYMENT_STATUS, text)?.name}</span>;
+      },
+      width: 150,
     },
     {
       title: "Transaction Number",

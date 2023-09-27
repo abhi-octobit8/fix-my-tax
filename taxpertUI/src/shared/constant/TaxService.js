@@ -37,3 +37,28 @@ export const FIX_MY_TAX_SERVICE_TYPES = [
     value: 8,
   },
 ];
+
+export const PAYMENT_STATUS = [
+  {
+    key: 1,
+    name: "Paid",
+    value: 1,
+  },
+  {
+    key: 2,
+    name: "Pending",
+    value: 2,
+  },
+  {
+    key: 3,
+    name: "TransactionFailed",
+    value: 3,
+  },
+  {
+    key: 4,
+    name: "Returned",
+    value: 4,
+  },
+
+  { key: 5, name: "Canceled", value: 5 },
+];
