@@ -17,15 +17,12 @@ const SummaryPage = (props) => {
   const userRole = useUserRole();
   const [isPaymentConfirmationOpen, setIsPaymentConfirmationOpen] =
     useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const { orderDetails, userInfo, onSubmit, priceInfo } = props;
+  const { orderDetails, userInfo, onSubmit, priceInfo, isLoading } = props;
 
   const OnPayment = async () => {
     try {
       if (toFixed(priceInfo?.price)) {
         setIsPaymentConfirmationOpen(true);
-        // setIsLoading(true);
-        // await onSubmit();
       } else {
         message.error("Please select service request again");
       }
@@ -57,11 +54,12 @@ const SummaryPage = (props) => {
         </Descriptions>
         <div className="content-padding">
           {userRole === USER_ROLE.CUSTOMER ? (
-            <Button type="primary" block onClick={onSubmit}>
+            <Button type="primary" block onClick={onSubmit} loading={isLoading}>
               Payment
             </Button>
           ) : (
             <Button
+              loading={isLoading}
               type="primary"
               onClick={() => {
                 doLogout();

@@ -7,19 +7,21 @@ import useUserData from "../../components/hooks/useUserData";
 import { useSelector } from "react-redux";
 import { SUCCESS_MESSAGE_INFO } from "../../shared/constant/MessageInfo";
 import { PATH } from "../../shared/Route";
-import { message } from "../../shared/utils";
+import { message, toFixed } from "../../shared/utils";
 import { createTicketService } from "../../services/ticket.service";
 import { useNavigate } from "react-router-dom";
 import {
   GetPaymentPrice,
   GetServiceTotalPrice,
 } from "../../services/checkout.service";
+import { async } from "q";
 
 const { Panel } = Collapse;
 
 const CheckoutPage = (props) => {
   const navigate = useNavigate();
   const titleHeader = "Checkout";
+  const [isLoading, setIsLoading] = useState(false);
   const userInfo = useUserData();
   const [priceInfo, setPriceInfo] = useState();
 
@@ -37,44 +39,44 @@ const CheckoutPage = (props) => {
   }, [orderDetails]);
 
   const onSubmit = async (value) => {
-    debugger;
-    // check request created from new assessee or existing assessee
-
-    /// payment gateway testing
-    const responseData = await GetPaymentPrice(1234, 11);
-    if (responseData) {
-      debugger;
-      window.location.replace(responseData);
+    // call of create ticket
+    try {
+      setIsLoading(true);
+      const registerFormData = {
+        fixMyTaxServiceType: orderDetails.fixMyTaxService.value,
+        serviceType: orderDetails.fixMyTaxService.value === 8 ? 1 : 2, // notice reply or video consultation
+        section: orderDetails.sectionObj.name,
+        subSection: orderDetails?.subSectionObj
+          ? orderDetails.subSectionObj.name
+          : "",
+        subject: "",
+        question: "",
+        description:
+          orderDetails.fixMyTaxService.value === 8 ? orderDetails.query : "",
+        price: toFixed(priceInfo?.totalAmount),
+        slotId:
+          orderDetails.fixMyTaxService.value === 8 ? orderDetails.slotId : 0,
+        paymentStaus: 1,
+        // transactionNumber: value.transactionNumber,
+      };
+      const res = await createTicketService(
+        registerFormData,
+        orderDetails.uploadDocument
+      );
+      if (res.id) {
+        const responseData = await GetPaymentPrice(
+          res.orderId,
+          toFixed(priceInfo?.totalAmount)
+        );
+        if (responseData) {
+          window.location.replace(responseData);
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
-
-    // const registerFormData = {
-    //   fixMyTaxServiceType: orderDetails.fixMyTaxService.value,
-    //   serviceType: orderDetails.fixMyTaxService.value === 8 ? 1 : 2, // notice reply or video consultation
-    //   section: orderDetails.sectionObj.name,
-    //   subSection: orderDetails?.subSectionObj
-    //     ? orderDetails.subSectionObj.name
-    //     : "",
-    //   subject: "",
-    //   question: "",
-    //   description:
-    //     orderDetails.fixMyTaxService.value === 8 ? orderDetails.query : "",
-    //   // status: 0,
-    //   price: value.totalPrice,
-    //   slotId:
-    //     orderDetails.fixMyTaxService.value === 8 ? orderDetails.slotId : 0,
-    //   // slotId
-    //   // paymentStaus: 0,
-    //   transactionNumber: value.transactionNumber,
-    // };
-    // console.log("registerFormData", registerFormData);
-    // const res = await createTicketService(
-    //   registerFormData,
-    //   orderDetails.uploadDocument
-    // );
-    // if (res.id) {
-    //   message.success(SUCCESS_MESSAGE_INFO.REGISTRATION);
-    //   navigate(PATH.TICKET_REQUEST_LIST);
-    // }
   };
 
   return (
@@ -106,6 +108,7 @@ const CheckoutPage = (props) => {
                 priceInfo={priceInfo}
                 userInfo={userInfo}
                 orderDetails={orderDetails}
+                isLoading={isLoading}
                 onSubmit={onSubmit}
               />
             </Col>
