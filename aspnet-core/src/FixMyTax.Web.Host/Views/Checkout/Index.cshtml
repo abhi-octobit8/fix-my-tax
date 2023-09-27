@@ -1,4 +1,7 @@
-﻿<html lang="en">
+﻿@{
+}
+
+<html lang="en">
 
 <head>
 
@@ -26,11 +29,11 @@
                         <div class="ant-row">
                             <div class="application-logo"><img src="~/image/logo_header.png" alt="text" height="80" width="160" style="object-fit: cover;"></div>
                             <div class="appplicaton-menu-content">
-                                
+
                                 <div aria-hidden="true" style="display: none;"></div>
                             </div>
                             <div class="ant-col ant-col-xs-2 ant-col-sm-2 ant-col-md-2 ant-col-lg-2 ant-col-xl-2">
-                                <div class="ant-dropdown-trigger application-user-menu-trigger">shamsher</div>
+                                <div class="ant-dropdown-trigger application-user-menu-trigger">@ViewBag.UserName</div>
                             </div>
                         </div>
                     </header>
@@ -41,7 +44,7 @@
                     <div class="container" data-aos="fade-up">
                         <div class="row justify-content-center">
                             <div class="section-banner-info">
-                                <div class="section-banner-title">Checkout</div>
+                                <div class="section-banner-title">Payment Status</div>
                             </div>
                         </div>
                     </div>
@@ -49,14 +52,14 @@
                 <section>
                     <div class="ant-card ant-card-bordered content-max-margin">
                         <div class="ant-card-body">
-                            <div class="section-header">
-                                <h2 style="color: rgb(244, 124, 1); font-weight: 500;">Checkout</h2>
+                            <div class="section-header" style="text-align:center">
+                                <h2 style="color: rgb(244, 124, 1); font-weight: 500;">@ViewBag.Message </h2>
                             </div>
-                            <div class="ant-row" style="margin-left: -10px; margin-right: -10px;">
+                            <div class="ant-row" style="margin-left: -10px; margin-right: -10px;justify-content:center">
                                 <div class="ant-col ant-col-xs-24 ant-col-xl-16" style="padding-left: 10px; padding-right: 10px;">
 
-                                    <button type="button" class="button-control"><span>Go to List Page</span></button>
-                                    
+                                    <button type="button" class="button-control"><span><a href="http://localhost:8081/admin/requests">Go to List Page</a></span></button>
+
                                 </div>
 
                             </div>

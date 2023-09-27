@@ -29,7 +29,6 @@ namespace FixMyTax.FixMyTaxServices.Implementation
     public class TicketService : FixMyTaxAppServiceBase, ITicketService
     {
         private readonly IRepository<RequestTicket> _ticketRepository;
-        private readonly IRepository<UnpaidRequestTicktes> _orderTicketRepository;
         private readonly IRepository<TicketResponse> _responseRepository;
         private readonly IRepository<Slot> _slotRepository;
         private readonly IRepository<Attachment> _fileRepository;
@@ -38,10 +37,9 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         private readonly FixMyTaxEmailSender _fixMyTaxEmail;
 
 
-        public TicketService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository, IRepository<UnpaidRequestTicktes> orderTicketRepository,
+        public TicketService(IRepository<RequestTicket> ticketRepository, IRepository<TicketResponse> responseRepository,
         IRepository<Attachment> fileRepository, UserManager userManager, IEmailSender emailSender, IRepository<Slot> slotRepository)
         {
-            _orderTicketRepository = orderTicketRepository;
             _ticketRepository = ticketRepository;
             _responseRepository = responseRepository;
             _fileRepository = fileRepository;
@@ -62,6 +60,8 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             var ticket = ObjectMapper.Map<RequestTicket>(input);
             ticket.Status = TicketStatus.New;
             ticket.Subject = ticket.Description;
+            ticket.PaymentStaus = FixMyTaxModels.PaymentStatus.Pending;
+            ticket.OrderId = Guid.NewGuid().ToString();
             var tickeEntity = await _ticketRepository.InsertAsync(ticket);
             ZoomMeeting meeting = null;
             if (tickeEntity.SlotId != null && tickeEntity.SlotId>0)
@@ -94,49 +94,15 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             CurrentUnitOfWork.SaveChanges();
             if(meeting != null)
             {
-                tickeEntity.Description = meeting.JoinUrl;
+                tickeEntity.ZoomJoinUrl = meeting.JoinUrl;
+                tickeEntity.ZoomTopic = meeting.Topic;
+                tickeEntity.ZoomTime = meeting.Time;
+                tickeEntity.ZoomMeetingId = meeting.MeetingId;
+                tickeEntity.ZoomMeetingPasscode = meeting.Passcode;
                 tickeEntity = await _ticketRepository.UpdateAsync(tickeEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
-            if(meeting != null)
-            {
-                try
-                {
-                    _fixMyTaxEmail.SendZoomMeetingEmail(user.EmailAddress, meeting.JoinUrl, meeting.Topic, meeting.Time, meeting.MeetingId, meeting.Passcode);
-                }
-                catch(Exception e)
-                {
-                    Logger.Error(e.Message, e);
-                }
-            }
             return ObjectMapper.Map<TicketListDto>(tickeEntity);
-        }
-
-        public async Task<OrderDto> CreateOrder(CreateTicketInput input)
-        {
-            var user = _userManager.GetUserById(AbpSession.UserId.Value);
-            var roles = await _userManager.GetRolesAsync(user);
-            if (roles.Contains(StaticRoleNames.Tenants.Admin) || roles.Contains(StaticRoleNames.Tenants.Advocate))
-            {
-                throw new UserFriendlyException("Only customers can create order");
-            }
-
-            if (input.SlotId > 0)
-            {
-                var slot = _slotRepository.FirstOrDefault(x => x.Id == input.SlotId);
-                if (slot == null)
-                {
-                    throw new UserFriendlyException("slot not found");
-                }
-            }
-            var order = ObjectMapper.Map<UnpaidRequestTicktes>(input);
-            order.Status = TicketStatus.New;
-            order.Subject = order.Description;
-            order.OrderId = Guid.NewGuid().ToString();
-            order.PaymentStaus = FixMyTaxModels.PaymentStatus.Pending;
-            var tickeEntity = await _orderTicketRepository.InsertAsync(order);
-            CurrentUnitOfWork.SaveChanges();
-            return ObjectMapper.Map<OrderDto>(tickeEntity);
         }
 
         public async Task<ResponseDto> CreateResponse(CreateResponseInput input)
@@ -229,6 +195,7 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 {
                     tickets = await _ticketRepository
                     .GetAll().Include(x => x.Attachments)
+                    .Where(x => x.PaymentStaus == FixMyTaxModels.PaymentStatus.Paid)
                     .OrderByDescending(t => t.CreationTime)
                     .ToListAsync();
                 }

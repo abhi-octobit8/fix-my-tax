@@ -24,13 +24,6 @@ namespace FixMyTax.Web.Host.Controllers
             return Redirect("/swagger");
         }
 
-   
-        public IActionResult Checkout()
-        {
-            //Request.
-            return View();
-        }
-
         /// <summary>
         /// This is a demo code to demonstrate sending notification to default tenant admin and host admin uers.
         /// Don't use this code in production !!!

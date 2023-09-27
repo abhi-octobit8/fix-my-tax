@@ -35,5 +35,11 @@ namespace FixMyTax.FixMyTaxModels
         public string ExtensionData { get; set; }
 
         public string OrderId { get; set; }
+
+        public string ZoomJoinUrl { get; set; }
+        public string ZoomTopic { get; set; }
+        public string ZoomTime { get; set; }
+        public string ZoomMeetingId { get; set; }
+        public string ZoomMeetingPasscode { get; set; }
     }
 }

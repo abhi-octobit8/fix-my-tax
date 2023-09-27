@@ -22,8 +22,6 @@ namespace FixMyTax.EntityFrameworkCore
 
         public DbSet<Slot> Slots { get; set; }
 
-        public DbSet<UnpaidRequestTicktes> UnpaidTickets { get; set; }
-
         public FixMyTaxDbContext(DbContextOptions<FixMyTaxDbContext> options)
             : base(options)
         {

@@ -19,12 +19,12 @@ namespace FixMyTax.FixMyTaxServices
         Task<RatecardDto> GetTotalPrice(string pricingKey);
 
 
-        Task<string> GetPaymentParams(string ticketid, string amount);
+        Task<string> GetPaymentParams(string ticketid);
 
         Task<string> ImportRateCard(IFormFile file);
 
         Task<ListResultDto<RatecardListDto>> GetAll();
 
-        Task<string> GetProcessedResponse(string data);
+        //Task<string> GetProcessedResponse(string data);
     }
 }

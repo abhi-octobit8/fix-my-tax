@@ -31,12 +31,15 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         private readonly UserManager _userManager;
         private readonly ILogger<RatecardService> logger;
         private readonly CCAvenueService ccAvenueService;
-        public RatecardService(IRepository<Pricing> ratecardRepository, UserManager userManager, ILogger<RatecardService> logger)
+        private readonly IRepository<RequestTicket> _ticketRepository;
+        public RatecardService(IRepository<Pricing> ratecardRepository, UserManager userManager, ILogger<RatecardService> logger, 
+            IRepository<RequestTicket> ticketRepository)
         {
             _ratecardRepository = ratecardRepository;
             _userManager = userManager;
             this.logger = logger;
             ccAvenueService = new CCAvenueService();
+            _ticketRepository = ticketRepository;
         }
 
         //[AbpAuthorize(PermissionNames.Pages_Pricing)]
@@ -215,26 +218,32 @@ namespace FixMyTax.FixMyTaxServices.Implementation
         }
 
         [AbpAuthorize]
-        public async Task<string> GetPaymentParams(string orderId, string amount)
+        public async Task<string> GetPaymentParams(string orderId)
         {
             if (!AbpSession.UserId.HasValue)
                 throw new UserFriendlyException("Not Authorised");
+
+            var ticketEntity = _ticketRepository.FirstOrDefault(x => x.OrderId == orderId);
+            if(ticketEntity == null)
+            {
+                throw new UserFriendlyException("Not Authorised");
+            }
 
             var user = _userManager.GetUserById(AbpSession.UserId.Value);
 
-            ccAvenueService.GetEncryptedUrl(orderId, amount, user.Name, user.EmailAddress, "1");
+            ccAvenueService.GetEncryptedUrl(orderId, ticketEntity.Price, user.Name, user.EmailAddress, ticketEntity.Id.ToString());
             
-            return ccAvenueService.GetEncryptedUrl(orderId, amount, user.Name, user.EmailAddress, "1"); ;
+            return ccAvenueService.GetEncryptedUrl(orderId, ticketEntity.Price, user.Name, user.EmailAddress, ticketEntity.Id.ToString());
 
         }
 
-        public async Task<string> GetProcessedResponse(string data)
-        {
-            if (!AbpSession.UserId.HasValue)
-                throw new UserFriendlyException("Not Authorised");
+        //public async Task<string> GetProcessedResponse(string data)
+        //{
+        //    if (!AbpSession.UserId.HasValue)
+        //        throw new UserFriendlyException("Not Authorised");
 
-            return ccAvenueService.DecryptResponse(data);
+        //    return ccAvenueService.DecryptResponse(data);
 
-        }
+        //}
     }
 }

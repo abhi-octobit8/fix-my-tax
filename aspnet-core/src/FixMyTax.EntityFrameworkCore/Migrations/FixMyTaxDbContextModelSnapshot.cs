@@ -1856,6 +1856,21 @@ namespace FixMyTax.Migrations
                     b.Property<string>("TransactionNumber")
                         .HasColumnType("text");
 
+                    b.Property<string>("ZoomJoinUrl")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ZoomMeetingId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ZoomMeetingPasscode")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ZoomTime")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ZoomTopic")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.ToTable("Tickets");
@@ -1953,79 +1968,6 @@ namespace FixMyTax.Migrations
                     b.HasIndex("RequestTicketId");
 
                     b.ToTable("Responses");
-                });
-
-            modelBuilder.Entity("FixMyTax.FixMyTaxModels.UnpaidRequestTicktes", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<int>("FixMyTaxServiceType")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("OrderId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PaymentInfo")
-                        .HasColumnType("text");
-
-                    b.Property<int>("PaymentStaus")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Price")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Question")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Section")
-                        .HasColumnType("text");
-
-                    b.Property<int>("ServiceType")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("SubSection")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Subject")
-                        .HasColumnType("text");
-
-                    b.Property<string>("TransactionNumber")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UnpaidTickets");
                 });
 
             modelBuilder.Entity("FixMyTax.MultiTenancy.Tenant", b =>

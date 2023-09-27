@@ -30,6 +30,7 @@ namespace FixMyTax.FixMyTaxModels
         Paid = 0,
         Pending = 1,
         TransactionFailed = 3,
-        Returned = 4
+        Returned = 4, 
+        Canceled = 5
     }
 }

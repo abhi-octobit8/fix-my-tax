@@ -15,12 +15,14 @@ namespace FixMyTax.Authorization.Accounts
 
         private readonly UserRegistrationManager _userRegistrationManager;
         private readonly IEmailSender _emailSender;
+        private readonly FixMyTaxEmailSender _fixMyTaxEmail;
 
         public AccountAppService(
             UserRegistrationManager userRegistrationManager, IEmailSender emailSender)
         {
             _userRegistrationManager = userRegistrationManager;
             _emailSender = emailSender;
+            _fixMyTaxEmail = new FixMyTaxEmailSender(_emailSender);
         }
 
         
@@ -65,13 +67,7 @@ namespace FixMyTax.Authorization.Accounts
             try
             {
                 var token = await _userRegistrationManager.ForgotPasswordToken(input.EmailAddress);
-
-                await _emailSender.SendAsync(
-                    to: input.EmailAddress,
-                    subject: "FixMyTax Password Reset",
-                    body: $"<b>Hi {input.EmailAddress} </b> <br/>Please click on the following link to reset your password. <br/> https://fixmytax.zupiers.com/resetpassword/{token}",
-                    isBodyHtml: true
-                );
+                _fixMyTaxEmail.SendForgotPasswordEmail(input.EmailAddress, input.EmailAddress, token);
                 return new ForgotPasswordOutput(true);
             }
             catch(Exception ex)
@@ -89,12 +85,7 @@ namespace FixMyTax.Authorization.Accounts
 
                 if (success)
                 {
-                    await _emailSender.SendAsync(
-                        to: input.EmailAddress,
-                        subject: "FixMyTax Password Reset",
-                        body: $"<b>Hi {input.EmailAddress} </b> <br/>Password reset successfully",
-                        isBodyHtml: true
-                    );
+                    _fixMyTaxEmail.SendPasswordResetSuccessfullEmail(input.EmailAddress, input.EmailAddress);
                 }
                 
                 return new ResetPasswordOutput(success);

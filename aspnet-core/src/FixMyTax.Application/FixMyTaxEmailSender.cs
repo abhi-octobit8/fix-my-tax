@@ -68,6 +68,48 @@ namespace FixMyTax
         }
 
 
+        public void SendForgotPasswordEmail(string name, string email, string token)
+        {
+            string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "ForgotPassword.html");
+
+            StreamReader str = new StreamReader(templatePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
+            mailText = mailText.Replace("{{name}}", name);
+            mailText = mailText.Replace("{{token}}", token.Trim());
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(_fromEmail, "FixmyTax"),
+                Subject = "FixMyTax Password Reset",
+                Body = mailText,
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add(email);
+            _emailSender.Send(mailMessage);
+        }
+
+        public void SendPasswordResetSuccessfullEmail(string name, string email)
+        {
+            string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "ResetPasswordSuccessfull.html");
+
+            StreamReader str = new StreamReader(templatePath);
+            string mailText = str.ReadToEnd();
+            str.Close();
+            mailText = mailText.Replace("{{name}}", name);
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(_fromEmail, "FixmyTax"),
+                Subject = "FixMyTax Password Reset",
+                Body = mailText,
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add(email);
+            _emailSender.Send(mailMessage);
+        }
+
+
         public void SendPSPCreationEmail(string email, string username, string password)
         {
             string templatePath = Path.Combine(_templateLocation, "EmailTemplates", "PSPCreation.html");

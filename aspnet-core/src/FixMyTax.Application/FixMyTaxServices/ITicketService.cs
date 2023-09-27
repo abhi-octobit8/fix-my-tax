@@ -17,8 +17,6 @@ namespace FixMyTax.FixMyTaxServices
 
         Task<TicketListDto> Create(CreateTicketInput input);
 
-        Task<OrderDto> CreateOrder(CreateTicketInput input);
-
         Task<ResponseDto> CreateResponse(CreateResponseInput input);
 
         Task<ResponseDto> GetResponseByRequestId(int requestId);
@@ -27,6 +25,5 @@ namespace FixMyTax.FixMyTaxServices
 
         Task<bool> UpdateTicketStatus(int requestTicketId, TicketStatusInput status);
 
-        //Task<string> 
     }
 }
