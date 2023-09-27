@@ -7,9 +7,9 @@ export const GetServiceTotalPrice = async (pricingKey) => {
   return res;
 };
 
-export const GetPaymentPrice = async (orderId, amount) => {
+export const GetPaymentPrice = async (orderId) => {
   const res = await API({
-    url: `/services/app/RatecardService/GetPaymentParams?orderId=${orderId}&amount=${amount}`,
+    url: `/services/app/RatecardService/GetPaymentParams?orderId=${orderId}`,
   });
   debugger;
   return res;

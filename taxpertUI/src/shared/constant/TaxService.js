@@ -40,14 +40,14 @@ export const FIX_MY_TAX_SERVICE_TYPES = [
 
 export const PAYMENT_STATUS = [
   {
-    key: 1,
+    key: 0,
     name: "Paid",
-    value: 1,
+    value: 0,
   },
   {
-    key: 2,
+    key: 1,
     name: "Pending",
-    value: 2,
+    value: 1,
   },
   {
     key: 3,

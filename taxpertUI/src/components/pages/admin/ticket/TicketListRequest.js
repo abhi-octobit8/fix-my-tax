@@ -104,8 +104,8 @@ const TicketListRequest = () => {
     },
     {
       title: "Payment status",
-      dataIndex: "paymentStatus",
-      key: "paymentStatus",
+      dataIndex: "paymentStaus",
+      key: "paymentStaus",
       render: (text, value) => {
         debugger;
         console.log(text);

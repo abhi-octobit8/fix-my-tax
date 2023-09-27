@@ -65,8 +65,7 @@ const CheckoutPage = (props) => {
       );
       if (res.id) {
         const responseData = await GetPaymentPrice(
-          res.orderId,
-          toFixed(priceInfo?.totalAmount)
+          res.orderId
         );
         if (responseData) {
           window.location.replace(responseData);
