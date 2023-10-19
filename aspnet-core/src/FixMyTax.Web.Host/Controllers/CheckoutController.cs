@@ -4,6 +4,7 @@ using Abp.Net.Mail;
 using FixMyTax.Authorization.Users;
 using FixMyTax.Controllers;
 using FixMyTax.FixMyTaxModels;
+using FixMyTax.FixMyTaxServices.Dtos.zoom;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Specialized;
@@ -14,17 +15,19 @@ namespace FixMyTax.Web.Host.Controllers
     {
         private readonly CCAvenueService cCAvenueService;
         private readonly IRepository<RequestTicket> _ticketRepository;
+        private readonly IRepository<Slot> _slotRepository;
         private readonly UserManager _userManager;
         private readonly IEmailSender _emailSender;
         private readonly FixMyTaxEmailSender _fixMyTaxEmail;
 
-        public CheckoutController(IRepository<RequestTicket> ticketRepository, UserManager userManager, IEmailSender emailSender)
+        public CheckoutController(IRepository<RequestTicket> ticketRepository, UserManager userManager, IEmailSender emailSender, IRepository<Slot> slotRepository)
         {
             cCAvenueService = new CCAvenueService();
             _ticketRepository = ticketRepository;
             _userManager = userManager;
             _emailSender = emailSender;
             _fixMyTaxEmail = new FixMyTaxEmailSender(_emailSender);
+            _slotRepository = slotRepository;
         }
         public IActionResult Index()
         {
@@ -67,7 +70,7 @@ namespace FixMyTax.Web.Host.Controllers
                 }
             }
 
-            if (Params["order_status"] == "Aborted")
+            if (Params["order_status"] == "Success")
             {
                 //user canceled
                 ticketEntity.PaymentStaus = PaymentStatus.Canceled;
@@ -77,7 +80,7 @@ namespace FixMyTax.Web.Host.Controllers
                 _ticketRepository.Update(ticketEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
-            else if(Params["order_status"] == "Success")
+            else if(Params["order_status"] == "Aborted")
             {
                 //success
                 ticketEntity.PaymentStaus = PaymentStatus.Paid;
@@ -87,6 +90,39 @@ namespace FixMyTax.Web.Host.Controllers
                 _ticketRepository.Update(ticketEntity);
                 CurrentUnitOfWork.SaveChanges();
 
+                
+                if (ticketEntity.SlotId != null && ticketEntity.SlotId > 0)
+                {
+                    ZoomMeeting meeting = null;
+                    var slot = _slotRepository.FirstOrDefault(x => x.Id == ticketEntity.SlotId);
+
+                    //schedule zoom meeting
+                    try
+                    {
+                        ZoomMeetingRequest meet = new ZoomMeetingRequest();
+                        meet.topic = ticketEntity.Description;
+                        meet.start_time = slot.StartTime.ToString("yyyy-MM-ddTHH:mm:ss");
+
+                        ZoomService service = new ZoomService();
+                        System.Threading.Tasks.Task<ZoomMeeting> task = service.CreateMeeting(meet);
+                        meeting = task.Result;
+
+                        if (meeting != null)
+                        {
+                            ticketEntity.ZoomJoinUrl = meeting.JoinUrl;
+                            ticketEntity.ZoomTopic = meeting.Topic;
+                            ticketEntity.ZoomTime = meeting.Time;
+                            ticketEntity.ZoomMeetingId = meeting.MeetingId;
+                            ticketEntity.ZoomMeetingPasscode = meeting.Passcode;
+                            ticketEntity = _ticketRepository.Update(ticketEntity);
+                            CurrentUnitOfWork.SaveChanges();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex.Message, ex);
+                    }
+                }
                 if (!string.IsNullOrEmpty(ticketEntity.ZoomJoinUrl))
                 {
                     try

@@ -63,7 +63,6 @@ namespace FixMyTax.FixMyTaxServices.Implementation
             ticket.PaymentStaus = FixMyTaxModels.PaymentStatus.Pending;
             ticket.OrderId = Guid.NewGuid().ToString();
             var tickeEntity = await _ticketRepository.InsertAsync(ticket);
-            ZoomMeeting meeting = null;
             if (tickeEntity.SlotId != null && tickeEntity.SlotId>0)
             {
                 var slot = _slotRepository.FirstOrDefault(x => x.Id == tickeEntity.SlotId);
@@ -76,32 +75,33 @@ namespace FixMyTax.FixMyTaxServices.Implementation
                 slot = await _slotRepository.UpdateAsync(slot);
 
                 //schedule zoom meeting
-                try
-                {
-                    ZoomMeetingRequest meet = new ZoomMeetingRequest();
-                    meet.topic = input.Description;
-                    meet.start_time = slot.StartTime.ToString("yyyy-MM-ddTHH:mm:ss");
+                //try
+                //{
+                //    ZoomMeetingRequest meet = new ZoomMeetingRequest();
+                //    meet.topic = input.Description;
+                //    meet.start_time = slot.StartTime.ToString("yyyy-MM-ddTHH:mm:ss");
 
-                    ZoomService service = new ZoomService();
-                    meeting = await service.CreateMeeting(meet);
-                }
-                catch(Exception ex)
-                {
-                    Logger.Error(ex.Message, ex);
-                }
+                //    ZoomService service = new ZoomService();
+                //    meeting = await service.CreateMeeting(meet);
+                //}
+                //catch(Exception ex)
+                //{
+                //    Logger.Error(ex.Message, ex);
+                //}
                 
             }
+
+            //if(meeting != null)
+            //{
+            //    tickeEntity.ZoomJoinUrl = meeting.JoinUrl;
+            //    tickeEntity.ZoomTopic = meeting.Topic;
+            //    tickeEntity.ZoomTime = meeting.Time;
+            //    tickeEntity.ZoomMeetingId = meeting.MeetingId;
+            //    tickeEntity.ZoomMeetingPasscode = meeting.Passcode;
+            //    tickeEntity = await _ticketRepository.UpdateAsync(tickeEntity);
+            //    CurrentUnitOfWork.SaveChanges();
+            //}
             CurrentUnitOfWork.SaveChanges();
-            if(meeting != null)
-            {
-                tickeEntity.ZoomJoinUrl = meeting.JoinUrl;
-                tickeEntity.ZoomTopic = meeting.Topic;
-                tickeEntity.ZoomTime = meeting.Time;
-                tickeEntity.ZoomMeetingId = meeting.MeetingId;
-                tickeEntity.ZoomMeetingPasscode = meeting.Passcode;
-                tickeEntity = await _ticketRepository.UpdateAsync(tickeEntity);
-                CurrentUnitOfWork.SaveChanges();
-            }
             return ObjectMapper.Map<TicketListDto>(tickeEntity);
         }
 

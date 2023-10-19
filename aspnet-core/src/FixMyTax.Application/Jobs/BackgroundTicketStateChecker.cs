@@ -39,7 +39,7 @@ namespace FixMyTax.Jobs
         {
             using (CurrentUnitOfWork.DisableFilter(AbpDataFilters.MayHaveTenant))
             {
-                var tickets = _ticketRepository.GetAllList().Where(x => x.Status == TicketStatus.New || x.Status == TicketStatus.Assigned);
+                var tickets = _ticketRepository.GetAllList().Where(x => (x.Status == TicketStatus.New || x.Status == TicketStatus.Assigned) && x.PaymentStaus == FixMyTaxModels.PaymentStatus.Paid);
                 bool sendMail = false;
                 foreach (var ticket in tickets)
                 {
