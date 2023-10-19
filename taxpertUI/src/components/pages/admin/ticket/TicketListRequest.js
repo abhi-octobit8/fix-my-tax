@@ -107,7 +107,6 @@ const TicketListRequest = () => {
       dataIndex: "paymentStaus",
       key: "paymentStaus",
       render: (text, value) => {
-        debugger;
         console.log(text);
         return <span>{getObjectFromList(PAYMENT_STATUS, text)?.name}</span>;
       },

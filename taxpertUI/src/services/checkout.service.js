@@ -11,6 +11,5 @@ export const GetPaymentPrice = async (orderId) => {
   const res = await API({
     url: `/services/app/RatecardService/GetPaymentParams?orderId=${orderId}`,
   });
-  debugger;
   return res;
 };
