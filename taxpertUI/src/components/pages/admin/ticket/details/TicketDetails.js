@@ -141,6 +141,14 @@ const TicketDetails = (props) => {
                 {ticketdetailsData?.slot?.slotName}
               </Descriptions.Item>
             ) : null}
+
+            {ticketdetailsData?.serviceType === 1 ? (
+              <Descriptions.Item label="Zoom Link" span={3}>
+                <a href={ticketdetailsData?.zoomJoinUrl} target="_blank">
+                  {ticketdetailsData?.zoomJoinUrl}
+                </a>
+              </Descriptions.Item>
+            ) : null}
             <Descriptions.Item
               contentStyle={{
                 display: "inline",
