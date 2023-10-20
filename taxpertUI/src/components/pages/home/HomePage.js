@@ -84,7 +84,7 @@ function HomePage() {
         <div className="container" data-aos="fade-up">
           <div className="row ">
             <div className="col-lg-6 banner-section-content ">
-              <h2> We will manage your taxes, you enjoy life.</h2>
+              <h1>Fix My Tax will manage your taxes, you enjoy life.</h1>
               <h6> What We Do</h6>
               <ul>
                 {items.map((item, index) => {
