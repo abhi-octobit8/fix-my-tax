@@ -264,7 +264,7 @@ const TnC = () => (
             “fixmytax” / KCPL gives you right to raise genuine precise grievance
             alongwith testimonial evidence to Smt. Nidhi Pawan Singh (Advocate
             Allahabad High Court); karsathi.nidhi@gmail.com; Mobile - +91-
-            6387022844 [Mon – Fri: 11:00 AM to 5:00 PM].
+            18003090678 [Mon – Fri: 11:00 AM to 5:00 PM].
           </p>
         </li>
         <li className="sub-point">

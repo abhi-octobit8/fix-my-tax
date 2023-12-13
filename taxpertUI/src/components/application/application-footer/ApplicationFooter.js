@@ -110,7 +110,7 @@ function ApplicationFooter() {
                 <br />
                 <strong>Available</strong> Monday to Friday: 10:00 am to 6:00 pm
                 <br />
-                <strong>Phone</strong> +91 6387022844
+                <strong>Phone</strong> 18003090678
                 <br />
                 <strong>Email:</strong>contact@fixmytax.in
                 <br />
