@@ -3,6 +3,8 @@ import { Card, Collapse, Space } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 
 import TaxAppealFormContainer from "../../../../modules/tax-appeal/TaxAppealFormContainer";
+import { TAGS } from "../../../../shared/constant/Tags";
+import SeoHeader from "../../../../common/seo/SeoHeader";
 
 const { Panel } = Collapse;
 
@@ -11,6 +13,10 @@ const TaxAppealPage = (props) => {
 
   return (
     <React.Fragment>
+      <SeoHeader
+        title={TAGS.tax_appeal.title}
+        description={TAGS.tax_appeal.decription}
+      />
       <section id="service-banner-itr-notice" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">

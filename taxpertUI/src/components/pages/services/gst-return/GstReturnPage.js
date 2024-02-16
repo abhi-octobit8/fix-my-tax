@@ -6,6 +6,8 @@ import gstReturn from "../../../../assets/img/gst_return.png";
 import { openFile } from "../../../../shared/utils";
 
 import "./GstReturnPage.css";
+import SeoHeader from "../../../../common/seo/SeoHeader";
+import { TAGS } from "../../../../shared/constant/Tags";
 
 const { Panel } = Collapse;
 
@@ -14,6 +16,10 @@ const GstReturnPage = () => {
 
   return (
     <React.Fragment>
+      <SeoHeader
+        title={TAGS.gst_return.title}
+        description={TAGS.gst_return.decription}
+      />
       <section id="service-banner-tds" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">

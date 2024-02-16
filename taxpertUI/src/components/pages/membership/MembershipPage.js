@@ -1,9 +1,15 @@
 import React from "react";
 import membership from "../../../assets/img/membership_new.png";
 import "./MembershipPage.css";
+import SeoHeader from "../../../common/seo/SeoHeader";
+import { TAGS } from "../../../shared/constant/Tags";
 
 const MembershipPage = () => (
   <>
+    <SeoHeader
+      title={TAGS.membership_plan.title}
+      description={TAGS.membership_plan.decription}
+    />
     <section id="service-banner" className="section-banner">
       <div className="container" data-aos="fade-up">
         <div className="row justify-content-center">

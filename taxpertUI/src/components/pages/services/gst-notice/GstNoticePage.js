@@ -4,6 +4,8 @@ import { Card } from "antd";
 import { Collapse, Space } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 import GstNoticeFormContainer from "../../../../modules/gst-notice-form/GstNoticeFormContainer";
+import { TAGS } from "../../../../shared/constant/Tags";
+import SeoHeader from "../../../../common/seo/SeoHeader";
 
 const { Panel } = Collapse;
 
@@ -12,6 +14,10 @@ const GstNoticePage = () => {
 
   return (
     <>
+      <SeoHeader
+        title={TAGS.gst_notice.title}
+        description={TAGS.gst_notice.decription}
+      />
       <section id="service-banner-tds" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">

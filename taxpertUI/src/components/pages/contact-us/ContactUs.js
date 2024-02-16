@@ -10,6 +10,8 @@ import "./ContactUs.css";
 import TextArea from "antd/lib/input/TextArea";
 import { phoneNumberValidator } from "../../../shared/validator";
 import { contactUsService } from "../../../services/register.service";
+import SeoHeader from "../../../common/seo/SeoHeader";
+import { TAGS } from "../../../shared/constant/Tags";
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -75,6 +77,10 @@ const ContactUs = () => {
   );
   return (
     <>
+      <SeoHeader
+        title={TAGS.contact_us.title}
+        description={TAGS.contact_us.decription}
+      />
       <h3 className="top-head">Contact Us</h3>
       <div className="contact-page">
         <Row className="contact-us-container">

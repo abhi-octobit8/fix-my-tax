@@ -8,9 +8,15 @@ import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
 import promoter2 from "../../../assets/img/nidhi_singh.PNG";
 import "./AboutPage.css";
 import { Col, Row } from "antd";
+import SeoHeader from "../../../common/seo/SeoHeader";
+import { TAGS } from "../../../shared/constant/Tags";
 
 const AboutPage = () => (
   <>
+    <SeoHeader
+      title={TAGS.about_us.title}
+      description={TAGS.about_us.decription}
+    />
     <section id="service-banner" className="section-banner">
       <div className="container" data-aos="fade-up">
         <div className="row justify-content-center">

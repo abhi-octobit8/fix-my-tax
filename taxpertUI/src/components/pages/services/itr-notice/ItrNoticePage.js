@@ -3,6 +3,8 @@ import { Card, Collapse, Space } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 
 import ItrNoticeFormContainer from "../../../../modules/itr-notice/ItrNoticeFormContainer";
+import { TAGS } from "../../../../shared/constant/Tags";
+import SeoHeader from "../../../../common/seo/SeoHeader";
 
 const { Panel } = Collapse;
 
@@ -11,6 +13,10 @@ const ItrNoticePage = (props) => {
 
   return (
     <React.Fragment>
+      <SeoHeader
+        title={TAGS.itr_tds_tcs_notice.title}
+        description={TAGS.itr_tds_tcs_notice.decription}
+      />
       <section id="service-banner-itr-notice" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">

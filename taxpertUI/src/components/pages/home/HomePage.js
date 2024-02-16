@@ -26,14 +26,13 @@ import {
 import logo1 from "../../../assets/img/sahab.png";
 import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
 import promoter2 from "../../../assets/img/nidhi_singh.PNG";
-// import xocovoPartner from "../../../assets/img/xocovo.png";
-// import smartPartner from "../../../assets/img/smartpartner.png";
-// import medimaaPartner from "../../../assets/img/medimaa.png";
-// import xocovoPartner1 from "../../../assets/img/zupier.jpeg";
+
 import { PATH } from "../../../shared/Route";
 import useRedirectPath from "../../hooks/useRedirectPath";
 
 import "./HomePage.css";
+import SeoHeader from "../../../common/seo/SeoHeader";
+import { TAGS } from "../../../shared/constant/Tags";
 
 const items = [
   { id: 1, value: "Income Tax & GST Return Filing" },
@@ -80,6 +79,7 @@ function HomePage() {
 
   return (
     <React.Fragment>
+      <SeoHeader title={TAGS.home.title} description={TAGS.home.decription} />
       <section id="banner-to-action" className="banner-to-action">
         <div className="container" data-aos="fade-up">
           <div className="row ">

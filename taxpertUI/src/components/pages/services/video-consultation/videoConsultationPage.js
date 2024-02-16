@@ -4,6 +4,8 @@ import { Collapse, Space, Card } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 
 import VideoConsultationFormContainer from "../../../../modules/video-consultation/VideoConsultationFormContainer";
+import SeoHeader from "../../../../common/seo/SeoHeader";
+import { TAGS } from "../../../../shared/constant/Tags";
 
 const { Panel } = Collapse;
 
@@ -12,6 +14,10 @@ const VideoConsultationPage = () => {
 
   return (
     <React.Fragment>
+      <SeoHeader
+        title={TAGS.video_consultation.title}
+        description={TAGS.video_consultation.decription}
+      />
       <section id="service-banner--consultation" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">

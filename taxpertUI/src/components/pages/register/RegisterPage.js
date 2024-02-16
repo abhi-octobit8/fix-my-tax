@@ -25,6 +25,8 @@ import {
 import { SUCCESS_MESSAGE_INFO } from "../../../shared/constant/MessageInfo";
 import { useNavigate } from "react-router-dom";
 import { PATH } from "../../../shared/Route";
+import SeoHeader from "../../../common/seo/SeoHeader";
+import { TAGS } from "../../../shared/constant/Tags";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -115,171 +117,178 @@ const RegisterPage = (props) => {
   );
 
   return (
-    <Card className="card-container" bordered={true}>
-      <Row className="content-margin-tab">
-        {" "}
-        <Col span={8} offset={6}>
-          <Header3>Registration</Header3>
-        </Col>
-      </Row>
-      <div offset={8}></div>
-      <Form
-        {...formItemLayout}
-        form={form}
-        name="register"
-        onFinish={onFinish}
-        initialValues={{
-          prefix: "91",
-        }}
-        scrollToFirstError
-      >
-        <Form.Item
-          label="Name"
-          name="name"
-          rules={[{ required: true, message: "This field is required" }]}
-        >
-          <Input />
-        </Form.Item>
+    <>
+      <SeoHeader
+        title={TAGS.register.title}
+        description={TAGS.register.decription}
+      />
 
-        <Form.Item
-          name="email"
-          label="E-mail"
-          rules={[
-            {
-              type: "email",
-              message: "The input is not valid E-mail!",
-            },
-            {
-              required: true,
-              message: "Please input your E-mail!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Pan Card No"
-          name="panCardNumber"
-          rules={[{ required: true, message: "This field is required" }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Aadhar Card No"
-          name="adharNumber"
-          rules={[{ required: true, message: "This field is required" }]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item label="GSTIN" name="gstNumber">
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          name="userCategory"
-          label="Category (For Availing Discount)"
-          rules={[
-            {
-              required: true,
-              message: "Please select Category!",
-            },
-          ]}
-          extra="Except General; Rest Categories Are Eligible For Discount Of 10%"
-        >
-          <Select placeholder="Select Your Category" showSearch>
-            {REGISTER_CATEGORIES.map((x, i) => {
-              return (
-                <Option value={x.value} key={i}>
-                  {x.name}
-                </Option>
-              );
-            })}
-          </Select>
-        </Form.Item>
-        <Form.Item noStyle shouldUpdate>
-          {({ getFieldValue }) => {
-            const value = getFieldValue("userCategory");
-            if (value && value !== 1) {
-              return (
-                <Form.Item
-                  name="uploadDocument"
-                  label="Upload Document"
-                  valuePropName="fileList"
-                  getValueFromEvent={normFile}
-                  extra="Upload Identity Card issued by the Government Authorities / Institutions"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please Upload Document to Verified",
-                    },
-                  ]}
-                >
-                  <Upload
-                    beforeUpload={(file) => {
-                      return false;
-                    }}
-                    multiple={false}
-                    maxCount={1}
-                  >
-                    <Button icon={<UploadOutlined />}>Click to upload</Button>
-                  </Upload>
-                </Form.Item>
-              );
-            }
-            return null;
+      <Card className="card-container" bordered={true}>
+        <Row className="content-margin-tab">
+          {" "}
+          <Col span={8} offset={6}>
+            <Header3>Registration</Header3>
+          </Col>
+        </Row>
+        <div offset={8}></div>
+        <Form
+          {...formItemLayout}
+          form={form}
+          name="register"
+          onFinish={onFinish}
+          initialValues={{
+            prefix: "91",
           }}
-        </Form.Item>
-
-        <Form.Item
-          name="phoneNumber"
-          label="Phone Number"
-          rules={[
-            {
-              required: true,
-              message: "Please input your phone number!",
-            },
-            phoneNumberValidator,
-          ]}
+          scrollToFirstError
         >
-          <Input
-            addonBefore={prefixSelector}
-            style={{
-              width: "100%",
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[{ required: true, message: "This field is required" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            name="email"
+            label="E-mail"
+            rules={[
+              {
+                type: "email",
+                message: "The input is not valid E-mail!",
+              },
+              {
+                required: true,
+                message: "Please input your E-mail!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Pan Card No"
+            name="panCardNumber"
+            rules={[{ required: true, message: "This field is required" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Aadhar Card No"
+            name="adharNumber"
+            rules={[{ required: true, message: "This field is required" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item label="GSTIN" name="gstNumber">
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            name="userCategory"
+            label="Category (For Availing Discount)"
+            rules={[
+              {
+                required: true,
+                message: "Please select Category!",
+              },
+            ]}
+            extra="Except General; Rest Categories Are Eligible For Discount Of 10%"
+          >
+            <Select placeholder="Select Your Category" showSearch>
+              {REGISTER_CATEGORIES.map((x, i) => {
+                return (
+                  <Option value={x.value} key={i}>
+                    {x.name}
+                  </Option>
+                );
+              })}
+            </Select>
+          </Form.Item>
+          <Form.Item noStyle shouldUpdate>
+            {({ getFieldValue }) => {
+              const value = getFieldValue("userCategory");
+              if (value && value !== 1) {
+                return (
+                  <Form.Item
+                    name="uploadDocument"
+                    label="Upload Document"
+                    valuePropName="fileList"
+                    getValueFromEvent={normFile}
+                    extra="Upload Identity Card issued by the Government Authorities / Institutions"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please Upload Document to Verified",
+                      },
+                    ]}
+                  >
+                    <Upload
+                      beforeUpload={(file) => {
+                        return false;
+                      }}
+                      multiple={false}
+                      maxCount={1}
+                    >
+                      <Button icon={<UploadOutlined />}>Click to upload</Button>
+                    </Upload>
+                  </Form.Item>
+                );
+              }
+              return null;
             }}
-          />
-        </Form.Item>
+          </Form.Item>
 
-        <Form.Item
-          name="agreement"
-          valuePropName="checked"
-          rules={[
-            {
-              validator: (_, value) =>
-                value
-                  ? Promise.resolve()
-                  : Promise.reject(new Error("Should accept agreement")),
-            },
-          ]}
-          {...tailFormItemLayout}
-        >
-          <Checkbox>
-            I have read and I agree to the{" "}
-            <a
-              href="#"
-              onClick={() => openFile("/documents/TERMS_CONDITIONS_FMT.pdf")}
-            >
-              Terms & Condition.
-            </a>
-          </Checkbox>
-        </Form.Item>
+          <Form.Item
+            name="phoneNumber"
+            label="Phone Number"
+            rules={[
+              {
+                required: true,
+                message: "Please input your phone number!",
+              },
+              phoneNumberValidator,
+            ]}
+          >
+            <Input
+              addonBefore={prefixSelector}
+              style={{
+                width: "100%",
+              }}
+            />
+          </Form.Item>
 
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit" loading={isLoading}>
-            Register
-          </Button>
-        </Form.Item>
-      </Form>
-    </Card>
+          <Form.Item
+            name="agreement"
+            valuePropName="checked"
+            rules={[
+              {
+                validator: (_, value) =>
+                  value
+                    ? Promise.resolve()
+                    : Promise.reject(new Error("Should accept agreement")),
+              },
+            ]}
+            {...tailFormItemLayout}
+          >
+            <Checkbox>
+              I have read and I agree to the{" "}
+              <a
+                href="#"
+                onClick={() => openFile("/documents/TERMS_CONDITIONS_FMT.pdf")}
+              >
+                Terms & Condition.
+              </a>
+            </Checkbox>
+          </Form.Item>
+
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit" loading={isLoading}>
+              Register
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
+    </>
   );
 };
 
