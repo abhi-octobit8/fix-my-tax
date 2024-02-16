@@ -8,10 +8,8 @@ import {
 } from "../../shared/storage/storageKeys";
 import { getStore } from "../../store";
 
-const { getJSONItem, removeItem, setJSONItem, setItem, getItem } =
-  erLocalStorage;
-const { USER_KEY, ACCESS_TOKEN, REFRESH_TOKEN, MODULE_DATA, STORE_IDS } =
-  STORAGE_KEYS;
+const { getJSONItem, removeItem, setItem } = erLocalStorage;
+const { USER_KEY, ACCESS_TOKEN } = STORAGE_KEYS;
 const { TAG_KEY } = SESSTION_STORAGE_KEYS;
 const dispatch = getStore().dispatch;
 const API_CACHE_PREFIX = "API_CACHE";

@@ -147,17 +147,6 @@ const TaxAppealForm = (props) => {
       setIsLoading(false);
     }
   };
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="91">+91</Option>
-      </Select>
-    </Form.Item>
-  );
 
   return (
     <Form

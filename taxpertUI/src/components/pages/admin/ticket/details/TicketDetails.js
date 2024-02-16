@@ -5,21 +5,14 @@ import {
   Button,
   Form,
   Card,
-  Comment,
-  List,
   Descriptions,
-  Tag,
   Typography,
   Tooltip,
   Upload,
   Row,
   Col,
 } from "antd";
-import {
-  UploadOutlined,
-  CheckCircleOutlined,
-  CheckOutlined,
-} from "@ant-design/icons";
+import { UploadOutlined, CheckOutlined } from "@ant-design/icons";
 import { getTicketDetails } from "../../../../../services/ticket.service";
 import {
   downloaFile,
@@ -30,10 +23,8 @@ import {
 import { ServiceType } from "../../../services/constant";
 
 import "./TicketDetails.less";
-import TextArea from "antd/lib/input/TextArea";
 import { uploadRequestFile } from "../../../../../services/register.service";
 import { useState } from "react";
-import CheckableTag from "antd/lib/tag/CheckableTag";
 import SidePanel from "./side-panel/SidePanel";
 import CommentDetails from "./CommentDetails";
 import { DATE_FORMATS, getLocalTime } from "../../../../../shared/timeUtils";
@@ -77,7 +68,6 @@ const TicketDetails = (props) => {
         message.success(res);
         setUpdateData(getRandomString());
         updloadForm.resetFields();
-        // navigate(PATH.TICKET_REQUEST_LIST);
       }
     } catch (e) {
       console.error(e);
@@ -85,24 +75,6 @@ const TicketDetails = (props) => {
       setIsUploading(false);
     }
   };
-
-  // const Editor = ({ onChange, onSubmit, submitting, value }) => (
-  //   <>
-  //     <Form.Item>
-  //       <TextArea rows={4} onChange={onChange} value={value} />
-  //     </Form.Item>
-  //     <Form.Item>
-  //       <Button
-  //         htmlType="submit"
-  //         // loading={isUplaoding}
-  //         onClick={onSubmit}
-  //         type="primary"
-  //       >
-  //         Add Comment
-  //       </Button>
-  //     </Form.Item>
-  //   </>
-  // );
 
   return (
     <Card
@@ -225,34 +197,6 @@ const TicketDetails = (props) => {
         </Form.Item>
       </Form>
       <CommentDetails ticketId={id} />
-
-      {/* <Comment
-        content={
-          <Editor
-            // onChange={handleChange}
-            onSubmit={onHandleCommentSubmit}
-            // submitting={submitting}
-            // value={value}
-          />
-        }
-      />
-      <List
-        className="comment-list"
-        header={`Comments`}
-        itemLayout="horizontal"
-        dataSource={testData}
-        renderItem={(item) => (
-          <li>
-            <Comment
-              actions={item.actions}
-              author={item.author}
-              avatar={item.avatar}
-              content={item.content}
-              datetime={item.datetime}
-            />
-          </li>
-        )}
-      /> */}
     </Card>
   );
 };

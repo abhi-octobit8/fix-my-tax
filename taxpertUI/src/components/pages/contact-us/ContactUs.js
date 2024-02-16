@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Select, Upload, Row, Col } from "antd";
+import { Button, Form, Input, Select, Row, Col } from "antd";
 import {
-  UploadOutlined,
   ArrowRightOutlined,
   PhoneTwoTone,
   MailTwoTone,
@@ -43,13 +42,7 @@ const tailFormItemLayout = {
     },
   },
 };
-const normFile = (e) => {
-  console.log("Upload event:", e);
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
+
 const ContactUs = () => {
   const [form] = Form.useForm();
   const [isLoading, setIsLoading] = useState(false);

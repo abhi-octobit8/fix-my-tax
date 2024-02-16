@@ -1,38 +1,24 @@
 import React from "react";
 import {
-  StarOutlined,
-  StarFilled,
   CheckCircleFilled,
-  CheckCircleTwoTone,
-  YoutubeOutlined,
   YoutubeFilled,
-  FacebookOutlined,
-  InstagramOutlined,
   TwitterOutlined,
   FacebookFilled,
   LinkedinOutlined,
 } from "@ant-design/icons";
-import { AutoComplete, Button, Card, Col, Row } from "antd";
+import { Button, Card, Col, Row } from "antd";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
 import card3 from "../../../assets/img/card3.svg";
 import about from "../../../assets/img/team.jpg";
-import {
-  AuthorizedIcon,
-  RatingIcon,
-  SafeSecureIcon,
-  TrustedUserIcon,
-} from "../../../common/icons/icons";
+import { AuthorizedIcon, SafeSecureIcon } from "../../../common/icons/icons";
 import logo1 from "../../../assets/img/sahab.png";
-import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
-import promoter2 from "../../../assets/img/nidhi_singh.PNG";
-
 import { PATH } from "../../../shared/Route";
 import useRedirectPath from "../../hooks/useRedirectPath";
-
-import "./HomePage.css";
 import SeoHeader from "../../../common/seo/SeoHeader";
 import { TAGS } from "../../../shared/constant/Tags";
+
+import "./HomePage.css";
 
 const items = [
   { id: 1, value: "Income Tax & GST Return Filing" },
@@ -381,198 +367,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* <section className="promoters-section">
-        <div className="section-header">
-          <h1>Our Founder And Promoters</h1>
-          <hr className="taxpert-line" />
-        </div>
-
-        <div className="testimonial-containter">
-          <div className="box">
-            <img
-              className="cover promoters-image"
-              src={promoter1}
-              alt="text"
-              height={400}
-              width={400}
-            />
-            <div className="content">
-              <div className="info">
-                <div className="name">Dr. Pawan Jaiswal</div>
-                <div>
-                  <span className="name">Qualifications: </span>{" "}
-                  <span className="job">
-                    M.Com., Ph.D., M.B.A., F.C.M.A, M.I.MA., Ex.RP – MCA & SEBI,
-                    F.I.V., CA(I) (Senior Tax & Cost Management Consultant).
-                  </span>
-                </div>
-              </div>
-            </div>
-            <p>
-              Dr. Jaiswal is having experience and expertise in the field of
-              Direct & Indirect Taxation, Financial Management and Enterprise
-              Start-up for a career spanning over 3 decades. He is also approved
-              valuer for Government Agencies and member of various Government
-              Policy making Agencies. Rising from a humble back-ground with the
-              sole aspiration to ease the complicities of taxation for common
-              man in India and across the globe. Besides being a Tax & Finance
-              Expert, he is also an avid speaker on the subject delivering
-              thousands on lecturers on Government & Corporate platforms and
-              actively involved in social and philanthropic activities for the
-              upliftment of poor and needy strata of the society.
-            </p>
-            <br />
-          </div>
-          <div className="box">
-            <img
-              className="cover promoters-image"
-              src={promoter2}
-              alt="text"
-              height={400}
-              width={400}
-            />
-            <div className="content">
-              <div className="info">
-                <div className="name">Smt. Nidhi Pawan Singh</div>
-                <div>
-                  <span className="name">Qualifications: </span>{" "}
-                  <span className="job">MSc, LLB, MBA, A.M.I.M.A.</span>
-                </div>
-                <br />
-              </div>
-            </div>
-            <p>
-              Smt. Singh is a dynamic Advocate representing the image of women
-              empowerment having vast experience in the domain of law
-              specifically [Direct & Indirect Taxation] for a career spanning
-              over 2 decades. She is also Empanelled as Mediator of Allahabad
-              High Court Mediation and Conciliation Centre [AHCMCC]. Her areas
-              of work interest include Taxation, Business Management and
-              Mathematics. Along-with her husband Dr. Pawan Jaiswal she is also
-              involved in silent philanthropic activities for upliftment of
-              weaker section of society. Belonging to a family of bureaucrats;
-              her main forte is administration.
-            </p>
-          </div>
-        </div>
-      </section> */}
-
-      {/* <section className="testimonial-value-section">
-        <div className="section-header">
-          <h1>Testimonial</h1>
-          <hr className="taxpert-line" />
-          <h4>Read What Our Customers Say</h4>
-        </div>
-        <div className="video-section">
-          <div className="videos first-video">
-            <iframe
-              title="video"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              src="https://www.youtube.com/embed/84R6m0Zj-Dc"
-            ></iframe>
-          </div>
-
-          <div className="videos second-video">
-            <iframe
-              title="video"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              src="https://www.youtube.com/embed/UZRIObmTSjg"
-            ></iframe>
-          </div>
-        </div>
-
-        <div className="testimonial-containter">
-          <div className="box">
-            <p>
-              Promoters of fixmytax proved to be a saviour during my crisis;
-              their experts were quick, compassionate, and professional. Cannot
-              ask for more. Their timely guidance helped to get all my statutory
-              compliances in time.
-            </p>
-            <div className="content">
-              <div className="info">
-                <div className="name">Naveen Kesarwani</div>
-                <div className="job">Industrialist</div>
-                <div className="stars">
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarOutlined />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="box">
-            <p>
-              Your consultants are very prompt and intensive in their response
-              which helped me to file my ITRs conveniently and smoothly.
-            </p>
-            <br />
-            <div className="content">
-              <div className="info">
-                <div className="name">Subhas Chandra Dubey</div>
-                <div className="job">IPS</div>
-                <div className="stars">
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarOutlined />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="box">
-            <p>
-              Outstanding customer service from promoters of fixmytax. Right
-              from the time of filing of return and completion of assessment
-              proceedings. Everything was well taken care off. All the best for
-              all their good work.
-            </p>
-            <div className="content">
-              <div className="info">
-                <div className="name">Dr. Ram Kumar Mishra</div>
-                <div className="job">CMA, CS</div>
-                <div className="stars">
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarOutlined />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-      {/* <section className="our-value-section">
-        <div className="section-header">
-          <h1>Our Value Partner</h1>
-          <hr className="taxpert-line" />
-        </div>
-        <div className="container">
-          <ul>
-            <li>
-              <img src={xocovoPartner} width={135} height={45} alt="logo" />
-            </li>
-            <li>
-              <img src={smartPartner} width={135} height={45} alt="logo" />
-            </li>
-            <li>
-              <img src={medimaaPartner} width={135} height={45} alt="logo" />
-            </li>
-            <li>
-              <img src={xocovoPartner1} width={135} height={45} alt="logo" />
-            </li>
-          </ul>
-        </div>
-      </section> */}
     </React.Fragment>
   );
 }

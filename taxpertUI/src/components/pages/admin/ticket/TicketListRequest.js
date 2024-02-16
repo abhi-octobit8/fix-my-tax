@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Dropdown, Row, Space, Tag } from "antd";
-import { MoreOutlined, PlusOutlined } from "@ant-design/icons";
+import { MoreOutlined } from "@ant-design/icons";
 import useRedirectPath from "../../../hooks/useRedirectPath";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import AssignTicket from "./AssignTicket";
@@ -12,9 +12,8 @@ import {
   getMenuActionItems,
   getObjectFromList,
 } from "../../../../shared/utils";
-import { ServiceType } from "../../services/constant";
 import useUserRole from "../../../hooks/useUserRole";
-import { getActionItems, items, TICKET_LIST_ACTION } from "./constant";
+import { items, TICKET_LIST_ACTION } from "./constant";
 import { USER_ROLE } from "../../../application/application-menu/constant";
 import { TicketStatus } from "../../../../shared/constants";
 import {

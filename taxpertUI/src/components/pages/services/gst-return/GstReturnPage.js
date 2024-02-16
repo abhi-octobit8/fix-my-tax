@@ -1,15 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Collapse, Space, Card } from "antd";
-import { Header1, Header3 } from "../../../../common/Headers";
+import { Card } from "antd";
+import { Header3 } from "../../../../common/Headers";
 import gstReturn from "../../../../assets/img/gst_return.png";
 import { openFile } from "../../../../shared/utils";
 
 import "./GstReturnPage.css";
 import SeoHeader from "../../../../common/seo/SeoHeader";
 import { TAGS } from "../../../../shared/constant/Tags";
-
-const { Panel } = Collapse;
 
 const GstReturnPage = () => {
   const titleHeader = "GST Return";

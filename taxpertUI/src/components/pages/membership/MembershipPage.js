@@ -1,8 +1,9 @@
 import React from "react";
 import membership from "../../../assets/img/membership_new.png";
-import "./MembershipPage.css";
 import SeoHeader from "../../../common/seo/SeoHeader";
 import { TAGS } from "../../../shared/constant/Tags";
+
+import "./MembershipPage.css";
 
 const MembershipPage = () => (
   <>
@@ -27,7 +28,6 @@ const MembershipPage = () => (
               the membership plans are currently available via email and the
               same will soon be made available over the portal.
             </p>
-            {/* <div>Content here...</div> */}
           </div>
         </div>
       </div>

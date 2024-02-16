@@ -1,6 +1,5 @@
 import API from "../shared/API";
 import { showNotification } from "../shared/utils";
-import { setNewRequestData } from "../store/request/RequestActions";
 
 export const registerNotice = async (body, uploadfileData) => {
   const registerResponse = await API({

@@ -12,16 +12,12 @@ import {
   Col,
   Upload,
 } from "antd";
-import API from "../../../shared/API";
 import { UploadOutlined } from "@ant-design/icons";
 import { phoneNumberValidator } from "../../../shared/validator";
 import { Header3 } from "../../../common/Headers";
 import { REGISTER_CATEGORIES } from "./constant";
 import { message, openFile } from "../../../shared/utils";
-import {
-  registerNotice,
-  registerUser,
-} from "../../../services/register.service";
+import { registerUser } from "../../../services/register.service";
 import { SUCCESS_MESSAGE_INFO } from "../../../shared/constant/MessageInfo";
 import { useNavigate } from "react-router-dom";
 import { PATH } from "../../../shared/Route";
@@ -97,12 +93,6 @@ const RegisterPage = (props) => {
       setIsLoading(false);
     }
   };
-
-  // doLogin({ ...loginResponse });
-  // await checkLogin(loginResponse.userId);
-
-  // setLoading(false);
-  // navigate("/request/newrequest");
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>

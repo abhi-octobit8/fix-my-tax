@@ -7,17 +7,12 @@ import {
   Input,
   Select,
   Upload,
-  Collapse,
-  DatePicker,
-  InputNumber,
   Checkbox,
   Tooltip,
   Space,
   Spin,
 } from "antd";
 import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
-import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
-import { phoneNumberValidator } from "../../shared/validator";
 import { FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
 
@@ -48,18 +43,7 @@ const formItemLayout = {
     },
   },
 };
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+
 const normFile = (e) => {
   console.log("Upload event:", e);
   if (Array.isArray(e)) {
@@ -163,17 +147,6 @@ const ItrNoticeForm = (props) => {
       setIsLoading(false);
     }
   };
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="91">+91</Option>
-      </Select>
-    </Form.Item>
-  );
 
   return (
     <Form
@@ -255,47 +228,6 @@ const ItrNoticeForm = (props) => {
         </Form.Item>
       </Spin>
 
-      {/* <Form.Item label="Upload Copy of Notice & other supporting documents">
-        <Space>
-          <Form.Item
-            name={FIELD_NAME.UPLOAD_DOCUMENT}
-            noStyle
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-            rules={[
-              {
-                required: true,
-                message: "Upload Required Document",
-              },
-            ]}
-          >
-            <Upload
-              beforeUpload={(file) => {
-                return false;
-              }}
-              multiple={false}
-              maxCount={1}
-              style={{
-                width: 160,
-              }}
-            >
-              <Button icon={<UploadOutlined />}>Click Upload File</Button>
-            </Upload>
-          </Form.Item>
-
-          <Tooltip title="Please merge file in single Pdf">
-            <InfoCircleOutlined
-              style={{ fontSize: "16px", color: "#f47c01" }}
-            />
-          </Tooltip>
-          <a
-            href="#"
-            onClick={() => openFile("/documents/ITR_FILINING_DOCUMENT.pdf")}
-          >
-            Documents Click Here
-          </a>
-        </Space>
-      </Form.Item> */}
       <Form.Item label="Upload Copy of Notice & other supporting documents">
         <Space>
           <Form.Item

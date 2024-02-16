@@ -1,12 +1,8 @@
 import React from "react";
 import "./CreateTicket.less";
-import { Button, Form, Input, Select, Card, Row, Col } from "antd";
-// import { CreateTicket } from "../../../../../services/advocate.service";
-import { PATH } from "../../../../../shared/Route";
-import useRedirectPath from "../../../../hooks/useRedirectPath";
+import { Form, Select, Card } from "antd";
 import { useState } from "react";
 import { FIX_MY_TAX_SERVICE_TYPES } from "../../../../../shared/constant/TaxService";
-// import ItrNoticeForm from "../../../../../common/itr-notice-form/ItrNoticeForm";
 import ItrNoticeFormContainer from "../../../../../modules/itr-notice/ItrNoticeFormContainer";
 import GstNoticeFormContainer from "../../../../../modules/gst-notice-form/GstNoticeFormContainer";
 import FilingItrFormContainer from "../../../../../modules/filing-itr/FilingItrFormContainer";
@@ -31,18 +27,7 @@ const formItemLayout = {
     },
   },
 };
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+
 const CreateTicket = (props) => {
   const [selectedService, setSelectedServices] = useState("");
 

@@ -1,13 +1,10 @@
 import React from "react";
 
-import { Collapse, Space, Card } from "antd";
+import { Card } from "antd";
 import { FixMyTaxServiceType } from "../constant";
-
 import VideoConsultationFormContainer from "../../../../modules/video-consultation/VideoConsultationFormContainer";
 import SeoHeader from "../../../../common/seo/SeoHeader";
 import { TAGS } from "../../../../shared/constant/Tags";
-
-const { Panel } = Collapse;
 
 const VideoConsultationPage = () => {
   const titleHeader = "Video Consultation";

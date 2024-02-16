@@ -1,6 +1,5 @@
 import API from "../shared/API";
 import {
-  setNewRequestData,
   setTicketDetailsData,
   setTicketListData,
 } from "../store/request/RequestActions";
