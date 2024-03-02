@@ -6,6 +6,7 @@ import {
   FacebookFilled,
   LinkedinOutlined,
 } from "@ant-design/icons";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Button, Card, Col, Row } from "antd";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
@@ -20,42 +21,6 @@ import { TAGS } from "../../../shared/constant/Tags";
 
 import "./HomePage.css";
 import { NavLink } from "react-router-dom";
-
-const items = [
-  { id: 1, value: "Income Tax & GST Return Filing" },
-  { id: 2, value: "Facilitate Tax Payment of Income Tax & GST" },
-  {
-    id: 3,
-    value:
-      "Preparation & Filing of Reply Petitions for Assessments of Income Tax & GST",
-  },
-  {
-    id: 4,
-    value:
-      "Drafting of Written Submission & Filing of First Appeal [Income Tax & GST]",
-  },
-  {
-    id: 5,
-    value:
-      "Drafting of Written Submission & Filing of Second Appeal [Income Tax & GST]",
-  },
-  {
-    id: 6,
-    value: "Video Conferencing Facility",
-  },
-  {
-    id: 7,
-    value: "Appearance on behalf of Assessee",
-  },
-  {
-    id: 8,
-    value: "Business Decisions Consultancy",
-  },
-  {
-    id: 9,
-    value: "Provide Answers to your Notices & Queries",
-  },
-];
 
 function HomePage() {
   const navigator = useRedirectPath();
@@ -139,7 +104,7 @@ function HomePage() {
               </ul>
             </div>
             <div className="col-lg-6 banner-image">
-              <img
+              <LazyLoadImage
                 className="cover"
                 src={logo1}
                 alt="text"
@@ -289,7 +254,7 @@ function HomePage() {
         </Col>
         <Col xs={24} md={16} lg={16} sm={24}>
           <span>
-            <img
+            <LazyLoadImage
               className="cover"
               src={about}
               alt="about"

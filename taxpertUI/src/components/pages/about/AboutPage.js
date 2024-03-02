@@ -1,7 +1,7 @@
 import React from "react";
 import max_benefit from "../../../assets/img/max_benefit.png";
 import upfront from "../../../assets/img/upfront.png";
-import team from "../../../assets/img/team.png";
+import team from "../../../assets/img/about.png";
 import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
 import promoter2 from "../../../assets/img/nidhi_singh.PNG";
 import "./AboutPage.css";
