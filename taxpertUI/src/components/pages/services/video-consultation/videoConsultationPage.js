@@ -5,6 +5,7 @@ import { FixMyTaxServiceType } from "../constant";
 import VideoConsultationFormContainer from "../../../../modules/video-consultation/VideoConsultationFormContainer";
 import SeoHeader from "../../../../common/seo/SeoHeader";
 import { TAGS } from "../../../../shared/constant/Tags";
+import { NavLink } from "react-router-dom";
 
 const VideoConsultationPage = () => {
   const titleHeader = "Video Consultation";
@@ -23,17 +24,17 @@ const VideoConsultationPage = () => {
               <p className="section-banner-data">
                 Introducing our innovative video consultation service for all
                 matters related to taxation and enterprise setup – the first of
-                its kind in the industry, provided by our tax consultancy firm.
-                With this service, we provide our clients with a virtual
-                consultation experience that is flexible, efficient, and
-                convenient. Our team of experienced tax professionals will
-                address all your queries and concerns, including tax planning,
-                compliance, and enterprise setup. With our advanced technology
-                and expertise, we aim to provide our clients with a seamless
-                video consultation experience that delivers personalized
-                solutions tailored to their unique needs. Trust us to provide
-                you with a modern and innovative approach to tax and enterprise
-                consultation services.
+                its kind in the industry, provided by our{" "}
+                <NavLink to="/"> Tax consultancy firm</NavLink>. With this
+                service, we provide our clients with a virtual consultation
+                experience that is flexible, efficient, and convenient. Our team
+                of experienced tax professionals will address all your queries
+                and concerns, including tax planning, compliance, and enterprise
+                setup. With our advanced technology and expertise, we aim to
+                provide our clients with a seamless video consultation
+                experience that delivers personalized solutions tailored to
+                their unique needs. Trust us to provide you with a modern and
+                innovative approach to tax and enterprise consultation services.
               </p>
             </div>
           </div>

@@ -8,6 +8,7 @@ import "./AboutPage.css";
 import { Col, Row } from "antd";
 import SeoHeader from "../../../common/seo/SeoHeader";
 import { TAGS } from "../../../shared/constant/Tags";
+import { NavLink } from "react-router-dom";
 
 const AboutPage = () => (
   <>
@@ -21,17 +22,17 @@ const AboutPage = () => (
           <div className="section-banner-info">
             <div className="section-banner-title">Our Mission</div>
             <p className="section-banner-data">
-              At our taxation consultancy firm, our mission is to provide
-              unparalleled tax solutions and guidance to our clients, enabling
-              them to make informed decisions and achieve their financial
-              objectives. We believe that tax compliance is not just a legal
-              obligation, but also an opportunity to optimize financial
-              performance and minimize risks. Our team of highly skilled
-              professionals strives to provide comprehensive tax services,
-              tailored to meet the specific needs of each client. We are
-              committed to staying up-to-date with the latest tax regulations,
-              trends and strategies, so that we can deliver innovative and
-              effective solutions that add value to our clients.
+              At our <NavLink to="/"> Taxation consultancy firm </NavLink> , our
+              mission is to provide unparalleled tax solutions and guidance to
+              our clients, enabling them to make informed decisions and achieve
+              their financial objectives. We believe that tax compliance is not
+              just a legal obligation, but also an opportunity to optimize
+              financial performance and minimize risks. Our team of highly
+              skilled professionals strives to provide comprehensive tax
+              services, tailored to meet the specific needs of each client. We
+              are committed to staying up-to-date with the latest tax
+              regulations, trends and strategies, so that we can deliver
+              innovative and effective solutions that add value to our clients.
             </p>
             <p className="section-banner-data">
               We understand that taxation can be complex and overwhelming, which

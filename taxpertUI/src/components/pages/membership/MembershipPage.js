@@ -4,6 +4,7 @@ import SeoHeader from "../../../common/seo/SeoHeader";
 import { TAGS } from "../../../shared/constant/Tags";
 
 import "./MembershipPage.css";
+import { NavLink } from "react-router-dom";
 
 const MembershipPage = () => (
   <>
@@ -22,11 +23,12 @@ const MembershipPage = () => (
               whether you are an individual or a business owner; Our plans come
               with a range of benefits, including access to our team of
               experienced tax professionals who can assist you with tax
-              planning, preparation, and filing. We provide personalized service
-              to ensure that you receive the attention you deserve, and we work
-              diligently to help you achieve your financial goals. Services of
-              the membership plans are currently available via email and the
-              same will soon be made available over the portal.
+              planning, preparation, and filing.{" "}
+              <NavLink to="/"> Fix My Tax </NavLink> provide personalized
+              service to ensure that you receive the attention you deserve, and
+              we work diligently to help you achieve your financial goals.
+              Services of the membership plans are currently available via email
+              and the same will soon be made available over the portal.
             </p>
           </div>
         </div>

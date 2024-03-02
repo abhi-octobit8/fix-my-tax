@@ -8,6 +8,7 @@ import { openFile } from "../../../../shared/utils";
 import "./GstReturnPage.css";
 import SeoHeader from "../../../../common/seo/SeoHeader";
 import { TAGS } from "../../../../shared/constant/Tags";
+import { NavLink } from "react-router-dom";
 
 const GstReturnPage = () => {
   const titleHeader = "GST Return";
@@ -30,9 +31,10 @@ const GstReturnPage = () => {
                 professionals will guide you through the entire process,
                 ensuring that all your GST obligations are met while maximizing
                 your tax savings. With our thorough understanding of GST laws
-                and regulations, we strive to provide our clients with peace of
-                mind during GST filing season. Trust us to handle your GST
-                filings with efficiency and accuracy.
+                and regulations, <NavLink to="/"> Fix My Tax </NavLink> strive
+                to provide our clients with peace of mind during GST filing
+                season. Trust us to handle your GST filings with efficiency and
+                accuracy.
               </p>
               <div className="section-header">
                 <Header3>

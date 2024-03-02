@@ -5,6 +5,7 @@ import { FixMyTaxServiceType } from "../constant";
 import ItrNoticeFormContainer from "../../../../modules/itr-notice/ItrNoticeFormContainer";
 import { TAGS } from "../../../../shared/constant/Tags";
 import SeoHeader from "../../../../common/seo/SeoHeader";
+import { NavLink } from "react-router-dom";
 
 const { Panel } = Collapse;
 
@@ -23,23 +24,24 @@ const ItrNoticePage = (props) => {
             <div className="section-banner-info">
               <div className="section-banner-title">ITR/TDS/TCS Notices</div>
               <p className="section-banner-data">
-                An income tax notice is a written communication sent by the
-                Income Tax Department to a taxpayer alerting an issue with his
-                tax account. The notice can be sent for different reasons like
-                filing/ non-filing his/ her income tax return, for the purpose
-                of making the assessment or to ask the certain details etc. When
-                a notice is sent by the Income Tax Department, the taxpayer has
-                to act on the notice and get the matter resolved with the tax
+                An <NavLink to="/service/tax-appeal"> Income Tax </NavLink>{" "}
+                notice is a written communication sent by the Income Tax
+                Department to a taxpayer alerting an issue with his tax account.
+                The notice can be sent for different reasons like filing/
+                non-filing his/ her income tax return, for the purpose of making
+                the assessment or to ask the certain details etc. When a notice
+                is sent by the Income Tax Department, the taxpayer has to act on
+                the notice and get the matter resolved with the tax
                 authorities.We understand that receiving a notice from the
                 Income Tax Department can be daunting, which is why we offer our
                 expertise to handle them for you. Our team of experienced tax
                 professionals will review and analyze the notice, ensuring that
                 all necessary actions are taken to resolve the issue promptly.
                 With our in-depth knowledge of ITR/TDS/TCS laws and regulations,
-                we aim to provide our clients with hassle-free notice handling
-                services. Trust us to handle your ITR/TDS/TCS notices with the
-                utmost professionalism and expertise, ensuring your compliance
-                with tax regulations.
+                <NavLink to="/"> Fix My Tax </NavLink> aim to provide our
+                clients with hassle-free notice handling services. Trust us to
+                handle your ITR/TDS/TCS notices with the utmost professionalism
+                and expertise, ensuring your compliance with tax regulations.
               </p>
             </div>
           </div>

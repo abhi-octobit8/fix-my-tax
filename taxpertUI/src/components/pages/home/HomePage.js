@@ -19,6 +19,7 @@ import SeoHeader from "../../../common/seo/SeoHeader";
 import { TAGS } from "../../../shared/constant/Tags";
 
 import "./HomePage.css";
+import { NavLink } from "react-router-dom";
 
 const items = [
   { id: 1, value: "Income Tax & GST Return Filing" },
@@ -73,20 +74,68 @@ function HomePage() {
               <h1>Fix My Tax will manage your taxes, you enjoy life.</h1>
               <h6> What We Do</h6>
               <ul>
-                {items.map((item, index) => {
-                  return (
-                    <>
-                      <li>
-                        {" "}
-                        {/* <CheckCircleTwoTone twoToneColor="#f47c01" />{" "} */}
-                        <CheckCircleFilled
-                          style={{ fontSize: "16px", color: "#f47c01" }}
-                        />{" "}
-                        {item.value}
-                      </li>
-                    </>
-                  );
-                })}
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Income Tax &{" "}
+                  <NavLink to="/service/gst-return">GST Return Filing </NavLink>
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Facilitate Tax Payment of{" "}
+                  <NavLink to="/service/tax-appeal"> Income Tax & GST </NavLink>
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Preparation & Filing of Reply Petitions for Assessments of
+                  Income Tax & GST
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Drafting of Written Submission & Filing of First Appeal
+                  [Income Tax & GST]
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Drafting of Written Submission & Filing of Second Appeal
+                  [Income Tax & GST]
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  <NavLink to="/service/video-consultation">
+                    {" "}
+                    Video Conferencing Facility
+                  </NavLink>
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Appearance on behalf of Assessee
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Business Decisions Consultancy
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Provide Answers to your Notices & Queries
+                </li>
               </ul>
             </div>
             <div className="col-lg-6 banner-image">
