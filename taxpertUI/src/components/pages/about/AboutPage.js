@@ -2,7 +2,7 @@ import React from "react";
 import max_benefit from "../../../assets/img/max_benefit.png";
 import upfront from "../../../assets/img/upfront.png";
 import team from "../../../assets/img/about.png";
-import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
+import promoter1 from "../../../assets/img/pawan_jaiswal.jpg";
 import promoter2 from "../../../assets/img/nidhi_singh.PNG";
 import "./AboutPage.css";
 import { Col, Row } from "antd";
@@ -60,7 +60,7 @@ const AboutPage = () => (
             src={promoter1}
             alt="text"
             height={400}
-            width={400}
+            width={"auto"}
           />
           <div className="content">
             <div className="info">
@@ -75,17 +75,17 @@ const AboutPage = () => (
             </div>
           </div>
           <p>
-            Dr. Jaiswal is having experience and expertise in the field of
-            Direct & Indirect Taxation, Financial Management and Enterprise
-            Start-up for a career spanning over 3 decades. He is also approved
-            valuer for Government Agencies and member of various Government
-            Policy making Agencies. Rising from a humble back-ground with the
-            sole aspiration to ease the complicities of taxation for common man
-            in India and across the globe. Besides being a Tax & Finance Expert,
-            he is also an avid speaker on the subject delivering thousands on
-            lecturers on Government & Corporate platforms and actively involved
-            in social and philanthropic activities for the upliftment of poor
-            and needy strata of the society.
+            Dr. Jaiswal has experience and expertise in the fields of Direct &
+            Indirect Taxation, Financial Management, and Enterprise Start-up,
+            spanning over three decades. He is also an approved valuer for
+            Government Agencies and a member of various Government Policy-making
+            Agencies. Rising from a humble background with the sole aspiration
+            to simplify taxation complexities for the common man in India and
+            across the globe, Dr. Jaiswal is not only a Tax & Finance Expert but
+            also an avid speaker on the subject. He has delivered thousands of
+            lectures on Government & Corporate platforms and is actively
+            involved in social and philanthropic activities aimed at uplifting
+            the poor and needy strata of society.
           </p>
           <br />
         </div>
@@ -95,7 +95,7 @@ const AboutPage = () => (
             src={promoter2}
             alt="text"
             height={400}
-            width={400}
+            width={"auto"}
           />
           <div className="content">
             <div className="info">
@@ -108,15 +108,15 @@ const AboutPage = () => (
             </div>
           </div>
           <p>
-            Smt. Singh is a dynamic Advocate representing the image of women
-            empowerment having vast experience in the domain of law specifically
-            [Direct & Indirect Taxation] for a career spanning over 2 decades.
-            She is also Empanelled as Mediator of Allahabad High Court Mediation
-            and Conciliation Centre [AHCMCC]. Her areas of work interest include
-            Taxation, Business Management and Mathematics. Along-with her
-            husband Dr. Pawan Jaiswal she is also involved in silent
-            philanthropic activities for upliftment of weaker section of
-            society. Belonging to a family of bureaucrats; her main forte is
+            Smt. Singh is a dynamic advocate representing the image of women's
+            empowerment, with vast experience in the domain of law, specifically
+            in Direct and Indirect Taxation, spanning a career of over two
+            decades. She is also empaneled as a mediator at the Allahabad High
+            Court Mediation and Conciliation Centre [AHCMCC]. Her areas of
+            interest include Taxation, Business Management, and Mathematics.
+            Along with her spouse, Dr. Pawan Jaiswal, she is also involved in
+            philanthropic activities for the upliftment of the weaker sections
+            of society. Belonging to a family of bureaucrats, her main forte is
             administration.
           </p>
         </div>

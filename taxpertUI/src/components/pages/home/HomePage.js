@@ -36,7 +36,7 @@ function HomePage() {
         <div className="container" data-aos="fade-up">
           <div className="row ">
             <div className="col-lg-6 banner-section-content ">
-              <h1>Fix My Tax will manage your taxes, you enjoy life.</h1>
+              <h1>FixMyTax, where Precision meets Peace of mind</h1>
               <h6> What We Do</h6>
               <ul>
                 <li>
@@ -108,7 +108,7 @@ function HomePage() {
                 className="cover"
                 src={logo1}
                 alt="text"
-                height={400}
+                height={"auto"}
                 width={400}
               />
               <div>
@@ -140,7 +140,7 @@ function HomePage() {
                     }
                   />
                   <LinkedinOutlined
-                    className="brand-icon"
+                    className="brand-icon last"
                     onClick={() =>
                       handleClick("https://www.linkedin.com/in/drpawanjaiswal")
                     }
@@ -244,7 +244,7 @@ function HomePage() {
 
       {/* about section */}
 
-      <Row className="about-company-section">
+      {/* <Row className="about-company-section">
         <Col xs={24} md={8} lg={8} sm={24} className="about-company-container">
           <h1>About our Company</h1>
           <p className="about-company-content">
@@ -263,8 +263,30 @@ function HomePage() {
             />
           </span>
         </Col>
-      </Row>
-      {/* // service section */}
+      </Row> */}
+      <section className="about-section">
+        <div className="section-header">
+          <h1>fixmytax</h1>
+          <hr className="taxpert-line" />
+        </div>
+        <div className="container">
+          <div className="outer">
+            <div>
+              <p style={{ textAlign: "justify" }}>
+                We're a seasoned team of taxation and consulting experts,
+                including CMAs, CAs, CSs, Taxation Lawyers, and Subject Experts,
+                ready to tackle your business and taxation queries head-on. With
+                our cutting-edge technology, our services are accessible round
+                the clock on our portal. Whether you're an individual or a
+                professional in the taxation or accounting fields, we're here to
+                provide expert guidance and support. Stay updated, stay covered
+                - we're available 24/7 to assist with all matters related to
+                direct and indirect tax issues.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <div className="service-section">
         <div className="section-header">
           <h1>Our Services</h1>
@@ -336,14 +358,13 @@ function HomePage() {
         </Row>
       </div>
 
-      <section className="about-section">
+      {/* <section className="about-section">
         <div className="container">
           <div className="outer">
             <div className="left">
               <div className="heading">
                 <span>fixmytax</span>
               </div>
-              {/* <h3>Best Tax expert website in India</h3> */}
               <p style={{ textAlign: "justify" }}>
                 We are a strong team of experts with wide experience in the
                 field of taxation and consulting. Armed with latest technology
@@ -356,7 +377,6 @@ function HomePage() {
                 clients 24*7 to address all matters related to notices for both
                 direct as well as indirect tax related matters.
               </p>
-              {/* <Button type="primary">Read More</Button> */}
             </div>
             <div className="right">
               <ul>
@@ -364,14 +384,7 @@ function HomePage() {
                   <SafeSecureIcon className="icon" />
                   Secure and safe
                 </li>
-                {/* <li>
-                  <RatingIcon className={"icon"} />
-                  4.5 Star Service Rating{" "}
-                </li> */}
-                {/* <li>
-                  <TrustedUserIcon className={"icon"} />
-                  Trusted by 5000+ users
-                </li> */}
+
                 <li>
                   <AuthorizedIcon className={"icon"} />
                   Registered with DPIIT & Start in UP
@@ -380,7 +393,7 @@ function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </React.Fragment>
   );
 }

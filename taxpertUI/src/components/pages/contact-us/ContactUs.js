@@ -157,7 +157,7 @@ const ContactUs = () => {
             <h6 style={{ fontSize: "20px" }}>Happy To Help</h6>
 
             <PhoneTwoTone />
-            <span style={{ marginLeft: "8px" }}>18003090678</span>
+            <span style={{ marginLeft: "8px" }}>+91 6387022844</span>
             <br />
 
             <MailTwoTone />
