@@ -8,8 +8,6 @@ import {
 import { getRandomString, message } from "../../../../../shared/utils";
 import { MODE } from "./constant";
 
-import "./CreateEditPSP.less";
-
 const formItemLayout = {
   labelCol: {
     xs: {
