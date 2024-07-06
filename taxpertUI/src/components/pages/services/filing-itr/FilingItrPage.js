@@ -3,6 +3,9 @@ import React from "react";
 import { Collapse, Space, Card } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 import FilingItrFormContainer from "../../../../modules/filing-itr/FilingItrFormContainer";
+import SeoHeader from "../../../../common/seo/SeoHeader";
+import { TAGS } from "../../../../shared/constant/Tags";
+import { NavLink } from "react-router-dom";
 
 const { Panel } = Collapse;
 
@@ -11,22 +14,29 @@ const FilingItrPage = () => {
 
   return (
     <React.Fragment>
+      <SeoHeader
+        title={TAGS.itr_filling.title}
+        description={TAGS.itr_filling.decription}
+      />
       <section id="service-banner--filing-itr" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
             <div className="section-banner-info">
               <div className="section-banner-title">ITR Filing</div>
               <p className="section-banner-data">
-                Welcome to our comprehensive filing income tax service provided
-                by our tax consultancy firm. We understand the importance of
-                timely and accurate tax filings, which is why we offer our
-                expertise to individuals, businesses, and organizations of all
-                sizes. Our team of experienced tax professionals will guide you
-                through the entire process, ensuring that all your tax
-                obligations are met while maximizing your tax savings. With our
-                thorough understanding of tax laws and regulations, we strive to
-                provide our clients with peace of mind during tax season. Trust
-                us to handle your tax filings with efficiency and accuracy.
+                Welcome to our comprehensive filing{" "}
+                <NavLink to="/service/tax-appeal">income tax service </NavLink>
+                provided by our tax consultancy firm.
+                <NavLink to="/"> Fix My Tax </NavLink>
+                understand the importance of timely and accurate tax filings,
+                which is why we offer our expertise to individuals, businesses,
+                and organizations of all sizes. Our team of experienced tax
+                professionals will guide you through the entire process,
+                ensuring that all your tax obligations are met while maximizing
+                your tax savings. With our thorough understanding of tax laws
+                and regulations, we strive to provide our clients with peace of
+                mind during tax season. Trust us to handle your tax filings with
+                efficiency and accuracy.
               </p>
             </div>
           </div>

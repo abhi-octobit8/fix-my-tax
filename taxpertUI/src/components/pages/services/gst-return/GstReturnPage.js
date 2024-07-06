@@ -1,19 +1,24 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Collapse, Space, Card } from "antd";
-import { Header1, Header3 } from "../../../../common/Headers";
+import { Card } from "antd";
+import { Header3 } from "../../../../common/Headers";
 import gstReturn from "../../../../assets/img/gst_return.png";
 import { openFile } from "../../../../shared/utils";
 
 import "./GstReturnPage.css";
-
-const { Panel } = Collapse;
+import SeoHeader from "../../../../common/seo/SeoHeader";
+import { TAGS } from "../../../../shared/constant/Tags";
+import { NavLink } from "react-router-dom";
 
 const GstReturnPage = () => {
   const titleHeader = "GST Return";
 
   return (
     <React.Fragment>
+      <SeoHeader
+        title={TAGS.gst_return.title}
+        description={TAGS.gst_return.decription}
+      />
       <section id="service-banner-tds" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
@@ -26,9 +31,10 @@ const GstReturnPage = () => {
                 professionals will guide you through the entire process,
                 ensuring that all your GST obligations are met while maximizing
                 your tax savings. With our thorough understanding of GST laws
-                and regulations, we strive to provide our clients with peace of
-                mind during GST filing season. Trust us to handle your GST
-                filings with efficiency and accuracy.
+                and regulations, <NavLink to="/"> Fix My Tax </NavLink> strive
+                to provide our clients with peace of mind during GST filing
+                season. Trust us to handle your GST filings with efficiency and
+                accuracy.
               </p>
               <div className="section-header">
                 <Header3>

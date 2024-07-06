@@ -11,8 +11,8 @@ import { isEmpty, get } from "lodash";
 import { getStore } from "../store";
 const API_END_POINT_NEW = process.env.REACT_APP_API_END_POINT;
 const dispatch = getStore().dispatch;
-const { getItem, getJSONItem, setItem } = erLocalStorage;
-const { ACCESS_TOKEN, REFRESH_TOKEN } = STORAGE_KEYS;
+const { getItem } = erLocalStorage;
+const { ACCESS_TOKEN } = STORAGE_KEYS;
 const byPassAuthAPIs = [
   "/TokenAuth/Authenticate",
   "services/app/RegisterService/Create",
@@ -138,38 +138,38 @@ API.post = (url, body, options) =>
 API.delete = (url, body, options) =>
   API({ url, body, method: "delete", ...options });
 
-const handle401Error = async ({ apiData, exception }) => {
-  try {
-    const { accessToken: oldAccessToken, refreshToken: oldRefreshToken } = {
-      accessToken: getJSONItem(ACCESS_TOKEN),
-      refreshToken: getItem(REFRESH_TOKEN),
-    };
-    // const { access: accessToken, refresh: refreshToken } = await API({
-    //   url: "/refreshToken",
-    //   hideErrorMessage: true,
-    //   headers: {
-    //     refreshToken: oldRefreshToken,
-    //     Authorization: `Bearer ${oldAccessToken}`,
-    //   },
-    // });
-    // setItem(ACCESS_TOKEN, accessToken);
-    // setItem(REFRESH_TOKEN, refreshToken);
-    if (apiData.throwErrorOnTokenTimeout) {
-      exception.reason = "resetRefreshToken";
-      throw exception;
-    } else {
-      return await API(apiData);
-    }
-  } catch (authError) {
-    window.dispatchEvent(new Event("authError"));
-    exception.message =
-      "Your session is expired, please login again to continue.";
-    if (exception.reason) {
-      exception.message = "";
-    }
-    throw exception;
-  }
-};
+// const handle401Error = async ({ apiData, exception }) => {
+//   try {
+//     const { accessToken: oldAccessToken, refreshToken: oldRefreshToken } = {
+//       accessToken: getJSONItem(ACCESS_TOKEN),
+//       refreshToken: getItem(REFRESH_TOKEN),
+//     };
+//     // const { access: accessToken, refresh: refreshToken } = await API({
+//     //   url: "/refreshToken",
+//     //   hideErrorMessage: true,
+//     //   headers: {
+//     //     refreshToken: oldRefreshToken,
+//     //     Authorization: `Bearer ${oldAccessToken}`,
+//     //   },
+//     // });
+//     // setItem(ACCESS_TOKEN, accessToken);
+//     // setItem(REFRESH_TOKEN, refreshToken);
+//     if (apiData.throwErrorOnTokenTimeout) {
+//       exception.reason = "resetRefreshToken";
+//       throw exception;
+//     } else {
+//       return await API(apiData);
+//     }
+//   } catch (authError) {
+//     window.dispatchEvent(new Event("authError"));
+//     exception.message =
+//       "Your session is expired, please login again to continue.";
+//     if (exception.reason) {
+//       exception.message = "";
+//     }
+//     throw exception;
+//   }
+// };
 
 const handleError = async ({ exception, url, apiData, hideErrorMessage }) => {
   const { throwException = true, errorMessage, showAPIError } = apiData;

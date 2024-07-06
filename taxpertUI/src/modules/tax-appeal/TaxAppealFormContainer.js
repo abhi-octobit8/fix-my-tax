@@ -1,21 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useUserRole from "../../components/hooks/useUserRole";
 
-import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
 import { PATH } from "../../shared/Route";
 
-import ItrNoticeForm from "./TaxAppealForm";
 import { FIX_MY_TAX_SERVICE_TYPES } from "../../shared/constant/TaxService";
 import { setOrderData } from "../../store/order/orderActions";
 import TaxAppealForm from "./TaxAppealForm";
 
 const TaxAppealFormContainer = (props) => {
-  const { selectedFixMyTaxService } = props;
-  const { notice } = fixMytaxServicesInfo;
   const navigate = useNavigate();
-
-  const userRole = useUserRole();
 
   const onProceed = (values) => {
     //update reducer for selected service.

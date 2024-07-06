@@ -4,6 +4,9 @@ import { Card } from "antd";
 import { Collapse, Space } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 import GstNoticeFormContainer from "../../../../modules/gst-notice-form/GstNoticeFormContainer";
+import { TAGS } from "../../../../shared/constant/Tags";
+import SeoHeader from "../../../../common/seo/SeoHeader";
+import { NavLink } from "react-router-dom";
 
 const { Panel } = Collapse;
 
@@ -12,6 +15,10 @@ const GstNoticePage = () => {
 
   return (
     <>
+      <SeoHeader
+        title={TAGS.gst_notice.title}
+        description={TAGS.gst_notice.decription}
+      />
       <section id="service-banner-tds" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
@@ -23,11 +30,11 @@ const GstNoticePage = () => {
                 them for you. Our team of experienced tax professionals will
                 review and analyze the notice, ensuring that all necessary
                 actions are taken to resolve the issue promptly. With our
-                in-depth knowledge of GST laws and regulations, we aim to
-                provide our clients with hassle-free GST notice handling
-                services. Trust us to handle your GST notices with the utmost
-                professionalism and expertise, ensuring your compliance with GST
-                regulations.
+                in-depth knowledge of GST laws and regulations,{" "}
+                <NavLink to="/"> Fix My Tax </NavLink> aim to provide our
+                clients with hassle-free GST notice handling services. Trust us
+                to handle your GST notices with the utmost professionalism and
+                expertise, ensuring your compliance with GST regulations.
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Dropdown, Row, Space } from "antd";
-import { DeleteOutlined, PlusOutlined, MoreOutlined } from "@ant-design/icons";
+import { MoreOutlined } from "@ant-design/icons";
 import ListHeader from "../../../../common/ListHeader/ListHeader";
 import { useSelector } from "react-redux";
 import Tag from "antd/es/tag";
@@ -10,7 +10,6 @@ import {
 } from "../../../../services/user.service";
 import FixMyTaxTable from "../../../../common/Table/FixMyTaxTable";
 import useRedirectPath from "../../../hooks/useRedirectPath";
-import { PATH } from "../../../../shared/Route";
 import {
   downloaFile,
   getMenuActionItems,

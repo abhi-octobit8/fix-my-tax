@@ -1,22 +1,17 @@
 import React, { useState } from "react";
-import { Card, Col, Collapse, Descriptions, Row, Space } from "antd";
+import { Card, Col, Row } from "antd";
 import ServiceDetails from "./ServiceDetails";
 import SummaryPage from "./SummaryPage";
 import { Header2 } from "../../common/Headers";
 import useUserData from "../../components/hooks/useUserData";
 import { useSelector } from "react-redux";
-import { SUCCESS_MESSAGE_INFO } from "../../shared/constant/MessageInfo";
-import { PATH } from "../../shared/Route";
-import { message, toFixed } from "../../shared/utils";
+import { toFixed } from "../../shared/utils";
 import { createTicketService } from "../../services/ticket.service";
 import { useNavigate } from "react-router-dom";
 import {
   GetPaymentPrice,
   GetServiceTotalPrice,
 } from "../../services/checkout.service";
-import { async } from "q";
-
-const { Panel } = Collapse;
 
 const CheckoutPage = (props) => {
   const navigate = useNavigate();
@@ -64,9 +59,7 @@ const CheckoutPage = (props) => {
         orderDetails.uploadDocument
       );
       if (res.id) {
-        const responseData = await GetPaymentPrice(
-          res.orderId
-        );
+        const responseData = await GetPaymentPrice(res.orderId);
         if (responseData) {
           window.location.replace(responseData);
         }

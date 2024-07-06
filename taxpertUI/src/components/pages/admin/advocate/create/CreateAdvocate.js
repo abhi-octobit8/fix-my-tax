@@ -1,7 +1,6 @@
 import React from "react";
 import "./CreateAdvocate.less";
-import { Button, Form, Input, Select, Card } from "antd";
-import TextArea from "antd/lib/input/TextArea";
+import { Button, Form, Input, Card } from "antd";
 import { createAdvocate } from "../../../../../services/advocate.service";
 import { PATH } from "../../../../../shared/Route";
 import useRedirectPath from "../../../../hooks/useRedirectPath";

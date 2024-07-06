@@ -1,75 +1,26 @@
 import React from "react";
 import {
-  StarOutlined,
-  StarFilled,
   CheckCircleFilled,
-  CheckCircleTwoTone,
-  YoutubeOutlined,
   YoutubeFilled,
-  FacebookOutlined,
-  InstagramOutlined,
   TwitterOutlined,
   FacebookFilled,
   LinkedinOutlined,
 } from "@ant-design/icons";
-import { AutoComplete, Button, Card, Col, Row } from "antd";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Button, Card, Col, Row } from "antd";
 import card1 from "../../../assets/img/card1.svg";
 import card2 from "../../../assets/img/card2.svg";
 import card3 from "../../../assets/img/card3.svg";
 import about from "../../../assets/img/team.jpg";
-import {
-  AuthorizedIcon,
-  RatingIcon,
-  SafeSecureIcon,
-  TrustedUserIcon,
-} from "../../../common/icons/icons";
+import { AuthorizedIcon, SafeSecureIcon } from "../../../common/icons/icons";
 import logo1 from "../../../assets/img/sahab.png";
-import promoter1 from "../../../assets/img/pawan_jaiswal.PNG";
-import promoter2 from "../../../assets/img/nidhi_singh.PNG";
-// import xocovoPartner from "../../../assets/img/xocovo.png";
-// import smartPartner from "../../../assets/img/smartpartner.png";
-// import medimaaPartner from "../../../assets/img/medimaa.png";
-// import xocovoPartner1 from "../../../assets/img/zupier.jpeg";
 import { PATH } from "../../../shared/Route";
 import useRedirectPath from "../../hooks/useRedirectPath";
+import SeoHeader from "../../../common/seo/SeoHeader";
+import { TAGS } from "../../../shared/constant/Tags";
 
 import "./HomePage.css";
-
-const items = [
-  { id: 1, value: "Income Tax & GST Return Filing" },
-  { id: 2, value: "Facilitate Tax Payment of Income Tax & GST" },
-  {
-    id: 3,
-    value:
-      "Preparation & Filing of Reply Petitions for Assessments of Income Tax & GST",
-  },
-  {
-    id: 4,
-    value:
-      "Drafting of Written Submission & Filing of First Appeal [Income Tax & GST]",
-  },
-  {
-    id: 5,
-    value:
-      "Drafting of Written Submission & Filing of Second Appeal [Income Tax & GST]",
-  },
-  {
-    id: 6,
-    value: "Video Conferencing Facility",
-  },
-  {
-    id: 7,
-    value: "Appearance on behalf of Assessee",
-  },
-  {
-    id: 8,
-    value: "Business Decisions Consultancy",
-  },
-  {
-    id: 9,
-    value: "Provide Answers to your Notices & Queries",
-  },
-];
+import { NavLink } from "react-router-dom";
 
 function HomePage() {
   const navigator = useRedirectPath();
@@ -80,35 +31,84 @@ function HomePage() {
 
   return (
     <React.Fragment>
+      <SeoHeader title={TAGS.home.title} description={TAGS.home.decription} />
       <section id="banner-to-action" className="banner-to-action">
         <div className="container" data-aos="fade-up">
           <div className="row ">
             <div className="col-lg-6 banner-section-content ">
-              <h2> We will manage your taxes, you enjoy life.</h2>
+              <h1>FixMyTax, where Precision meets Peace of mind</h1>
               <h6> What We Do</h6>
               <ul>
-                {items.map((item, index) => {
-                  return (
-                    <>
-                      <li>
-                        {" "}
-                        {/* <CheckCircleTwoTone twoToneColor="#f47c01" />{" "} */}
-                        <CheckCircleFilled
-                          style={{ fontSize: "16px", color: "#f47c01" }}
-                        />{" "}
-                        {item.value}
-                      </li>
-                    </>
-                  );
-                })}
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Income Tax &{" "}
+                  <NavLink to="/service/gst-return">GST Return Filing </NavLink>
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Facilitate Tax Payment of{" "}
+                  <NavLink to="/service/tax-appeal"> Income Tax & GST </NavLink>
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Preparation & Filing of Reply Petitions for Assessments of
+                  Income Tax & GST
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Drafting of Written Submission & Filing of First Appeal
+                  [Income Tax & GST]
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Drafting of Written Submission & Filing of Second Appeal
+                  [Income Tax & GST]
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  <NavLink to="/service/video-consultation">
+                    {" "}
+                    Video Conferencing Facility
+                  </NavLink>
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Appearance on behalf of Assessee
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Business Decisions Consultancy
+                </li>
+                <li>
+                  <CheckCircleFilled
+                    style={{ fontSize: "16px", color: "#f47c01" }}
+                  />{" "}
+                  Provide Answers to your Notices & Queries
+                </li>
               </ul>
             </div>
             <div className="col-lg-6 banner-image">
-              <img
+              <LazyLoadImage
                 className="cover"
                 src={logo1}
                 alt="text"
-                height={400}
+                height={"auto"}
                 width={400}
               />
               <div>
@@ -140,7 +140,7 @@ function HomePage() {
                     }
                   />
                   <LinkedinOutlined
-                    className="brand-icon"
+                    className="brand-icon last"
                     onClick={() =>
                       handleClick("https://www.linkedin.com/in/drpawanjaiswal")
                     }
@@ -244,7 +244,7 @@ function HomePage() {
 
       {/* about section */}
 
-      <Row className="about-company-section">
+      {/* <Row className="about-company-section">
         <Col xs={24} md={8} lg={8} sm={24} className="about-company-container">
           <h1>About our Company</h1>
           <p className="about-company-content">
@@ -254,7 +254,7 @@ function HomePage() {
         </Col>
         <Col xs={24} md={16} lg={16} sm={24}>
           <span>
-            <img
+            <LazyLoadImage
               className="cover"
               src={about}
               alt="about"
@@ -263,8 +263,30 @@ function HomePage() {
             />
           </span>
         </Col>
-      </Row>
-      {/* // service section */}
+      </Row> */}
+      <section className="about-section">
+        <div className="section-header">
+          <h1>fixmytax</h1>
+          <hr className="taxpert-line" />
+        </div>
+        <div className="container">
+          <div className="outer">
+            <div>
+              <p style={{ textAlign: "justify" }}>
+                We're a seasoned team of taxation and consulting experts,
+                including CMAs, CAs, CSs, Taxation Lawyers, and Subject Experts,
+                ready to tackle your business and taxation queries head-on. With
+                our cutting-edge technology, our services are accessible round
+                the clock on our portal. Whether you're an individual or a
+                professional in the taxation or accounting fields, we're here to
+                provide expert guidance and support. Stay updated, stay covered
+                - we're available 24/7 to assist with all matters related to
+                direct and indirect tax issues.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <div className="service-section">
         <div className="section-header">
           <h1>Our Services</h1>
@@ -336,14 +358,13 @@ function HomePage() {
         </Row>
       </div>
 
-      <section className="about-section">
+      {/* <section className="about-section">
         <div className="container">
           <div className="outer">
             <div className="left">
               <div className="heading">
                 <span>fixmytax</span>
               </div>
-              {/* <h3>Best Tax expert website in India</h3> */}
               <p style={{ textAlign: "justify" }}>
                 We are a strong team of experts with wide experience in the
                 field of taxation and consulting. Armed with latest technology
@@ -356,7 +377,6 @@ function HomePage() {
                 clients 24*7 to address all matters related to notices for both
                 direct as well as indirect tax related matters.
               </p>
-              {/* <Button type="primary">Read More</Button> */}
             </div>
             <div className="right">
               <ul>
@@ -364,14 +384,7 @@ function HomePage() {
                   <SafeSecureIcon className="icon" />
                   Secure and safe
                 </li>
-                {/* <li>
-                  <RatingIcon className={"icon"} />
-                  4.5 Star Service Rating{" "}
-                </li> */}
-                {/* <li>
-                  <TrustedUserIcon className={"icon"} />
-                  Trusted by 5000+ users
-                </li> */}
+
                 <li>
                   <AuthorizedIcon className={"icon"} />
                   Registered with DPIIT & Start in UP
@@ -379,198 +392,6 @@ function HomePage() {
               </ul>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* <section className="promoters-section">
-        <div className="section-header">
-          <h1>Our Founder And Promoters</h1>
-          <hr className="taxpert-line" />
-        </div>
-
-        <div className="testimonial-containter">
-          <div className="box">
-            <img
-              className="cover promoters-image"
-              src={promoter1}
-              alt="text"
-              height={400}
-              width={400}
-            />
-            <div className="content">
-              <div className="info">
-                <div className="name">Dr. Pawan Jaiswal</div>
-                <div>
-                  <span className="name">Qualifications: </span>{" "}
-                  <span className="job">
-                    M.Com., Ph.D., M.B.A., F.C.M.A, M.I.MA., Ex.RP – MCA & SEBI,
-                    F.I.V., CA(I) (Senior Tax & Cost Management Consultant).
-                  </span>
-                </div>
-              </div>
-            </div>
-            <p>
-              Dr. Jaiswal is having experience and expertise in the field of
-              Direct & Indirect Taxation, Financial Management and Enterprise
-              Start-up for a career spanning over 3 decades. He is also approved
-              valuer for Government Agencies and member of various Government
-              Policy making Agencies. Rising from a humble back-ground with the
-              sole aspiration to ease the complicities of taxation for common
-              man in India and across the globe. Besides being a Tax & Finance
-              Expert, he is also an avid speaker on the subject delivering
-              thousands on lecturers on Government & Corporate platforms and
-              actively involved in social and philanthropic activities for the
-              upliftment of poor and needy strata of the society.
-            </p>
-            <br />
-          </div>
-          <div className="box">
-            <img
-              className="cover promoters-image"
-              src={promoter2}
-              alt="text"
-              height={400}
-              width={400}
-            />
-            <div className="content">
-              <div className="info">
-                <div className="name">Smt. Nidhi Pawan Singh</div>
-                <div>
-                  <span className="name">Qualifications: </span>{" "}
-                  <span className="job">MSc, LLB, MBA, A.M.I.M.A.</span>
-                </div>
-                <br />
-              </div>
-            </div>
-            <p>
-              Smt. Singh is a dynamic Advocate representing the image of women
-              empowerment having vast experience in the domain of law
-              specifically [Direct & Indirect Taxation] for a career spanning
-              over 2 decades. She is also Empanelled as Mediator of Allahabad
-              High Court Mediation and Conciliation Centre [AHCMCC]. Her areas
-              of work interest include Taxation, Business Management and
-              Mathematics. Along-with her husband Dr. Pawan Jaiswal she is also
-              involved in silent philanthropic activities for upliftment of
-              weaker section of society. Belonging to a family of bureaucrats;
-              her main forte is administration.
-            </p>
-          </div>
-        </div>
-      </section> */}
-
-      {/* <section className="testimonial-value-section">
-        <div className="section-header">
-          <h1>Testimonial</h1>
-          <hr className="taxpert-line" />
-          <h4>Read What Our Customers Say</h4>
-        </div>
-        <div className="video-section">
-          <div className="videos first-video">
-            <iframe
-              title="video"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              src="https://www.youtube.com/embed/84R6m0Zj-Dc"
-            ></iframe>
-          </div>
-
-          <div className="videos second-video">
-            <iframe
-              title="video"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              src="https://www.youtube.com/embed/UZRIObmTSjg"
-            ></iframe>
-          </div>
-        </div>
-
-        <div className="testimonial-containter">
-          <div className="box">
-            <p>
-              Promoters of fixmytax proved to be a saviour during my crisis;
-              their experts were quick, compassionate, and professional. Cannot
-              ask for more. Their timely guidance helped to get all my statutory
-              compliances in time.
-            </p>
-            <div className="content">
-              <div className="info">
-                <div className="name">Naveen Kesarwani</div>
-                <div className="job">Industrialist</div>
-                <div className="stars">
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarOutlined />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="box">
-            <p>
-              Your consultants are very prompt and intensive in their response
-              which helped me to file my ITRs conveniently and smoothly.
-            </p>
-            <br />
-            <div className="content">
-              <div className="info">
-                <div className="name">Subhas Chandra Dubey</div>
-                <div className="job">IPS</div>
-                <div className="stars">
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarOutlined />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="box">
-            <p>
-              Outstanding customer service from promoters of fixmytax. Right
-              from the time of filing of return and completion of assessment
-              proceedings. Everything was well taken care off. All the best for
-              all their good work.
-            </p>
-            <div className="content">
-              <div className="info">
-                <div className="name">Dr. Ram Kumar Mishra</div>
-                <div className="job">CMA, CS</div>
-                <div className="stars">
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarFilled style={{ color: "#17a2b8" }} />
-                  <StarOutlined />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-      {/* <section className="our-value-section">
-        <div className="section-header">
-          <h1>Our Value Partner</h1>
-          <hr className="taxpert-line" />
-        </div>
-        <div className="container">
-          <ul>
-            <li>
-              <img src={xocovoPartner} width={135} height={45} alt="logo" />
-            </li>
-            <li>
-              <img src={smartPartner} width={135} height={45} alt="logo" />
-            </li>
-            <li>
-              <img src={medimaaPartner} width={135} height={45} alt="logo" />
-            </li>
-            <li>
-              <img src={xocovoPartner1} width={135} height={45} alt="logo" />
-            </li>
-          </ul>
         </div>
       </section> */}
     </React.Fragment>

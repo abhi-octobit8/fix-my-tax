@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Button, Dropdown, Menu, Tag } from "antd";
 import { EditOutlined, DownOutlined } from "@ant-design/icons";
-// import { updateOrderStatusData } from "../../shared/creditMemo-service";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTicketStatus } from "../../../../../../services/ticket.service";
 import { TicketStatus } from "../../../../../../shared/constants";
 import { message } from "../../../../../../shared/utils";
-// import { setUpdatedStatusOnOrderDetails } from "../../redux/action/creditMemoRMAActions";
 
 const STATUSES = {
   New: "New",

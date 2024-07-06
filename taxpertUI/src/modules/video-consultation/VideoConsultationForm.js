@@ -1,20 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useState } from "react";
-import {
-  Button,
-  Form,
-  Input,
-  Select,
-  Upload,
-  Checkbox,
-  Tooltip,
-  Space,
-  DatePicker,
-  Spin,
-} from "antd";
-import { UploadOutlined, InfoCircleOutlined } from "@ant-design/icons";
-import { AVAILABLE_SLOT, FIELD_NAME } from "./constant";
+import { Button, Form, Input, Select, Checkbox, DatePicker, Spin } from "antd";
+import { FIELD_NAME } from "./constant";
 import useUserRole from "../../components/hooks/useUserRole";
 
 import { fixMytaxServiceInfoData } from "../../shared/constant/ServiceInfoData";
@@ -24,7 +12,6 @@ import RegisterButton from "../../common/register-button/RegisterButton";
 import TextArea from "antd/lib/input/TextArea";
 import moment from "moment";
 import { requiredValidator } from "../../shared/validator";
-import { getLocalTime } from "../../shared/timeUtils";
 import { GetVCAvailableSlots } from "../../services/ticket.service";
 
 const { Option } = Select;
@@ -48,33 +35,15 @@ const formItemLayout = {
   },
 };
 
-const normFile = (e) => {
-  console.log("Upload event:", e);
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
 const VideoConsultationForm = (props) => {
-  const { onFinish, onProceed } = props;
+  const { onProceed } = props;
   const [availableSlot, setAvailableSlot] = useState([]);
   const { video_consultation } = fixMytaxServiceInfoData;
   const userRole = useUserRole();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [optionData, setOptionData] = useState({
-    sectionList: [],
-    subSectionsList: [],
-  });
 
   const [form] = Form.useForm();
-
-  React.useEffect(() => {
-    setOptionData((prevState) => ({
-      ...prevState,
-      sectionList: video_consultation,
-    }));
-  }, []);
 
   const onSubmit = (values) => {
     try {

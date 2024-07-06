@@ -1,16 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useUserRole from "../../components/hooks/useUserRole";
 
-import {
-  fixMytaxServicesInfo,
-  FixMyTaxServiceType,
-} from "../../components/pages/services/constant";
-import { registerNotice } from "../../services/register.service";
-import { createTicketService } from "../../services/ticket.service";
-import { SUCCESS_MESSAGE_INFO } from "../../shared/constant/MessageInfo";
+import { fixMytaxServicesInfo } from "../../components/pages/services/constant";
 import { PATH } from "../../shared/Route";
-import { getObjectFromList, message } from "../../shared/utils";
 
 import ItrNoticeForm from "./ItrNoticeForm";
 import { setOrderData } from "../../store/order/orderActions";
@@ -20,8 +12,6 @@ const ItrNoticeFormContainer = (props) => {
   const { selectedFixMyTaxService } = props;
   const { notice } = fixMytaxServicesInfo;
   const navigate = useNavigate();
-
-  const userRole = useUserRole();
 
   const onProceed = (values) => {
     //update reducer for selected service.

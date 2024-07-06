@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Button, Descriptions, Modal } from "antd";
+import { Button, Descriptions, Modal } from "antd";
 
 const UpdateUser = (props) => {
   const { modalInfo, onClose } = props;

@@ -3,6 +3,9 @@ import { Card, Collapse, Space } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 
 import TaxAppealFormContainer from "../../../../modules/tax-appeal/TaxAppealFormContainer";
+import { TAGS } from "../../../../shared/constant/Tags";
+import SeoHeader from "../../../../common/seo/SeoHeader";
+import { NavLink } from "react-router-dom";
 
 const { Panel } = Collapse;
 
@@ -11,6 +14,10 @@ const TaxAppealPage = (props) => {
 
   return (
     <React.Fragment>
+      <SeoHeader
+        title={TAGS.tax_appeal.title}
+        description={TAGS.tax_appeal.decription}
+      />
       <section id="service-banner-itr-notice" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
@@ -26,9 +33,10 @@ const TaxAppealPage = (props) => {
                 appropriate authorities, ensuring that all necessary actions are
                 taken to resolve the appeal in a timely and favorable manner.
                 With our in-depth knowledge of income tax and GST laws and
-                regulations, we aim to provide our clients with effective
-                representation in appeals. Trust us to handle your income tax
-                and GST appeals with the utmost professionalism and expertise.
+                regulations, <NavLink to="/"> Fix My Tax </NavLink> aim to
+                provide our clients with effective representation in appeals.
+                Trust us to handle your income tax and GST appeals with the
+                utmost professionalism and expertise.
               </p>
             </div>
           </div>

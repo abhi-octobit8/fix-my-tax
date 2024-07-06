@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Select, Upload, Row, Col } from "antd";
+import { Button, Form, Input, Select, Row, Col } from "antd";
 import {
-  UploadOutlined,
   ArrowRightOutlined,
   PhoneTwoTone,
   MailTwoTone,
@@ -10,6 +9,8 @@ import "./ContactUs.css";
 import TextArea from "antd/lib/input/TextArea";
 import { phoneNumberValidator } from "../../../shared/validator";
 import { contactUsService } from "../../../services/register.service";
+import SeoHeader from "../../../common/seo/SeoHeader";
+import { TAGS } from "../../../shared/constant/Tags";
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
@@ -41,13 +42,7 @@ const tailFormItemLayout = {
     },
   },
 };
-const normFile = (e) => {
-  console.log("Upload event:", e);
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
+
 const ContactUs = () => {
   const [form] = Form.useForm();
   const [isLoading, setIsLoading] = useState(false);
@@ -75,6 +70,10 @@ const ContactUs = () => {
   );
   return (
     <>
+      <SeoHeader
+        title={TAGS.contact_us.title}
+        description={TAGS.contact_us.decription}
+      />
       <h3 className="top-head">Contact Us</h3>
       <div className="contact-page">
         <Row className="contact-us-container">
@@ -158,7 +157,7 @@ const ContactUs = () => {
             <h6 style={{ fontSize: "20px" }}>Happy To Help</h6>
 
             <PhoneTwoTone />
-            <span style={{ marginLeft: "8px" }}>+91 6387022844</span>
+            <span style={{ marginLeft: "8px" }}>1800 3090 678</span>
             <br />
 
             <MailTwoTone />

@@ -4,6 +4,9 @@ import { Collapse, Space, Card } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 
 import BusinessConsultationFormContainer from "../../../../modules/business-consultation/BusinessConsultationFormContainer";
+import SeoHeader from "../../../../common/seo/SeoHeader";
+import { TAGS } from "../../../../shared/constant/Tags";
+import { NavLink } from "react-router-dom";
 
 const { Panel } = Collapse;
 
@@ -12,6 +15,10 @@ const BusinessConsultationPage = () => {
 
   return (
     <React.Fragment>
+      <SeoHeader
+        title={TAGS.bu_consultation.title}
+        description={TAGS.bu_consultation.decription}
+      />
       <section id="service-banner--consultation" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
@@ -22,12 +29,13 @@ const BusinessConsultationPage = () => {
                 challenging, which is why we offer our expertise to help
                 businesses of all sizes achieve their financial goals. Our team
                 of experienced professionals will provide strategic advice and
-                guidance on various business aspects, including tax planning,
-                financial reporting, and risk management. With our in-depth
-                knowledge of business regulations and best practices, we aim to
-                help our clients make informed decisions that lead to long-term
-                success. Trust us to provide you with comprehensive and
-                personalized business consultation services.
+                guidance on various business aspects, including
+                <NavLink to="/"> tax planning</NavLink>, financial reporting,
+                and risk management. With our in-depth knowledge of business
+                regulations and best practices, we aim to help our clients make
+                informed decisions that lead to long-term success. Trust us to
+                provide you with comprehensive and personalized business
+                consultation services.
               </p>
             </div>
           </div>

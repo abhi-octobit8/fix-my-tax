@@ -70,7 +70,7 @@ namespace FixMyTax.Web.Host.Controllers
                 }
             }
 
-            if (Params["order_status"] == "Success")
+            if (Params["order_status"] == "Aborted")
             {
                 //user canceled
                 ticketEntity.PaymentStaus = PaymentStatus.Canceled;
@@ -80,7 +80,8 @@ namespace FixMyTax.Web.Host.Controllers
                 _ticketRepository.Update(ticketEntity);
                 CurrentUnitOfWork.SaveChanges();
             }
-            else if(Params["order_status"] == "Aborted")
+
+            else if(Params["order_status"] == "Success")
             {
                 //success
                 ticketEntity.PaymentStaus = PaymentStatus.Paid;

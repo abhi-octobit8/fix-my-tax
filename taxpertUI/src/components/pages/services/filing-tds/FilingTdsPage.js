@@ -3,6 +3,9 @@ import { Collapse, Space, Card } from "antd";
 import { FixMyTaxServiceType } from "../constant";
 import {} from "../../../../services/register.service";
 import FilingTdsFormContainer from "../../../../modules/filing-tds/FilingTdsFormContainer";
+import SeoHeader from "../../../../common/seo/SeoHeader";
+import { TAGS } from "../../../../shared/constant/Tags";
+import { NavLink } from "react-router-dom";
 const { Panel } = Collapse;
 
 const FilingTdsPage = () => {
@@ -10,6 +13,10 @@ const FilingTdsPage = () => {
 
   return (
     <React.Fragment>
+      <SeoHeader
+        title={TAGS.tds_tcs_filling.title}
+        description={TAGS.tds_tcs_filling.decription}
+      />
       <section id="service-banner-tds" className="section-banner">
         <div className="container" data-aos="fade-up">
           <div className="row justify-content-center">
@@ -17,7 +24,12 @@ const FilingTdsPage = () => {
               <div className="section-banner-title">TDS/TCS Filing</div>
               <p className="section-banner-data">
                 Introducing our reliable and efficient TDS/TCS filing service
-                provided by our tax consultancy firm. We understand that
+                provided by our{" "}
+                <NavLink to="/service/business-consultation">
+                  {" "}
+                  tax consultancy firm
+                </NavLink>
+                .<NavLink to="/"> Fix My Tax </NavLink> understand that
                 complying with TDS/TCS regulations can be a daunting task, which
                 is why we offer our expertise to simplify the process for you.
                 Our team of experienced tax professionals will ensure that your

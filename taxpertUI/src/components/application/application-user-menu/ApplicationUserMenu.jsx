@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Dropdown from "antd/es/dropdown";
+import { UserOutlined } from "@ant-design/icons";
 import { MENU_ITEMS, MENU_KEY } from "./constant";
-
+import { LoginOutlined } from "@ant-design/icons";
 import "./ApplicationUserMenu.css";
 import { Menu } from "antd";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -52,13 +53,20 @@ function ApplicationUserMenu() {
           placement="bottomRight"
           trigger="click"
         >
-          <div className="application-user-menu-trigger">{userData.name}</div>
+          <div className="application-user-menu-trigger">
+            {" "}
+            <UserOutlined style={{ paddingRight: "5px" }} />
+            {userData.name}
+          </div>
         </Dropdown>
       ) : (
         <Menu>
           <Menu.Item style={{ blockSize: "64px", marginTop: "-1px" }}>
             <NavLink to="/login">
-              <span className="application-user-menu-trigger">Login</span>
+              <span className="application-user-menu-trigger">
+                {" "}
+                <LoginOutlined style={{ paddingRight: "5px" }} /> Login
+              </span>
             </NavLink>
           </Menu.Item>
         </Menu>
